@@ -2,22 +2,24 @@
 #define _ATTACK_H_
 
 #include <string>
-#include <list>
+#include <map>
 #include "Main.h"
 
 using namespace std;
+
+typedef map<void *, int> ParentList;
 
 class Attack
 {
 public:
 	string Name;
 	int Type;
-	list<void *> AttackParents;
+	ParentList Parents;
 
 public:
 	Attack(string Name);
 	~Attack();
-	void AddParents(Attack * Attack);
+	void Add(Attack * Parent);
 };
 
 #endif

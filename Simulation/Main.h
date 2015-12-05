@@ -9,11 +9,11 @@
 #include <stdlib.h>
 #include "Attack.h"
 
-enum NodeType
+enum
 {
-	ATTACK,
-	FUNCTION,
-	INCIDNET
+	t_Attack,
+	t_Function,
+	t_Incident
 };
 
 #endif

@@ -3,8 +3,8 @@
 Attack::Attack(string Name)
 {
 	this->Name = Name;
-	this->Type = ATTACK;
-	this->AttackParents.clear();
+	this->Type = t_Attack;
+	this->Parents.clear();
 }
 
 
@@ -12,7 +12,7 @@ Attack::~Attack()
 {
 }
 
-void Attack::AddParents(Attack * Attack)
+void Attack::Add(Attack * Attack)
 {
-	this->AttackParents.push_back((void *)Attack);
+	this->Parents.insert(pair<void *, int>(Attack, Attack->Type));
 }
