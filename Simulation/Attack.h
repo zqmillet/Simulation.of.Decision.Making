@@ -9,6 +9,7 @@ using namespace std;
 
 typedef map<void *, int> ParentList;
 
+
 class Attack
 {
 public:
