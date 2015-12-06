@@ -7,13 +7,9 @@
 #include "dlib/directed_graph.h"
 #include <iostream>
 #include <stdlib.h>
+#include <cstdarg>
+#include "Const.h"
 #include "Attack.h"
 
-enum
-{
-	t_Attack,
-	t_Function,
-	t_Incident
-};
 
 #endif

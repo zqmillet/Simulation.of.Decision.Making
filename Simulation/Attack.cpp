@@ -12,7 +12,7 @@ Attack::~Attack()
 {
 }
 
-void Attack::Add(Attack * Attack)
+void Attack::Add(Attack & Attack)
 {
-	this->Parents.insert(pair<void *, int>(Attack, Attack->Type));
+	this->Parents.insert(pair<void *, int>(&Attack, Attack.Type));
 }

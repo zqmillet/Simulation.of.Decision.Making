@@ -1,17 +1,56 @@
-﻿生成启动时间为 2015/12/6 9:19:51。
+﻿生成启动时间为 2015/12/6 16:20:26。
      1>项目“D:\iDocument\Document\My Paper\2nd\Simulation\Simulation\Simulation.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
-         Main.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\iDocument\Document\My Paper\2nd\Simulation\Debug\Simulation.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"D:\iDocument\Document\My Paper\2nd\Simulation\Debug\Simulation.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\iDocument\Document\My Paper\2nd\Simulation\Debug\Simulation.lib" /MACHINE:X86 Debug\Asset.obj
-         Debug\Attack.obj
-         Debug\Function.obj
-         Debug\Incident.obj
-         Debug\Main.obj
-         Simulation.vcxproj -> D:\iDocument\Document\My Paper\2nd\Simulation\Debug\Simulation.exe
-     1>已完成生成项目“D:\iDocument\Document\My Paper\2nd\Simulation\Simulation\Simulation.vcxproj”(Build 个目标)的操作。
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt MD5.cpp
+         MD5.cpp
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): error C2653: “CMD5”: 不是类或命名空间名称
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(212): error C2027: 使用了未定义类型“md5_context”
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(212): error C2227: “->total”的左边必须指向类/结构/联合/泛型类型
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(213): error C2027: 使用了未定义类型“md5_context”
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(213): error C2227: “->total”的左边必须指向类/结构/联合/泛型类型
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(215): error C2027: 使用了未定义类型“md5_context”
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(215): error C2227: “->total”的左边必须指向类/结构/联合/泛型类型
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(218): error C3861: “md5_update”: 找不到标识符
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(219): error C3861: “md5_update”: 找不到标识符
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(221): error C2027: 使用了未定义类型“md5_context”
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(221): error C2227: “->state”的左边必须指向类/结构/联合/泛型类型
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(222): error C2027: 使用了未定义类型“md5_context”
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(222): error C2227: “->state”的左边必须指向类/结构/联合/泛型类型
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(223): error C2027: 使用了未定义类型“md5_context”
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(223): error C2227: “->state”的左边必须指向类/结构/联合/泛型类型
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(224): error C2027: 使用了未定义类型“md5_context”
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(224): error C2227: “->state”的左边必须指向类/结构/联合/泛型类型
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+         d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(207): note: 参见“md5_context”的声明
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(312): error C2065: “CMD5”: 未声明的标识符
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(312): error C2146: 语法错误: 缺少“)”(在标识符“adder”的前面)
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(313): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\md5.cpp(313): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
+     1>已完成生成项目“D:\iDocument\Document\My Paper\2nd\Simulation\Simulation\Simulation.vcxproj”(Build 个目标)的操作 - 失败。
 
-已成功生成。
+生成失败。
 
-已用时间 00:00:03.06
+已用时间 00:00:01.87
