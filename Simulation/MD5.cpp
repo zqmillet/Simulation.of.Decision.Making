@@ -3,30 +3,33 @@
 * by Christophe Devine <devine@cr0.net>;
 * this program is licensed under the GPL.
 */
+#define _CRT_SECURE_NO_DEPRECATE
+
 #include "Md5.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#define GET_UINT32(n,b,i)                                      \
-{                                                                                      \
-    (n) = (uint32) ((uint8 *) b)[(i)]                                 \
-      | (((uint32) ((uint8 *) b)[(i)+1]) <<  8)                  \
-      | (((uint32) ((uint8 *) b)[(i)+2]) << 16)                \
-      | (((uint32) ((uint8 *) b)[(i)+3]) << 24);               \
+
+#define GET_UINT32(n,b,i)                                       \
+{ \
+(n) = (uint32)((uint8 *)b)[(i)] \
+| (((uint32)((uint8 *)b)[(i)+1]) << 8)\
+| (((uint32)((uint8 *)b)[(i)+2]) << 16) \
+| (((uint32)((uint8 *)b)[(i)+3]) << 24); \
 }
 
-#define PUT_UINT32(n,b,i)                                              \
-{                                                                                              \
-    (((uint8 *) b)[(i)]  ) = (uint8) (((n)      ) & 0xFF);             \
-    (((uint8 *) b)[(i)+1]) = (uint8) (((n) >>  8) & 0xFF);      \
-    (((uint8 *) b)[(i)+2]) = (uint8) (((n) >> 16) & 0xFF);     \
-    (((uint8 *) b)[(i)+3]) = (uint8) (((n) >> 24) & 0xFF);     \
+#define PUT_UINT32(n,b,i)                                       \
+{ \
+(((uint8 *)b)[(i)]) = (uint8)(((n)) & 0xFF); \
+(((uint8 *)b)[(i)+1]) = (uint8)(((n) >> 8) & 0xFF); \
+(((uint8 *)b)[(i)+2]) = (uint8)(((n) >> 16) & 0xFF); \
+(((uint8 *)b)[(i)+3]) = (uint8)(((n) >> 24) & 0xFF); \
 }
 
 //extern pthread_mutex_t mutexMemory;
 
-void MD5::md5_starts(struct md5_context *ctx)
+void CMD5::md5_starts(struct md5_context *ctx)
 {
 	ctx->total[0] = 0;
 	ctx->total[1] = 0;
@@ -36,7 +39,7 @@ void MD5::md5_starts(struct md5_context *ctx)
 	ctx->state[3] = 0x10325476;
 }
 
-void MD5::md5_process(struct md5_context *ctx, uint8 data[64])
+void CMD5::md5_process(struct md5_context *ctx, uint8 data[64])
 {
 	uint32 A, B, C, D, X[16];
 
@@ -59,10 +62,10 @@ void MD5::md5_process(struct md5_context *ctx, uint8 data[64])
 
 #define S(x,n) ((x << n) | ((x & 0xFFFFFFFF) >> (32 - n)))
 
-#define P(a,b,c,d,k,s,t)                                    \
-{                                                                           \
-    a += F(b,c,d) + X[k] + t; a = S(a,s) + b;      \
-}
+#define P(a,b,c,d,k,s,t)                                \
+	{ \
+		a += F(b, c, d) + X[k] + t; a = S(a, s) + b; \
+	}
 
 	A = ctx->state[0];
 	B = ctx->state[1];
@@ -159,7 +162,7 @@ void MD5::md5_process(struct md5_context *ctx, uint8 data[64])
 	ctx->state[3] += D;
 }
 
-void MD5::md5_update(struct md5_context *ctx, uint8 *input, uint32 length)
+void CMD5::md5_update(struct md5_context *ctx, uint8 *input, uint32 length)
 {
 	uint32 left, fill;
 
@@ -224,7 +227,7 @@ void CMD5::md5_finish(struct md5_context *ctx, uint8 digest[16])
 	PUT_UINT32(ctx->state[3], digest, 12);
 }
 
-void MD5::GenerateMD5(unsigned char* buffer, int bufferlen)
+void CMD5::GenerateMD5(unsigned char* buffer, int bufferlen)
 {
 	struct md5_context context;
 	md5_starts(&context);
@@ -232,13 +235,13 @@ void MD5::GenerateMD5(unsigned char* buffer, int bufferlen)
 	md5_finish(&context, (unsigned char*)m_data);
 }
 
-MD5::MD5()
+CMD5::CMD5()
 {
 	for (int i = 0; i<4; i++)
 		m_data[i] = 0;
 }
 
-MD5::MD5(unsigned long* md5src)
+CMD5::CMD5(unsigned long* md5src)
 {
 	memcpy(m_data, md5src, 16);
 }
@@ -262,7 +265,7 @@ int _httoi(const char *value)
 		{ 'e', 14 },{ 'f', 15 }
 	};
 	//pthread_mutex_lock(&mutexMemory);
-	char *mstr = strdup(value);
+	char *mstr = _strdup(value);
 	//pthread_mutex_unlock(&mutexMemory);
 	char *s = mstr;
 	int result = 0;
@@ -292,7 +295,7 @@ int _httoi(const char *value)
 }
 
 
-MD5::MD5(const char* md5src)
+CMD5::CMD5(const char* md5src)
 {
 	if (strcmp(md5src, "") == 0)
 	{
@@ -303,31 +306,31 @@ MD5::MD5(const char* md5src)
 	for (int j = 0; j < 16; j++)
 	{
 		char buf[10];
-		strncpy(buf, md5src, 2);
+		strncpy_s(buf, md5src, 2);
 		md5src += 2;
 		((unsigned char*)m_data)[j] = _httoi(buf);
 	}
 }
 
-MD5 MD5::operator +(CMD5 adder)
+CMD5 CMD5::operator +(CMD5 adder)
 {
 	unsigned long m_newdata[4];
 	for (int i = 0; i<4; i++)
 		m_newdata[i] = m_data[i] ^ (adder.m_data[i]);
-	return MD5(m_newdata);
+	return CMD5(m_newdata);
 }
 
-bool MD5::operator ==(MD5 cmper)
+bool CMD5::operator ==(CMD5 cmper)
 {
 	return (memcmp(cmper.m_data, m_data, 16) == 0);
 }
 
-//void MD5::operator =(MD5 equer)
+//void CMD5::operator =(CMD5 equer)
 //{
-//    memcpy(m_data,equer.m_data ,16);
+//	memcpy(m_data,equer.m_data ,16);
 //}
 
-string MD5::ToString()
+string CMD5::ToString()
 {
 	char output[33];
 	for (int j = 0; j < 16; j++)

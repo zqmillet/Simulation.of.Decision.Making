@@ -10,7 +10,7 @@ using namespace std;
 /*!
 * Manage MD5.
 */
-class MD5
+class CMD5
 {
 private:
 #define uint8  unsigned char
@@ -29,26 +29,26 @@ private:
 	void md5_finish(struct md5_context *ctx, uint8 digest[16]);
 
 public:
-	//! construct a MD5 from any buffer
+	//! construct a CMD5 from any buffer
 	void GenerateMD5(unsigned char* buffer, int bufferlen);
 
-	//! construct a MD5
-	MD5();
+	//! construct a CMD5
+	CMD5();
 
 	//! construct a md5src from char *
-	MD5(const char * md5src);
+	CMD5(const char * md5src);
 
-	//! construct a MD5 from a 16 bytes md5
-	MD5(unsigned long* md5src);
+	//! construct a CMD5 from a 16 bytes md5
+	CMD5(unsigned long* md5src);
 
 	//! add a other md5
-	MD5 operator +(MD5 adder);
+	CMD5 operator +(CMD5 adder);
 
 	//! just if equal
-	bool operator ==(MD5 cmper);
+	bool operator ==(CMD5 cmper);
 
 	//! give the value from equer
-	// void operator =(MD5 equer);
+	// void operator =(CMD5 equer);
 
 	//! to a string
 	string ToString();
