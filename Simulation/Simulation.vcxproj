@@ -120,6 +120,7 @@
   <ItemGroup>
     <ClCompile Include="Asset.cpp" />
     <ClCompile Include="Attack.cpp" />
+    <ClCompile Include="Bayesian.cpp" />
     <ClCompile Include="Function.cpp" />
     <ClCompile Include="Incident.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -127,6 +128,7 @@
   <ItemGroup>
     <ClInclude Include="Asset.h" />
     <ClInclude Include="Attack.h" />
+    <ClInclude Include="Bayesian.h" />
     <ClInclude Include="Const.h" />
     <ClInclude Include="Function.h" />
     <ClInclude Include="Incident.h" />

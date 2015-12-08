@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <cstdarg>
 #include "Const.h"
+#include "Bayesian.h"
 #include "Attack.h"
 
 #endif

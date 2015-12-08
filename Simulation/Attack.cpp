@@ -16,13 +16,13 @@ Attack::~Attack()
 
 void Attack::Add(Attack & Attack)
 {
-    // A node can not be its parent
+    // A node can not be its parent.
     if (this == &Attack)
         return;
     
-    // Add this node into the Parents
+    // Add this node into the Parents.
     this->Parents.insert(pair<void *, int>(&Attack, Attack.Type));
 
-    // Resize the Probabilites
+    // Resize the Probabilites.
     this->Probabilities = ProbabilityList(1<<this->Parents.size());
 }
