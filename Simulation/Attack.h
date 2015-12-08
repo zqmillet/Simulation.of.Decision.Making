@@ -10,7 +10,7 @@
 using namespace std;
 
 typedef std::map<void *, int> ParentList;
-typedef std::vector<int> ProbabilityList;
+typedef std::vector<double> ProbabilityList;
 
 class Attack
 {

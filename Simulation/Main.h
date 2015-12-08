@@ -11,5 +11,4 @@
 #include "Const.h"
 #include "Attack.h"
 
-
 #endif
