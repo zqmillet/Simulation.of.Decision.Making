@@ -25,19 +25,12 @@ int main()
     // k = (a4 a3 a2 a1)2
     a5.Probabilities = {
     /*
-    a4    F        F        F        F        F        F        F        F
-    a3    F        F        F        F        T        T        T        T
-    a2    F        F        T        T        F        F        T        T
-    a1    F        T        F        T        F        T        F        T
+    a4  F       F       F       F       F       F       F       F       T       T       T       T       T       T       T       T
+    a3  F       F       F       F       T       T       T       T       F       F       F       F       T       T       T       T
+    a2  F       F       T       T       F       F       T       T       F       F       T       T       F       F       T       T
+    a1  F       T       F       T       F       T       F       T       F       T       F       T       F       T       F       T
     */
-        0.1,    0.3,    0.1,    0.4,    0.2,    0.1,    0.7,    0.2,
-    /*
-    a4    T        T        T        T        T        T        T        T
-    a3    F        F        F        F        T        T        T        T
-    a2    F        F        T        T        F        F        T        T
-    a1    F        T        F        T        F        T        F        T
-    */
-        0.3,    0.4,    0.1,    0.6,    0.4,    0.4,    0.5,    0.4
+        0.1,    0.3,    0.1,    0.4,    0.2,    0.1,    0.7,    0.2,    0.3,    0.4,    0.1,    0.6,    0.4,    0.4,    0.5,    0.4        
     };
 
     /*
