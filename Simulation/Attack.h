@@ -3,12 +3,14 @@
 
 #include <cstdarg>
 #include <string>
+#include <vector>
 #include <map>
 #include "Const.h"
 
 using namespace std;
 
-typedef map<void *, int> ParentList;
+typedef std::map<void *, int> ParentList;
+typedef std::vector<int> ProbabilityList;
 
 class Attack
 {
@@ -16,6 +18,7 @@ public:
 	string Name;
 	int Type;
 	ParentList Parents;
+	ProbabilityList Probabilities;
 
 public:
 	Attack(string Name);
