@@ -18,42 +18,24 @@
     <ClCompile Include="Main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Function.cpp">
+    <ClCompile Include="BayesianNetwork.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Attack.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Incident.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Asset.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Bayesian.cpp">
+    <ClCompile Include="Node.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Function.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Attack.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Incident.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Asset.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Main.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Const.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Bayesian.h">
+    <ClInclude Include="BayesianNetwork.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

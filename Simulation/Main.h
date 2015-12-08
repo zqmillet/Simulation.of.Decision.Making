@@ -4,8 +4,10 @@
 #include <iostream>
 #include <stdlib.h>
 #include <cstdarg>
+#include <vector>
+#include <string>
 #include "Const.h"
-#include "Bayesian.h"
-#include "Attack.h"
+#include "Node.h"
+#include "BayesianNetwork.h"
 
 #endif
