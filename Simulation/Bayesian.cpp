@@ -31,3 +31,12 @@ void BayesianNetwork::Add(Attack & Attack)
     // If this node does not exist in the Bayesian network, add it into the Bayesian network.
     this->Nodes.insert(pair<void *, int>(&Attack, Attack.Type));
 }
+
+bool BayesianNetwork::Initialize()
+{
+    this->bn.set_number_of_nodes(this->Nodes.size());
+    
+    // Add edges
+    //bn.add_edge(A, D);
+
+}
