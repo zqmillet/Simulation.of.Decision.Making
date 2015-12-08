@@ -8,12 +8,12 @@ using namespace std;
 class Function
 {
 public:
-	string Name;
-	
+    string Name;
+    
 
 public:
-	Function();
-	~Function();
+    Function();
+    ~Function();
 };
 
 #endif

@@ -8,11 +8,11 @@ using namespace std;
 class Incident
 {
 public:
-	string Name;
+    string Name;
 
 public:
-	Incident();
-	~Incident();
+    Incident();
+    ~Incident();
 };
 
 #endif

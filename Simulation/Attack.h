@@ -15,15 +15,15 @@ typedef std::vector<double> ProbabilityList;
 class Attack
 {
 public:
-	string Name;
-	int Type;
-	ParentList Parents;
-	ProbabilityList Probabilities;
+    string Name;
+    int Type;
+    ParentList Parents;
+    ProbabilityList Probabilities;
 
 public:
-	Attack(string Name);
-	~Attack();
-	void Add(Attack & Parent);
+    Attack(string Name);
+    ~Attack();
+    void Add(Attack & Parent);
 };
 
 #endif

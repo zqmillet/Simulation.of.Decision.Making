@@ -8,12 +8,12 @@ using namespace std;
 class Asset
 {
 public:
-	string Name;
-	double Value;
+    string Name;
+    double Value;
 
 public:
-	Asset();
-	~Asset();
+    Asset();
+    ~Asset();
 };
 
 #endif

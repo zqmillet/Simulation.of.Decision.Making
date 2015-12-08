@@ -3,9 +3,9 @@
 
 enum
 {
-	t_Attack,
-	t_Function,
-	t_Incident
+    t_Attack,
+    t_Function,
+    t_Incident
 };
 
 #endif
