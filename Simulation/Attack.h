@@ -4,7 +4,6 @@
 #include <cstdarg>
 #include <string>
 #include <map>
-#include "MD5.h"
 #include "Const.h"
 
 using namespace std;
@@ -16,7 +15,6 @@ class Attack
 public:
 	string Name;
 	int Type;
-	string MD5;
 	ParentList Parents;
 
 public:
