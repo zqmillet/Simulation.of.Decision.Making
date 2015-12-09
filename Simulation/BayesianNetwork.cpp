@@ -66,13 +66,36 @@ bool BayesianNetwork::Initialize()
             return false;
         }
 
-
-        for (j = 0; j < 1 << (int)this->Nodes[i]->Parents.size(); j++)
+        // Set the conditional probabilities.
+        int k; 
+        for (k = 0; k < 1 << (int)this->Nodes[i]->Parents.size(); k++) // k = 0, 1, 2, ... , (2^n - 1)
         {
+            for (j = 0; j < (int)this->Nodes[i]->Parents.size(); j++) // j = 0, 1, 2, ... , n
+                parent_state[Nodes[i]->Parents[j]->Index] = (k >> j) & 0x1;           
 
-        }
-
+            set_node_probability(this->Graph, this->Nodes[i]->Index, 1, parent_state, this->Nodes[i]->Probabilities[k]);
+            set_node_probability(this->Graph, this->Nodes[i]->Index, 0, parent_state, 1 - this->Nodes[i]->Probabilities[k]);
+        }      
     }
 
+    typedef dlib::set<unsigned long>::compare_1b_c set_type;
+    typedef graph<set_type, set_type>::kernel_1a_c join_tree_type;
+    join_tree_type join_tree;
+
+    // Now we need to populate the join_tree with data from our bayesian network.  The next  
+    // function calls do this.  Explaining exactly what they do is outside the scope of this
+    // example.  Just think of them as filling join_tree with information that is useful 
+    // later on for dealing with our bayesian network.  
+    create_moral_graph(this->Graph, join_tree);
+    create_join_tree(join_tree, join_tree);
+
+    bayesian_network_join_tree solution(this->Graph, join_tree);
+
+    cout << "Using the join tree algorithm:\n";
+    for (i = 0; i < (int)this->Nodes.size(); i++)
+    {
+        cout << "p(" << this->Nodes[i]->Name << "=1) = " << solution.probability(this->Nodes[i]->Index)(1) << endl;
+        cout << "p(" << this->Nodes[i]->Name << "=0) = " << solution.probability(this->Nodes[i]->Index)(0) << endl;
+    }
     return true;
 }
