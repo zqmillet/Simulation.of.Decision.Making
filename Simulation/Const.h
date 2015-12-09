@@ -10,4 +10,6 @@ enum
     Asset
 };
 
+#define ErrorString "ErrorString"
+
 #endif

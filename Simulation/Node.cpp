@@ -72,3 +72,44 @@ void Node::Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & No
     this->Add(Node1, Node2, Node3, Node4, Node5);
     this->Add(Node6);
 }
+
+string Node::PrintProbability(int Index)
+{
+    if (1 << this->Parents.size() != this->Probabilities.size())
+        return ErrorString;
+
+    if (Index < 0 || Index >= this->Probabilities.size())
+        return ErrorString;
+        
+    string String = string("") + "P(" + this->Name + "|";
+    int i;
+    for (i = 0; i < (int)this->Parents.size(); i++) // i = 0, 1, 2, ... , n
+    {
+        String += ((Index >> i) & 0x1) ? " ": "!";
+
+        String += this->Parents[i]->Name;
+        String += ", ";
+    }
+    String.erase(String.end() - 2);
+    String += ") = ";
+
+    stringstream StringStream;
+    StringStream << this->Probabilities[Index];
+    String += StringStream.str();
+    StringStream.clear();
+
+    return String;
+}
+
+string Node::PrintProbabilities()
+{
+    if (1 << this->Parents.size() != this->Probabilities.size())
+        return ErrorString;
+
+    string String = "";
+    int i;
+    for (i = 0; i < (int)this->Probabilities.size(); i++)
+        String += this->PrintProbability(i) + "\n";
+
+    return String;
+}

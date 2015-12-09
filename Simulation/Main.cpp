@@ -38,6 +38,8 @@ int main()
         0.2,    0.5
     };
 
+    cout << A.PrintProbabilities();
+
     BayesianNetwork.Add(A);
     BayesianNetwork.Add(B);
     BayesianNetwork.Add(C);
@@ -45,6 +47,6 @@ int main()
 
     BayesianNetwork.Initialize();
 
-    system("pause");
+    cin.get();
     return 0;
 }

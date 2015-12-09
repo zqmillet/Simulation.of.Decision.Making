@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <sstream>
 #include "Const.h"
 
 using namespace std;
@@ -29,6 +30,9 @@ public:
     void Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4);
     void Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5);
     void Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6);
+
+    string PrintProbability(int Index);
+    string PrintProbabilities();
 };
 
 typedef std::vector<Node *> NodeList;
