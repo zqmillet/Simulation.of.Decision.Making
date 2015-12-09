@@ -7,6 +7,7 @@ using namespace bayes_node_utils;
 BayesianNetwork::BayesianNetwork()
 {
     this->Nodes.clear();
+    Solution = bayesian_network_join_tree(this->Graph, this->JoinTree);
 }
 
 
@@ -15,7 +16,7 @@ BayesianNetwork::~BayesianNetwork()
     this->Nodes.clear();
 }
 
-void BayesianNetwork::Add(Node & Node1)
+void BayesianNetwork::AddNode(Node & Node1)
 {
     // If this node has been added into the Bayesian network, return.
     int i;
@@ -29,34 +30,34 @@ void BayesianNetwork::Add(Node & Node1)
     this->Nodes.push_back(&Node1);
 }
 
-void BayesianNetwork::Add(Node & Node1, Node & Node2)
+void BayesianNetwork::AddNode(Node & Node1, Node & Node2)
 {
-    this->Add(Node1);
-    this->Add(Node2);
+    this->AddNode(Node1);
+    this->AddNode(Node2);
 }
 
-void BayesianNetwork::Add(Node & Node1, Node & Node2, Node & Node3)
+void BayesianNetwork::AddNode(Node & Node1, Node & Node2, Node & Node3)
 {
-    this->Add(Node1, Node2);
-    this->Add(Node3);
+    this->AddNode(Node1, Node2);
+    this->AddNode(Node3);
 }
 
-void BayesianNetwork::Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4)
+void BayesianNetwork::AddNode(Node & Node1, Node & Node2, Node & Node3, Node & Node4)
 {
-    this->Add(Node1, Node2, Node3);
-    this->Add(Node4);
+    this->AddNode(Node1, Node2, Node3);
+    this->AddNode(Node4);
 }
 
-void BayesianNetwork::Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5)
+void BayesianNetwork::AddNode(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5)
 {
-    this->Add(Node1, Node2, Node3, Node4);
-    this->Add(Node5);
+    this->AddNode(Node1, Node2, Node3, Node4);
+    this->AddNode(Node5);
 }
 
-void BayesianNetwork::Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6)
+void BayesianNetwork::AddNode(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6)
 {
-    this->Add(Node1, Node2, Node3, Node4, Node5);
-    this->Add(Node6);
+    this->AddNode(Node1, Node2, Node3, Node4, Node5);
+    this->AddNode(Node6);
 }
 
 bool BayesianNetwork::Initialize()
@@ -115,6 +116,9 @@ bool BayesianNetwork::Initialize()
             set_node_probability(this->Graph, this->Nodes[i]->Index, 0, parent_state, 1 - this->Nodes[i]->Probabilities[k]);
         }      
     }
+
+    create_moral_graph(this->Graph, this->JoinTree);
+    create_join_tree(this->JoinTree, this->JoinTree);
     
     return true;
 }

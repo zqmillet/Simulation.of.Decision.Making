@@ -38,9 +38,14 @@ int main()
         0.2,    0.5
     };
 
-    BayesianNetwork.Add(A, B, C, D);
-    BayesianNetwork.Initialize();
+    //BayesianNetwork.Add(A, B, C, D);
+
+    BayesianNetwork.AddNode(A, B);
+    BayesianNetwork.AddNode(C, D);
+
+    if (!BayesianNetwork.Initialize())
+        return EXIT_FAILURE;
 
     system("pause");
-    return 0;
+    return EXIT_SUCCESS;
 }

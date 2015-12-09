@@ -18,17 +18,19 @@ class BayesianNetwork
 public:
     NodeList Nodes;
     directed_graph<bayes_node>::kernel_1a_c Graph;
+    JoinTree JoinTree;
+    bayesian_network_join_tree Solution;
 
 public:
     BayesianNetwork();
     ~BayesianNetwork();
 
-    void Add(Node & Node1);
-    void Add(Node & Node1, Node & Node2);
-    void Add(Node & Node1, Node & Node2, Node & Node3);
-    void Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4);
-    void Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5);
-    void Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6);
+    void AddNode(Node & Node1);
+    void AddNode(Node & Node1, Node & Node2);
+    void AddNode(Node & Node1, Node & Node2, Node & Node3);
+    void AddNode(Node & Node1, Node & Node2, Node & Node3, Node & Node4);
+    void AddNode(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5);
+    void AddNode(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6);
     bool Initialize();
 };
 

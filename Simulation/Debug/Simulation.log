@@ -1,13 +1,16 @@
-﻿生成启动时间为 2015/12/9 17:11:25。
+﻿生成启动时间为 2015/12/9 17:41:42。
      1>项目“D:\iDocument\Document\My Paper\2nd\Simulation\Simulation\Simulation.vcxproj”在节点 2 上(Build 个目标)。
-     1>Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\iDocument\Document\My Paper\2nd\Simulation\Debug\Simulation.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"D:\iDocument\Document\My Paper\2nd\Simulation\Debug\Simulation.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\iDocument\Document\My Paper\2nd\Simulation\Debug\Simulation.lib" /MACHINE:X86 Debug\BayesianNetwork.obj
-         Debug\Common.obj
-         Debug\Main.obj
-         Debug\Node.obj
-         Simulation.vcxproj -> D:\iDocument\Document\My Paper\2nd\Simulation\Debug\Simulation.exe
-     1>已完成生成项目“D:\iDocument\Document\My Paper\2nd\Simulation\Simulation\Simulation.vcxproj”(Build 个目标)的操作。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt BayesianNetwork.cpp Main.cpp
+         BayesianNetwork.cpp
+     1>d:\idocument\document\my paper\2nd\simulation\simulation\bayesiannetwork.cpp(8): error C2512: “dlib::bayesian_network_join_tree”: 没有合适的默认构造函数可用
+         d:\idocument\document\my paper\2nd\simulation\simulation\dlib\bayes_utils\bayes_utils.h(1576): note: 参见“dlib::bayesian_network_join_tree”的声明
+         正在生成代码...
+         正在编译...
+         Main.cpp
+         正在生成代码...
+     1>已完成生成项目“D:\iDocument\Document\My Paper\2nd\Simulation\Simulation\Simulation.vcxproj”(Build 个目标)的操作 - 失败。
 
-已成功生成。
+生成失败。
 
-已用时间 00:00:00.85
+已用时间 00:00:03.55
