@@ -20,5 +20,4 @@ using namespace std;
 string Number2String(double Number);
 string Number2String(int Number);
 
-
 #endif

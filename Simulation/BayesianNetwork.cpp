@@ -7,26 +7,27 @@ using namespace bayes_node_utils;
 BayesianNetwork::BayesianNetwork()
 {
     this->Nodes.clear();
-    Solution = bayesian_network_join_tree(this->Graph, this->JoinTree);
+    this->Evidences.clear();
 }
 
 
 BayesianNetwork::~BayesianNetwork()
 {
     this->Nodes.clear();
+    this->Evidences.clear();
 }
 
 void BayesianNetwork::AddNode(Node & Node1)
 {
     // If this node has been added into the Bayesian network, return.
     int i;
-    for (i = 0; i < (int)Nodes.size(); i++)
-        if (Nodes[i] == &Node1)
+    for (i = 0; i < (int)this->Nodes.size(); i++)
+        if (this->Nodes[i] == &Node1)
             return;
 
     // If this node does not exist in the Bayesian network,
     // set the index of this node, and add it into the Bayesian network.
-    Node1.Index = Nodes.size();
+    Node1.Index = this->Nodes.size();
     this->Nodes.push_back(&Node1);
 }
 
@@ -122,5 +123,107 @@ bool BayesianNetwork::Initialize()
     
     return true;
 }
+
+void BayesianNetwork::AddEvidence(Node & Node1)
+{
+    int i;
+    for (i = 0; i < (int)this->Evidences.size(); i++)
+        if (&Node1 == this->Evidences[i])
+            return;
+
+    this->Evidences.push_back(&Node1);
+    set_node_value(this->Graph, Node1.Index, 1);
+    set_node_as_evidence(this->Graph, Node1.Index);
+}
+
+void BayesianNetwork::AddEvidence(Node & Node1, Node & Node2)
+{
+    AddEvidence(Node1);
+    AddEvidence(Node2);
+}
+
+void BayesianNetwork::AddEvidence(Node & Node1, Node & Node2, Node & Node3)
+{
+    AddEvidence(Node1, Node2);
+    AddEvidence(Node3);
+}
+
+void BayesianNetwork::AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4)
+{
+    AddEvidence(Node1, Node2, Node3);
+    AddEvidence(Node4);
+}
+
+void BayesianNetwork::AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5)
+{
+    AddEvidence(Node1, Node2, Node3, Node4);
+    AddEvidence(Node5);
+}
+
+void BayesianNetwork::AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6)
+{
+    AddEvidence(Node1, Node2, Node3, Node4, Node5);
+    AddEvidence(Node6);
+}
+
+void BayesianNetwork::Inference()
+{
+    bayesian_network_join_tree solution(this->Graph, JoinTree);
+    Probabilities.clear();
+
+    int i;
+    for (i = 0; i < (int)this->Nodes.size(); i++)
+        Probabilities.push_back(solution.probability(this->Nodes[i]->Index)(1));
+}
+
+void BayesianNetwork::PrintProbabilities()
+{
+    int i;
+    for (i = 0; i < (int)this->Nodes.size(); i++)
+        cout << "P(" << this->Nodes[i]->Name << ") = " << Number2String(Probabilities[this->Nodes[i]->Index]) << endl;
+}
+
+void BayesianNetwork::RemoveEvidence(Node & Node1)
+{
+    int i;
+    for (i = 0; i < (int)this->Evidences.size(); i++)
+        if (&Node1 == this->Evidences[i])
+        {
+            NodeList::iterator Evidence(this->Evidences.begin() + i);
+            this->Evidences.erase(Evidence);
+            set_node_as_nonevidence(this->Graph, Node1.Index);
+        }    
+}
+
+void BayesianNetwork::RemoveEvidence(Node & Node1, Node & Node2)
+{
+    RemoveEvidence(Node1);
+    RemoveEvidence(Node2);
+}
+
+void BayesianNetwork::RemoveEvidence(Node & Node1, Node & Node2, Node & Node3)
+{
+    RemoveEvidence(Node1, Node2);
+    RemoveEvidence(Node3);
+}
+
+void BayesianNetwork::RemoveEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4)
+{
+    RemoveEvidence(Node1, Node2, Node3);
+    RemoveEvidence(Node4);
+}
+
+void BayesianNetwork::RemoveEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5)
+{
+    RemoveEvidence(Node1, Node2, Node3, Node4);
+    RemoveEvidence(Node5);
+}
+
+void BayesianNetwork::RemoveEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6)
+{
+    RemoveEvidence(Node1, Node2, Node3, Node4, Node5);
+    RemoveEvidence(Node6);
+}
+
 
 

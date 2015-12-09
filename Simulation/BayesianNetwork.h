@@ -17,9 +17,12 @@ class BayesianNetwork
 {
 public:
     NodeList Nodes;
+    NodeList Evidences;
+
     directed_graph<bayes_node>::kernel_1a_c Graph;
     JoinTree JoinTree;
-    bayesian_network_join_tree Solution;
+
+    ProbabilityList Probabilities;
 
 public:
     BayesianNetwork();
@@ -31,7 +34,26 @@ public:
     void AddNode(Node & Node1, Node & Node2, Node & Node3, Node & Node4);
     void AddNode(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5);
     void AddNode(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6);
+    
     bool Initialize();
+    
+    void AddEvidence(Node & Node1);
+    void AddEvidence(Node & Node1, Node & Node2);
+    void AddEvidence(Node & Node1, Node & Node2, Node & Node3);
+    void AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4);
+    void AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5);
+    void AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6);
+    
+    void RemoveEvidence(Node & Node1);
+    void RemoveEvidence(Node & Node1, Node & Node2);
+    void RemoveEvidence(Node & Node1, Node & Node2, Node & Node3);
+    void RemoveEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4);
+    void RemoveEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5);
+    void RemoveEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6);
+
+    void Inference();
+
+    void PrintProbabilities();
 };
 
 #endif

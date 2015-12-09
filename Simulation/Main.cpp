@@ -40,11 +40,22 @@ int main()
 
     //BayesianNetwork.Add(A, B, C, D);
 
-    BayesianNetwork.AddNode(A, B);
     BayesianNetwork.AddNode(C, D);
+    BayesianNetwork.AddNode(A, B);
 
     if (!BayesianNetwork.Initialize())
         return EXIT_FAILURE;
+
+    BayesianNetwork.Inference();
+    BayesianNetwork.PrintProbabilities();
+
+    BayesianNetwork.AddEvidence(C, A, C, D);
+    BayesianNetwork.Inference();
+    BayesianNetwork.PrintProbabilities();
+
+    BayesianNetwork.RemoveEvidence(C, B);
+    BayesianNetwork.Inference();
+    BayesianNetwork.PrintProbabilities();
 
     system("pause");
     return EXIT_SUCCESS;
