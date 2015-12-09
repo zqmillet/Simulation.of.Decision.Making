@@ -1,5 +1,6 @@
 #include "BayesianNetwork.h"
 
+using namespace std;
 using namespace dlib;
 using namespace bayes_node_utils;
 
@@ -14,18 +15,48 @@ BayesianNetwork::~BayesianNetwork()
     this->Nodes.clear();
 }
 
-void BayesianNetwork::Add(Node & Node)
+void BayesianNetwork::Add(Node & Node1)
 {
     // If this node has been added into the Bayesian network, return.
     int i;
     for (i = 0; i < (int)Nodes.size(); i++)
-        if (Nodes[i] == &Node)
+        if (Nodes[i] == &Node1)
             return;
 
     // If this node does not exist in the Bayesian network,
     // set the index of this node, and add it into the Bayesian network.
-    Node.Index = Nodes.size();
-    this->Nodes.push_back(&Node);
+    Node1.Index = Nodes.size();
+    this->Nodes.push_back(&Node1);
+}
+
+void BayesianNetwork::Add(Node & Node1, Node & Node2)
+{
+    this->Add(Node1);
+    this->Add(Node2);
+}
+
+void BayesianNetwork::Add(Node & Node1, Node & Node2, Node & Node3)
+{
+    this->Add(Node1, Node2);
+    this->Add(Node3);
+}
+
+void BayesianNetwork::Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4)
+{
+    this->Add(Node1, Node2, Node3);
+    this->Add(Node4);
+}
+
+void BayesianNetwork::Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5)
+{
+    this->Add(Node1, Node2, Node3, Node4);
+    this->Add(Node5);
+}
+
+void BayesianNetwork::Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6)
+{
+    this->Add(Node1, Node2, Node3, Node4, Node5);
+    this->Add(Node6);
 }
 
 bool BayesianNetwork::Initialize()
@@ -75,9 +106,9 @@ bool BayesianNetwork::Initialize()
 
             if (this->Nodes[i]->Probabilities[k] < 0 || this->Nodes[i]->Probabilities[k] > 1)
             {
-                cout << "There is an error in Node \"" << \
-                    this->Nodes[i]->Name << "\"." << endl << \
-                    "";
+                cout << "There is an error in Node \"" << this->Nodes[i]->Name << "\"." << endl << \
+                    this->Nodes[i]->PrintProbability(k) << endl;
+                return false;
             }
 
             set_node_probability(this->Graph, this->Nodes[i]->Index, 1, parent_state, this->Nodes[i]->Probabilities[k]);

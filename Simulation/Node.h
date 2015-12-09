@@ -3,11 +3,9 @@
 
 #include <iostream>
 #include <vector>
-#include <sstream>
-#include "Const.h"
+#include "Common.h"
 
 using namespace std;
-
 
 typedef std::vector<double> ProbabilityList;
 

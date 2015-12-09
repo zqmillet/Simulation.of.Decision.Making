@@ -5,6 +5,7 @@
 #include "dlib/graph_utils.h"
 #include "dlib/graph.h"
 #include "dlib/directed_graph.h"
+#include "Common.h"
 #include "Node.h"
 
 using namespace dlib;
@@ -22,7 +23,12 @@ public:
     BayesianNetwork();
     ~BayesianNetwork();
 
-    void Add(Node & Node);
+    void Add(Node & Node1);
+    void Add(Node & Node1, Node & Node2);
+    void Add(Node & Node1, Node & Node2, Node & Node3);
+    void Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4);
+    void Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5);
+    void Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6);
     bool Initialize();
 };
 

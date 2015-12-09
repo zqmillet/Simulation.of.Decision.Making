@@ -1,5 +1,7 @@
 #include "Node.h"
 
+extern string Number2String(double Number);
+
 Node::Node(string Name)
 {
     this->Name = Name;
@@ -78,25 +80,19 @@ string Node::PrintProbability(int Index)
     if (1 << this->Parents.size() != this->Probabilities.size())
         return ErrorString;
 
-    if (Index < 0 || Index >= this->Probabilities.size())
+    if (Index < 0 || Index >= (int)this->Probabilities.size())
         return ErrorString;
+
+    if (0 == (int)this->Parents.size())
+        return string("P(" + this->Name + ") = " + Number2String(this->Probabilities[0]));
         
     string String = string("") + "P(" + this->Name + "|";
     int i;
-    for (i = 0; i < (int)this->Parents.size(); i++) // i = 0, 1, 2, ... , n
-    {
-        String += ((Index >> i) & 0x1) ? " ": "!";
+    for (i = 0; i < (int)this->Parents.size(); i++)
+        String += string((((Index >> i) & 0x1) ? " " : "!") + this->Parents[i]->Name + ", ");
 
-        String += this->Parents[i]->Name;
-        String += ", ";
-    }
     String.erase(String.end() - 2);
-    String += ") = ";
-
-    stringstream StringStream;
-    StringStream << this->Probabilities[Index];
-    String += StringStream.str();
-    StringStream.clear();
+    String += ") = " + Number2String(this->Probabilities[Index]);
 
     return String;
 }

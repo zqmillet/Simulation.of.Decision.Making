@@ -6,7 +6,7 @@
 #include <cstdarg>
 #include <vector>
 #include <string>
-#include "Const.h"
+#include "Common.h"
 #include "Node.h"
 #include "BayesianNetwork.h"
 
