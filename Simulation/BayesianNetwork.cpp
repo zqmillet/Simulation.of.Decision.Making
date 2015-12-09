@@ -49,11 +49,23 @@ bool BayesianNetwork::Initialize()
 
     for (i = 0; i < (int)this->Nodes.size(); i++)
     {
+        // For ith node, set its parent nodes. 
         parent_state.clear();
         for (j = 0; j < (int)this->Nodes[i]->Parents.size(); j++)
-        {
             parent_state.add(this->Nodes[i]->Parents[j]->Index);
+
+        // If 2 ^ (the number of parent nodes) != the number of probabilities, throw the error.
+        if (1 << (int)this->Nodes[i]->Parents.size() != this->Nodes[i]->Probabilities.size())
+        {
+            cout << "There is an error in Node \"" << \
+                this->Nodes[i]->Name << "\"." << endl << \
+                "The number of its parent nodes is " << \
+                (int)this->Nodes[i]->Parents.size() << \
+                ", but the number of its conditional probabilities is " << \
+                (int)this->Nodes[i]->Probabilities.size() << endl;
+            return false;
         }
+
 
         for (j = 0; j < 1 << (int)this->Nodes[i]->Parents.size(); j++)
         {

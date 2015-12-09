@@ -13,14 +13,13 @@ int main()
 
 
     D.Add(A);
-    A.Add(B);
-    A.Add(C);
+    A.Add(B, C);
 
     A.Probabilities = {
-        /*
-        C   F       F       T       T
-        B   F       T       F       T
-        */
+    /*
+    C   F       F       T       T
+    B   F       T       F       T
+    */
         0.01,   0.9,    0.5,    0.99
     };
 
@@ -33,9 +32,9 @@ int main()
     };
 
     D.Probabilities = {
-        /*
-        A   F       T
-        */
+    /*
+    A   F       T
+    */
         0.2,    0.5
     };
 

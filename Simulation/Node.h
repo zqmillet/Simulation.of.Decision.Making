@@ -23,7 +23,12 @@ public:
     Node(string Name);
     Node(string Name, int Type);
     ~Node();
-    void Add(Node & Node);
+    void Add(Node & Node1);
+    void Add(Node & Node1, Node & Node2);
+    void Add(Node & Node1, Node & Node2, Node & Node3);
+    void Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4);
+    void Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5);
+    void Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6);
 };
 
 typedef std::vector<Node *> NodeList;

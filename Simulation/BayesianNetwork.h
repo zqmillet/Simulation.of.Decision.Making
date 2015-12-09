@@ -1,6 +1,7 @@
 #ifndef _BAYESIANNETWORK_H_
 #define _BAYESIANNETWORK_H_
 
+#include <assert.h>
 #include "dlib/bayes_utils.h"
 #include "dlib/graph_utils.h"
 #include "dlib/graph.h"
