@@ -22,8 +22,6 @@ public:
     directed_graph<bayes_node>::kernel_1a_c Graph;
     JoinTree JoinTree;
 
-    ProbabilityList Probabilities;
-
 public:
     BayesianNetwork();
     ~BayesianNetwork();
@@ -37,12 +35,12 @@ public:
     
     bool Initialize();
     
-    void AddEvidence(Node & Node1);
-    void AddEvidence(Node & Node1, Node & Node2);
-    void AddEvidence(Node & Node1, Node & Node2, Node & Node3);
-    void AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4);
-    void AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5);
-    void AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6);
+    void AddEvidence(Node & Node1, EvidenceState EvidenceState = Happened);
+    void AddEvidence(Node & Node1, Node & Node2, EvidenceState EvidenceState = Happened);
+    void AddEvidence(Node & Node1, Node & Node2, Node & Node3, EvidenceState EvidenceState = Happened);
+    void AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, EvidenceState EvidenceState = Happened);
+    void AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, EvidenceState EvidenceState = Happened);
+    void AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6, EvidenceState EvidenceState = Happened);
     
     //void SetImpossibleEvent(Node & Node1);
 
@@ -55,7 +53,10 @@ public:
 
     void Inference();
 
-    void PrintProbabilities();
+    void PrintProbabilities(Order Order = OrderByIndex, Direction Direction = Descend);
+
+private:
+    string Evidence2String();
 };
 
 #endif

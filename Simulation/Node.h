@@ -14,14 +14,15 @@ class Node
 {
 public:
     string Name;
-    int Type;
+    NodeType Type;
     int Index;
+    double Probability;
     std::set<Node *> Parents;
     ProbabilityList Probabilities;
 
 public:
     Node(string Name);
-    Node(string Name, int Type);
+    Node(string Name, NodeType Type);
     ~Node();
     void Add(Node & Node1);
     void Add(Node & Node1, Node & Node2);
@@ -29,6 +30,8 @@ public:
     void Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4);
     void Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5);
     void Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6);
+    
+    double Compare(Node Node, Order Order = OrderByIndex);
 
     string PrintProbability(int Index);
     string PrintProbabilities();
@@ -37,4 +40,3 @@ public:
 typedef std::set<Node *> NodeList;
 
 #endif
-

@@ -121,61 +121,75 @@ bool BayesianNetwork::Initialize()
     return true;
 }
 
-void BayesianNetwork::AddEvidence(Node & Node1)
+void BayesianNetwork::AddEvidence(Node & Node1, EvidenceState EvidenceState)
 {
     if (this->Evidences.find(&Node1) != this->Evidences.end())
         return;
 
     this->Evidences.insert(&Node1);
-    set_node_value(this->Graph, Node1.Index, 0.51);
+    Node1.Probability = EvidenceState;
+    set_node_value(this->Graph, Node1.Index, EvidenceState);
     set_node_as_evidence(this->Graph, Node1.Index);
 }
 
-void BayesianNetwork::AddEvidence(Node & Node1, Node & Node2)
+void BayesianNetwork::AddEvidence(Node & Node1, Node & Node2, EvidenceState EvidenceState)
 {
-    AddEvidence(Node1);
-    AddEvidence(Node2);
+    AddEvidence(Node1, EvidenceState);
+    AddEvidence(Node2, EvidenceState);
 }
 
-void BayesianNetwork::AddEvidence(Node & Node1, Node & Node2, Node & Node3)
+void BayesianNetwork::AddEvidence(Node & Node1, Node & Node2, Node & Node3, EvidenceState EvidenceState)
 {
-    AddEvidence(Node1, Node2);
-    AddEvidence(Node3);
+    AddEvidence(Node1, Node2, EvidenceState);
+    AddEvidence(Node3, EvidenceState);
 }
 
-void BayesianNetwork::AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4)
+void BayesianNetwork::AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, EvidenceState EvidenceState)
 {
-    AddEvidence(Node1, Node2, Node3);
-    AddEvidence(Node4);
+    AddEvidence(Node1, Node2, Node3, EvidenceState);
+    AddEvidence(Node4, EvidenceState);
 }
 
-void BayesianNetwork::AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5)
+void BayesianNetwork::AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, EvidenceState EvidenceState)
 {
-    AddEvidence(Node1, Node2, Node3, Node4);
-    AddEvidence(Node5);
+    AddEvidence(Node1, Node2, Node3, Node4, EvidenceState);
+    AddEvidence(Node5, EvidenceState);
 }
 
-void BayesianNetwork::AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6)
+void BayesianNetwork::AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6, EvidenceState EvidenceState)
 {
-    AddEvidence(Node1, Node2, Node3, Node4, Node5);
-    AddEvidence(Node6);
+    AddEvidence(Node1, Node2, Node3, Node4, Node5, EvidenceState);
+    AddEvidence(Node6, EvidenceState);
 }
 
 void BayesianNetwork::Inference()
 {
     bayesian_network_join_tree solution(this->Graph, JoinTree);
-    Probabilities.clear();
     
     NodeList::iterator Node;
     for (Node = this->Nodes.begin(); Node != this->Nodes.end(); Node++)
-        Probabilities.push_back(solution.probability((*Node)->Index)(1));
+        (*Node)->Probability = solution.probability((*Node)->Index)(1);
 }
 
-void BayesianNetwork::PrintProbabilities()
+void BayesianNetwork::PrintProbabilities(Order Order, Direction Direction)
 {
-    NodeList::iterator Node;
-    for (Node = this->Nodes.begin(); Node != this->Nodes.end(); Node++)
-        cout << "P(" << (*Node)->Name << ") = " << Number2String(Probabilities[(*Node)->Index]) << endl;
+    NodeList CopiedNodes = this->Nodes;
+    NodeList::iterator Node = CopiedNodes.begin(), ExtremeNode;
+
+    while (CopiedNodes.size() != 0)
+    {
+        ExtremeNode = CopiedNodes.begin();
+        for (Node = ExtremeNode; Node != CopiedNodes.end(); Node++)
+        {
+            if (Direction*(*Node)->Compare(*(*ExtremeNode), Order) > 0)
+            {
+                ExtremeNode = Node;
+            }
+        }
+              
+        cout << "P(" << (*ExtremeNode)->Name << this->Evidence2String() << ") = " << Number2String((*ExtremeNode)->Probability) << endl;
+        CopiedNodes.erase(ExtremeNode);
+    }
 }
 
 void BayesianNetwork::RemoveEvidence(Node & Node1)
@@ -215,6 +229,20 @@ void BayesianNetwork::RemoveEvidence(Node & Node1, Node & Node2, Node & Node3, N
 {
     RemoveEvidence(Node1, Node2, Node3, Node4, Node5);
     RemoveEvidence(Node6);
+}
+
+string BayesianNetwork::Evidence2String()
+{
+    if (this->Evidences.size() == 0)
+        return "";
+
+    string String = "|";
+    NodeList::reverse_iterator Evidence;
+    for (Evidence = this->Evidences.rbegin(); Evidence != this->Evidences.rend(); Evidence++)
+        String += string(((*Evidence)->Probability == 1) ? " " : "!") + (*Evidence)->Name + ", ";
+    
+    String.erase(String.end() - 2);
+    return String;
 }
 
 

@@ -38,23 +38,18 @@ int main()
         0.2,    0.5
     };
 
-    BayesianNetwork.AddNode(A, B, C, D);
+    BayesianNetwork.AddNode(B, C, D, A);
 
     if (!BayesianNetwork.Initialize())
         return EXIT_FAILURE;
-
- /*   BayesianNetwork.Inference();
-    BayesianNetwork.PrintProbabilities();*/
-    BayesianNetwork.Inference();
-    BayesianNetwork.PrintProbabilities();
     
-    /*BayesianNetwork.AddEvidence(A);
+    BayesianNetwork.AddEvidence(A, B, Unhappened);
     BayesianNetwork.Inference();
-    BayesianNetwork.PrintProbabilities();
+    BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
 
-    BayesianNetwork.RemoveEvidence(A);
+    BayesianNetwork.RemoveEvidence(B);
     BayesianNetwork.Inference();
-    BayesianNetwork.PrintProbabilities();*/
+    BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
 
     system("pause");
     return EXIT_SUCCESS;

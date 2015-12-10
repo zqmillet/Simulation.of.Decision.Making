@@ -1,21 +1,21 @@
 #include "Node.h"
 
-extern string Number2String(double Number);
-
 Node::Node(string Name)
 {
     this->Name = Name;
     this->Type = Unknown;
     this->Index = -1;
+    this->Probability = -1;
     this->Parents.clear();
     this->Probabilities.clear();
 }
 
-Node::Node(string Name, int Type)
+Node::Node(string Name, NodeType Type)
 {
     this->Name = Name;
     this->Type = Type;
     this->Index = -1;
+    this->Probability = -1;
     this->Parents.clear();
     this->Probabilities.clear();
 }
@@ -110,3 +110,37 @@ string Node::PrintProbabilities()
 
     return String;
 }
+
+double Node::Compare(Node Node, Order Order)
+{
+    switch (Order)
+    {
+    case OrderByIndex:
+        if (this->Index != Node.Index)
+            return this->Index - Node.Index;
+        else
+            return this->Name.compare(Node.Name);
+    case OrderByName:
+        if (this->Name.compare(Node.Name) != 0)
+            return this->Name.compare(Node.Name);
+        else
+            return this->Index - Node.Index;
+    case OrderByType:
+        if (this->Type != Node.Type)
+            return this->Type - Node.Type;
+        else if (this->Index != Node.Index)
+            return this->Index - Node.Index;
+        else
+            return this->Name.compare(Node.Name);
+    case OrderByProbability:
+        if (this->Probability != Node.Probability)
+            return this->Probability - Node.Probability;
+        else if (this->Index != Node.Index)
+            return this->Index - Node.Index;
+        else
+            return this->Name.compare(Node.Name);
+    default:
+        return 0;
+    }
+}
+
