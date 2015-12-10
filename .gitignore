@@ -180,6 +180,14 @@ ClientBin/
 *.publishsettings
 node_modules/
 orleans.codegen.cs
+Simulation.log
+link.read.1.tlog
+vc140.idb
+vc140.pdb
+Simulation.exe
+Simulation.ilk
+Simulation.pdb
+
 
 # RIA/Silverlight projects
 Generated_Code/
