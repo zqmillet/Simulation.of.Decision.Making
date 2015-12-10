@@ -243,7 +243,8 @@ string BayesianNetwork::Evidence2String()
     for (Evidence = this->Evidences.rbegin(); Evidence != this->Evidences.rend(); Evidence++)
         String += string(((*Evidence)->Probability == 1) ? "" : "!") + (*Evidence)->Name + ", ";
     
-    String.erase(String.end() - 2);
+    String.pop_back();
+    String.pop_back();
     return String;
 }
 
