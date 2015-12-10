@@ -174,8 +174,14 @@ void BayesianNetwork::Inference()
 void BayesianNetwork::PrintProbabilities(Order Order, Direction Direction)
 {
     NodeList CopiedNodes = this->Nodes;
-    NodeList::iterator Node = CopiedNodes.begin(), ExtremeNode;
+    NodeList::iterator Node, ExtremeNode;
 
+    int MaxNameLength = 0;
+    for (Node = CopiedNodes.begin(); Node != CopiedNodes.end(); Node++)
+        if ((int)(*Node)->Name.length() > MaxNameLength)
+            MaxNameLength = (int)(*Node)->Name.length();
+    
+    Node = CopiedNodes.begin();
     while (CopiedNodes.size() != 0)
     {
         ExtremeNode = CopiedNodes.begin();
@@ -183,7 +189,7 @@ void BayesianNetwork::PrintProbabilities(Order Order, Direction Direction)
             if (Direction*(*Node)->Compare(*(*ExtremeNode), Order) > 0)
                 ExtremeNode = Node;
   
-        cout << "P(" << (*ExtremeNode)->Name << this->Evidence2String() << ") = " << Number2String((*ExtremeNode)->Probability) << endl;
+        cout << "P(" << (*ExtremeNode)->Name << RepeatString(" ", MaxNameLength - (int)(*ExtremeNode)->Name.length()) << this->Evidence2String() << ") = " << Number2String((*ExtremeNode)->Probability) << endl;
         CopiedNodes.erase(ExtremeNode);
     }
 }
@@ -235,7 +241,7 @@ string BayesianNetwork::Evidence2String()
     string String = "|";
     NodeList::reverse_iterator Evidence;
     for (Evidence = this->Evidences.rbegin(); Evidence != this->Evidences.rend(); Evidence++)
-        String += string(((*Evidence)->Probability == 1) ? " " : "!") + (*Evidence)->Name + ", ";
+        String += string(((*Evidence)->Probability == 1) ? "" : "!") + (*Evidence)->Name + ", ";
     
     String.erase(String.end() - 2);
     return String;

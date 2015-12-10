@@ -13,3 +13,16 @@ string Number2String(int Number)
 {
     return Number2String((double)Number);
 }
+
+string RepeatString(string String, int Time)
+{
+    if (Time <= 0)
+        return "";
+    
+    string Result = "";
+    int i;
+    for (i = 0; i < Time; i++)
+        Result += String;
+
+    return Result;
+}

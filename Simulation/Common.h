@@ -47,5 +47,6 @@ using namespace std;
 
 string Number2String(double Number);
 string Number2String(int Number);
+string RepeatString(string String, int Time);
 
 #endif

@@ -60,6 +60,7 @@ int main()
         return EXIT_FAILURE;
 
     BayesianNetwork.AddEvidence(HA);
+    BayesianNetwork.AddEvidence(PT, Unhappened);
     BayesianNetwork.Inference();
     BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
 
