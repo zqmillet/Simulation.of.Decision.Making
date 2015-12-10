@@ -98,7 +98,7 @@ bool BayesianNetwork::Initialize()
         }
 
         // Set the conditional probabilities.        
-        for (i = 0; i < 1 << (int)(*Node)->Parents.size(); i++) // k = 0, 1, 2, ... , (2^n - 1)
+        for (i = 0; i < 1 << (int)(*Node)->Parents.size(); i++) // i = 0, 1, 2, ... , (2^n - 1)
         {
             for (j = 0; j < (int)(*Node)->Parents.size(); j++) // j = 0, 1, 2, ... , n
                 parent_state[(*Node)->Parents[j]->Index] = (i >> j) & 0x1;
