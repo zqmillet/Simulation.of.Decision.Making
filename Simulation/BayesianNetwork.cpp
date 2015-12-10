@@ -65,10 +65,11 @@ bool BayesianNetwork::Initialize()
     this->Graph.set_number_of_nodes(this->Nodes.size());
 
     // Add edges.
-    NodeList::iterator Node, Parent;
+    int i, j;
+    NodeList::iterator Node;
     for (Node = this->Nodes.begin(); Node != this->Nodes.end(); Node++)
-        for (Parent = (*Node)->Parents.begin(); Parent != (*Node)->Parents.end(); Parent++)
-            this->Graph.add_edge((*Parent)->Index, (*Node)->Index);
+        for (j = 0; j < (int)(*Node)->Parents.size(); j++)
+            this->Graph.add_edge((*Node)->Parents[j]->Index, (*Node)->Index); 
 
     // Inform all the nodes in the network that they are binary nodes.
     for (Node = this->Nodes.begin(); Node != this->Nodes.end(); Node++)
@@ -81,8 +82,8 @@ bool BayesianNetwork::Initialize()
     {
         // For ith node, set its parent nodes. 
         parent_state.clear();
-        for (Parent = (*Node)->Parents.begin(); Parent != (*Node)->Parents.end(); Parent++)
-            parent_state.add((*Parent)->Index);
+        for (j = 0; j < (int)(*Node)->Parents.size(); j++)
+            parent_state.add((*Node)->Parents[j]->Index);
 
         // If 2 ^ (the number of parent nodes) != the number of probabilities, throw the error.
         if (1 << (int)(*Node)->Parents.size() != (*Node)->Probabilities.size())
@@ -96,12 +97,11 @@ bool BayesianNetwork::Initialize()
             return false;
         }
 
-        // Set the conditional probabilities.
-        int i, j; 
+        // Set the conditional probabilities.        
         for (i = 0; i < 1 << (int)(*Node)->Parents.size(); i++) // k = 0, 1, 2, ... , (2^n - 1)
         {
-            for (Parent = (*Node)->Parents.begin(), j = (int)(*Node)->Parents.size(); Parent != (*Node)->Parents.end(); Parent++)
-                parent_state[(*Parent)->Index] = (i >> --j) & 0x1;
+            for (j = 0; j < (int)(*Node)->Parents.size(); j++) // j = 0, 1, 2, ... , n
+                parent_state[(*Node)->Parents[j]->Index] = (i >> j) & 0x1;
 
             if ((*Node)->Probabilities[i] < 0 || (*Node)->Probabilities[i] > 1)
             {

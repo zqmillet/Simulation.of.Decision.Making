@@ -43,13 +43,14 @@ int main()
     if (!BayesianNetwork.Initialize())
         return EXIT_FAILURE;
     
-    BayesianNetwork.AddEvidence(A, B, Unhappened);
+    //BayesianNetwork.AddEvidence(A, Unhappened);
+    BayesianNetwork.AddEvidence(C, Happened);
     BayesianNetwork.Inference();
     BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
 
-    BayesianNetwork.RemoveEvidence(B);
+    /*BayesianNetwork.RemoveEvidence(B);
     BayesianNetwork.Inference();
-    BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
+    BayesianNetwork.PrintProbabilities(OrderByName, Ascend);*/
 
     system("pause");
     return EXIT_SUCCESS;

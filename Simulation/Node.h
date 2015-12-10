@@ -17,7 +17,7 @@ public:
     NodeType Type;
     int Index;
     double Probability;
-    std::set<Node *> Parents;
+    std::vector<Node *> Parents;
     ProbabilityList Probabilities;
 
 public:
@@ -38,5 +38,6 @@ public:
 };
 
 typedef std::set<Node *> NodeList;
+typedef std::vector<Node *> ParentList;
 
 #endif
