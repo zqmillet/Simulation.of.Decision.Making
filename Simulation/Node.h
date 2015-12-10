@@ -24,12 +24,12 @@ public:
     Node(string Name);
     Node(string Name, NodeType Type);
     ~Node();
-    void Add(Node & Node1);
-    void Add(Node & Node1, Node & Node2);
-    void Add(Node & Node1, Node & Node2, Node & Node3);
-    void Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4);
-    void Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5);
-    void Add(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6);
+    void AddParent(Node & Node1);
+    void AddParent(Node & Node1, Node & Node2);
+    void AddParent(Node & Node1, Node & Node2, Node & Node3);
+    void AddParent(Node & Node1, Node & Node2, Node & Node3, Node & Node4);
+    void AddParent(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5);
+    void AddParent(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6);
     
     double Compare(Node Node, Order Order = OrderByIndex);
 

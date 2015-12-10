@@ -11,10 +11,10 @@ int main()
     Node SA("Smell Alcohol");
     Node PX("Pos Xray");
 
-    HO.Add(PT);
-    HA.Add(HO, BT);
-    SA.Add(HO);
-    PX.Add(BT);
+    HO.AddParent(PT);
+    HA.AddParent(HO, BT);
+    SA.AddParent(HO);
+    PX.AddParent(BT);
 
     PT.Probabilities = {
         0.2
