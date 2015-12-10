@@ -180,13 +180,9 @@ void BayesianNetwork::PrintProbabilities(Order Order, Direction Direction)
     {
         ExtremeNode = CopiedNodes.begin();
         for (Node = ExtremeNode; Node != CopiedNodes.end(); Node++)
-        {
             if (Direction*(*Node)->Compare(*(*ExtremeNode), Order) > 0)
-            {
                 ExtremeNode = Node;
-            }
-        }
-              
+  
         cout << "P(" << (*ExtremeNode)->Name << this->Evidence2String() << ") = " << Number2String((*ExtremeNode)->Probability) << endl;
         CopiedNodes.erase(ExtremeNode);
     }
