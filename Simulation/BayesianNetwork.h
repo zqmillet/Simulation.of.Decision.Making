@@ -44,6 +44,8 @@ public:
     void AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5);
     void AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6);
     
+    //void SetImpossibleEvent(Node & Node1);
+
     void RemoveEvidence(Node & Node1);
     void RemoveEvidence(Node & Node1, Node & Node2);
     void RemoveEvidence(Node & Node1, Node & Node2, Node & Node3);

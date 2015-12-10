@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <set>
 #include "Common.h"
 
 using namespace std;
@@ -15,7 +16,7 @@ public:
     string Name;
     int Type;
     int Index;
-    std::vector<Node *> Parents;
+    std::set<Node *> Parents;
     ProbabilityList Probabilities;
 
 public:
@@ -33,7 +34,7 @@ public:
     string PrintProbabilities();
 };
 
-typedef std::vector<Node *> NodeList;
+typedef std::set<Node *> NodeList;
 
 #endif
 

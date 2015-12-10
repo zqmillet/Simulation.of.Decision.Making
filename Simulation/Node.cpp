@@ -33,13 +33,12 @@ void Node::Add(Node & Node)
         return;
 
     // If this node has been in the parent list, return.
-    int i;
-    for (i = 0; i < (int)this->Parents.size(); i++)
-        if (this->Parents[i] == &Node)
-            return;
+    NodeList::iterator Parent;
+    if (this->Parents.find(&Node) != this->Parents.end())
+        return;
 
     // Add this node into the Parents.
-    this->Parents.push_back(&Node);
+    this->Parents.insert(&Node);
 
     // Resize the Probabilites.
     this->Probabilities = ProbabilityList(1 << this->Parents.size());
@@ -87,9 +86,11 @@ string Node::PrintProbability(int Index)
         return string("P(" + this->Name + ") = " + Number2String(this->Probabilities[0]));
         
     string String = string("") + "P(" + this->Name + "|";
-    int i;
-    for (i = 0; i < (int)this->Parents.size(); i++)
-        String += string((((Index >> i) & 0x1) ? " " : "!") + this->Parents[i]->Name + ", ");
+
+    NodeList::iterator Parent;
+    int i = 0;
+    for (Parent = this->Parents.begin(); Parent != this->Parents.end(); Parent++)
+        String += string((((Index >> i++) & 0x1) ? " " : "!") + (*Parent)->Name + ", ");
 
     String.erase(String.end() - 2);
     String += ") = " + Number2String(this->Probabilities[Index]);

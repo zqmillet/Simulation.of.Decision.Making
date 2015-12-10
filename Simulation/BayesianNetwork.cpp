@@ -20,15 +20,13 @@ BayesianNetwork::~BayesianNetwork()
 void BayesianNetwork::AddNode(Node & Node1)
 {
     // If this node has been added into the Bayesian network, return.
-    int i;
-    for (i = 0; i < (int)this->Nodes.size(); i++)
-        if (this->Nodes[i] == &Node1)
-            return;
+    if (this->Nodes.find(&Node1) != this->Nodes.end())
+        return;
 
     // If this node does not exist in the Bayesian network,
     // set the index of this node, and add it into the Bayesian network.
     Node1.Index = this->Nodes.size();
-    this->Nodes.push_back(&Node1);
+    this->Nodes.insert(&Node1);
 }
 
 void BayesianNetwork::AddNode(Node & Node1, Node & Node2)
@@ -67,54 +65,53 @@ bool BayesianNetwork::Initialize()
     this->Graph.set_number_of_nodes(this->Nodes.size());
 
     // Add edges.
-    int i, j;
-    for (i = 0; i < (int)this->Nodes.size(); i++)
-        for (j = 0; j < (int)this->Nodes[i]->Parents.size(); j++)
-            this->Graph.add_edge(this->Nodes[i]->Parents[j]->Index, this->Nodes[i]->Index);
-
+    NodeList::iterator Node, Parent;
+    for (Node = this->Nodes.begin(); Node != this->Nodes.end(); Node++)
+        for (Parent = (*Node)->Parents.begin(); Parent != (*Node)->Parents.end(); Parent++)
+            this->Graph.add_edge((*Parent)->Index, (*Node)->Index);
 
     // Inform all the nodes in the network that they are binary nodes.
-    for (i = 0; i < (int)this->Nodes.size(); i++)
-        set_node_num_values(this->Graph, this->Nodes[i]->Index, 2);
+    for (Node = this->Nodes.begin(); Node != this->Nodes.end(); Node++)
+        set_node_num_values(this->Graph, (*Node)->Index, 2);
 
     // Set the conditional probabilities for all nodes.
     assignment parent_state;
 
-    for (i = 0; i < (int)this->Nodes.size(); i++)
+    for (Node = this->Nodes.begin(); Node != this->Nodes.end(); Node++)
     {
         // For ith node, set its parent nodes. 
         parent_state.clear();
-        for (j = 0; j < (int)this->Nodes[i]->Parents.size(); j++)
-            parent_state.add(this->Nodes[i]->Parents[j]->Index);
+        for (Parent = (*Node)->Parents.begin(); Parent != (*Node)->Parents.end(); Parent++)
+            parent_state.add((*Parent)->Index);
 
         // If 2 ^ (the number of parent nodes) != the number of probabilities, throw the error.
-        if (1 << (int)this->Nodes[i]->Parents.size() != this->Nodes[i]->Probabilities.size())
+        if (1 << (int)(*Node)->Parents.size() != (*Node)->Probabilities.size())
         {
             cout << "There is an error in Node \"" << \
-                this->Nodes[i]->Name << "\"." << endl << \
+                (*Node)->Name << "\"." << endl << \
                 "The number of its parent nodes is " << \
-                (int)this->Nodes[i]->Parents.size() << \
+                (int)(*Node)->Parents.size() << \
                 ", but the number of its conditional probabilities is " << \
-                (int)this->Nodes[i]->Probabilities.size() << endl;
+                (int)(*Node)->Probabilities.size() << endl;
             return false;
         }
 
         // Set the conditional probabilities.
-        int k; 
-        for (k = 0; k < 1 << (int)this->Nodes[i]->Parents.size(); k++) // k = 0, 1, 2, ... , (2^n - 1)
+        int i, j; 
+        for (i = 0; i < 1 << (int)(*Node)->Parents.size(); i++) // k = 0, 1, 2, ... , (2^n - 1)
         {
-            for (j = 0; j < (int)this->Nodes[i]->Parents.size(); j++) // j = 0, 1, 2, ... , n
-                parent_state[Nodes[i]->Parents[j]->Index] = (k >> j) & 0x1;           
+            for (Parent = (*Node)->Parents.begin(), j = (int)(*Node)->Parents.size(); Parent != (*Node)->Parents.end(); Parent++)
+                parent_state[(*Parent)->Index] = (i >> --j) & 0x1;
 
-            if (this->Nodes[i]->Probabilities[k] < 0 || this->Nodes[i]->Probabilities[k] > 1)
+            if ((*Node)->Probabilities[i] < 0 || (*Node)->Probabilities[i] > 1)
             {
-                cout << "There is an error in Node \"" << this->Nodes[i]->Name << "\"." << endl << \
-                    this->Nodes[i]->PrintProbability(k) << endl;
+                cout << "There is an error in Node \"" << (*Node)->Name << "\"." << endl << \
+                    (*Node)->PrintProbability(i) << endl;
                 return false;
             }
-
-            set_node_probability(this->Graph, this->Nodes[i]->Index, 1, parent_state, this->Nodes[i]->Probabilities[k]);
-            set_node_probability(this->Graph, this->Nodes[i]->Index, 0, parent_state, 1 - this->Nodes[i]->Probabilities[k]);
+      
+            set_node_probability(this->Graph, (*Node)->Index, 1, parent_state, (*Node)->Probabilities[i]);
+            set_node_probability(this->Graph, (*Node)->Index, 0, parent_state, 1 - (*Node)->Probabilities[i]);
         }      
     }
 
@@ -126,13 +123,11 @@ bool BayesianNetwork::Initialize()
 
 void BayesianNetwork::AddEvidence(Node & Node1)
 {
-    int i;
-    for (i = 0; i < (int)this->Evidences.size(); i++)
-        if (&Node1 == this->Evidences[i])
-            return;
+    if (this->Evidences.find(&Node1) != this->Evidences.end())
+        return;
 
-    this->Evidences.push_back(&Node1);
-    set_node_value(this->Graph, Node1.Index, 1);
+    this->Evidences.insert(&Node1);
+    set_node_value(this->Graph, Node1.Index, 0.51);
     set_node_as_evidence(this->Graph, Node1.Index);
 }
 
@@ -170,29 +165,26 @@ void BayesianNetwork::Inference()
 {
     bayesian_network_join_tree solution(this->Graph, JoinTree);
     Probabilities.clear();
-
-    int i;
-    for (i = 0; i < (int)this->Nodes.size(); i++)
-        Probabilities.push_back(solution.probability(this->Nodes[i]->Index)(1));
+    
+    NodeList::iterator Node;
+    for (Node = this->Nodes.begin(); Node != this->Nodes.end(); Node++)
+        Probabilities.push_back(solution.probability((*Node)->Index)(1));
 }
 
 void BayesianNetwork::PrintProbabilities()
 {
-    int i;
-    for (i = 0; i < (int)this->Nodes.size(); i++)
-        cout << "P(" << this->Nodes[i]->Name << ") = " << Number2String(Probabilities[this->Nodes[i]->Index]) << endl;
+    NodeList::iterator Node;
+    for (Node = this->Nodes.begin(); Node != this->Nodes.end(); Node++)
+        cout << "P(" << (*Node)->Name << ") = " << Number2String(Probabilities[(*Node)->Index]) << endl;
 }
 
 void BayesianNetwork::RemoveEvidence(Node & Node1)
 {
-    int i;
-    for (i = 0; i < (int)this->Evidences.size(); i++)
-        if (&Node1 == this->Evidences[i])
-        {
-            NodeList::iterator Evidence(this->Evidences.begin() + i);
-            this->Evidences.erase(Evidence);
-            set_node_as_nonevidence(this->Graph, Node1.Index);
-        }    
+    if (this->Evidences.find(&Node1) != this->Evidences.end())
+    {
+        this->Evidences.erase(&Node1);
+        set_node_as_nonevidence(this->Graph, Node1.Index);
+    }
 }
 
 void BayesianNetwork::RemoveEvidence(Node & Node1, Node & Node2)
