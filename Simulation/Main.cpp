@@ -59,8 +59,19 @@ int main()
     if (!BayesianNetwork.Initialize())
         return EXIT_FAILURE;
 
+    
+    BayesianNetwork.RemoveEvidence();
+    BayesianNetwork.Inference();
+    BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
+
+    cout << endl;
     BayesianNetwork.AddEvidence(HA);
     BayesianNetwork.AddEvidence(PT, Unhappened);
+    BayesianNetwork.Inference();
+    BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
+
+    cout << endl;
+    BayesianNetwork.RemoveEvidence();
     BayesianNetwork.Inference();
     BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
 

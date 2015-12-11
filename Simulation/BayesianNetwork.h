@@ -42,8 +42,7 @@ public:
     void AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, EvidenceState EvidenceState = Happened);
     void AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6, EvidenceState EvidenceState = Happened);
     
-    //void SetImpossibleEvent(Node & Node1);
-
+    void RemoveEvidence();
     void RemoveEvidence(Node & Node1);
     void RemoveEvidence(Node & Node1, Node & Node2);
     void RemoveEvidence(Node & Node1, Node & Node2, Node & Node3);

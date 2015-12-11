@@ -194,6 +194,12 @@ void BayesianNetwork::PrintProbabilities(Order Order, Direction Direction)
     }
 }
 
+void BayesianNetwork::RemoveEvidence()
+{
+    while (this->Evidences.size() > 0)
+        this->RemoveEvidence(*(*this->Evidences.rbegin()));
+}
+
 void BayesianNetwork::RemoveEvidence(Node & Node1)
 {
     if (this->Evidences.find(&Node1) != this->Evidences.end())
