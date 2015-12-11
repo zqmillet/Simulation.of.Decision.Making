@@ -66,7 +66,6 @@ int main()
 
     cout << endl;
     BayesianNetwork.AddEvidence(HA);
-    BayesianNetwork.AddEvidence(PT, Unhappened);
     BayesianNetwork.Inference();
     BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
 

@@ -7,6 +7,7 @@ This example is used to introduce how to use the `class Node` and `class Bayesia
   * [Question 1](#Question1)
   * [Question 2](#Question2)
   * [Question 3](#Question3)
+  * [Question 4](#Question4)
 
 <h2 id="Introduction">The Introduction of the Example</h2>
 The Bayesian network is shown as follows.  
@@ -72,7 +73,7 @@ Solution:
 	P(+HO) = P(+HO|-PT)P(-PT)
 		   + P(+HO|+PT)P(+PT)
 		   = 0.000*0.000 + 0.700*1.000
-		   = 0.7000
+		   = 0.700
 
 	P(+SA) = P(+SA|-HO)P(-HO)
 		   + P(+SA|+HO)P(+HO)
@@ -80,3 +81,40 @@ Solution:
 		   = 0.590
 
 <h3 id="Question3">Question 3</h3>
+If Qiqi has a **Pos Xray**, what's the probability that Qiqi has a **Brain Tumor**?
+
+Solution:
+
+	P(+PX)     = P(+PX|-BT)P(-BT)
+			   + P(+PX|+BT)P(+BT)
+			   = 0.010*0.999 + 0.980*0.001
+			   = 0.011
+
+	P(+BT|+PX) = P(+PX|+BT)P(BT)/P(+PX)
+			   = 0.980*0.001/0.011
+			   = 8.91e-2
+
+<h3 id="Question4">Question 4</h3>
+If Qiqi has a **Headache**, what's the probability that Qiqi has a **Brain Tumor**?
+
+Solution:
+	P(+HO) = 0.140
+	P(+BT) = 0.001
+
+	P(+HA|-BT, -HO) = 0.020
+	P(+HA|-BT, +HO) = 0.700
+	P(+HA|+BT, -HO) = 0.900
+	P(+HA|+BT, +HO) = 0.990
+
+	P(+HA)	   = P(+HA|-BT, -HO)P(-BT)P(-HO)
+			   + P(+HA|-BT, +HO)P(-BT)P(+HO)
+			   + P(+HA|+BT, -HO)P(+BT)P(-HO)
+			   + P(+HA|+BT, +HO)P(+BT)P(+HO)
+			   = 0.020*0.999*0.860 + 0.700*0.999*0.140 + 0.900*0.001*0.860 + 0.990*0.001*0.140
+			   = 0.116
+
+
+
+	P(+HA|+BT) = 
+	P(+BT|+HA) = P(+HA|+BT)P(+BT)/P(+HA)
+			   = 
