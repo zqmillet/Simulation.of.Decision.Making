@@ -238,5 +238,5 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 
-/Simulation/Debug
-/Simulation/x64
+Simulation/Debug
+Simulation/x64
