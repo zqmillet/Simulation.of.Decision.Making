@@ -1,0 +1,63 @@
+\documentclass[10pt,openany,landscape]{ctexbook}
+\usepackage{xeCJK}
+\usepackage[hmargin={0cm},vmargin={0cm}]{geometry}%
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usetikzlibrary{shadows}
+\usetikzlibrary{intersections}
+\usetkzobj{all}
+\usepackage{tabu}
+\usepackage[active,tightpage]{preview}
+\usepackage{keycommand}
+
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{0pt}
+\setmonofont{Courier New}
+\setmainfont{Times New Roman}
+
+\newcommand{\grid}[4]
+{
+\foreach \x in {#1,...,#2}
+    \draw[dashed, lightgray] (\x, #3) node[anchor = north]{\x} -- (\x, #4);
+\foreach \y in {#3,...,#4}
+	\draw[dashed, lightgray] (#1, \y) node[anchor = east] {\y} -- (#2, \y);
+}
+
+\tikzset{
+	text shadow/.code args={[#1]#2at#3(#4)#5}{
+		\pgfkeysalso{/tikz/.cd,#1}%
+		\foreach \angle in {0,5,...,359}{
+			\node[#1,text=white] at ([shift={(\angle:.8pt)}] #4){#5};
+		}
+	}
+}
+
+\newkeycommand{\tag}[align = center, background = white, x = 0, y = 0, color = black][1]{%
+	\node at (\commandkey{x}, \commandkey{y}) [text shadow={[align=\commandkey{align}] at (\commandkey{x}, \commandkey{y}) {#1}}, align = \commandkey{align}] {\textcolor{\commandkey{color}}{#1}};
+}
+
+\linespread{1}
+
+\begin{document}
+
+\begin{tikzpicture}[line width = 1pt,
+                    node/.style = {circle, draw, inner sep = 0pt, minimum size = 0.8cm}]
+
+    % \grid{0}{15}{0}{13}
+    \node[node] (PT) at (1,3) {PT};
+    \node[node] (HO) at (0,2) {HO};
+    \node[node] (BT) at (2,2) {BT};
+    \node[node] (SA) at (0,0) {SA};
+    \node[node] (PX) at (2,0) {PX};
+    \node[node] (HA) at (1,1) {HA};
+    
+    \foreach \i/\j in {PT/HO,
+                       HO/HA,
+                       BT/HA,
+                       HO/SA,
+                       BT/PX}
+    {
+        \draw[->] (\i) -- (\j);
+    }    
+\end{tikzpicture}
+\end{document} 
