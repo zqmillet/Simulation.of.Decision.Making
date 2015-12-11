@@ -2,7 +2,7 @@
 
 The Bayesian network is shown as follows.<br><br>
 
-<img src="/README/BayesianNetwork.png" alt="Bayesian Network" />
+<img src="/README/BayesianNetwork.png" width = "150" alt="Bayesian Network" />
 
 The meanings of nodes are shown as follows.
 
