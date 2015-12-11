@@ -18,12 +18,12 @@ The Bayesian network is shown as follows.
 
 The meanings of nodes are shown as follows.
 
-* PT, Qiqi goes to the **party**.
-* HO, Qiqi has a **Hangover**.
-* BT, Qiqi has a **Brain Tumor**.
-* HA, Qiqi has a **Headache**.
-* SA, Qiqi has a **alcohol smell**.
-* PX, Qiqi has a **Pos Xray**.
+* `PT`, Qiqi goes to the **party**.
+* `HO`, Qiqi has a **Hangover**.
+* `BT`, Qiqi has a **Brain Tumor**.
+* `HA`, Qiqi has a **Headache**.
+* `SA`, Qiqi has a **alcohol smell**.
+* `PX`, Qiqi has a **Pos Xray**.
 
 The conditional probabilities are shown as follows.  
 
