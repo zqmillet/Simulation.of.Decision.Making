@@ -213,33 +213,33 @@ Solution:
 <h2 id="Output">Output</h2>
 
 	Solution of Question 1:
-	P(Brain Tumor  ) = 0.001
-	P(Hangover     ) = 0.14
-	P(Headache     ) = 0.115997
-	P(Party        ) = 0.2
-	P(Pos Xray     ) = 0.01097
-	P(Smell Alcohol) = 0.198
+	P(+Brain Tumor  ) = 0.001
+	P(+Hangover     ) = 0.14
+	P(+Headache     ) = 0.115997
+	P(+Party        ) = 0.2
+	P(+Pos Xray     ) = 0.01097
+	P(+Smell Alcohol) = 0.198
 	
 	Solution of Question 2:
-	P(Brain Tumor  |Party) = 0.001
-	P(Hangover     |Party) = 0.7
-	P(Headache     |Party) = 0.496467
-	P(Party        |Party) = 1
-	P(Pos Xray     |Party) = 0.01097
-	P(Smell Alcohol|Party) = 0.59
+	P(+Brain Tumor  |+Party) = 0.001
+	P(+Hangover     |+Party) = 0.7
+	P(+Headache     |+Party) = 0.496467
+	P(+Party        |+Party) = 1
+	P(+Pos Xray     |+Party) = 0.01097
+	P(+Smell Alcohol|+Party) = 0.59
 	
 	Solution of Question 3:
-	P(Brain Tumor  |Pos Xray) = 0.0893345
-	P(Hangover     |Pos Xray) = 0.14
-	P(Headache     |Pos Xray) = 0.186435
-	P(Party        |Pos Xray) = 0.2
-	P(Pos Xray     |Pos Xray) = 1
-	P(Smell Alcohol|Pos Xray) = 0.198
+	P(+Brain Tumor  |+Pos Xray) = 0.0893345
+	P(+Hangover     |+Pos Xray) = 0.14
+	P(+Headache     |+Pos Xray) = 0.186435
+	P(+Party        |+Pos Xray) = 0.2
+	P(+Pos Xray     |+Pos Xray) = 1
+	P(+Smell Alcohol|+Pos Xray) = 0.198
 	
 	Solution of Question 4:
-	P(Brain Tumor  |Headache) = 0.00786742
-	P(Hangover     |Headache) = 0.845197
-	P(Headache     |Headache) = 1
-	P(Party        |Headache) = 0.855997
-	P(Pos Xray     |Headache) = 0.0176314
-	P(Smell Alcohol|Headache) = 0.691638
+	P(+Brain Tumor  |+Headache) = 0.00786742
+	P(+Hangover     |+Headache) = 0.845197
+	P(+Headache     |+Headache) = 1
+	P(+Party        |+Headache) = 0.855997
+	P(+Pos Xray     |+Headache) = 0.0176314
+	P(+Smell Alcohol|+Headache) = 0.691638
