@@ -1,6 +1,6 @@
 # An Example of Bayesian Network
 
-The Bayesian network is shown as follows.<br><br>
+The Bayesian network is shown as follows.  
 
 <img src="/README/BayesianNetwork.png" width = "150" alt="Bayesian Network" />
 
