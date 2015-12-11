@@ -15,20 +15,20 @@ The meanings of nodes are shown as follows.
 
 The conditional probabilities are shown as follows.  
 
-	P(PT) =   
+	P(PT)          = 0.200
 
-	P(BT) =  
+	P(BT)          = 0.001
  
-	P(HO| PT) =   
-	P(HO|!PT) =  
+	P(HO|!PT)      = 0.000 
+	P(HO| PT)      = 0.700 
 
-	P(HA| HO,  BT) = 
-	P(HA| HO, !BT) =
-	P(HA|!HO,  BT) =
-	P(HA|!HO, !BT) =
+	P(HA|!BT, !HO) = 0.020
+	P(HA|!BT,  HO) = 0.700
+	P(HA| BT, !HO) = 0.900
+	P(HA| BT,  HO) = 0.990
 
-	P(SA| HO) =
-	P(SA|!HO) =
+	P(SA|!HO)      = 0.100
+	P(SA| HO)      = 0.800
 
-	P(PX| BT) =
-	P(PX|!BT) =
+	P(PX|!BT)      = 0.010
+	P(PX| BT)      = 0.980
