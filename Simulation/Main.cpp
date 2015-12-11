@@ -1,7 +1,5 @@
 #include "Main.h"
 
-using namespace std;
-
 int main()
 {    
     Node PT("Party");
@@ -58,19 +56,32 @@ int main()
 
     if (!BayesianNetwork.Initialize())
         return EXIT_FAILURE;
-
     
-    BayesianNetwork.RemoveEvidence();
+    // Question 1
+    cout << "Solution of Question 1:" << endl;
     BayesianNetwork.Inference();
     BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
 
+    // Question 2
     cout << endl;
+    cout << "Solution of Question 2:" << endl;
+    BayesianNetwork.AddEvidence(PT);
+    BayesianNetwork.Inference();
+    BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
+
+    // Question 3
+    cout << endl;
+    cout << "Solution of Question 3:" << endl;
+    BayesianNetwork.RemoveEvidence();
+    BayesianNetwork.AddEvidence(PX);
+    BayesianNetwork.Inference();
+    BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
+
+    // Question 4
+    cout << endl;
+    cout << "Solution of Question 4:" << endl;
+    BayesianNetwork.RemoveEvidence();
     BayesianNetwork.AddEvidence(HA);
-    BayesianNetwork.Inference();
-    BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
-
-    cout << endl;
-    BayesianNetwork.RemoveEvidence();
     BayesianNetwork.Inference();
     BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
 

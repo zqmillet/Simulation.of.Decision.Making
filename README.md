@@ -8,6 +8,8 @@ This example is used to introduce how to use the `class Node` and `class Bayesia
   * [Question 2](#Question2)
   * [Question 3](#Question3)
   * [Question 4](#Question4)
+* [Code](#Code)
+* [Output](#Output)
 
 <h2 id="Introduction">The Introduction of the Example</h2>
 The Bayesian network is shown as follows.  
@@ -98,13 +100,6 @@ Solution:
 If Qiqi has a **Headache**, what's the probability that Qiqi has a **Brain Tumor**?
 
 Solution:
-	P(+HO) = 0.140
-	P(+BT) = 0.001
-
-	P(+HA|-BT, -HO) = 0.020
-	P(+HA|-BT, +HO) = 0.700
-	P(+HA|+BT, -HO) = 0.900
-	P(+HA|+BT, +HO) = 0.990
 
 	P(+HA)	   = P(+HA|-BT, -HO)P(-BT)P(-HO)
 			   + P(+HA|-BT, +HO)P(-BT)P(+HO)
@@ -113,8 +108,138 @@ Solution:
 			   = 0.020*0.999*0.860 + 0.700*0.999*0.140 + 0.900*0.001*0.860 + 0.990*0.001*0.140
 			   = 0.116
 
+	P(+HA|+BT) = P(+HA|+BT, -HO)P(-HO)
+			   + P(+HA|+BT, +HO)P(+HO)
+			   = 0.900*0.860 + 0.990*0.140
+			   = 9.126e-1
 
-
-	P(+HA|+BT) = 
 	P(+BT|+HA) = P(+HA|+BT)P(+BT)/P(+HA)
-			   = 
+			   = 9.126e-1*0.001/0.116
+			   = 7.9e-3
+
+<h2 id="Code">Code</h2>
+
+	#include "Main.h"
+
+	int main()
+	{    
+	    Node PT("Party");
+	    Node HO("Hangover");
+	    Node BT("Brain Tumor");
+	    Node HA("Headache");
+	    Node SA("Smell Alcohol");
+	    Node PX("Pos Xray");
+	
+	    HO.AddParent(PT);
+	    HA.AddParent(HO, BT);
+	    SA.AddParent(HO);
+	    PX.AddParent(BT);
+	
+	    PT.Probabilities = {
+	        0.2
+	    };
+	
+	    BT.Probabilities = {
+	        0.001
+	    };
+	
+	    HO.Probabilities = {
+	    /*
+	    PT  F       T
+	    */
+	        0,      0.7
+	    };
+	
+	    SA.Probabilities = {
+	    /*
+	    HO  F       T
+	    */
+	        0.1,    0.8  
+	    };
+	
+	    PX.Probabilities = {
+	    /*
+	    BT  F       T
+	    */
+	        0.01,   0.98
+	    };
+	
+	    HA.Probabilities = {
+	    /*
+	    BT  F       F       T       T
+	    HO  F       T       F       T
+	    */
+	        0.02,   0.7,    0.9,    0.99
+	    };
+	
+	    BayesianNetwork BayesianNetwork;
+	    BayesianNetwork.AddNode(PT, HO, BT, HA, SA, PX);
+	
+	    if (!BayesianNetwork.Initialize())
+	        return EXIT_FAILURE;
+	    
+	    // Question 1
+	    cout << "Solution of Question 1:" << endl;
+	    BayesianNetwork.Inference();
+	    BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
+	
+	    // Question 2
+	    cout << endl;
+	    cout << "Solution of Question 2:" << endl;
+	    BayesianNetwork.AddEvidence(PT);
+	    BayesianNetwork.Inference();
+	    BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
+	
+	    // Question 3
+	    cout << endl;
+	    cout << "Solution of Question 3:" << endl;
+	    BayesianNetwork.RemoveEvidence();
+	    BayesianNetwork.AddEvidence(PX);
+	    BayesianNetwork.Inference();
+	    BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
+	
+	    // Question 4
+	    cout << endl;
+	    cout << "Solution of Question 4:" << endl;
+	    BayesianNetwork.RemoveEvidence();
+	    BayesianNetwork.AddEvidence(HA);
+	    BayesianNetwork.Inference();
+	    BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
+	
+	    system("pause");
+	    return EXIT_SUCCESS;
+	}
+
+<h2 id="Output">Output</h2>
+
+	Solution of Question 1:
+	P(Brain Tumor  ) = 0.001
+	P(Hangover     ) = 0.14
+	P(Headache     ) = 0.115997
+	P(Party        ) = 0.2
+	P(Pos Xray     ) = 0.01097
+	P(Smell Alcohol) = 0.198
+	
+	Solution of Question 2:
+	P(Brain Tumor  |Party) = 0.001
+	P(Hangover     |Party) = 0.7
+	P(Headache     |Party) = 0.496467
+	P(Party        |Party) = 1
+	P(Pos Xray     |Party) = 0.01097
+	P(Smell Alcohol|Party) = 0.59
+	
+	Solution of Question 3:
+	P(Brain Tumor  |Pos Xray) = 0.0893345
+	P(Hangover     |Pos Xray) = 0.14
+	P(Headache     |Pos Xray) = 0.186435
+	P(Party        |Pos Xray) = 0.2
+	P(Pos Xray     |Pos Xray) = 1
+	P(Smell Alcohol|Pos Xray) = 0.198
+	
+	Solution of Question 4:
+	P(Brain Tumor  |Headache) = 0.00786742
+	P(Hangover     |Headache) = 0.845197
+	P(Headache     |Headache) = 1
+	P(Party        |Headache) = 0.855997
+	P(Pos Xray     |Headache) = 0.0176314
+	P(Smell Alcohol|Headache) = 0.691638
