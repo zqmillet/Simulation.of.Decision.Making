@@ -2,9 +2,11 @@
 This example is used to introduce how to use the `class Node` and `class BayesianNetwork` to model and inference the Bayesian network.
 
 ## Contents
-1. [The Introduction of the Example](#Introduction)
-2. [Question 1](#Question1)
-3. [Question 2](#Question2)
+* [The Introduction of the Example](#Introduction)
+* [Questions](#Questions)
+  * [Question 1](#Question1)
+  * [Question 2](#Question2)
+  * [Question 3](#Question3)
 
 <h2 id="Introduction">The Introduction of the Example</h2>
 The Bayesian network is shown as follows.  
@@ -42,21 +44,39 @@ The conditional probabilities are shown as follows.
 
 Where `+PT` means that Qiqi has gone to the party, and `-PT` means that Qiqi has not gone to the party. `+BT` means bla bla bla ...
 
-<h2 id="Question1">Question 1</h2>
+<h2 id="Questions">Questions</h2>
+<h3 id="Question1">Question 1</h3>
 What's the probability that Qiqi has a **Headache**?  
 
 Solution:
 
-	P(HO) = P(+HO|-PT)P(-PT)
-		  + P(+HO|+PT)P(+PT)
-		  = 0.000*0.8 + 0.700*0.2
-		  = 0.140
+	P(+HO) = P(+HO|-PT)P(-PT)
+		   + P(+HO|+PT)P(+PT)
+		   = 0.000*0.8 + 0.700*0.2
+		   = 0.140
 
-	P(HA) = P(+HA|-BT, -HO)P(-BT)P(-HO)
-	      + P(+HA|-BT, +HO)P(-BT)P(+HO)
-    	  + P(+HA|+BT, -HO)P(+BT)P(-HO)
-		  + P(+HA|+BT, +HO)P(+BT)P(+HO)
-		  = 0.020*0.999*0.86 + 0.700*0.999*0.14 + 0.900*0.001*0.86 + 0.990*0.001*0.14
-		  = 0.116
+	P(+HA) = P(+HA|-BT, -HO)P(-BT)P(-HO)
+	       + P(+HA|-BT, +HO)P(-BT)P(+HO)
+    	   + P(+HA|+BT, -HO)P(+BT)P(-HO)
+		   + P(+HA|+BT, +HO)P(+BT)P(+HO)
+		   = 0.020*0.999*0.860 + 0.700*0.999*0.140 + 0.900*0.001*0.860 + 0.990*0.001*0.140
+		   = 0.116
 
-<h2 id="Question2">Question 2</h2>
+<h3 id="Question2">Question 2</h3>
+If Qiqi has gone to the **party**, what's the probability that Qiqi has a **alcohol smell**?
+
+Solution:
+
+	P(+PT) = 1.000
+
+	P(+HO) = P(+HO|-PT)P(-PT)
+		   + P(+HO|+PT)P(+PT)
+		   = 0.000*0.000 + 0.700*1.000
+		   = 0.7000
+
+	P(+SA) = P(+SA|-HO)P(-HO)
+		   + P(+SA|+HO)P(+HO)
+		   = 0.100*0.300 + 0.800*0.700
+		   = 0.590
+
+<h3 id="Question3">Question 3</h3>
