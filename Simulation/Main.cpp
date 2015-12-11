@@ -2,6 +2,7 @@
 
 int main()
 {    
+    // Create the nodes of Bayesian network.
     Node PT("Party");
     Node HO("Hangover");
     Node BT("Brain Tumor");
@@ -9,11 +10,13 @@ int main()
     Node SA("Smell Alcohol");
     Node PX("Pos Xray");
 
+    // Set the relationships of nodes.
     HO.AddParent(PT);
     HA.AddParent(HO, BT);
     SA.AddParent(HO);
     PX.AddParent(BT);
 
+    // Set the conditional probabilities of nodes
     PT.Probabilities = {
         0.2
     };
@@ -43,6 +46,8 @@ int main()
         0.01,   0.98
     };
 
+    // Please notice that the order of BT and HO, 
+    // and compare with the order that they are added in the parent list.
     HA.Probabilities = {
     /*
     BT  F       F       T       T
@@ -51,9 +56,14 @@ int main()
         0.02,   0.7,    0.9,    0.99
     };
 
+    // Create the Bayesian network.
     BayesianNetwork BayesianNetwork;
+
+    // Add the nodes into the Bayesian network.
+    // This order can be in any orler.
     BayesianNetwork.AddNode(PT, HO, BT, HA, SA, PX);
 
+    // Initialize the Bayesian network.
     if (!BayesianNetwork.Initialize())
         return EXIT_FAILURE;
     
