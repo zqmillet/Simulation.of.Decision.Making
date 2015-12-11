@@ -10,6 +10,7 @@ enum _NodeType
 {
     Unknown,
     Attack,
+    Resource,
     Function,
     Incident,
     Asset
