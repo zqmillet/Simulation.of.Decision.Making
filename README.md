@@ -2,7 +2,7 @@
 
 The Bayesian network is shown as follows.
 
-![](/README/BayesianNetwork.png)
+<img src="/README/BayesianNetwork.png" width = "100" alt="Bayesian Network" />
 
 123
 
