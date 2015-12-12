@@ -43,7 +43,7 @@ int main()
 
     // Add the nodes into the Bayesian network.
     // This order can be in any order.
-    BayesianNetwork.AddNode(PT, HO, BT, HA, SA, PX);
+    BayesianNetwork.AddNodes(PT, HO, BT, HA, SA, PX);
 
     // Initialize the Bayesian network.
     if (!BayesianNetwork.Initialize())
@@ -57,23 +57,23 @@ int main()
     // Question 2
     cout << endl;
     cout << "Solution of Question 2:" << endl;
-    BayesianNetwork.AddEvidence(PT);
+    BayesianNetwork.AddEvidences(PT);
     BayesianNetwork.Inference();
     cout << "P(+" << SA.Name << BayesianNetwork.Evidence2String() << ") = " << SA.Probability << endl;
 
     // Question 3
     cout << endl;
     cout << "Solution of Question 3:" << endl;
-    BayesianNetwork.RemoveEvidence();
-    BayesianNetwork.AddEvidence(PX);
+    BayesianNetwork.RemoveEvidences();
+    BayesianNetwork.AddEvidences(PX);
     BayesianNetwork.Inference();
     cout << "P(+" << BT.Name << BayesianNetwork.Evidence2String() << ") = " << BT.Probability << endl;
 
     // Question 4
     cout << endl;
     cout << "Solution of Question 4:" << endl;
-    BayesianNetwork.RemoveEvidence();
-    BayesianNetwork.AddEvidence(HA);
+    BayesianNetwork.RemoveEvidences();
+    BayesianNetwork.AddEvidences(HA);
     BayesianNetwork.Inference();
     cout << "P(+" << BT.Name << BayesianNetwork.Evidence2String() << ") = " << BT.Probability << endl;
 
