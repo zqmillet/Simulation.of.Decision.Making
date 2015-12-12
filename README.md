@@ -18,11 +18,11 @@ The Bayesian network is shown as follows.
 
 The meanings of nodes are shown as follows.
 
-* `PT`, Qiqi goes to the **party**.
+* `PT`, Qiqi goes to the **Party**.
 * `HO`, Qiqi has a **Hangover**.
 * `BT`, Qiqi has a **Brain Tumor**.
 * `HA`, Qiqi has a **Headache**.
-* `SA`, Qiqi has a **alcohol smell**.
+* `SA`, Qiqi has an **Alcohol Smell**.
 * `PX`, Qiqi has a **Pos Xray**.
 
 The conditional probabilities are shown as follows.  
@@ -66,7 +66,7 @@ Solution:
 		   = 0.116
 
 <h3 id="Question2">Question 2</h3>
-If Qiqi has gone to the **party**, what's the probability that Qiqi has a **alcohol smell**?
+If Qiqi has gone to the **Party**, what's the probability that Qiqi has a **Alcohol Smell**?
 
 Solution:
 
