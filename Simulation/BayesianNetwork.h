@@ -26,37 +26,35 @@ public:
     BayesianNetwork();
     ~BayesianNetwork();
 
-    void AddNode(Node & Node1);
-    void AddNode(Node & Node1, Node & Node2);
-    void AddNode(Node & Node1, Node & Node2, Node & Node3);
-    void AddNode(Node & Node1, Node & Node2, Node & Node3, Node & Node4);
-    void AddNode(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5);
-    void AddNode(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6);
-    
+    void AddNodes(Node & Node1);
+    void AddNodes(Node & Node1, Node & Node2);
+    void AddNodes(Node & Node1, Node & Node2, Node & Node3);
+    void AddNodes(Node & Node1, Node & Node2, Node & Node3, Node & Node4);
+    void AddNodes(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5);
+    void AddNodes(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6);
+
     bool Initialize();
-    
-    void AddEvidence(Node & Node1, EvidenceState EvidenceState = Happened);
-    void AddEvidence(Node & Node1, Node & Node2, EvidenceState EvidenceState = Happened);
-    void AddEvidence(Node & Node1, Node & Node2, Node & Node3, EvidenceState EvidenceState = Happened);
-    void AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, EvidenceState EvidenceState = Happened);
-    void AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, EvidenceState EvidenceState = Happened);
-    void AddEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6, EvidenceState EvidenceState = Happened);
-    
-    void RemoveEvidence();
-    void RemoveEvidence(Node & Node1);
-    void RemoveEvidence(Node & Node1, Node & Node2);
-    void RemoveEvidence(Node & Node1, Node & Node2, Node & Node3);
-    void RemoveEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4);
-    void RemoveEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5);
-    void RemoveEvidence(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6);
+
+    void AddEvidences(Node & Node1, EvidenceState EvidenceState = Happened);
+    void AddEvidences(Node & Node1, Node & Node2, EvidenceState EvidenceState = Happened);
+    void AddEvidences(Node & Node1, Node & Node2, Node & Node3, EvidenceState EvidenceState = Happened);
+    void AddEvidences(Node & Node1, Node & Node2, Node & Node3, Node & Node4, EvidenceState EvidenceState = Happened);
+    void AddEvidences(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, EvidenceState EvidenceState = Happened);
+    void AddEvidences(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6, EvidenceState EvidenceState = Happened);
+
+    void RemoveEvidences();
+    void RemoveEvidences(Node & Node1);
+    void RemoveEvidences(Node & Node1, Node & Node2);
+    void RemoveEvidences(Node & Node1, Node & Node2, Node & Node3);
+    void RemoveEvidences(Node & Node1, Node & Node2, Node & Node3, Node & Node4);
+    void RemoveEvidences(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5);
+    void RemoveEvidences(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6);
 
     void Inference();
 
     void PrintProbabilities(Order Order = OrderByIndex, Direction Direction = Descend);
 
-private:
     string Evidence2String();
 };
 
 #endif
-

@@ -7,6 +7,7 @@
 #include <vector>
 #include <string>
 #include <set>
+#include <time.h>
 #include "Common.h"
 #include "Node.h"
 #include "BayesianNetwork.h"

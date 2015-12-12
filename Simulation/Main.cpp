@@ -90,226 +90,508 @@ int main()
     #pragma endregion
 #pragma endregion
 
-#pragma region Set the Relationship of Nodes
+#pragma region Set the Conditional Probabilities of Nodes
     #pragma region Attack Nodes
-    a02.AddParent(r01);
-    a03.AddParent(r01, r02);
-    a04.AddParent(r01, r03);
-    a05.AddParent(r01, r04);
-    a06.AddParent(r01);
-    a07.AddParent(r01, r05);
-    a08.AddParent(r01, r06, r07);
-    a09.AddParent(r01, r06, r08);
-    a10.AddParent(r07, r09);
-    a11.AddParent(r07, r09);
-    a12.AddParent(r07, r09);
-    a13.AddParent(r07, r09);
-    a14.AddParent(r07, r09);
-    a15.AddParent(r07, r09);
-    a16.AddParent(r09);
-    a17.AddParent(r09);
-    a18.AddParent(r09);
-    a19.AddParent(r09);
-    a20.AddParent(r09);
-    a21.AddParent(r09);
-    a22.AddParent(r07, r09);
-    a23.AddParent(r07, r09);
-    a24.AddParent(r07, r09);
-    a25.AddParent(r07, r09);
-    a26.AddParent(r07, r09);
-    a27.AddParent(r07, r09);
+    a01.AddAllParents(// Has no parent node
+        0.00000001);
+
+    a02.AddAllParents(r01,
+        0.00000001,  // F
+        0.99999900); // T
+        
+    a03.AddAllParents(r01, r02,
+        0.00000001,  // F    F
+        0.65000000,  // F    T
+        0.00000001,  // T    F
+        0.65000000); // T    T
+    
+    a04.AddAllParents(r01, r03,
+        0.00000001,  // F    F
+        0.65000000,  // F    T
+        0.00000001,  // T    F
+        0.65000000); // T    T
+
+    a05.AddAllParents(r01, r04,
+        0.00000001,  // F    F
+        0.65000000,  // F    T
+        0.00000001,  // T    F
+        0.65000000); // T    T
+
+    a06.AddAllParents(r01,
+        0.00000001,  // F
+        0.10000000); // T
+
+    a07.AddAllParents(r01, r05,
+        0.00000001,  // F    F
+        0.65000000,  // F    T
+        0.00000001,  // T    F
+        0.65000000); // T    T
+
+
+    a08.AddAllParents(r01, r06, r07,
+        0.00000001,  // F    F    F
+        0.00000001,  // F    F    T
+        0.00000001,  // F    T    F
+        0.00000001,  // F    T    T
+        0.00000001,  // T    F    F
+        0.00000001,  // T    F    T
+        0.00000001,  // T    T    F
+        0.80000000); // T    T    T
+
+    a09.AddAllParents(r01, r06, r08,
+        0.00000001,  // F    F    F
+        0.00000001,  // F    F    T
+        0.00000001,  // F    T    F
+        0.00000001,  // F    T    T
+        0.00000001,  // T    F    F
+        0.00000001,  // T    F    T
+        0.00000001,  // T    T    F
+        0.80000000); // T    T    T
+
+    a10.AddAllParents(r07, r09,
+        0.00000001,  // F    F
+        0.30000000,  // F    T
+        0.30000000,  // T    F
+        0.30000000); // T    T
+
+    a11.AddAllParents(r07, r09,
+        0.00000001,  // F    F
+        0.30000000,  // F    T
+        0.30000000,  // T    F
+        0.30000000); // T    T
+
+    a12.AddAllParents(r07, r09,
+        0.00000001,  // F    F
+        0.30000000,  // F    T
+        0.30000000,  // T    F
+        0.30000000); // T    T
+
+    a13.AddAllParents(r07, r09,
+        0.00000001,  // F    F
+        0.30000000,  // F    T
+        0.30000000,  // T    F
+        0.30000000); // T    T
+
+    a14.AddAllParents(r07, r09,
+        0.00000001,  // F    F
+        0.30000000,  // F    T
+        0.30000000,  // T    F
+        0.30000000); // T    T
+
+    a15.AddAllParents(r07, r09,
+        0.00000001,  // F    F
+        0.30000000,  // F    T
+        0.30000000,  // T    F
+        0.30000000); // T    T
+
+    a16.AddAllParents(r09,
+        0.00000001,  // F
+        0.30000000); // T
+
+    a17.AddAllParents(r09,
+        0.00000001,  // F
+        0.30000000); // T
+
+    a18.AddAllParents(r09,
+        0.00000001,  // F
+        0.30000000); // T
+
+    a19.AddAllParents(r09,
+        0.00000001,  // F
+        0.30000000); // T
+
+    a20.AddAllParents(r09,
+        0.00000001,  // F
+        0.30000000); // T
+
+    a21.AddAllParents(r09,
+        0.00000001,  // F
+        0.30000000); // T
+
+    a22.AddAllParents(r07, r09,
+        0.00000001,  // F    F
+        0.30000000,  // F    T
+        0.30000000,  // T    F
+        0.30000000); // T    T
+
+    a23.AddAllParents(r07, r09,
+        0.00000001,  // F    F
+        0.30000000,  // F    T
+        0.30000000,  // T    F
+        0.30000000); // T    T
+
+    a24.AddAllParents(r07, r09,
+        0.00000001,  // F    F
+        0.30000000,  // F    T
+        0.30000000,  // T    F
+        0.30000000); // T    T
+
+    a25.AddAllParents(r07, r09,
+        0.00000001,  // F    F
+        0.30000000,  // F    T
+        0.30000000,  // T    F
+        0.30000000); // T    T
+
+    a26.AddAllParents(r07, r09,
+        0.00000001,  // F    F
+        0.30000000,  // F    T
+        0.30000000,  // T    F
+        0.30000000); // T    T
+
+    a27.AddAllParents(r07, r09,
+        0.00000001,  // F    F
+        0.30000000,  // F    T
+        0.30000000,  // T    F
+        0.30000000); // T    T
     #pragma endregion
 
     #pragma region Resource Nodes
-    r01.AddParent(a01);
-    r02.AddParent(a02);
-    r03.AddParent(a02);
-    r04.AddParent(a02);
-    r05.AddParent(a02);
-    r06.AddParent(a02);
-    r07.AddParent(a03, a04, a05);
-    r08.AddParent(a06);
-    r09.AddParent(a07, a08, a09);
+    r01.AddAllParents(a01,
+        0.00000001,  // F
+        0.99999900); // T
+
+    r02.AddAllParents(a02,
+        0.00000001,  // F
+        0.60000000); // T
+
+    r03.AddAllParents(a02,
+        0.00000001,  // F
+        0.60000000); // T
+
+    r04.AddAllParents(a02,
+        0.00000001,  // F
+        0.60000000); // T
+
+    r05.AddAllParents(a02,
+        0.00000001,  // F
+        0.60000000); // T
+
+    r06.AddAllParents(a02,
+        0.00000001,  // F
+        0.60000000); // T
+
+    r07.AddAllParents(a03, a04, a05,
+        0.00000001,  // F    F    F
+        0.20000000,  // F    F    T
+        0.10000000,  // F    T    F
+        0.50000000,  // F    T    T
+        0.10000000,  // T    F    F
+        0.50000000,  // T    F    T
+        0.50000000,  // T    T    F
+        0.90000000); // T    T    T
+
+    r08.AddAllParents(a06,
+        0.00000001,  // F
+        0.80000000); // T
+
+    r09.AddAllParents(a07, a08, a09,
+        0.00000001,  // F    F    F
+        0.80000000,  // F    F    T
+        0.10000000,  // F    T    F
+        0.86000000,  // F    T    T
+        0.80000000,  // T    F    F
+        0.85000000,  // T    F    T
+        0.90000000,  // T    T    F
+        0.92000000); // T    T    T
     #pragma endregion
 
     #pragma region Function Nodes
-    f01.AddParent(a10, a16, a22);
-    f02.AddParent(a10, a16, a22);
-    f03.AddParent(a15, a21, a27);
-    f04.AddParent(a14, a20, a26);
-    f05.AddParent(a13, a19, a25);
-    f06.AddParent(a12, a18, a24);
-    f07.AddParent(a11, a17, a23);
-    f08.AddParent(a11, a17, a23);
-    f09.AddParent(a11, a17, a23);
-    f10.AddParent(f01, f02, f03, f07);
-    f11.AddParent(f01, f02, f03, f05, f08);
-    f12.AddParent(f04, f09);
+    f01.AddAllParents(a10, a16, a22,
+        0.00000001,  // F    F    F
+        0.30000000,  // F    F    T
+        0.30000000,  // F    T    F
+        0.60000000,  // F    T    T
+        0.30000000,  // T    F    F
+        0.60000000,  // T    F    T
+        0.60000000,  // T    T    F
+        0.88500000); // T    T    T
+
+    f02.AddAllParents(a10, a16, a22,
+        0.00000001,  // F    F    F
+        0.30000000,  // F    F    T
+        0.30000000,  // F    T    F
+        0.60000000,  // F    T    T
+        0.30000000,  // T    F    F
+        0.60000000,  // T    F    T
+        0.60000000,  // T    T    F
+        0.88500000); // T    T    T
+
+    f03.AddAllParents(a15, a21, a27,
+        0.00000001,  // F    F    F
+        0.30000000,  // F    F    T
+        0.30000000,  // F    T    F
+        0.60000000,  // F    T    T
+        0.30000000,  // T    F    F
+        0.60000000,  // T    F    T
+        0.60000000,  // T    T    F
+        0.88500000); // T    T    T
+
+    f04.AddAllParents(a14, a20, a26,
+        0.00000001,  // F    F    F
+        0.30000000,  // F    F    T
+        0.30000000,  // F    T    F
+        0.60000000,  // F    T    T
+        0.30000000,  // T    F    F
+        0.60000000,  // T    F    T
+        0.60000000,  // T    T    F
+        0.88500000); // T    T    T
+
+    f05.AddAllParents(a13, a19, a25,
+        0.00000001,  // F    F    F
+        0.30000000,  // F    F    T
+        0.30000000,  // F    T    F
+        0.60000000,  // F    T    T
+        0.30000000,  // T    F    F
+        0.60000000,  // T    F    T
+        0.60000000,  // T    T    F
+        0.88500000); // T    T    T
+
+    f06.AddAllParents(a12, a18, a24,
+        0.00000001,  // F    F    F
+        0.30000000,  // F    F    T
+        0.30000000,  // F    T    F
+        0.60000000,  // F    T    T
+        0.30000000,  // T    F    F
+        0.60000000,  // T    F    T
+        0.60000000,  // T    T    F
+        0.88500000); // T    T    T
+
+    f07.AddAllParents(a11, a17, a23,
+        0.00000001,  // F    F    F
+        0.30000000,  // F    F    T
+        0.30000000,  // F    T    F
+        0.60000000,  // F    T    T
+        0.30000000,  // T    F    F
+        0.60000000,  // T    F    T
+        0.60000000,  // T    T    F
+        0.88500000); // T    T    T
+
+    f08.AddAllParents(a11, a17, a23,
+        0.00000001,  // F    F    F
+        0.30000000,  // F    F    T
+        0.30000000,  // F    T    F
+        0.60000000,  // F    T    T
+        0.30000000,  // T    F    F
+        0.60000000,  // T    F    T
+        0.60000000,  // T    T    F
+        0.88500000); // T    T    T
+
+    f09.AddAllParents(a11, a17, a23,
+        0.00000001,  // F    F    F
+        0.30000000,  // F    F    T
+        0.30000000,  // F    T    F
+        0.60000000,  // F    T    T
+        0.30000000,  // T    F    F
+        0.60000000,  // T    F    T
+        0.60000000,  // T    T    F
+        0.88500000); // T    T    T
+
+    f10.AddAllParents(f01, f02, f03, f07,
+        0.00000001,  // F    F    F    F
+        0.00000002,  // F    F    F    T
+        0.00000003,  // F    F    T    F
+        0.55000000,  // F    F    T    T
+        0.00000002,  // F    T    F    F
+        0.36000000,  // F    T    F    T
+        0.66000000,  // F    T    T    F
+        0.85000000,  // F    T    T    T
+        0.00000001,  // T    F    F    F
+        0.33000000,  // T    F    F    T
+        0.46000000,  // T    F    T    F
+        0.86000000,  // T    F    T    T
+        0.50000000,  // T    T    F    F
+        0.68000000,  // T    T    F    T
+        0.86000000,  // T    T    T    F
+        0.86000000); // T    T    T    T
+
+    f11.AddAllParents(f01, f02, f03, f05, f08,
+        0.00000001,  // F    F    F    F    F
+        0.00000003,  // F    F    F    F    T
+        0.00000004,  // F    F    F    T    F
+        0.25000000,  // F    F    F    T    T
+        0.00000006,  // F    F    T    F    F
+        0.22560000,  // F    F    T    F    T
+        0.40000000,  // F    F    T    T    F
+        0.02300000,  // F    F    T    T    T
+        0.00000003,  // F    T    F    F    F
+        0.20000000,  // F    T    F    F    T
+        0.45000000,  // F    T    F    T    F
+        0.47000000,  // F    T    F    T    T
+        0.00600000,  // F    T    T    F    F
+        0.35000000,  // F    T    T    F    T
+        0.30550000,  // F    T    T    T    F
+        0.65000000,  // F    T    T    T    T
+        0.00000002,  // T    F    F    F    F
+        0.00000009,  // T    F    F    F    T
+        0.30000000,  // T    F    F    T    F
+        0.45210000,  // T    F    F    T    T
+        0.00000050,  // T    F    T    F    F
+        0.45230000,  // T    F    T    F    T
+        0.41000000,  // T    F    T    T    F
+        0.77000000,  // T    F    T    T    T
+        0.20000000,  // T    T    F    F    F
+        0.36000000,  // T    T    F    F    T
+        0.32000000,  // T    T    F    T    F
+        0.86065000,  // T    T    F    T    T
+        0.08000000,  // T    T    T    F    F
+        0.55230000,  // T    T    T    F    T
+        0.56000000,  // T    T    T    T    F
+        0.84000000); // T    T    T    T    T
+
+    f12.AddAllParents(f04, f09,
+        0.00000001,  // F    F
+        0.50000000,  // F    T
+        0.50000000,  // T    F
+        0.80000000); // T    T
     #pragma endregion
 
     #pragma region Incident Nodes
-    e01.AddParent(f10);
-    e02.AddParent(f10);
-    e03.AddParent(f11);
-    e04.AddParent(f12);
-    e05.AddParent(e01);
-    e06.AddParent(e04);
-    e07.AddParent(e02);
-    e08.AddParent(f06);
+    e01.AddAllParents(f10,
+        0.00000003,  // F
+        0.49999999); // T
+
+    e02.AddAllParents(f10,
+        0.00000003,  // F
+        0.49999999); // T
+
+    e03.AddAllParents(f11,
+        0.00000003,  // F
+        0.86660000); // T
+
+    e04.AddAllParents(f12,
+        0.00000001,  // F
+        0.67700000); // T
+
+    e05.AddAllParents(e01,
+        0.00000001,  // F
+        0.25650000); // T
+
+    e06.AddAllParents(e04,
+        0.00000001,  // F
+        0.25650000); // T
+
+    e07.AddAllParents(e02,
+        0.00000001,  // F
+        0.55650000); // T
+
+    e08.AddAllParents(f06,
+        0.00000002,  // F
+        0.90000000); // T
     #pragma endregion
 
     #pragma region Asset Nodes
-    x01.AddParent(e03, e04, e06, e07, e08);
-    x02.AddParent(e04, e06);
-    x03.AddParent(e05, e06);
-    x04.AddParent(e06);
-    x05.AddParent(e06);
-    x06.AddParent(e06, e07);
-    x07.AddParent(e06, e07);
-    x08.AddParent(e06);
+    x01.AddAllParents(e03, e04, e06, e07, e08,
+        0.00000000,  // F    F    F    F    F
+        0.60000000,  // F    F    F    F    T
+        0.30000000,  // F    F    F    T    F
+        0.65000000,  // F    F    F    T    T
+        0.99999999,  // F    F    T    F    F
+        0.99999999,  // F    F    T    F    T
+        0.99999999,  // F    F    T    T    F
+        0.99999999,  // F    F    T    T    T
+        0.30000000,  // F    T    F    F    F
+        0.65000000,  // F    T    F    F    T
+        0.40000000,  // F    T    F    T    F
+        0.70000000,  // F    T    F    T    T
+        0.99999999,  // F    T    T    F    F
+        0.99999999,  // F    T    T    F    T
+        0.99999999,  // F    T    T    T    F
+        0.99999999,  // F    T    T    T    T
+        0.30000000,  // T    F    F    F    F
+        0.65000000,  // T    F    F    F    T
+        0.40000000,  // T    F    F    T    F
+        0.70000000,  // T    F    F    T    T
+        0.99999999,  // T    F    T    F    F
+        0.99999999,  // T    F    T    F    T
+        0.99999999,  // T    F    T    T    F
+        0.99999999,  // T    F    T    T    T
+        0.50000000,  // T    T    F    F    F
+        0.60000000,  // T    T    F    F    T
+        0.55000000,  // T    T    F    T    F
+        0.80000000,  // T    T    F    T    T
+        0.99999999,  // T    T    T    F    F
+        0.99999999,  // T    T    T    F    T
+        0.99999999,  // T    T    T    T    F
+        0.99999999); // T    T    T    T    T
+
+    x02.AddAllParents(e04, e06,
+        0.00000000,  // F    F
+        0.99990000,  // F    T
+        0.50000000,  // T    F
+        0.99990000); // T    T
+
+    x03.AddAllParents(e05, e06,
+        0.00000000,  // F    F
+        0.90000000,  // F    T
+        0.60000000,  // T    F
+        0.98000000); // T    T
+
+    x04.AddAllParents(e06,
+        0.00000003,  // F
+        0.95000000); // T
+
+    x05.AddAllParents(e06,
+        0.00000003,  // F
+        0.80000000); // T
+
+    x06.AddAllParents(e06, e07,
+        0.00000000,  // F    F
+        0.60000000,  // F    T
+        0.90000000,  // T    F
+        0.90000000); // T    T
+
+    x07.AddAllParents(e06, e07,
+        0.00000000,  // F    F
+        0.80000000,  // F    T
+        0.90000000,  // T    F
+        0.90000000); // T    T
+
+    x08.AddAllParents(e06,
+        0.00000003,  // F
+        0.90000000); // T
     #pragma endregion
 #pragma endregion
 
-#pragma region Set the Conditional Probabilities of Nodes
-    #pragma region Attack Nodes
-    a01.Probabilities = {
-        1e-8
-    };
+#pragma region Initialize BayesianNetwork
+    BayesianNetwork BayesianNetwork;
+    BayesianNetwork.AddNodes(a01, a02, a03, a04, a05);
+    BayesianNetwork.AddNodes(a06, a07, a08, a09, a10);
+    BayesianNetwork.AddNodes(a11, a12, a13, a14, a15);
+    BayesianNetwork.AddNodes(a16, a17, a18, a19, a20);
+    BayesianNetwork.AddNodes(a21, a22, a23, a24, a25);
+    BayesianNetwork.AddNodes(a26, a27);
 
-    a02.Probabilities = {
-//r01   F       T
-        1e-8,   0.5
-    };
+    BayesianNetwork.AddNodes(r01, r02, r03, r04, r05);
+    BayesianNetwork.AddNodes(r06, r07, r08, r09);
 
-    a03.Probabilities = {// r01 r02
-        1e-08,           //  F   F
-        1e-08,           //  T   F
-        0.650,           //  F   T
-        0.650            //  T   T
-    };
+    BayesianNetwork.AddNodes(f01, f02, f03, f04, f05);
+    BayesianNetwork.AddNodes(f06, f07, f08, f09, f10);
+    BayesianNetwork.AddNodes(f11, f12);
 
-    a04.Probabilities = {
-        /*
-        r03 F       F       T       T
-        r01 F       T       F       T
-        */
-        1e-8,   1e-8,   0.65,   0.65
-    };
+    BayesianNetwork.AddNodes(e01, e02, e03, e04, e05);
+    BayesianNetwork.AddNodes(e06, e07, e08);
 
-    a05.PrintProbabilities = {
-        /*
-        r04 F       F       T       T
-        r01 F       T       F       T
-        */
-        1e-8,   1e-8,   0.65,   0.65
-    };
+    BayesianNetwork.AddNodes(x01, x02, x03, x04, x05);
+    BayesianNetwork.AddNodes(x06, x07, x08);
 
-    a06.PrintProbabilities = {
+    if (!BayesianNetwork.Initialize())
+        return EXIT_FAILURE;
+ #pragma endregion
 
-    };
 
-    a07.PrintProbabilities = {
+    BayesianNetwork.AddEvidences(a01);
+    clock_t start_time, end_time;
+    int i;
+    for (i = 0; i < 10; i++)
+    {
+        start_time = clock();
+        BayesianNetwork.Inference();
+        end_time = clock();
+        cout << "Running time is: " << static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC * 1000 << "ms" << endl;
+    }
 
-    };
-
-    a08.PrintProbabilities = {
-
-    };
-
-    a09.PrintProbabilities = {
-
-    };
-
-    a10.PrintProbabilities = {
-
-    };
-
-    a11.PrintProbabilities = {
-
-    };
-
-    a12.PrintProbabilities = {
-
-    };
-
-    a13.PrintProbabilities = {
-
-    };
-
-    a14.PrintProbabilities = {
-
-    };
-
-    a15.PrintProbabilities = {
-
-    };
-
-    a16.PrintProbabilities = {
-
-    };
-
-    a17.PrintProbabilities = {
-
-    };
-
-    a18.PrintProbabilities = {
-
-    };
-
-    a19.PrintProbabilities = {
-
-    };
-
-    a20.PrintProbabilities = {
-
-    };
-
-    a21.PrintProbabilities = {
-
-    };
-
-    a22.PrintProbabilities = {
-
-    };
-
-    a23.PrintProbabilities = {
-
-    };
-
-    a24.PrintProbabilities = {
-
-    };
-
-    a25.PrintProbabilities = {
-
-    };
-
-    a26.PrintProbabilities = {
-
-    };
-
-    a27.PrintProbabilities = {
-
-    };
-    #pragma endregion
-
-    #pragma region Resource Nodes
-    #pragma endregion
-
-    #pragma region Function Nodes
-    #pragma endregion
-
-    #pragma region Incident Nodes
-    #pragma endregion
-
-    #pragma region Asset Nodes
-    #pragma endregion
-#pragma endregion 
-
+    BayesianNetwork.PrintProbabilities(OrderByType, Ascend);
     
-
-
-
 
 
     system("pause");
