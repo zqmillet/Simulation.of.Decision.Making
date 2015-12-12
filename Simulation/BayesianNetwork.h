@@ -54,7 +54,6 @@ public:
 
     void PrintProbabilities(Order Order = OrderByIndex, Direction Direction = Descend);
 
-private:
     string Evidence2String();
 };
 

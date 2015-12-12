@@ -120,7 +120,7 @@ Solution:
 <h2 id="Code">Code</h2>
 
 	#include "Main.h"
-	
+
 	int main()
 	{    
 	    // Create the nodes of Bayesian network.
@@ -131,57 +131,39 @@ Solution:
 	    Node SA("Smell Alcohol");
 	    Node PX("Pos Xray");
 	
-	    // Set the relationships of nodes.
-	    HO.AddParent(PT);
-	    HA.AddParent(HO, BT);
-	    SA.AddParent(HO);
-	    PX.AddParent(BT);
-	
 	    // Set the conditional probabilities of nodes
-	    PT.Probabilities = {
-	        0.2
-	    };
+	    PT.AddAllParents( // Has no parent node
+	        0.200);
 	
-	    BT.Probabilities = {
-	        0.001
-	    };
+	    BT.AddAllParents( // Has no parent node
+	        0.001);
+	    
+	    HO.AddAllParents(PT,
+	        0.000,    // F
+	        0.700);   // T
 	
-	    HO.Probabilities = {
-	    /*
-	    PT  F       T
-	    */
-	        0,      0.7
-	    };
+	    SA.AddAllParents(HO,
+	        0.100,    // F
+	        0.800     // T
+	    );
 	
-	    SA.Probabilities = {
-	    /*
-	    HO  F       T
-	    */
-	        0.1,    0.8  
-	    };
+	    PX.AddAllParents(BT,
+	        0.010,    // F
+	        0.980     // T
+	    );
 	
-	    PX.Probabilities = {
-	    /*
-	    BT  F       T
-	    */
-	        0.01,   0.98
-	    };
-	
-	    // Please notice that the order of BT and HO, 
-	    // and compare with the order that they are added in the parent list.
-	    HA.Probabilities = {
-	    /*
-	    BT  F       F       T       T
-	    HO  F       T       F       T
-	    */
-	        0.02,   0.7,    0.9,    0.99
-	    };
+	    HA.AddAllParents(HO, BT,
+	        0.020,    // F   F
+	        0.900,    // F   T
+	        0.700,    // T   F
+	        0.990     // T   T
+	    );
 	
 	    // Create the Bayesian network.
 	    BayesianNetwork BayesianNetwork;
 	
 	    // Add the nodes into the Bayesian network.
-	    // This order can be in any orler.
+	    // This order can be in any order.
 	    BayesianNetwork.AddNode(PT, HO, BT, HA, SA, PX);
 	
 	    // Initialize the Bayesian network.
@@ -191,14 +173,14 @@ Solution:
 	    // Question 1
 	    cout << "Solution of Question 1:" << endl;
 	    BayesianNetwork.Inference();
-	    BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
+	    cout << "P(+" << HA.Name << BayesianNetwork.Evidence2String() << ") = " << HA.Probability << endl;
 	
 	    // Question 2
 	    cout << endl;
 	    cout << "Solution of Question 2:" << endl;
 	    BayesianNetwork.AddEvidence(PT);
 	    BayesianNetwork.Inference();
-	    BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
+	    cout << "P(+" << SA.Name << BayesianNetwork.Evidence2String() << ") = " << SA.Probability << endl;
 	
 	    // Question 3
 	    cout << endl;
@@ -206,7 +188,7 @@ Solution:
 	    BayesianNetwork.RemoveEvidence();
 	    BayesianNetwork.AddEvidence(PX);
 	    BayesianNetwork.Inference();
-	    BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
+	    cout << "P(+" << BT.Name << BayesianNetwork.Evidence2String() << ") = " << BT.Probability << endl;
 	
 	    // Question 4
 	    cout << endl;
@@ -214,7 +196,7 @@ Solution:
 	    BayesianNetwork.RemoveEvidence();
 	    BayesianNetwork.AddEvidence(HA);
 	    BayesianNetwork.Inference();
-	    BayesianNetwork.PrintProbabilities(OrderByName, Ascend);
+	    cout << "P(+" << BT.Name << BayesianNetwork.Evidence2String() << ") = " << BT.Probability << endl;
 	
 	    system("pause");
 	    return EXIT_SUCCESS;
@@ -223,33 +205,13 @@ Solution:
 <h2 id="Output">Output</h2>
 
 	Solution of Question 1:
-	P(+Brain Tumor  ) = 0.001
-	P(+Hangover     ) = 0.14
-	P(+Headache     ) = 0.115997
-	P(+Party        ) = 0.2
-	P(+Pos Xray     ) = 0.01097
-	P(+Smell Alcohol) = 0.198
+	P(+Headache) = 0.115997
 	
 	Solution of Question 2:
-	P(+Brain Tumor  |+Party) = 0.001
-	P(+Hangover     |+Party) = 0.7
-	P(+Headache     |+Party) = 0.496467
-	P(+Party        |+Party) = 1
-	P(+Pos Xray     |+Party) = 0.01097
 	P(+Smell Alcohol|+Party) = 0.59
 	
 	Solution of Question 3:
-	P(+Brain Tumor  |+Pos Xray) = 0.0893345
-	P(+Hangover     |+Pos Xray) = 0.14
-	P(+Headache     |+Pos Xray) = 0.186435
-	P(+Party        |+Pos Xray) = 0.2
-	P(+Pos Xray     |+Pos Xray) = 1
-	P(+Smell Alcohol|+Pos Xray) = 0.198
+	P(+Brain Tumor|+Pos Xray) = 0.0893345
 	
 	Solution of Question 4:
-	P(+Brain Tumor  |+Headache) = 0.00786742
-	P(+Hangover     |+Headache) = 0.845197
-	P(+Headache     |+Headache) = 1
-	P(+Party        |+Headache) = 0.855997
-	P(+Pos Xray     |+Headache) = 0.0176314
-	P(+Smell Alcohol|+Headache) = 0.691638
+	P(+Brain Tumor|+Headache) = 0.00786742
