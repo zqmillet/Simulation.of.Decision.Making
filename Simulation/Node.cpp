@@ -26,7 +26,7 @@ Node::~Node()
     this->Probabilities.clear();
 }
 
-void Node::AddParent(Node & Node)
+void Node::AddParents(Node & Node)
 {
     // A node can not be its parent.
     if (this == &Node)
@@ -42,37 +42,95 @@ void Node::AddParent(Node & Node)
     this->Parents.push_back(&Node);
 
     // Resize the Probabilites.
-    this->Probabilities = ProbabilityList(1 << this->Parents.size());
+    this->Probabilities.clear();
 }
 
-void Node::AddParent(Node & Node1, Node & Node2)
+void Node::AddParents(Node & Node1, Node & Node2)
 {
-    this->AddParent(Node1);
-    this->AddParent(Node2);
+    this->AddParents(Node1);
+    this->AddParents(Node2);
 }
 
-void Node::AddParent(Node & Node1, Node & Node2, Node & Node3)
+void Node::AddParents(Node & Node1, Node & Node2, Node & Node3)
 {
-    this->AddParent(Node1, Node2);
-    this->AddParent(Node3);
+    this->AddParents(Node1, Node2);
+    this->AddParents(Node3);
 }
 
-void Node::AddParent(Node & Node1, Node & Node2, Node & Node3, Node & Node4)
+void Node::AddParents(Node & Node1, Node & Node2, Node & Node3, Node & Node4)
 {
-    this->AddParent(Node1, Node2, Node3);
-    this->AddParent(Node4);
+    this->AddParents(Node1, Node2, Node3);
+    this->AddParents(Node4);
 }
 
-void Node::AddParent(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5)
+void Node::AddParents(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5)
 {
-    this->AddParent(Node1, Node2, Node3, Node4);
-    this->AddParent(Node5);
+    this->AddParents(Node1, Node2, Node3, Node4);
+    this->AddParents(Node5);
 }
 
-void Node::AddParent(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6)
+void Node::AddParents(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6)
 {
-    this->AddParent(Node1, Node2, Node3, Node4, Node5);
-    this->AddParent(Node6);
+    this->AddParents(Node1, Node2, Node3, Node4, Node5);
+    this->AddParents(Node6);
+}
+
+void Node::AddAllParents(double Probability)
+{
+    this->Probabilities.clear();
+    this->Probabilities.push_back(Probability);
+}
+
+#define SetProbabililities() do{ \
+        int ParameterNumber = this->Parents.size(), i; \
+        va_list pFirstProbability; \
+        va_start(pFirstProbability, FirstProbability); \
+        this->Probabilities.push_back(FirstProbability); \
+        for (i = 0; i < (1 << ParameterNumber) - 1; i++) \
+            this->Probabilities.push_back(va_arg(pFirstProbability, double)); \
+        va_end(pFirstProbability); \
+    }while(false)
+
+void Node::AddAllParents(Node & Node1, double FirstProbability, ...)
+{
+    this->Parents.clear();
+    this->AddParents(Node1);
+    SetProbabililities();
+}
+
+void Node::AddAllParents(Node & Node1, Node & Node2, double FirstProbability, ...)
+{
+    this->Parents.clear();
+    this->AddParents(Node1, Node2);
+    SetProbabililities();
+}
+
+void Node::AddAllParents(Node & Node1, Node & Node2, Node & Node3, double FirstProbability, ...)
+{
+    this->Parents.clear();
+    this->AddParents(Node1, Node2, Node3);
+    SetProbabililities();
+}
+
+void Node::AddAllParents(Node & Node1, Node & Node2, Node & Node3, Node & Node4, double FirstProbability, ...)
+{
+    this->Parents.clear();
+    this->AddParents(Node1, Node2, Node3, Node4);
+    SetProbabililities();
+}
+
+void Node::AddAllParents(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, double FirstProbability, ...)
+{
+    this->Parents.clear();
+    this->AddParents(Node1, Node2, Node3, Node4, Node5);
+    SetProbabililities();
+}
+
+void Node::AddAllParents(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6, double FirstProbability, ...)
+{
+    this->Parents.clear();
+    this->AddParents(Node1, Node2, Node3, Node4, Node5, Node6);
+    SetProbabililities();
 }
 
 string Node::PrintProbability(int Index)

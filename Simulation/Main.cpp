@@ -11,50 +11,36 @@ int main()
     Node PX("Pos Xray");
 
     // Set the relationships of nodes.
-    HO.AddParent(PT);
-    HA.AddParent(HO, BT);
-    SA.AddParent(HO);
-    PX.AddParent(BT);
+    HO.AddParents(PT);
+    HA.AddParents(HO, BT);
+    SA.AddParents(HO);
+    PX.AddParents(BT);
 
     // Set the conditional probabilities of nodes
-    PT.Probabilities = {
-        0.2
-    };
+    PT.AddAllParents(0.2);
 
-    BT.Probabilities = {
-        0.001
-    };
+    BT.AddAllParents(0.001);
+    
+    HO.AddAllParents(PT,
+        0,        // F
+        0.7);     // T
 
-    HO.Probabilities = {
-    /*
-    PT  F       T
-    */
-        0,      0.7
-    };
+    SA.AddAllParents(HO,
+        0.1,      // F
+        0.8       // T
+    );
 
-    SA.Probabilities = {
-    /*
-    HO  F       T
-    */
-        0.1,    0.8  
-    };
+    PX.AddAllParents(BT,
+        0.01,     // F
+        0.98      // T
+    );
 
-    PX.Probabilities = {
-    /*
-    BT  F       T
-    */
-        0.01,   0.98
-    };
-
-    // Please notice that the order of BT and HO, 
-    // and compare with the order that they are added in the parent list.
-    HA.Probabilities = {
-    /*
-    BT  F       F       T       T
-    HO  F       T       F       T
-    */
-        0.02,   0.7,    0.9,    0.99
-    };
+    HA.AddAllParents(HO, BT,
+        0.02,     // F   F
+        0.9,      // F   T
+        0.7,      // T   F
+        0.99      // T   T
+    );
 
     // Create the Bayesian network.
     BayesianNetwork BayesianNetwork;
