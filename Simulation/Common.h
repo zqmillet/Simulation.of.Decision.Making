@@ -36,6 +36,16 @@ enum _Direction
 
 typedef enum _Direction Direction;
 
+enum _Algorithm
+{
+    JoinTreeAlgorithm,
+    GibbsSamplerAlgorithm
+};
+
+typedef enum _Algorithm Algorithm;
+
+
+
 enum _EvidenceState
 {
     Happened = 1,

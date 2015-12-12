@@ -162,13 +162,33 @@ void BayesianNetwork::AddEvidences(Node & Node1, Node & Node2, Node & Node3, Nod
     AddEvidences(Node6, EvidenceState);
 }
 
-void BayesianNetwork::Inference()
+void BayesianNetwork::InferenceJoinTree()
 {
-    bayesian_network_join_tree solution(this->Graph, JoinTree);
+    bayesian_network_join_tree JoinTreeSolution(this->Graph, JoinTree);
 
     NodeList::iterator Node;
     for (Node = this->Nodes.begin(); Node != this->Nodes.end(); Node++)
-        (*Node)->Probability = solution.probability((*Node)->Index)(1);
+        (*Node)->Probability = JoinTreeSolution.probability((*Node)->Index)(1);
+}
+
+void BayesianNetwork::InferenceGibbsSampler(int Round)
+{
+    bayesian_network_gibbs_sampler GibbsSamplerSolution;
+
+    NodeList::iterator Node;
+    for (Node = this->Nodes.begin(); Node != this->Nodes.end(); Node++)
+        (*Node)->Probability = 0;
+
+    for (int i = 0; i < Round; ++i)
+    {
+        GibbsSamplerSolution.sample_graph(this->Graph);
+        for (Node = this->Nodes.begin(); Node != this->Nodes.end(); Node++)
+            if (node_value(this->Graph, (*Node)->Index) == 1)
+                (*Node)->Probability += 1.0;
+
+        for (Node = this->Nodes.begin(); Node != this->Nodes.end(); Node++)
+            (*Node)->Probability /= Round;
+    }
 }
 
 void BayesianNetwork::PrintProbabilities(Order Order, Direction Direction)

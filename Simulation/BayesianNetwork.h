@@ -50,7 +50,8 @@ public:
     void RemoveEvidences(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5);
     void RemoveEvidences(Node & Node1, Node & Node2, Node & Node3, Node & Node4, Node & Node5, Node & Node6);
 
-    void Inference();
+    void InferenceJoinTree();
+    void InferenceGibbsSampler(int Round);
 
     void PrintProbabilities(Order Order = OrderByIndex, Direction Direction = Descend);
 

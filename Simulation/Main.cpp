@@ -585,7 +585,7 @@ int main()
     for (i = 0; i < 10; i++)
     {
         start_time = clock();
-        BayesianNetwork.Inference();
+        BayesianNetwork.InferenceGibbsSampler(2000);
         end_time = clock();
         cout << "Running time is: " << static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC * 1000 << "ms" << endl;
     }
