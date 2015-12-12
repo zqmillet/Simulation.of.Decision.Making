@@ -4,7 +4,8 @@ using namespace std;
 
 int main()
 {
-    // Create attack nodes.
+#pragma region Create the Nodes of Bayesian Network
+    #pragma region Attack Nodes
     NodeType NodeType = Attack;
     Node a01("Network Scanning", NodeType);
     Node a02("Vulnerability scanning", NodeType);
@@ -33,8 +34,9 @@ int main()
     Node a25("Man-in-the-middle attack on PLC4", NodeType);
     Node a26("Man-in-the-middle attack on PLC5", NodeType);
     Node a27("Man-in-the-middle attack on PLC6", NodeType);
+    #pragma endregion
 
-    // Create resource nodes.
+    #pragma region Resource Nodes
     NodeType = Resource;
     Node r01("IP addresses of HDS and ES", NodeType);
     Node r02("Buffer overflow vulnerability", NodeType);
@@ -45,8 +47,9 @@ int main()
     Node r07("Administrator authority of HDS", NodeType);
     Node r08("Crash of HDS", NodeType);
     Node r09("Administrator authority of ES", NodeType);
+    #pragma endregion
 
-    // Create function nodes.
+    #pragma region Function Nodes
     NodeType = Function;
     Node f01("Traffic control of V1", NodeType);
     Node f02("Traffic control of V2", NodeType);
@@ -60,8 +63,9 @@ int main()
     Node f10("Liquid level control", NodeType);
     Node f11("Temperature control", NodeType);
     Node f12("Pressure control", NodeType);
+    #pragma endregion  
 
-    // Create incident nodes.
+    #pragma region  Incident Nodes
     NodeType = Incident;
     Node e01("Excessive liquid level", NodeType);
     Node e02("Low liquid level", NodeType);
@@ -71,8 +75,9 @@ int main()
     Node e06("Reactor explosion", NodeType);
     Node e07("Liquid overflow", NodeType);
     Node e08("Blender stop", NodeType);
+    #pragma endregion
 
-    // Create asset nodes.
+    #pragma region Asset Nodes
     NodeType = Asset;
     Node x01("Product damaged", NodeType);
     Node x02("Tank damaged", NodeType);
@@ -82,8 +87,11 @@ int main()
     Node x06("Staff5-9 injured", NodeType);
     Node x07("Water pollution", NodeType);
     Node x08("Air pollution", NodeType);
+    #pragma endregion
+#pragma endregion
 
-    // Set the relationships of nodes
+#pragma region Set the Relationship of Nodes
+    #pragma region Attack Nodes
     a02.AddParent(r01);
     a03.AddParent(r01, r02);
     a04.AddParent(r01, r03);
@@ -110,17 +118,21 @@ int main()
     a25.AddParent(r07, r09);
     a26.AddParent(r07, r09);
     a27.AddParent(r07, r09);
+    #pragma endregion
 
-    r01.AddParent(a01);    
+    #pragma region Resource Nodes
+    r01.AddParent(a01);
     r02.AddParent(a02);
     r03.AddParent(a02);
-    r04.AddParent(a02);    
+    r04.AddParent(a02);
     r05.AddParent(a02);
     r06.AddParent(a02);
     r07.AddParent(a03, a04, a05);
     r08.AddParent(a06);
     r09.AddParent(a07, a08, a09);
-    
+    #pragma endregion
+
+    #pragma region Function Nodes
     f01.AddParent(a10, a16, a22);
     f02.AddParent(a10, a16, a22);
     f03.AddParent(a15, a21, a27);
@@ -133,7 +145,9 @@ int main()
     f10.AddParent(f01, f02, f03, f07);
     f11.AddParent(f01, f02, f03, f05, f08);
     f12.AddParent(f04, f09);
+    #pragma endregion
 
+    #pragma region Incident Nodes
     e01.AddParent(f10);
     e02.AddParent(f10);
     e03.AddParent(f11);
@@ -142,7 +156,9 @@ int main()
     e06.AddParent(e04);
     e07.AddParent(e02);
     e08.AddParent(f06);
+    #pragma endregion
 
+    #pragma region Asset Nodes
     x01.AddParent(e03, e04, e06, e07, e08);
     x02.AddParent(e04, e06);
     x03.AddParent(e05, e06);
@@ -151,40 +167,40 @@ int main()
     x06.AddParent(e06, e07);
     x07.AddParent(e06, e07);
     x08.AddParent(e06);
+    #pragma endregion
+#pragma endregion
 
-    // Set the conditional probabilities of nodes.
+#pragma region Set the Conditional Probabilities of Nodes
+    #pragma region Attack Nodes
     a01.Probabilities = {
         1e-8
     };
 
     a02.Probabilities = {
-    /*
-    r01 F       T
-    */
+//r01   F       T
         1e-8,   0.5
     };
 
-    a03.Probabilities = {
-    /*
-    r02 F       F       T       T
-    r01 F       T       F       T
-    */
-        1e-8,   1e-8,   0.65,   0.65
+    a03.Probabilities = {// r01 r02
+        1e-08,           //  F   F
+        1e-08,           //  T   F
+        0.650,           //  F   T
+        0.650            //  T   T
     };
 
     a04.Probabilities = {
-    /*
-    r03 F       F       T       T
-    r01 F       T       F       T
-    */
+        /*
+        r03 F       F       T       T
+        r01 F       T       F       T
+        */
         1e-8,   1e-8,   0.65,   0.65
     };
 
     a05.PrintProbabilities = {
-    /*
-    r04 F       F       T       T
-    r01 F       T       F       T
-    */
+        /*
+        r04 F       F       T       T
+        r01 F       T       F       T
+        */
         1e-8,   1e-8,   0.65,   0.65
     };
 
@@ -267,7 +283,7 @@ int main()
     a25.PrintProbabilities = {
 
     };
-    
+
     a26.PrintProbabilities = {
 
     };
@@ -275,6 +291,24 @@ int main()
     a27.PrintProbabilities = {
 
     };
+    #pragma endregion
+
+    #pragma region Resource Nodes
+    #pragma endregion
+
+    #pragma region Function Nodes
+    #pragma endregion
+
+    #pragma region Incident Nodes
+    #pragma endregion
+
+    #pragma region Asset Nodes
+    #pragma endregion
+#pragma endregion 
+
+    
+
+
 
 
 
