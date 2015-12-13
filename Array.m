@@ -7,8 +7,12 @@ classdef Array
     end
     
     methods
-        function obj = Add(Class)
-            obj.Data = [obj.Data, Class];
+        function obj = Array()
+            obj.Data = [];
+        end
+        
+        function Add(obj, Number)
+            obj.Data = [obj.Data, Number];
         end
     end
     
