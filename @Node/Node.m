@@ -29,13 +29,10 @@ classdef Node < handle
             end
             
             obj.Type = Type;            
-        end
-        
+        end        
         AddParents(obj, varargin);
-        ExistParent(obj, Parent);
-%         function disp(obj)
-%             disp(['P(+', obj.Name, ') = ', num2str(obj.Probability)]);
-%         end        
+        AddAllParents(obj, varargin);
+        Exist = ExistParent(obj, Parent);     
     end    
 end
 

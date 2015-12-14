@@ -8,7 +8,7 @@ function Exist = ExistParent(obj, Parent)
     end
     
     for i = 1:numel(obj.Parents)
-        if (obj.Parents{1} == Parent)
+        if (obj.Parents{i} == Parent)
             Exist = true;
             return;
         end
