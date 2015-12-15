@@ -12,5 +12,6 @@ classdef BayesianNetwork < handle
         AddEvidences(obj, varargin);
         Exist = ExistEvidences(obj, Node);
         Initialize(obj);
+        Node = FindNodeByIndex(obj, Index);
     end
 end

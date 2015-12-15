@@ -12,6 +12,8 @@ classdef (Sealed) ErrorType
             'This node doesn''t exist in the Bayesian network!';
         IsNotSquareMatrix = ...
             'This matrix is not a square matrix!';
+        BayesianNetworkNodeIndexError = ...
+            'The indexes of nodes in the Bayesian network are wrong!';
     end
 
     methods (Access = private)

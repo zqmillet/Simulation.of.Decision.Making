@@ -10,7 +10,6 @@ a1.AddAllParents(a2, a3, ...
     0.3, ...      T   F
     0.5);  %      T   T
 
-
 a2.AddAllParents(a3, ...
     0.5, ...      F
     0.7);  %      T
@@ -20,9 +19,12 @@ a2.Type = Enumerations.NodeType.Attack;
 a3.Type = Enumerations.NodeType.Function;
 
 BayesianNetwork = Classes.BayesianNetwork();
-BayesianNetwork.AddNodes(a1, a2, a3);
+
+BayesianNetwork.AddNodes(a2, a1, a3);
+
 BayesianNetwork.AddEvidences(a2, Enumerations.EvidenceState.Unhappened, ...
                              a3, ...
                              a2);
 
+BayesianNetwork.Initialize();
 return;
