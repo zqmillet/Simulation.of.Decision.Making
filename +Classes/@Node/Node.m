@@ -4,6 +4,7 @@ classdef Node < handle
         Index = -1;
         Type = Enumerations.NodeType.Unknown;
         Probability = 0;
+        EvidenceState = Enumerations.EvidenceState.Unhappened;
         Parents = {};
         ConditionalProbabilities = [];
     end  
@@ -14,7 +15,7 @@ classdef Node < handle
                 error(Enumerations.ErrorType.InputParameterNumberError);
             end
             
-            if (~isa(Name, 'char'))
+            if (~isa(Name, Enumerations.ClassType.Char))
                 error(Enumerations.ErrorType.InputParameterTypeError);
             end
             
@@ -24,7 +25,7 @@ classdef Node < handle
                 return;
             end
             
-            if (~isa(Type, 'char'))
+            if (~isa(Type, Enumerations.ClassType.Char))
                 error(Enumerations.ErrorType.InputParameterTypeError);
             end
             

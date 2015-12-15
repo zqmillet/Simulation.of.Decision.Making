@@ -20,7 +20,9 @@ a2.Type = Enumerations.NodeType.Attack;
 a3.Type = Enumerations.NodeType.Function;
 
 BayesianNetwork = Classes.BayesianNetwork();
-BayesianNetwork.AddNodes(a1, a2, a3, a2, a1);
 BayesianNetwork.AddNodes(a1, a2, a3);
+BayesianNetwork.AddEvidences(a2, Enumerations.EvidenceState.Unhappened, ...
+                             a3, ...
+                             a2);
 
 return;

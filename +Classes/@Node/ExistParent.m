@@ -3,7 +3,7 @@ function Exist = ExistParent(obj, Parent)
         error(Enumerations.ErrorType.InputParameterNumberError);
     end
     
-    if (~isa(Parent, 'Classes.Node'))
+    if (~isa(Parent, Enumerations.ClassType.Node))
         error(Enumerations.ErrorType.InputParameterTypeError)
     end
     

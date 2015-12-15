@@ -7,14 +7,14 @@ function AddAllParents(obj, varargin)
     
     ParentNumber = 0;
     for i = 1:numel(varargin)
-        if (~isa(varargin{i}, 'Classes.Node'))
+        if (~isa(varargin{i}, Enumerations.ClassType.Node))
             break;
         end
         ParentNumber = ParentNumber + 1;
     end
     
     for i = (ParentNumber + 1):numel(varargin)
-        if (~isa(varargin{i}, 'double'))
+        if (~isa(varargin{i}, Enumerations.ClassType.Double))
             error(Enumerations.ErrorType.InputParameterTypeError);
         end
     end

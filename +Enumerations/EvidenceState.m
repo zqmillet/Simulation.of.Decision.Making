@@ -1,7 +1,7 @@
 classdef EvidenceState
     properties (Constant)
-        Happened   = 1,
-        Unhappened = 0
+        Happened   = 'Happened',
+        Unhappened = 'Unhappened'
     end
     
     methods (Access = private)

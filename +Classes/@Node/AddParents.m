@@ -4,7 +4,7 @@ function AddParents(obj, varargin)
     end
 
     for i = 1:numel(varargin)
-      	if (~isa(varargin{i}, 'Classes.Node'))
+      	if (~isa(varargin{i}, Enumerations.ClassType.Node))
             error(Enumerations.ErrorType.InputParameterTypeError);
         end
         
