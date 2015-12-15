@@ -30,6 +30,18 @@ function Probabilities = GetConditionalProbabilities(obj)
 %    q7     T    T    F   <=>   p7
 %    q8     T    T    T   <=>   p8
     
+    if (nargin ~= 1)
+        error(Enumerations.ErrorType.InputParameterNumberError);
+    end
+    
+    if (~isa(obj, Enumerations.ClassType.Node))
+        error(Enumerations.ErrorType.InputParameterTypeError);
+    end
+
+    if (2^numel(obj.Parents) ~= numel(obj.ConditionalProbabilities))
+        error(Enumerations.ErrorType.NumbersOfParentsAndConditionalProbabilitiesError);
+    end
+
     DefaultOrder = zeros(1, numel(obj.Parents));
     for i = 1:numel(obj.Parents)
         DefaultOrder(1, i) = obj.Parents{i}.Index;

@@ -14,6 +14,8 @@ classdef (Sealed) ErrorType
             'This matrix is not a square matrix!';
         BayesianNetworkNodeIndexError = ...
             'The indexes of nodes in the Bayesian network are wrong!';
+        NumbersOfParentsAndConditionalProbabilitiesError = ...
+            '2 ^ (number of parents) is not equal to number conditional probabilities!'
     end
 
     methods (Access = private)
