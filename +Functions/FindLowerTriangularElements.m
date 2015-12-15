@@ -7,7 +7,10 @@ function [Positions] = FindLowerTriangularElements(Matrix)
 % 0 1 1 0
 % 
 % The output of this function is:
-% Positions = [2, 1; 3, 2; 4, 2; 4, 3]
+% Positions = [2, 1; ...
+%              3, 2; ...
+%              4, 2; ...
+%              4, 3]
     
     if (~isa(Matrix, Enumerations.ClassType.Double))
         error(Enumerations.ErrorType.InputParameterTypeError);
@@ -17,14 +20,17 @@ function [Positions] = FindLowerTriangularElements(Matrix)
         error(Enumerations.ErrorType.IsNotSquareMatrix);
     end
     
-    Position = zeros(numel(Matrix), 2);
+    Positions = zeros((numel(Matrix) - size(Matrix, 1))/2 , 2);
+    Count = 0;
     for i = 2:size(Matrix, 1)
-        for j = 2:(i - 1)
+        for j = 1:(i - 1)
             if (Matrix(i, j) ~= 0)
-                Position(size(Position, 1) + 1, :) = [i, j];
+                Count = Count + 1;
+                Positions(Count, :) = [i, j];
             end
         end
     end
-
+    
+    Positions = Positions(1:Count, :);
 end
 
