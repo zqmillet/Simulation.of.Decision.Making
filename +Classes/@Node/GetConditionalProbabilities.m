@@ -58,8 +58,7 @@ function Probabilities = GetConditionalProbabilities(obj)
     for i = 1:numel(obj.ConditionalProbabilities)
         Binary = dec2bin(i - 1, numel(obj.Parents));
         Binary = Binary(reshape(CorrentOrder, size(Binary)));
-        Decimal = bin2dec(Binary) + 1;
-        Probabilities(Decimal) = obj.ConditionalProbabilities(i);
+        Probabilities(bin2dec(Binary) + 1) = obj.ConditionalProbabilities(i);
     end    
 end
 
