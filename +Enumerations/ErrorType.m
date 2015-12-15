@@ -10,6 +10,8 @@ classdef (Sealed) ErrorType
             'Can''t add itself into its Parents!'
         ThisNodeDoesNotExist = ...
             'This node doesn''t exist in the Bayesian network!';
+        IsNotSquareMatrix = ...
+            'This matrix is not a square matrix!';
     end
 
     methods (Access = private)
