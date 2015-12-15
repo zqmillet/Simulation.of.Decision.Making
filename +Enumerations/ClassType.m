@@ -1,7 +1,7 @@
 classdef (Sealed) ClassType 
     properties (Constant)
         Node            = 'Classes.Node';
-        BayesianNetwork = 'Classes.BayesianNetwork'
+        BayesianNetwork = 'Classes.BayesianNetwork';
         Double          = 'double';
         Char            = 'char';
     end

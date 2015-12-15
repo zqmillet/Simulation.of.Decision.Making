@@ -4,6 +4,7 @@ classdef BayesianNetwork < handle
         Evidences = {};
         Graph;
         IncidenceMatrix;
+        InferenceEngine;
     end
     
     methods
