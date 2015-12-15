@@ -19,4 +19,8 @@ a2.Type = NodeType.Attack;
 
 a3.Type = NodeType.Function;
 
+BayesianNetwork = BayesianNetwork();
+BayesianNetwork.AddNodes(a1, a2, a3, a2, a1);
+BayesianNetwork.AddNodes(a1, a2, a3);
+
 return;
