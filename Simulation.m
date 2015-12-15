@@ -1,30 +1,34 @@
 clearvars;
 
-a1 = Classes.Node('a1');
-a2 = Classes.Node('a2');
-a3 = Classes.Node('a3');
+a01 = Classes.Node('a01');
+a02 = Classes.Node('a02');
+a03 = Classes.Node('a03');
+a04 = Classes.Node('a03');
 
-a1.AddAllParents(a2, a3, ...
-    0.1, ...      F   F
-    0.2, ...      F   T
-    0.3, ...      T   F
-    0.5);  %      T   T
+a01.AddAllParents(a02, a03, a04, ...
+    0.1, ...       F    F    F
+    0.2, ...       F    F    T
+    0.3, ...       F    T    F
+    0.4, ...       F    T    T
+    0.5, ...       T    F    F
+    0.6, ...       T    F    T
+    0.7, ...       T    T    F
+    0.8);  %       T    T    T
 
-a2.AddAllParents(a3, ...
-    0.5, ...      F
-    0.7);  %      T
-
-a2.Type = Enumerations.NodeType.Attack;
-
-a3.Type = Enumerations.NodeType.Function;
+a02.AddAllParents(a03, ...
+    0.5, ...       F
+    0.7);  %       T
 
 BayesianNetwork = Classes.BayesianNetwork();
 
-BayesianNetwork.AddNodes(a2, a1, a3);
+BayesianNetwork.AddNodes(a02, a01, a03, a04);
 
-BayesianNetwork.AddEvidences(a2, Enumerations.EvidenceState.Unhappened, ...
-                             a3, ...
-                             a2);
+BayesianNetwork.AddEvidences(a02, Enumerations.EvidenceState.Unhappened, ...
+                             a03, ...
+                             a02);
 
 BayesianNetwork.Initialize();
+
+a01.SortConditionalProbabilities();
+
 return;

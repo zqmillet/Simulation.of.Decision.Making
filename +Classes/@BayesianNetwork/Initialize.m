@@ -43,7 +43,7 @@ function Initialize(obj)
     
     % Assignment of conditional probabilities.
     for i = 1:numel(obj.Nodes)
-        obj.Graph.CPD{obj.Nodes{i}.Index} = tabular_CPD(obj.Graph, obj.Nodes{i}.Index, ~);
+        % obj.Graph.CPD{obj.Nodes{i}.Index} = tabular_CPD(obj.Graph, obj.Nodes{i}.Index, ~);
     end
 end
 
