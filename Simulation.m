@@ -29,6 +29,11 @@ BayesianNetwork.AddEvidences(a02, Enumerations.EvidenceState.Unhappened, ...
 
 BayesianNetwork.Initialize();
 
-a01.SortConditionalProbabilities();
+a01.Index = 5;
+a02.Index = 2;
+a03.Index = 7;
+a04.Index = 1;
+
+disp(a01.GetConditionalProbabilities());
 
 return;

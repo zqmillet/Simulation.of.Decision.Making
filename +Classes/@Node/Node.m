@@ -35,7 +35,7 @@ classdef Node < handle
         AddAllParents(obj, varargin);
         Exist = ExistParent(obj, Parent); 
         ExchangeIndex(obj, Node);
-        SortConditionalProbabilities(obj);
+        Probabilities = GetConditionalProbabilities(obj);
     end    
 end
 
