@@ -1,13 +1,13 @@
 function AddAllParents(obj, varargin)
     if (nargin < 2)
-        error(ErrorType.InputParameterNumberError);
+        error(Enumerations.ErrorType.InputParameterNumberError);
     end
     
     obj.Parents = {};
     
     ParentNumber = 0;
     for i = 1:numel(varargin)
-        if (~isa(varargin{i}, 'Node'))
+        if (~isa(varargin{i}, 'Classes.Node'))
             break;
         end
         ParentNumber = ParentNumber + 1;
@@ -15,14 +15,14 @@ function AddAllParents(obj, varargin)
     
     for i = (ParentNumber + 1):numel(varargin)
         if (~isa(varargin{i}, 'double'))
-            error(ErrorType.InputParameterTypeError);
+            error(Enumerations.ErrorType.InputParameterTypeError);
         end
     end
     
     ProbabilityNumber = numel(varargin) - ParentNumber;
     
     if (2^ParentNumber ~= ProbabilityNumber)
-        error(ErrorType.InputParameterNumberError);
+        error(Enumerations.ErrorType.InputParameterNumberError);
     end
     
     for i = 1:ParentNumber

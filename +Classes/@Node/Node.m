@@ -2,7 +2,7 @@ classdef Node < handle
     properties
         Name = '';
         Index = -1;
-        Type = NodeType.Unknown;
+        Type = Enumerations.NodeType.Unknown;
         Probability = 0;
         Parents = {};
         ConditionalProbabilities = [];
@@ -11,21 +11,21 @@ classdef Node < handle
     methods
         function obj = Node(Name, Type)
             if (nargin > 2 || nargin == 0)
-                error(ErrorType.InputParameterNumberError);
+                error(Enumerations.ErrorType.InputParameterNumberError);
             end
             
             if (~isa(Name, 'char'))
-                error(ErrorType.InputParameterTypeError);
+                error(Enumerations.ErrorType.InputParameterTypeError);
             end
             
             obj.Name = Name;            
             if (nargin == 1) 
-                obj.Type = NodeType.Unknown;
+                obj.Type = Enumerations.NodeType.Unknown;
                 return;
             end
             
             if (~isa(Type, 'char'))
-                error(ErrorType.InputParameterTypeError);
+                error(Enumerations.ErrorType.InputParameterTypeError);
             end
             
             obj.Type = Type;            

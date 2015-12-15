@@ -1,10 +1,10 @@
 function Exist = ExistParent(obj, Parent)
     if (2 ~= nargin)
-        error(ErrorType.InputParameterNumberError);
+        error(Enumerations.ErrorType.InputParameterNumberError);
     end
     
-    if (~isa(Parent, 'Node'))
-        error(ErrorType.InputParameterTypeError)
+    if (~isa(Parent, 'Classes.Node'))
+        error(Enumerations.ErrorType.InputParameterTypeError)
     end
     
     for i = 1:numel(obj.Parents)

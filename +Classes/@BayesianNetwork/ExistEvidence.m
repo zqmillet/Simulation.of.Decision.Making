@@ -1,10 +1,10 @@
 function Exist = ExistEvidence(obj, Node)
     if (nargin ~= 2)
-        error(ErrorType.InputParameterNumberError);
+        error(Enumerations.ErrorType.InputParameterNumberError);
     end
     
-    if (~isa(Node, 'Node'))
-        error(ErrorType.InputParameterTypeError);
+    if (~isa(Node, 'Classes.Node'))
+        error(Enumerations.ErrorType.InputParameterTypeError);
     end
     
     for i = 1:numel(obj.Evidences)

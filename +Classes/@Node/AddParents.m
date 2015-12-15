@@ -1,15 +1,15 @@
 function AddParents(obj, varargin)
     if (nargin < 2)
-        error(ErrorType.InputParameterNumberError);
+        error(Enumerations.ErrorType.InputParameterNumberError);
     end
 
     for i = 1:numel(varargin)
-      	if (~isa(varargin{i}, 'Node'))
-            error(ErrorType.InputParameterTypeError);
+      	if (~isa(varargin{i}, 'Classes.Node'))
+            error(Enumerations.ErrorType.InputParameterTypeError);
         end
         
         if (obj == varargin{i})
-            error(ErrorType.CannotAddItselfIntoItsPatents);
+            error(Enumerations.ErrorType.CannotAddItselfIntoItsPatents);
         end
         
         if (obj.ExistParent(varargin{i}))

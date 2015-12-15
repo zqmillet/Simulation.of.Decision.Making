@@ -11,7 +11,6 @@ classdef (Sealed) NodeType
     methods (Access = private)
         function obj = NodeType
         end
-    end
-    
+    end    
 end
 
