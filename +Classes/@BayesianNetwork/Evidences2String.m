@@ -5,7 +5,7 @@ function String = Evidences2String(obj)
         error(Enumerations.ErrorType.InputParameterNumberError);
     end
     
-    String = '| ';
+    String = '|';
     for i = 1:numel(obj.Evidences)
         if (numel(obj.Evidences{i}) == 0) % Enumerations.EvidenceState.Unknown
             continue;

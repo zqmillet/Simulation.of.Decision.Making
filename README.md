@@ -193,7 +193,7 @@ Solution:
 
 	>> Simulation
     Solution of Question 1:
-    P(+Headache|) = 0.116
+    P(+Headache) = 0.116
 
     Solution of Question 2:
     P(+Smell Alcohol|+Party) = 0.59
