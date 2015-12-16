@@ -28,10 +28,6 @@ function Initialize(obj)
         obj.FindNodeByIndex(NodeIndex).ExchangeIndex(obj.FindNodeByIndex(ParentIndex));
     end
     
-    % The following codes are used for Debug.
-    % disp(obj.IncidenceMatrix);
-    % disp(Functions.FindLowerTriangularElements(obj.IncidenceMatrix));
-    
     % Create the directed acyclic graph of Bayesian network.
     NameList = cell(1, numel(obj.Nodes));
     NodeIndexList = zeros(1, numel(obj.Nodes));    
