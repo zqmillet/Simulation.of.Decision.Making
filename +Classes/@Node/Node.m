@@ -4,7 +4,6 @@ classdef Node < handle
         Index = -1;
         Type = Enumerations.NodeType.Unknown;
         Probability = 0;
-        EvidenceState = Enumerations.EvidenceState.Unknown;
         Parents = {};
         ConditionalProbabilities = [];
     end  

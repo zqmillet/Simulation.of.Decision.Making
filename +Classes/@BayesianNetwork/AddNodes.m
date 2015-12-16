@@ -22,12 +22,20 @@ function AddNodes(obj, varargin)
         error(Enumerations.ErrorType.BayesianNetworkNodeIndexError);
     end
     
+    % Check whether the numbers of nodes and evidences are same.
+    if (numel(obj.Nodes) ~= numel(obj.Evidences))
+        error(Enumerations.ErrorType.NumbersOfNodesAndEvidencesError);
+    end
+    
     % If the function runs here, it means that the indexes of nodes are '1, 2, ... , numel(obj.Nodes)'.
-    % Add the new nodes into the Bayesian network, and set the indexes for them.
     for i = 1:numel(varargin)
-        if (~obj.ExistNode(varargin{i}))            
+        if (~obj.ExistNode(varargin{i}))  
+            % Add the new nodes into the Bayesian network.
             obj.Nodes{1, numel(obj.Nodes) + 1} = varargin{i};
+            % Set the indexes for them.
             varargin{i}.Index = numel(obj.Nodes);
+            % Add a new element into the evidence list, and the state of this evidence is unknown.
+            obj.Evidences{numel(obj.Nodes)} = Enumerations.EvidenceState.Unknown;
         end
     end
 end

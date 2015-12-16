@@ -42,6 +42,11 @@ function Probabilities = GetConditionalProbabilities(obj)
         error(Enumerations.ErrorType.NumbersOfParentsAndConditionalProbabilitiesError);
     end
 
+    if (0 == numel(obj.Parents))
+        Probabilities = obj.ConditionalProbabilities;
+        return;
+    end
+    
     DefaultOrder = zeros(1, numel(obj.Parents));
     for i = 1:numel(obj.Parents)
         DefaultOrder(1, i) = obj.Parents{i}.Index;

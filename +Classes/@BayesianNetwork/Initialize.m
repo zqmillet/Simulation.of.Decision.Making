@@ -20,7 +20,12 @@ function Initialize(obj)
         NodeIndex = LowerTriangularElements(1, 2);
         ParentIndex = LowerTriangularElements(1, 1);
         
+        % Exchange the indexes of these two nodes.
         obj.FindNodeByIndex(NodeIndex).ExchangeIndex(obj.FindNodeByIndex(ParentIndex));
+        % Exchange the evidence states of these two nodes.
+        TempEvidenceState = obj.Evidences{NodeIndex};
+        obj.Evidences{NodeIndex} = obj.Evidences{ParentIndex};
+        obj.Evidences{ParentIndex} = TempEvidenceState;
     end
     
     % Create the directed acyclic graph of Bayesian network.
@@ -35,6 +40,9 @@ function Initialize(obj)
     % Assignment of conditional probabilities.
     for i = 1:numel(obj.Nodes)
         obj.Graph.CPD{obj.Nodes{i}.Index} = tabular_CPD(obj.Graph, obj.Nodes{i}.Index, [1 - obj.Nodes{i}.GetConditionalProbabilities(), obj.Nodes{i}.GetConditionalProbabilities()]);
+        disp(obj.Nodes{i});
+        disp([1 - obj.Nodes{i}.GetConditionalProbabilities(), obj.Nodes{i}.GetConditionalProbabilities()]);
+        
     end
     
     obj.InferenceEngine = jtree_inf_engine(obj.Graph);

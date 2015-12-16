@@ -39,16 +39,11 @@ function AddEvidences(obj, varargin)
                 end                
                 
                 % If this node has an optional parameter.
-                if (i ~= numel(varargin) && isa(varargin{i + 1}, Enumerations.ClassType.Char)) 
-                    varargin{i}.EvidenceState = varargin{i + 1};
-                % If this node has no optional parameter.
+                if (i ~= numel(varargin) && isa(varargin{i + 1}, Enumerations.ClassType.Double))
+                    obj.Evidences{varargin{i}.Index} = varargin{i + 1};
+                    % If this node has no optional parameter.
                 else
-                    varargin{i}.EvidenceState = Enumerations.EvidenceState.Happened;
-                end              
-                
-                % If this node is not in the evidence list, add it into the evidence list.
-                if (~obj.ExistEvidence(varargin{i}))
-                    obj.Evidences{1, numel(obj.Evidences) + 1} = varargin{i};
+                    obj.Evidences{varargin{i}.Index} = Enumerations.EvidenceState.Happened;
                 end
             % otherwise throw an error.
             otherwise

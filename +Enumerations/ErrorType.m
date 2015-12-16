@@ -16,6 +16,8 @@ classdef (Sealed) ErrorType
             'The indexes of nodes in the Bayesian network are wrong!';
         NumbersOfParentsAndConditionalProbabilitiesError = ...
             '2 ^ (number of parents) is not equal to number conditional probabilities!'
+        NumbersOfNodesAndEvidencesError = ...
+            'The number of nodes is not equal to the number of evidences!';
     end
 
     methods (Access = private)

@@ -1,34 +1,42 @@
 clearvars;
 
-a01 = Classes.Node('a01');
-a02 = Classes.Node('a02');
-a03 = Classes.Node('a03');
-a04 = Classes.Node('a03');
+PT = Classes.Node('Party');
+HO = Classes.Node('Hangover');
+BT = Classes.Node('Brain Tumor');
+HA = Classes.Node('Headache');
+SA = Classes.Node('Smell Alcohol');
+PX = Classes.Node('Pos Xray');
 
-a01.AddAllParents(a02, a03, a04, ...
-    0.1, ...       F    F    F
-    0.2, ...       F    F    T
-    0.3, ...       F    T    F
-    0.4, ...       F    T    T
-    0.5, ...       T    F    F
-    0.6, ...       T    F    T
-    0.7, ...       T    T    F
-    0.8);  %       T    T    T
+PT.AddAllParents(... Has no parent node
+    0.200);
 
-a02.AddAllParents(a03, ...
-    0.5, ...       F
-    0.7);  %       T
+BT.AddAllParents(... Has no parent node
+    0.001);
 
-a03.AddAllParents(0.5);
-a04.AddAllParents(0.2);
+HO.AddAllParents(PT, ...
+    0.000, ...    F
+    0.700);  %    T
+
+SA.AddAllParents(HO, ...
+    0.100, ...    F
+    0.800);  %    T
+
+PX.AddAllParents(BT, ...
+    0.010, ...    F
+    0.980);  %    T
+
+HA.AddAllParents(HO, BT, ...
+    0.020, ...    F   F
+    0.900, ...    F   T
+    0.700, ...    T   F
+    0.990);  %    T   T
 
 BayesianNetwork = Classes.BayesianNetwork();
 
-BayesianNetwork.AddNodes(a02, a01, a03, a04);
-
-BayesianNetwork.AddEvidences(a02, Enumerations.EvidenceState.Unhappened, ...
-                             a03, ...
-                             a02);
+BayesianNetwork.AddNodes(PT, HO, BT, HA, SA, PX);
 
 BayesianNetwork.Initialize();
+BayesianNetwork.AddEvidences(PT);
+
+BayesianNetwork.Inference();
 return;
