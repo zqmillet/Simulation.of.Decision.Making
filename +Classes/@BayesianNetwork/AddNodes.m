@@ -11,7 +11,7 @@ function AddNodes(obj, varargin)
     % Check the indexes of existing nodes, if there exist break point or duplicated point, throw an error.
     IndexList = zeros(1, numel(obj.Nodes));
     for i = 1:numel(obj.Nodes)
-        IndexList(1, i) = obj.Nodes{i};
+        IndexList(1, i) = obj.Nodes{i}.Index;
     end
     
     if (max(IndexList) ~= numel(obj.Nodes))
