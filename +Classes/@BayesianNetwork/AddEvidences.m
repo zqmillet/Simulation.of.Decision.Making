@@ -21,8 +21,8 @@ function AddEvidences(obj, varargin)
     % For each input parameter.
     for i = 1:numel(varargin)
         switch (class(varargin{i}))
-            % If the class of ith parameter is char.
-            case Enumerations.ClassType.Char
+            % If the class of ith parameter is double.
+            case Enumerations.ClassType.Double
                 if (1 == i)
                     error(Enumerations.ErrorType.InputParameterTypeError);
                 end
