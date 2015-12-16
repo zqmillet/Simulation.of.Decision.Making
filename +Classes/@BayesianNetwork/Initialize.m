@@ -3,11 +3,6 @@ function Initialize(obj)
 
     NodeNumber = numel(obj.Nodes);
 
-    % Set the indexes of all node which in the Bayesian network.
-    for i = 1:NodeNumber
-        obj.Nodes{i}.Index = i;
-    end
-    
     while(true)
         % Initialize the incidence matrix of the Bayesian network.
         obj.IncidenceMatrix = zeros(NodeNumber, NodeNumber);
