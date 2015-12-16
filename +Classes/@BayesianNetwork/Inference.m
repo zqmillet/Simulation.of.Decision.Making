@@ -8,8 +8,7 @@ function Inference(obj, varargin)
     % If there is no parameter, assign the probabilities of all nodes in the Bayesian network.
     if (nargin == 1)
         for i = 1:numel(obj.Nodes)
-            Probability = marginal_nodes(obj.InferenceEngine, obj.Nodes{i}.Index);
-            % Check i is Evidence
+            Probability = marginal_nodes(obj.InferenceEngine, obj.Nodes{i}.Index, obj.Evidences{obj.Nodes{i}.Index});
             obj.Nodes{i}.Probability = Probability.T(2);
         end
         return;
@@ -20,7 +19,8 @@ function Inference(obj, varargin)
         if (~isa(varargin{i}, Enumerations.ClassType.Node))
             error(Enumerations.ErrorType.InputParameterTypeError);
         end
-        Probability = marginal_nodes(obj.InferenceEngine, varargin{i}.Index);
+        
+        Probability = marginal_nodes(obj.InferenceEngine, varargin{i}.Index, obj.Evidences{varargin{i}.Index});
         varargin{i}.Probability = Probability.T(2);
     end    
 end

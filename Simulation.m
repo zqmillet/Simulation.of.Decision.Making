@@ -32,11 +32,27 @@ HA.AddAllParents(HO, BT, ...
     0.990);  %    T   T
 
 BayesianNetwork = Classes.BayesianNetwork();
-
-BayesianNetwork.AddNodes(PT, HO, BT, HA, SA, PX);
-
+BayesianNetwork.AddNodes(SA, HO, HA, PX, PT, BT);
 BayesianNetwork.Initialize();
-BayesianNetwork.AddEvidences(PT);
 
+fprintf('Solution of Question 1:\n');
 BayesianNetwork.Inference();
+BayesianNetwork.Display(HA);
+
+fprintf('\nSolution of Question 2:\n');
+BayesianNetwork.AddEvidences(PT);
+BayesianNetwork.Inference();
+BayesianNetwork.Display(SA);
+
+fprintf('\nSolution of Question 3:\n');
+BayesianNetwork.RemoveEvidences();
+BayesianNetwork.AddEvidences(PX);
+BayesianNetwork.Inference();
+BayesianNetwork.Display(BT);
+
+fprintf('\nSolution of Question 4:\n');
+BayesianNetwork.RemoveEvidences();
+BayesianNetwork.AddEvidences(HA);
+BayesianNetwork.Inference();
+BayesianNetwork.Display(BT);
 return;
