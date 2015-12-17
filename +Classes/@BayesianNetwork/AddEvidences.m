@@ -40,10 +40,22 @@ function AddEvidences(obj, varargin)
                 
                 % If this node has an optional parameter.
                 if (i ~= numel(varargin) && isa(varargin{i + 1}, Enumerations.ClassType.Double))
-                    obj.Evidences{varargin{i}.Index} = varargin{i + 1};
-                    % If this node has no optional parameter.
+                    if (numel(varargin{i + 1}) == 0)
+                        error(Enumerations.ErrorType.CannotAddAnUnknownStateNodeIntoEvidences);
+                    end
+                    
+                    switch (varargin{i + 1})
+                        case Enumerations.EvidenceState.Happened
+                            varargin{i}.Probability = 1;
+                        case Enumerations.EvidenceState.Unhappened
+                            varargin{i}.Probability = 0;
+                    end
+                    
+                    obj.Evidences{varargin{i}.Index} = varargin{i + 1};                    
+                % If this node has no optional parameter.
                 else
                     obj.Evidences{varargin{i}.Index} = Enumerations.EvidenceState.Happened;
+                    varargin{i}.Probability = 1;
                 end
             % otherwise throw an error.
             otherwise

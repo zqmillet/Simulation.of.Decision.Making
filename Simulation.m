@@ -558,4 +558,45 @@ BayesianNetwork.AddNodes(... Add attack nodes.
 BayesianNetwork.Initialize();
 
 %% Add the evidences into the Bayesian network.
-BayesianNetwork.AddEvidences(a01);
+BayesianNetwork.AddEvidences(f05, f04, f06);
+
+BayesianNetwork.Inference();
+
+p01 = Classes.Process('p01');
+p02 = Classes.Process('p02');
+p03 = Classes.Process('p03');
+p04 = Classes.Process('p04');
+
+p01.AddAllParents(p02, f05, ...
+    0,          ... F    F
+    1,          ... F    T
+    1,          ... T    F
+    1);           % T    T
+
+p02.AddAllParents(p03, p04, ...
+    0,          ... F    F
+    0,          ... F    T
+    0,          ... T    F
+    1);           % T    T
+
+p03.AddAllParents(f02, f03, ...
+    0,          ... F    F
+    0,          ... F    T
+    0,          ... T    F
+    1);           % T    T
+
+p04.AddAllParents(f04, f05, f06, ...
+    0,          ... F    F    F
+    1,          ... F    F    T
+    1,          ... F    T    F
+    1,          ... F    T    T
+    1,          ... T    F    F
+    1,          ... T    F    T
+    1,          ... T    T    F
+    1)            % T    T    T
+
+disp(['p01 = ' num2str(p01.GetState())]);
+disp(['p02 = ' num2str(p02.GetState())]);
+disp(['p03 = ' num2str(p03.GetState())]);
+disp(['p04 = ' num2str(p04.GetState())]);
+

@@ -1,6 +1,6 @@
 function Exist = ExistParent(obj, Parent)
 
-	if (nargin ~= 2)
+    if (nargin ~= 2)
         error(Enumerations.ErrorType.InputParameterNumberError);
     end
     

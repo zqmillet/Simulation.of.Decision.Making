@@ -23,7 +23,8 @@ classdef Process < handle
         AddParents(obj, varargin);
         AddAllParents(obj, varargin);
         Exist = ExistParent(obj, Parent);
-    end    
+        State = GetState(obj);
+    end
 end
 
 
