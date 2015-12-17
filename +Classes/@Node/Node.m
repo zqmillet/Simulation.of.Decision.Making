@@ -6,29 +6,37 @@ classdef Node < handle
         Probability = 0;
         Parents = {};
         ConditionalProbabilities = [];
+        Value = 0;
     end  
     
     methods
-        function obj = Node(Name, Type)
-            if (nargin > 2 || nargin == 0)
-                error(Enumerations.ErrorType.InputParameterNumberError);
+        function obj = Node(Name, Type, Value)
+            switch (nargin)
+                case 1
+                    if (~isa(Name, Enumerations.ClassType.Char))
+                        error(Enumerations.ErrorType.InputParameterTypeError);
+                    end
+                    obj.Name = Name;
+                case 2
+                    if (~isa(Type, Enumerations.ClassType.Double))
+                        error(Enumerations.ErrorType.InputParameterTypeError);
+                    end
+                    obj = Classes.Node(Name);
+                    obj.Type = Type;
+                case 3
+                    if (~isa(Value, Enumerations.ClassType.Double))
+                        error(Enumerations.ErrorType.InputParameterTypeError);
+                    end
+                    
+                    if (Type ~= Enumerations.NodeType.Asset)
+                        error(Enumerations.ErrorType.OnlyAssetNodeHasValueProperty);
+                    end
+                    
+                    obj = Classes.Node(Name, Type);
+                    obj.Value = Value;
+                otherwise
+                    error(Enumerations.ErrorType.InputParameterNumberError);
             end
-            
-            if (~isa(Name, Enumerations.ClassType.Char))
-                error(Enumerations.ErrorType.InputParameterTypeError);
-            end
-            
-            obj.Name = Name;            
-            if (nargin == 1) 
-                obj.Type = Enumerations.NodeType.Unknown;
-                return;
-            end
-            
-            if (~isa(Type, Enumerations.ClassType.Char))
-                error(Enumerations.ErrorType.InputParameterTypeError);
-            end
-            
-            obj.Type = Type;            
         end        
         AddParents(obj, varargin);
         AddAllParents(obj, varargin);

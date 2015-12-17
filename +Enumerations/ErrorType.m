@@ -18,6 +18,8 @@ classdef (Sealed) ErrorType
             '2 ^ (number of parents) is not equal to number conditional probabilities!'
         NumbersOfNodesAndEvidencesError = ...
             'The number of nodes is not equal to the number of evidences!';
+        OnlyAssetNodeHasValueProperty = ...
+            'Only asset node has value property';
     end
 
     methods (Access = private)
