@@ -1,9 +1,13 @@
 classdef (Sealed) ClassType 
     properties (Constant)
-        Node            = 'Classes.Node';
-        BayesianNetwork = 'Classes.BayesianNetwork';
-        Double          = 'double';
-        Char            = 'char';
+        Double           = 'double';
+        Char             = 'char';
+        Node             = 'Classes.Node';
+        BayesianNetwork  = 'Classes.BayesianNetwork';
+        Process          = 'Classes.Process';
+        AttackStrategy   = 'Classes.Strategies.Attack';
+        SecurityStrategy = 'Classes.Strategies.Security';
+        RecoverStrategy  = 'Classes.Strategies.Recover';
     end
 
     methods (Access = private)
