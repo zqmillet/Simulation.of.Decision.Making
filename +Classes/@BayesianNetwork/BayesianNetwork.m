@@ -18,5 +18,6 @@ classdef BayesianNetwork < handle
         Inference(obj, varargin);
         Display(obj, varargin);
         String = Evidences2String(obj);
+        Loss = GetLoss(obj);
     end
 end

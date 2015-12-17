@@ -2,9 +2,9 @@ function Inference(obj, varargin)
 % This function is used to inference the Bayesian network, then assign the probabilities of all nodes in the input parameters.
 % If there does not exist paramter, this function will assign the probabilities of all nodes in the Bayesian network.
     
-    % Update the inference engine.
+    % Update the inference engine.    
     [obj.InferenceEngine,~]=enter_evidence(obj.InferenceEngine,obj.Evidences);
-    
+       
     % If there is no parameter, assign the probabilities of all nodes in the Bayesian network.
     if (nargin == 1)
         for i = 1:numel(obj.Nodes)
@@ -12,7 +12,7 @@ function Inference(obj, varargin)
             obj.Nodes{i}.Probability = Probability.T(2);
         end
         return;
-    end
+    end    
     
     % If there are parameters, assigin the probabilities of all nodes in the input parameters.
     for i = 1:numel(varargin)
@@ -22,6 +22,6 @@ function Inference(obj, varargin)
         
         Probability = marginal_nodes(obj.InferenceEngine, varargin{i}.Index, obj.Evidences{varargin{i}.Index});
         varargin{i}.Probability = Probability.T(2);
-    end    
+    end
 end
 

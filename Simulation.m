@@ -540,7 +540,6 @@ x08.AddAllParents(e06, ...
 BayesianNetwork = Classes.BayesianNetwork();
 
 %% Add the nodes into the Bayesian network.
-% 
 BayesianNetwork.AddNodes(... Add attack nodes.
                          a01, a02, a03, a04, a05, a06, a07, a08, a09, a10, ...
                          a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, ...
@@ -560,9 +559,3 @@ BayesianNetwork.Initialize();
 
 %% Add the evidences into the Bayesian network.
 BayesianNetwork.AddEvidences(a01);
-
-%% Inference the Bayesian network.
-BayesianNetwork.Inference();
-
-%% Print the Probabilities of nodes in the Bayesian network.
-BayesianNetwork.Display(x01);
