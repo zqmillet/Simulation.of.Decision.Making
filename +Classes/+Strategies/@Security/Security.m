@@ -4,7 +4,8 @@ classdef Security < Classes.Strategies.Strategy
         Functions = {};
         % The set of attack strategies which will be prevented by this security strategy.
         AttackStrategies = {};
-        % Probabilities
+        % This size of this double vector is same as the size of 'AttackStrategies', 
+        % the ith element of this double vector is the possibility this security strategy can prevent the ith attack strategy successfully.
         PreventProbabilities = [];
     end
     
