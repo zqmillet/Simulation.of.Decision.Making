@@ -25,6 +25,11 @@ function AddAllParents(obj, varargin)
         if (~isa(varargin{i + numel(obj.Parents)}, Enumerations.ClassType.Double))
             error(Enumerations.ErrorType.InputParameterNumberError);
         end
+        
+        if (varargin{i + numel(obj.Parents)} ~= 0 && varargin{i + numel(obj.Parents)} ~= 1)
+            error(Enumerations.ErrorType.TheValueOfTheTruthTableIsNotZeroOrOne);
+        end
+        
         obj.TruthTable(1, i) = varargin{i + numel(obj.Parents)};
     end   
 end

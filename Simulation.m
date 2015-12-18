@@ -593,7 +593,7 @@ p04.AddAllParents(f04, f05, f06, ...
     1,          ... F    T    T
     1,          ... T    F    F
     1,          ... T    F    T
-    1,          ... T    T    F
+    0,          ... T    T    F
     1)            % T    T    T
 
 disp(['p01 = ' num2str(p01.GetState())]);

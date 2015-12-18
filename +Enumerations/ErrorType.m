@@ -23,7 +23,9 @@ classdef (Sealed) ErrorType
         CannotAddAnUnknownStateNodeIntoEvidences = ...
             'Can''t add a node whose state is unknows into the evidences!';
         ProcessNodeHasNoSupportNode = ...
-            'The process node has no support node!'
+            'The process node has no support node!';
+        TheValueOfTheTruthTableIsNotZeroOrOne = ...
+            'The value of the truth table is not 0 or 1!';
     end
 
     methods (Access = private)
