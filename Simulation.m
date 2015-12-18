@@ -562,6 +562,7 @@ BayesianNetwork.AddEvidences(f05, f04, f06);
 
 BayesianNetwork.Inference();
 
+%% Process test
 p01 = Classes.Process('p01');
 p02 = Classes.Process('p02');
 p03 = Classes.Process('p03');
