@@ -558,7 +558,7 @@ BayesianNetwork.AddNodes(... Add attack nodes.
 BayesianNetwork.Initialize();
 
 %% Add the evidences into the Bayesian network.
-% BayesianNetwork.AddEvidences(f05, f04, f06);
+BayesianNetwork.AddEvidences(f05, f04, f06);
 
 BayesianNetwork.Inference();
 
@@ -625,5 +625,4 @@ p07.AddInputs(s04, s05);
 ProductionModel = Classes.ProductionModel();
 ProductionModel.AddProcesses(p01, p02, p03, p04, p05, p06, p07);
 ProductionModel.Initialize();
-
-disp(ProductionModel.IncidenceMatrix);
+ProductionModel.Inference();

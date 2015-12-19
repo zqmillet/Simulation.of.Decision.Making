@@ -10,6 +10,7 @@ classdef ProductionModel < handle
         Exist = ExistProduct(obj, Product);
         AddProcesses(obj, varargin);
         Initialize(obj);
+        Inference(obj);
     end    
 end
 
