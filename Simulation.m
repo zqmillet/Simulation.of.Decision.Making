@@ -558,7 +558,7 @@ BayesianNetwork.AddNodes(... Add attack nodes.
 BayesianNetwork.Initialize();
 
 %% Add the evidences into the Bayesian network.
-BayesianNetwork.AddEvidences(f05, f04, f06);
+% BayesianNetwork.AddEvidences(f05, f04, f06);
 
 BayesianNetwork.Inference();
 
@@ -567,37 +567,63 @@ p01 = Classes.Process('p01');
 p02 = Classes.Process('p02');
 p03 = Classes.Process('p03');
 p04 = Classes.Process('p04');
+p05 = Classes.Process('p05');
+p06 = Classes.Process('p06');
+p07 = Classes.Process('p07');
 
-p01.AddAllParents(p02, f05, ...
-    0,          ... F    F
-    1,          ... F    T
-    1,          ... T    F
-    1);           % T    T
+p01.AddAllParents(f01, ...
+    0,          ... F
+    1);           % T
 
-p02.AddAllParents(p03, p04, ...
-    0,          ... F    F
-    0,          ... F    T
-    0,          ... T    F
-    1);           % T    T
+p02.AddAllParents(f02, ...
+    0,          ... F
+    1);           % T
 
-p03.AddAllParents(f02, f03, ...
-    0,          ... F    F
-    0,          ... F    T
-    0,          ... T    F
-    1);           % T    T
+p03.AddAllParents(f03, ...
+    0,          ... F
+    1);           % T
 
-p04.AddAllParents(f04, f05, f06, ...
-    0,          ... F    F    F
-    1,          ... F    F    T
-    1,          ... F    T    F
-    1,          ... F    T    T
-    1,          ... T    F    F
-    1,          ... T    F    T
-    0,          ... T    T    F
-    1)            % T    T    T
+p04.AddAllParents(f04, ...
+    0,          ... F
+    1);           % T
 
-disp(['p01 = ' num2str(p01.GetState())]);
-disp(['p02 = ' num2str(p02.GetState())]);
-disp(['p03 = ' num2str(p03.GetState())]);
-disp(['p04 = ' num2str(p04.GetState())]);
+p05.AddAllParents(f05, ...
+    0,          ... F
+    1);           % T
 
+p06.AddAllParents(f06, ...
+    0,          ... F
+    1);           % T
+
+p07.AddAllParents(f07, ...
+    0,          ... F
+    1);           % T
+
+s01 = Classes.Product('s01', 100);
+s02 = Classes.Product('s02', 100);
+s03 = Classes.Product('s03', 100);
+s04 = Classes.Product('s04', 100);
+s05 = Classes.Product('s05', 100);
+s06 = Classes.Product('s06', 100);
+s07 = Classes.Product('s07', 100);
+
+p01.AddOutputs(s01);
+p02.AddOutputs(s02);
+p03.AddOutputs(s03);
+p04.AddOutputs(s04);
+p05.AddOutputs(s05);
+p06.AddOutputs(s06);
+p07.AddOutputs(s07);
+
+p02.AddInputs(s01);
+p03.AddInputs(s01);
+p04.AddInputs(s02);
+p05.AddInputs(s03);
+p06.AddInputs(s03);
+p07.AddInputs(s04, s05);
+
+ProductionModel = Classes.ProductionModel();
+ProductionModel.AddProcesses(p01, p02, p03, p04, p05, p06, p07);
+ProductionModel.Initialize();
+
+disp(ProductionModel.IncidenceMatrix);

@@ -1,4 +1,4 @@
-function AddElements(obj, varargin)
+function AddProcesses(obj, varargin)
     
     if (nargin < 2)
         error(Enumerations.ErrorType.InputParameterNumberError);
@@ -8,15 +8,7 @@ function AddElements(obj, varargin)
         if (isa(varargin{i}, Enumerations.ClassType.Process))
             if (~obj.ExistProcess(varargin{i}))
                 obj.Processes{1, numel(obj.Processes) + 1} = varargin{i};
-                varargin{i}.Index = numel(obj.Processes) + 1;
-            end
-            continue;
-        end
-        
-        if (isa(varargin{i}, Enumerations.ClassType.Product))
-            if (~obj.ExistProduct(varargin{i}))
-                obj.Products{1, numel(obj.Products) + 1} = varargin{i};
-                varargin{i}.Index = numel(obj.Products) + 1;
+                varargin{i}.Index = numel(obj.Processes);
             end
             continue;
         end

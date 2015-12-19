@@ -20,7 +20,7 @@ classdef Product < handle
                         error(Enumerations.ErrorType.InputParameterTypeError);
                     end
                     
-                    obj = Product(Name);
+                    obj = Classes.Product(Name);
                     obj.Value = Value;
                 otherwise
                     error(Enumerations.ErrorType.InputParameterNumberError);

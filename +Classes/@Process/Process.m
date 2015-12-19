@@ -11,6 +11,7 @@ classdef Process < handle
 
     properties
         Name = '';
+        Index = 0;
         % The parents of process can be system functions, and other processes.
         Parents = {};
         % The state of its parent is true, means that the corresponding system function or process works well.

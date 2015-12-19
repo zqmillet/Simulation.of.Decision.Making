@@ -1,13 +1,14 @@
-classdef ProductionModel
+classdef ProductionModel < handle
     properties
         Processes = {};
         Products = {};
+        IncidenceMatrix = [];
     end
     
     methods
         Exist = ExistProcess(obj, Process);
         Exist = ExistProduct(obj, Product);
-        AddElements(obj, varargin);
+        AddProcesses(obj, varargin);
         Initialize(obj);
     end    
 end
