@@ -1,4 +1,14 @@
 classdef Process < handle
+% The modol of process is shown as follows.
+%   
+%             +--------+
+%    Input--->+  Name  +---> Output
+%             +--+--+--+
+%                |  |
+%               /    \
+%              /      \
+%          Parent1  Parent2 
+
     properties
         Name = '';
         % The parents of process can be system functions, and other processes.
@@ -6,6 +16,9 @@ classdef Process < handle
         % The state of its parent is true, means that the corresponding system function or process works well.
         % The state of its patent is false, means that the corresponding system function or process doesn't work well.
         TruthTable = [];
+        
+        Inputs = {};
+        Outputs = {};
     end  
     
     methods
@@ -22,7 +35,11 @@ classdef Process < handle
         end        
         AddParents(obj, varargin);
         AddAllParents(obj, varargin);
+        AddInputs(obj, varargin);
+        AddOutputs(obj, varargin);
         Exist = ExistParent(obj, Parent);
+        Exist = ExistInput(obj, Product);
+        Exist = ExistOutput(obj, Product);
         State = GetState(obj);
     end
 end
