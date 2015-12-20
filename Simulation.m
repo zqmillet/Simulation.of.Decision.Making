@@ -626,7 +626,45 @@ ProductionModel = Classes.ProductionModel();
 
 ProductionModel.AddProcesses(p01, p02, p03, p04, p05, p06, p07);
 ProductionModel.Initialize();
-tic
+
 ProductionModel.Inference();
 disp(ProductionModel.GetLoss());
-toc
+
+%% System State Test
+SystemState = Classes.SystemState();
+SystemState.AddAllFunctions(f01, f02, f03, f04, f05, ...
+    1,                   ...  F    F    F    F    F
+    1,                   ...  F    F    F    F    T
+    1,                   ...  F    F    F    T    F
+    1,                   ...  F    F    F    T    T
+    1,                   ...  F    F    T    F    F
+    1,                   ...  F    F    T    F    T
+    1,                   ...  F    F    T    T    F
+    0,                   ...  F    F    T    T    T
+    1,                   ...  F    T    F    F    F
+    1,                   ...  F    T    F    F    T
+    1,                   ...  F    T    F    T    F
+    1,                   ...  F    T    F    T    T
+    1,                   ...  F    T    T    F    F
+    1,                   ...  F    T    T    F    T
+    1,                   ...  F    T    T    T    F
+    1,                   ...  F    T    T    T    T
+    1,                   ...  T    F    F    F    F
+    1,                   ...  T    F    F    F    T
+    1,                   ...  T    F    F    T    F
+    1,                   ...  T    F    F    T    T
+    1,                   ...  T    F    T    F    F
+    1,                   ...  T    F    T    F    T
+    1,                   ...  T    F    T    T    F
+    1,                   ...  T    F    T    T    T
+    1,                   ...  T    T    F    F    F
+    1,                   ...  T    T    F    F    T
+    1,                   ...  T    T    F    T    F
+    1,                   ...  T    T    F    T    T
+    1,                   ...  T    T    T    F    F
+    1,                   ...  T    T    T    F    T
+    1,                   ...  T    T    T    T    F
+    1);                    %  T    T    T    T    T 
+
+% SystemState.GetCurrentState();
+SystemState.GetNearStates(1)

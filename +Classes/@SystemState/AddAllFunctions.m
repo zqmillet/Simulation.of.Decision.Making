@@ -5,7 +5,7 @@ function AddAllFunctions(obj, varargin)
     end
     
     FunctionNumber = 0;
-    for i = numel(varargin)
+    for i = 1:numel(varargin)
         if (~isa(varargin{i}, Enumerations.ClassType.Node))
             break;
         end
