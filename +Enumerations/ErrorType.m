@@ -26,6 +26,8 @@ classdef (Sealed) ErrorType
             'The process node has no support node!';
         TheValueOfTheTruthTableIsNotZeroOrOne = ...
             'The value of the truth table is not 0 or 1!';
+        InnerMatrixDimensionsMustAgree = ...
+            'Inner matrix dimensions must agree!';
     end
 
     methods (Access = private)
