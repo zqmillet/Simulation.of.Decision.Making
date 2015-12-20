@@ -667,4 +667,4 @@ SystemState.AddAllFunctions(f01, f02, f03, f04, f05, ...
     1);                    %  T    T    T    T    T 
 
 % SystemState.GetCurrentState();
-SystemState.GetNearStates(1)
+States = SystemState.GetNearStates(1);

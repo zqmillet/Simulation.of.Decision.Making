@@ -24,17 +24,17 @@ function States = GetNearStates(obj, Distance)
     obj.GetCurrentState();
     
     StateNumber = 0;
-    States = zeros(size(InversionIndexes, 1), numel(obj.Functions));
+    States = cell(1, numel(InversionIndexes));
     for i = 1:size(InversionIndexes, 1)
         Running = zeros(size(obj.IsRunning));
         Running(InversionIndexes(i, :)) = 1;
         Running = abs(obj.IsRunning - Running);
         if (obj.LegalTable(1, Functions.BinaryArray2Number(Running) + 1) == 1)
             StateNumber = StateNumber + 1;
-            States(StateNumber, :) = Running;
+            States{1, StateNumber} = Classes.SystemState(Running);
         end
     end
     
-    States = States(1:StateNumber, :);    
+    States = States(:, 1:StateNumber);    
 end
 
