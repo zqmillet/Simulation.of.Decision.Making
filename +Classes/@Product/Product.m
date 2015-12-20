@@ -4,6 +4,7 @@ classdef Product < handle
         Name = '';
         Value = 0;
         Index = 0;
+        Exist = false;
     end
     
     methods

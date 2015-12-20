@@ -558,7 +558,7 @@ BayesianNetwork.AddNodes(... Add attack nodes.
 BayesianNetwork.Initialize();
 
 %% Add the evidences into the Bayesian network.
-BayesianNetwork.AddEvidences(f05, f04, f06);
+BayesianNetwork.AddEvidences(f02);
 
 BayesianNetwork.Inference();
 
@@ -600,12 +600,12 @@ p07.AddAllParents(f07, ...
     1);           % T
 
 s01 = Classes.Product('s01', 100);
-s02 = Classes.Product('s02', 100);
-s03 = Classes.Product('s03', 100);
-s04 = Classes.Product('s04', 100);
-s05 = Classes.Product('s05', 100);
-s06 = Classes.Product('s06', 100);
-s07 = Classes.Product('s07', 100);
+s02 = Classes.Product('s02', 200);
+s03 = Classes.Product('s03', 250);
+s04 = Classes.Product('s04',  10);
+s05 = Classes.Product('s05',   0);
+s06 = Classes.Product('s06', 300);
+s07 = Classes.Product('s07', 400);
 
 p01.AddOutputs(s01);
 p02.AddOutputs(s02);
@@ -623,6 +623,10 @@ p06.AddInputs(s03);
 p07.AddInputs(s04, s05);
 
 ProductionModel = Classes.ProductionModel();
+
 ProductionModel.AddProcesses(p01, p02, p03, p04, p05, p06, p07);
 ProductionModel.Initialize();
+tic
 ProductionModel.Inference();
+disp(ProductionModel.GetLoss());
+toc

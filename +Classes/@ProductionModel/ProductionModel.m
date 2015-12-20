@@ -11,6 +11,7 @@ classdef ProductionModel < handle
         AddProcesses(obj, varargin);
         Initialize(obj);
         Inference(obj);
+        Loss = GetLoss(obj);
     end    
 end
 
