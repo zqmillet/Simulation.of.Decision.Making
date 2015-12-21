@@ -12,8 +12,10 @@ classdef RiskModel
         AddElements(obj, varargin);
         Initialize(obj);
         Inference(obj);
-        Risk = GetRisk(obj);
-    end
-    
+        Risk = GetRisk(obj, varargin);
+        SetSystemState(obj, SystemState);
+        AddEvidences(obj, varargin);
+        RemoveEvidences(obj, varargin);
+    end    
 end
 

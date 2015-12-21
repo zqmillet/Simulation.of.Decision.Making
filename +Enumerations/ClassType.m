@@ -6,6 +6,7 @@ classdef (Sealed) ClassType
         BayesianNetwork  = 'Classes.BayesianNetwork';
         Process          = 'Classes.Process';
         Product          = 'Classes.Product';
+        SystemState      = 'Classes.SystemState';
         AttackStrategy   = 'Classes.Strategies.Attack';
         SecurityStrategy = 'Classes.Strategies.Security';
         RecoverStrategy  = 'Classes.Strategies.Recover';
