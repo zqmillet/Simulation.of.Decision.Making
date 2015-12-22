@@ -18,6 +18,7 @@ classdef RiskModel
         SetSystemState(obj, SystemState);
         AddEvidences(obj, varargin);
         RemoveEvidences(obj, varargin);
+        SetNodesUnreachable(obj, varargin);
     end    
 end
 

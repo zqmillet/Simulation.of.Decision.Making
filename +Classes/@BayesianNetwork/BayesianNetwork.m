@@ -19,6 +19,5 @@ classdef BayesianNetwork < handle
         Display(obj, varargin);
         String = Evidences2String(obj);
         Loss = GetLoss(obj);
-        SetNodesUnreachable(obj, varargin);
     end
 end

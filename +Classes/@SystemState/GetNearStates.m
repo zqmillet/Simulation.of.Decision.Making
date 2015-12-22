@@ -32,6 +32,8 @@ function States = GetNearStates(obj, Distance)
         if (obj.LegalTable(1, Functions.BinaryArray2Number(Running) + 1) == 1)
             StateNumber = StateNumber + 1;
             States{1, StateNumber} = Classes.SystemState(Running);
+            States{1, StateNumber}.Functions = obj.Functions;
+            States{1, StateNumber}.LegalTable = obj.LegalTable;
         end
     end
     

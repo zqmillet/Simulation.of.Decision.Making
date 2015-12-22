@@ -294,6 +294,16 @@ f01.AddAllParents(a10, a16, a22, ...
     0.60000000, ... T    T    F
     0.88500000);  % T    T    T
 
+% f01.AddAllParents(a10, a16, a22, ...
+%     0.00000000, ... F    F    F
+%     0.00000000, ... F    F    T
+%     0.00000000, ... F    T    F
+%     0.00000000, ... F    T    T
+%     0.00000000, ... T    F    F
+%     0.00000000, ... T    F    T
+%     0.00000000, ... T    T    F
+%     0.00000000);  % T    T    T
+
 f02.AddAllParents(a10, a16, a22, ...
     0.00000001, ... F    F    F
     0.30000000, ... F    F    T
@@ -558,9 +568,9 @@ BayesianNetwork.AddNodes(... Add attack nodes.
 BayesianNetwork.Initialize();
 
 %% Add the evidences into the Bayesian network.
-BayesianNetwork.AddEvidences(f02);
+%BayesianNetwork.AddEvidences(f02);
 
-BayesianNetwork.Inference();
+%BayesianNetwork.Inference();
 
 %% Process test
 p01 = Classes.Process('p01');
@@ -627,9 +637,6 @@ ProductionModel = Classes.ProductionModel();
 ProductionModel.AddProcesses(p01, p02, p03, p04, p05, p06, p07);
 ProductionModel.Initialize();
 
-ProductionModel.Inference();
-disp(ProductionModel.GetLoss());
-
 %% System State Test
 SystemState = Classes.SystemState();
 SystemState.AddAllFunctions(f01, f02, f03, f04, f05, ...
@@ -667,7 +674,28 @@ SystemState.AddAllFunctions(f01, f02, f03, f04, f05, ...
     1);                    %  T    T    T    T    T 
 
 % SystemState.GetCurrentState();
-States = SystemState.GetNearStates(1);
+States = SystemState.GetNearStates(2);
+
 
 RiskModel = Classes.RiskModel();
-RiskModel.SetSystemState(SystemState);
+RiskModel.BayesianNetwork = BayesianNetwork;
+RiskModel.ProductionModel = ProductionModel;
+RiskModel.BayesianNetwork.AddEvidences(a01,a02);
+RiskModel.GetRisk();
+
+BayesianNetwork.Graph.CPD{f01.Index} = ...
+    tabular_CPD(BayesianNetwork.Graph, f01.Index, ... 
+    [ones(1, 2^(numel(f01.Parents))), zeros(1, 2^(numel(f01.Parents)))]);
+BayesianNetwork.InferenceEngine = jtree_inf_engine(BayesianNetwork.Graph);
+
+RiskModel.GetRisk();
+
+% SystemState.IsRunning = [0, 1, 1, 1, 1];
+% RiskModel.SetSystemState(SystemState);
+% RiskModel.GetRisk();
+
+% for i = 1:numel(States)    
+%     States{i}.IsRunning
+%     RiskModel.SetSystemState(States{i});
+%     RiskModel.GetRisk();
+% end
