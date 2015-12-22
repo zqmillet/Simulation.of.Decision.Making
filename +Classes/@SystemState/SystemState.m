@@ -32,5 +32,6 @@ classdef SystemState < handle
         Exist = ExistFunction(obj, Function);
         GetCurrentState(obj);
         States = GetNearStates(obj, Distance);
+        Legal = IsLegal(obj);
     end    
 end

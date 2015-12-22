@@ -668,3 +668,6 @@ SystemState.AddAllFunctions(f01, f02, f03, f04, f05, ...
 
 % SystemState.GetCurrentState();
 States = SystemState.GetNearStates(1);
+
+RiskModel = Classes.RiskModel();
+RiskModel.SetSystemState(SystemState);

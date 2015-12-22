@@ -2,12 +2,14 @@ classdef RiskModel
     properties
         BayesianNetwork;
         ProductionModel;
+        SystemState;
     end
     
     methods
         function obj = RiskModel()
             obj.BayesianNetwork = Classes.BayesianNetwork();
             obj.ProductionModel = Classes.ProductionModel();
+            obj.SystemState = Classes.SystemState();
         end
         AddElements(obj, varargin);
         Initialize(obj);
