@@ -656,10 +656,10 @@ RiskModel.AddAllBases(f01, f02, f03, f04, f05, ...
 RiskModel.Initialize();
 
 %% System State Test
-RiskModel.BayesianNetwork.AddEvidences(a01);
+RiskModel.AddEvidences(a01);
 RiskModel.GetRisk();
 
-NextSystemStates = RiskModel.SystemState.GetNearStates(3);
+NextSystemStates = RiskModel.GetNearStates(3);
 
 for i = 1:numel(NextSystemStates)    
      NextSystemStates{i}.IsRunning

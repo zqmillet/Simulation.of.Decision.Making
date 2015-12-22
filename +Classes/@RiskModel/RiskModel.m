@@ -19,6 +19,7 @@ classdef RiskModel
         AddEvidences(obj, varargin);
         RemoveEvidences(obj, varargin);
         AddAllBases(obj, varargin);
+        States = GetNearStates(obj, Distance);
     end    
 end
 
