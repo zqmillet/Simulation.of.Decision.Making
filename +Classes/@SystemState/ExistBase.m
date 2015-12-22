@@ -1,19 +1,19 @@
-function Exist = ExistFunction(obj, Function)
+function Exist = ExistBase(obj, Base)
 
     if (nargin ~= 2)
         error(Enumerations.ErrorType.InputParameterNumberError); 
     end
     
-    if (~isa(Function, Enumerations.ClassType.Node))
+    if (~isa(Base, Enumerations.ClassType.Node))
         error(Enumerations.ErrorType.InputParameterTypeError);
     end
     
-    if (Function.Type ~= Enumerations.NodeType.Function)
+    if (Base.Type ~= Enumerations.NodeType.Function)
         error(Enumerations.ErrorType.InputParameterTypeError);
     end
     
-    for i = 1:numel(obj.Functions)
-        if (obj.Functions{i} == Function)
+    for i = 1:numel(obj.Bases)
+        if (obj.Bases{i} == Base)
             Exist = true;
             return;
         end

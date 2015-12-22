@@ -11,9 +11,13 @@ function SetSystemState(obj, SystemState)
         error(Enumerations.ErrorType.SystemStateIsIllegal);
     end
     
+    if (obj.SystemState.IsRunning == SystemState.IsRunning)
+        return;
+    end
+    
     % Get the set of functions which will be shut down and the set of fucntions which will be turned on.
-    ShutDownFunctions = SystemState.Functions(obj.SystemState.IsRunning - SystemState.IsRunning == 1);
-    TurnOnFunctons = SystemState.Functions(obj.SystemState.IsRunning - SystemState.IsRunning == -1);
+    TurnDownFunctions = SystemState.Bases(obj.SystemState.IsRunning - SystemState.IsRunning == 1);
+    TurnOnFunctons = SystemState.Bases(obj.SystemState.IsRunning - SystemState.IsRunning == -1);
     obj.SystemState.IsRunning = SystemState.IsRunning;
     
     % In multi-level Bayesian network, set the this function node unreachable or recover it reachable.
@@ -21,8 +25,8 @@ function SetSystemState(obj, SystemState)
         obj.BayesianNetwork.Graph.CPD{TurnOnFunctons{i}.Index} = tabular_CPD(obj.BayesianNetwork.Graph, TurnOnFunctons{i}.Index, [1 - TurnOnFunctons{i}.ConditionalProbabilities, TurnOnFunctons{i}.ConditionalProbabilities]);
     end
     
-    for i = 1:numel(ShutDownFunctions)     
-        obj.BayesianNetwork.Graph.CPD{ShutDownFunctions{i}.Index} = tabular_CPD(obj.BayesianNetwork.Graph, ShutDownFunctions{i}.Index, [ones(1, 2^(numel(ShutDownFunctions{i}.Parents))), zeros(1, 2^(numel(ShutDownFunctions{i}.Parents)))]);
+    for i = 1:numel(TurnDownFunctions)     
+        obj.BayesianNetwork.Graph.CPD{TurnDownFunctions{i}.Index} = tabular_CPD(obj.BayesianNetwork.Graph, TurnDownFunctions{i}.Index, [ones(1, 2^(numel(TurnDownFunctions{i}.Parents))), zeros(1, 2^(numel(TurnDownFunctions{i}.Parents)))]);
     end
     obj.BayesianNetwork.InferenceEngine = jtree_inf_engine(obj.BayesianNetwork.Graph);
 end

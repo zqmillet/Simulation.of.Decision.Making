@@ -1,10 +1,10 @@
-function AddAllFunctions(obj, varargin)
+function AddAllBases(obj, varargin)
     
     if (nargin < 2)
         error(Enumerations.ErrorType.InputParameterNumberError);
     end
     
-    FunctionNumber = 0;
+    BaseNumber = 0;
     for i = 1:numel(varargin)
         if (~isa(varargin{i}, Enumerations.ClassType.Node))
             break;
@@ -14,26 +14,26 @@ function AddAllFunctions(obj, varargin)
             error(Enumerations.ErrorType.InputParameterTypeError);
         end
         
-        if (~obj.ExistFunction(varargin{i}))
-            FunctionNumber = FunctionNumber + 1;
-            obj.Functions{1, numel(obj.Functions) + 1} = varargin{i};
+        if (~obj.ExistBase(varargin{i}))
+            BaseNumber = BaseNumber + 1;
+            obj.Bases{1, numel(obj.Bases) + 1} = varargin{i};
         end
     end
     
-    LegalTableLength = numel(varargin) - FunctionNumber;
+    LegalTableLength = numel(varargin) - BaseNumber;
     
-    if (LegalTableLength ~= 2^FunctionNumber)
+    if (LegalTableLength ~= 2^BaseNumber)
         error(Enumerations.ErrorType.InputParameterNumberError);
     end
     
     obj.LegalTable = zeros(1, LegalTableLength);
     
     for i = 1:LegalTableLength
-        if (~isa(varargin{FunctionNumber + i}, Enumerations.ClassType.Double))
+        if (~isa(varargin{BaseNumber + i}, Enumerations.ClassType.Double))
             error(Enumerations.ErrorType.InputParameterTypeError);
         end
         
-        obj.LegalTable(1, i) = varargin{FunctionNumber + i};
+        obj.LegalTable(1, i) = varargin{BaseNumber + i};
     end
 
 end

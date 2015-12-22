@@ -81,7 +81,7 @@ x06 = Classes.Node('Staff5-9 injured',                  NodeType, 1000000);
 x07 = Classes.Node('Water pollution',                   NodeType, 200000 );
 x08 = Classes.Node('Air pollution',                     NodeType, 200000 );  
 
-%% Set the conditional probabilities of nodes
+%% Set the conditional probabilities of nodes.
 % Set attack nodes.
 a01.AddAllParents(... Has no parent node
     0.00000001);
@@ -536,33 +536,7 @@ x08.AddAllParents(e06, ...
     0.00000003, ... F
     0.90000000);  % T 
 
-%% Create the Bayesian network.
-BayesianNetwork = Classes.BayesianNetwork();
-
-%% Add the nodes into the Bayesian network.
-BayesianNetwork.AddNodes(... Add attack nodes.
-                         a01, a02, a03, a04, a05, a06, a07, a08, a09, a10, ...
-                         a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, ...
-                         a21, a22, a23, a24, a25, a26, a27, ...
-                         ... Add resource nodes.
-                         r01, r02, r03, r04, r05, r06, r07, r08, r09, ...
-                         ... Add function nodes.
-                         f01, f02, f03, f04, f05, f06, f07, f08, f09, f10, ...
-                         f11, f12, ...
-                         ... Add incident nodes.
-                         e01, e02, e03, e04, e05, e06, e07, e08, ...
-                         ... Add asset nodes.
-                         x01, x02, x03, x04, x05, x06, x07, x08);
-
-%% Initialize the Bayesian network.
-BayesianNetwork.Initialize();
-
-%% Add the evidences into the Bayesian network.
-%BayesianNetwork.AddEvidences(f02);
-
-%BayesianNetwork.Inference();
-
-%% Process test
+%% Create Processes.
 p01 = Classes.Process('p01');
 p02 = Classes.Process('p02');
 p03 = Classes.Process('p03');
@@ -571,6 +545,7 @@ p05 = Classes.Process('p05');
 p06 = Classes.Process('p06');
 p07 = Classes.Process('p07');
 
+%% Set the conditional probabilities of processes.
 p01.AddAllParents(f01, ...
     0,          ... F
     1);           % T
@@ -599,6 +574,7 @@ p07.AddAllParents(f07, ...
     0,          ... F
     1);           % T
 
+%% Create product.
 s01 = Classes.Product('s01', 100);
 s02 = Classes.Product('s02', 200);
 s03 = Classes.Product('s03', 250);
@@ -622,57 +598,68 @@ p05.AddInputs(s03);
 p06.AddInputs(s03);
 p07.AddInputs(s04, s05);
 
-ProductionModel = Classes.ProductionModel();
+%% Create risk model.
+RiskModel = Classes.RiskModel();
 
-ProductionModel.AddProcesses(p01, p02, p03, p04, p05, p06, p07);
-ProductionModel.Initialize();
+%% Add elements into and initialize the risk model.
+RiskModel.AddElements(... Add attack nodes.
+                      a01, a02, a03, a04, a05, a06, a07, a08, a09, a10, ...
+                      a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, ...
+                      a21, a22, a23, a24, a25, a26, a27, ...
+                      ... Add resource nodes.
+                      r01, r02, r03, r04, r05, r06, r07, r08, r09, ...
+                      ... Add function nodes.
+                      f01, f02, f03, f04, f05, f06, f07, f08, f09, f10, ...
+                      f11, f12, ...
+                      ... Add incident nodes.
+                      e01, e02, e03, e04, e05, e06, e07, e08, ...
+                      ... Add asset nodes.
+                      x01, x02, x03, x04, x05, x06, x07, x08, ...
+                      ... Add processes.
+                      p01, p02, p03, p04, p05, p06, p07);
+
+%% Add bases and legal table.
+RiskModel.AddAllBases(f01, f02, f03, f04, f05, ...
+    1,             ...  F    F    F    F    F
+    1,             ...  F    F    F    F    T
+    1,             ...  F    F    F    T    F
+    1,             ...  F    F    F    T    T
+    1,             ...  F    F    T    F    F
+    1,             ...  F    F    T    F    T
+    1,             ...  F    F    T    T    F
+    0,             ...  F    F    T    T    T
+    1,             ...  F    T    F    F    F
+    1,             ...  F    T    F    F    T
+    1,             ...  F    T    F    T    F
+    1,             ...  F    T    F    T    T
+    1,             ...  F    T    T    F    F
+    1,             ...  F    T    T    F    T
+    1,             ...  F    T    T    T    F
+    1,             ...  F    T    T    T    T
+    1,             ...  T    F    F    F    F
+    1,             ...  T    F    F    F    T
+    1,             ...  T    F    F    T    F
+    1,             ...  T    F    F    T    T
+    1,             ...  T    F    T    F    F
+    1,             ...  T    F    T    F    T
+    1,             ...  T    F    T    T    F
+    1,             ...  T    F    T    T    T
+    1,             ...  T    T    F    F    F
+    1,             ...  T    T    F    F    T
+    1,             ...  T    T    F    T    F
+    1,             ...  T    T    F    T    T
+    1,             ...  T    T    T    F    F
+    1,             ...  T    T    T    F    T
+    1,             ...  T    T    T    T    F
+    1);              %  T    T    T    T    T
+
+RiskModel.Initialize();
 
 %% System State Test
-SystemState = Classes.SystemState();
-SystemState.AddAllFunctions(f01, f02, f03, f04, f05, ...
-    1,                   ...  F    F    F    F    F
-    1,                   ...  F    F    F    F    T
-    1,                   ...  F    F    F    T    F
-    1,                   ...  F    F    F    T    T
-    1,                   ...  F    F    T    F    F
-    1,                   ...  F    F    T    F    T
-    1,                   ...  F    F    T    T    F
-    0,                   ...  F    F    T    T    T
-    1,                   ...  F    T    F    F    F
-    1,                   ...  F    T    F    F    T
-    1,                   ...  F    T    F    T    F
-    1,                   ...  F    T    F    T    T
-    1,                   ...  F    T    T    F    F
-    1,                   ...  F    T    T    F    T
-    1,                   ...  F    T    T    T    F
-    1,                   ...  F    T    T    T    T
-    1,                   ...  T    F    F    F    F
-    1,                   ...  T    F    F    F    T
-    1,                   ...  T    F    F    T    F
-    1,                   ...  T    F    F    T    T
-    1,                   ...  T    F    T    F    F
-    1,                   ...  T    F    T    F    T
-    1,                   ...  T    F    T    T    F
-    1,                   ...  T    F    T    T    T
-    1,                   ...  T    T    F    F    F
-    1,                   ...  T    T    F    F    T
-    1,                   ...  T    T    F    T    F
-    1,                   ...  T    T    F    T    T
-    1,                   ...  T    T    T    F    F
-    1,                   ...  T    T    T    F    T
-    1,                   ...  T    T    T    T    F
-    1);                    %  T    T    T    T    T 
-
-SystemState.GetCurrentState();
-
-RiskModel = Classes.RiskModel();
-RiskModel.BayesianNetwork = BayesianNetwork;
-RiskModel.ProductionModel = ProductionModel;
-RiskModel.SystemState = SystemState;
 RiskModel.BayesianNetwork.AddEvidences(a01);
 RiskModel.GetRisk();
 
-NextSystemStates = RiskModel.SystemState.GetNearStates(1);
+NextSystemStates = RiskModel.SystemState.GetNearStates(3);
 
 for i = 1:numel(NextSystemStates)    
      NextSystemStates{i}.IsRunning

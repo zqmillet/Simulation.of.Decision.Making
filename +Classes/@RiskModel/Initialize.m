@@ -6,5 +6,6 @@ function Inference(obj)
     
     obj.BayesianNetwork.Initialize();
     obj.ProductionModel.Initialize();
+    obj.SystemState.GetCurrentState();
 end
 

@@ -14,11 +14,11 @@ function States = GetNearStates(obj, Distance)
         error(Enumerations.ErrorType.InputParameterTypeError);
     end
     
-    if (Distance < 0 || Distance > numel(obj.Functions))
+    if (Distance < 0 || Distance > numel(obj.Bases))
         error(Enumerations.ErrorType.InputParameterValueError);
     end
     
-    Indexes = 1:numel(obj.Functions);
+    Indexes = 1:numel(obj.Bases);
     InversionIndexes = nchoosek(Indexes, Distance);
     
     obj.GetCurrentState();
@@ -31,8 +31,9 @@ function States = GetNearStates(obj, Distance)
         Running = abs(obj.IsRunning - Running);
         if (obj.LegalTable(1, Functions.BinaryArray2Number(Running) + 1) == 1)
             StateNumber = StateNumber + 1;
-            States{1, StateNumber} = Classes.SystemState(Running);
-            States{1, StateNumber}.Functions = obj.Functions;
+            States{1, StateNumber} = Classes.SystemState();
+            States{1, StateNumber}.IsRunning = Running;
+            States{1, StateNumber}.Bases = obj.Bases;
             States{1, StateNumber}.LegalTable = obj.LegalTable;
         end
     end
