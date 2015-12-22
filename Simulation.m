@@ -669,7 +669,7 @@ RiskModel = Classes.RiskModel();
 RiskModel.BayesianNetwork = BayesianNetwork;
 RiskModel.ProductionModel = ProductionModel;
 RiskModel.SystemState = SystemState;
-%RiskModel.BayesianNetwork.AddEvidences();
+RiskModel.BayesianNetwork.AddEvidences(a01);
 RiskModel.GetRisk();
 
 NextSystemStates = RiskModel.SystemState.GetNearStates(1);

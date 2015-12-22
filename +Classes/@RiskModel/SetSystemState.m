@@ -16,16 +16,13 @@ function SetSystemState(obj, SystemState)
     TurnOnFunctons = SystemState.Functions(obj.SystemState.IsRunning - SystemState.IsRunning == -1);
     obj.SystemState.IsRunning = SystemState.IsRunning;
     
-    % In multi-level Bayesian network, set the this function node unreachable.
-    obj.SetNodesReachable(TurnOnFunctons);
-    obj.SetNodesUnreachable(ShutDownFunctions);
-    obj.BayesianNetwork.InferenceEngine = jtree_inf_engine(obj.BayesianNetwork.Graph);
-    % 
-    for i = 1:numel(TurnOnFunctons)
-        TurnOnFunctons{i}.Probability = 0;
+    % In multi-level Bayesian network, set the this function node unreachable or recover it reachable.
+    for i = 1:numel(TurnOnFunctons)             
+        obj.BayesianNetwork.Graph.CPD{TurnOnFunctons{i}.Index} = tabular_CPD(obj.BayesianNetwork.Graph, TurnOnFunctons{i}.Index, [1 - TurnOnFunctons{i}.ConditionalProbabilities, TurnOnFunctons{i}.ConditionalProbabilities]);
     end
     
-    for i = 1:numel(ShutDownFunctions)
-        ShutDownFunctions{i}.Probability = 1;
+    for i = 1:numel(ShutDownFunctions)     
+        obj.BayesianNetwork.Graph.CPD{ShutDownFunctions{i}.Index} = tabular_CPD(obj.BayesianNetwork.Graph, ShutDownFunctions{i}.Index, [ones(1, 2^(numel(ShutDownFunctions{i}.Parents))), zeros(1, 2^(numel(ShutDownFunctions{i}.Parents)))]);
     end
+    obj.BayesianNetwork.InferenceEngine = jtree_inf_engine(obj.BayesianNetwork.Graph);
 end
