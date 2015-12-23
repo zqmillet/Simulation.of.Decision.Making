@@ -23,6 +23,8 @@ classdef Security < Classes.Strategies.Strategy
         
         AddFunctions(obj, varargin);
         AddAttackStrategies(obj, varargin);
+        Exist = ExistFunction(obj, Function);
+        Exist = ExistAttackStrategy(obj, AttackStrategy);
     end    
 end
 

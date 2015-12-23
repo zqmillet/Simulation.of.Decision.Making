@@ -36,7 +36,8 @@ classdef (Sealed) ErrorType
             'The dimension of LegalTable is wrong!';
         SystemStateIsIllegal = ...
             'System state is illegal!';
-        
+        NumbersOfKeysAndValuesAreNotEqual = ...
+            'Numbers of keys and values of map are not equal!';
     end
 
     methods (Access = private)
