@@ -659,10 +659,12 @@ RiskModel.Initialize();
 RiskModel.AddEvidences(a01);
 RiskModel.GetRisk();
 
-NextSystemStates = RiskModel.GetNearStates(3);
+% NextSystemStates = RiskModel.GetNearStates(3);
+% 
+% for i = 1:numel(NextSystemStates)    
+%      NextSystemStates{i}.IsRunning
+%      RiskModel.SetSystemState(NextSystemStates{i});
+%      RiskModel.GetRisk();
+% end
 
-for i = 1:numel(NextSystemStates)    
-     NextSystemStates{i}.IsRunning
-     RiskModel.SetSystemState(NextSystemStates{i});
-     RiskModel.GetRisk();
-end
+
