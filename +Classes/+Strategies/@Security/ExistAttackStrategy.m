@@ -7,13 +7,6 @@ function Exist = ExistAttackStrategy(obj, AttackStrategy)
         error(Enumerations.ErrorType.InputParameterTypeError);
     end
     
-    for i = 1:numel(obj.AttackStrategies)
-        if (obj.AttackStrategies{i} == AttackStrategy)
-            Exist = true;
-            return;
-        end
-    end
-    
-    Exist = false;
+    Exist = obj.AttackStrategies.Exsit(AttackStrategy);
 end
 
