@@ -655,7 +655,7 @@ RiskModel.AddAllBases(f01, f02, f03, f04, f05, ...
 
 RiskModel.Initialize();
 
-%% System State Test
+%% Risk model test
 RiskModel.AddEvidences(a01);
 RiskModel.GetRisk();
 
@@ -666,5 +666,44 @@ RiskModel.GetRisk();
 %      RiskModel.SetSystemState(NextSystemStates{i});
 %      RiskModel.GetRisk();
 % end
+
+%% Strategies test
+ds01 = Classes.Strategies.Security('ds01');
+ds02 = Classes.Strategies.Security('ds02');
+ds03 = Classes.Strategies.Security('ds03');
+ds04 = Classes.Strategies.Security('ds04');
+
+ds01.AddAttackStrategies(a01, 0.1, ...
+                         a02, 0.3, ...
+                         a03, 0.5);
+                     
+ds02.AddAttackStrategies(a01, 0.6, ...
+                         a02, 0.3, ...
+                         a04, 0.5);
+                     
+ds03.AddAttackStrategies(a01, 0.2, ...
+                         a02, 0.4, ...
+                         a05, 0.5);
+                     
+ds04.AddAttackStrategies(a01, 0.1, ...
+                         a02, 0.3, ...
+                         a03, 0.5, ...
+                         a04, 0.8);
+
+
+ds01.AddFunctions(f01, f02);
+ds02.AddFunctions(f02, f03);
+ds03.AddFunctions(f04);
+ds04.AddFunctions(f01, f05);
+
+dr01 = Classes.Strategies.Recover('dr01', 1000);
+dr02 = Classes.Strategies.Recover('dr02', 2000);
+dr03 = Classes.Strategies.Recover('dr03', 3000);
+dr04 = Classes.Strategies.Recover('dr04', 4000);
+
+dr01.AddFunctions(f01, f03);
+dr02.AddFunctions(f02);
+dr03.AddFunctions(f04, f05);
+
 
 

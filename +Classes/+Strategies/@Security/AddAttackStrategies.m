@@ -4,10 +4,14 @@ function AddAttackStrategies(obj, varargin)
     end
     
     for i = 1:2:numel(varargin)
-        if (~isa(varargin{i}, Enumerations.ClassType.AttackStrategy))
+        if (~isa(varargin{i}, Enumerations.ClassType.Node))
             error(Enumerations.ErrorType.InputParameterTypeError);
         end
         
+        if (varargin{i}.Type ~= Enumerations.NodeType.Attack)
+            error(Enumerations.ErrorType.InputParameterTypeError);
+        end
+            
         if (~isa(varargin{i + 1}, Enumerations.ClassType.Double))
             error(Enumerations.ErrorType.InputParameterTypeError);
         end

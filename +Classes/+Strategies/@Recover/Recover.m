@@ -1,5 +1,6 @@
-classdef Recover < Classes.Strategies.Strategy
+classdef Recover < handle
     properties
+        Name = '';
         % The set of system functions which can be recovered by this recover strategy.
         Functions = {};
         % The cost of the enforcement of this recover strategy.
@@ -15,7 +16,7 @@ classdef Recover < Classes.Strategies.Strategy
                     end
                     obj.Name = Name;
                 case 2
-                    if (~isa(~isa(Name, Enumerations.ClassType.Double)))
+                    if (~isa(Cost, Enumerations.ClassType.Double))
                         error(Enumerations.ErrorType.InputParameterTypeError);
                     end
                     obj = Classes.Strategies.Recover(Name);
@@ -26,6 +27,7 @@ classdef Recover < Classes.Strategies.Strategy
         end
         
         AddFunctions(obj, varargin);
+        Exist = ExistFunction(obj, Function);
     end    
 end
 

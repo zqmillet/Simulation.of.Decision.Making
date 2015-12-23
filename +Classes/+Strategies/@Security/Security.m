@@ -1,10 +1,11 @@
-classdef Security < Classes.Strategies.Strategy
+classdef Security < handle
     properties
+        Name = '';
         % The set of system functions which will be invalidated by this security strategy.
         Functions = {};
         % The key of this dictionary is the attack strategy.
         % The value of this dictionary is the prevent probabability.
-        AttackStrategies = Classes.Dictionary();
+        AttackStrategies;
     end
     
     methods
@@ -17,6 +18,7 @@ classdef Security < Classes.Strategies.Strategy
                 error(Enumerations.ErrorType.InputParameterTypeError);
             end
             obj.Name = Name;
+            obj.AttackStrategies = Classes.Dictionary();
         end
         
         AddFunctions(obj, varargin);

@@ -3,7 +3,11 @@ function Exist = ExistAttackStrategy(obj, AttackStrategy)
         error(Enumerations.ErrorType.InputParameterNumberError);
     end
     
-    if (~isa(AttackStrategy, Enumerations.ClassType.AttackStrategy))
+    if (~isa(AttackStrategy, Enumerations.ClassType.Node))
+        error(Enumerations.ErrorType.InputParameterTypeError);
+    end
+    
+    if (AttackStrategy.Type ~= Enumerations.NodeType.Attack)
         error(Enumerations.ErrorType.InputParameterTypeError);
     end
     
