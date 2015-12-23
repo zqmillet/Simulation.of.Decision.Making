@@ -38,6 +38,8 @@ classdef (Sealed) ErrorType
             'System state is illegal!';
         NumbersOfKeysAndValuesAreNotEqual = ...
             'Numbers of keys and values of map are not equal!';
+        ThereDoesNotExistThisKey = ...
+            'There does not exist this key!';
     end
 
     methods (Access = private)
