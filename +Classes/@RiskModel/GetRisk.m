@@ -10,7 +10,9 @@ function Risk = GetRisk(obj, StrategyProfile)
         Risk = AttackRisk + DegradationRisk;
         disp(['Attack Risk = ' num2str(AttackRisk) ', Degradation Risk = ' num2str(DegradationRisk)]);
     elseif (nargin == 2)
-        BayesianNetwork = Functions.Clone(obj.BayesianNetwork);
+        % Deep copy a new Bayesian network, include its nodes.
+        % So we can modify this Bayesian network and its nodes as wish without the modification of original Bayesian network and its nodes.
+        BayesianNetwork = obj.BayesianNetwork.Clone();
         
         RecoverStrategies = {};
         SecurityStrategies = {};

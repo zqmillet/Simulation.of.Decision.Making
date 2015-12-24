@@ -704,6 +704,3 @@ dr04 = Classes.Strategies.Recover('dr04', 4000);
 dr01.AddFunctions(f01, f03);
 dr02.AddFunctions(f02);
 dr03.AddFunctions(f04, f05);
-
-StrategyProfile = {a01, a02, a03, ds01, ds02, dr02, dr04};
-RiskModel.GetRisk(StrategyProfile);
