@@ -10,9 +10,11 @@ function Risk = GetRisk(obj, StrategyProfile)
         Risk = AttackRisk + DegradationRisk;
         disp(['Attack Risk = ' num2str(AttackRisk) ', Degradation Risk = ' num2str(DegradationRisk)]);
     elseif (nargin == 2)
-        RecoverStrategies = {};
-        SecurityStrategies = {};
-        AttackStrategies = {};
+        RecoverStrategies = cell(size(StrategyProfile));
+        SecurityStrategies = cell(size(StrategyProfile));
+        AttackStrategies = cell(size(StrategyProfile));
+        MaxFunctionNumber = 0;
+        
         for i = 1:numel(StrategyProfile)
             if (isa(StrategyProfile{i}, Enumerations.ClassType.Node))
                 if (StrategyProfile{i}.Type == Enumerations.NodeType.Attack)
@@ -27,12 +29,15 @@ function Risk = GetRisk(obj, StrategyProfile)
             end
             
             if (isa(StrategyProfile{i}, Enumerations.ClassType.SecurityStrategy))
+                MaxFunctionNumber = MaxFunctionNumber + numel(StrategyProfile{i}.Functions);
                 SecurityStrategies{1, numel(SecurityStrategies) + 1} = StrategyProfile{i};
                 continue;
             end
             
             error(Enumerations.ErrorType.InputParameterTypeError);
         end
+        
+        
         
         % Handle the attack strategies.
         AttackStrategies = Functions.UniqueCell(AttackStrategies);
@@ -44,10 +49,15 @@ function Risk = GetRisk(obj, StrategyProfile)
         for i = 1:numel(RecoverStrategies)
         end
         
+        
+        
         % Handle the security strategies.
+        ShutDownFunctions = cell(1, MaxFunctionNumber);
         SecurityStrategies = Functions.UniqueCell(SecurityStrategies);
         for i = 1:numel(SecurityStrategies)
-        end
+            ShutDownFunctions{1, end + 1:end + 1 + numel(SecurityStrategies{i}.Functions)} = SecurityStrategies{i}.Functions;
+        end            
+        ShutDownFunctions = Functions.UniqueCell(ShutDownFunctions);
     end
 end
 

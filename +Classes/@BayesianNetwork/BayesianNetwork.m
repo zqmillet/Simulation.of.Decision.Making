@@ -19,6 +19,5 @@ classdef BayesianNetwork < handle
         Display(obj, varargin);
         String = Evidences2String(obj);
         Loss = GetLoss(obj);
-        BayesianNetwork = Clone(obj);
     end
 end
