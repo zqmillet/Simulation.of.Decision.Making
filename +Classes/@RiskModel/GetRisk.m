@@ -10,6 +10,8 @@ function Risk = GetRisk(obj, StrategyProfile)
         Risk = AttackRisk + DegradationRisk;
         disp(['Attack Risk = ' num2str(AttackRisk) ', Degradation Risk = ' num2str(DegradationRisk)]);
     elseif (nargin == 2)
+        BayesianNetwork = Functions.Clone(obj.BayesianNetwork);
+        
         RecoverStrategies = {};
         SecurityStrategies = {};
         AttackStrategies = {};
@@ -33,26 +35,34 @@ function Risk = GetRisk(obj, StrategyProfile)
             end
             
             error(Enumerations.ErrorType.InputParameterTypeError);
-        end
+        end        
         
-        
-        
-        % Handle the attack strategies.
+        % Handle the potential attack strategies, add all potential attack strategies into the evidences list.
         AttackStrategies = Functions.UniqueCell(AttackStrategies);
-        for i = 1:numel(AttackStrategies)
+        BayesianNetwork.AddEvidences(AttackStrategies{:});
+
+        % Handle the security strategies, change the conditional probabilities of the corresponding attack node.
+        SecurityStrategies = Functions.UniqueCell(SecurityStrategies);
+        for i = 1:numel(SecurityStrategies)
+            
         end
         
-        % Handle the recover strategies.
+        % Handle the recover strategies, get the set of function which should be recovered by recover strategies.
+        RecoverFunctions = {};
         RecoverStrategies = Functions.UniqueCell(RecoverStrategies);
         for i = 1:numel(RecoverStrategies)
+            RecoverFunctions = Functions.GetUnion(RecoverFunctions, RecoverStrategies{i}.Functions);
         end
         
         % Handle the security strategies, get the set of functions which should be shut down by security strategies.
         ShutDownFunctions = {};
-        SecurityStrategies = Functions.UniqueCell(SecurityStrategies);
+        
         for i = 1:numel(SecurityStrategies)
             ShutDownFunctions = Functions.GetUnion(ShutDownFunctions, SecurityStrategies{i}.Functions);
         end
+        
+        
+        
     end
 end
 
