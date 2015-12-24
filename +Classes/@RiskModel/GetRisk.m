@@ -52,10 +52,7 @@ function Risk = GetRisk(obj, StrategyProfile)
         SecurityStrategies = Functions.UniqueCell(SecurityStrategies);
         for i = 1:numel(SecurityStrategies)
             ShutDownFunctions = Functions.GetUnion(ShutDownFunctions, SecurityStrategies{i}.Functions);
-        end            
-        ShutDownFunctions = Functions.UniqueCell(ShutDownFunctions);
-        
-        
+        end
     end
 end
 
