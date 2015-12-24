@@ -3,6 +3,7 @@ classdef BayesianNetwork < handle
         Nodes = {};
         Evidences = {};
         Graph;
+        ConditionalProbabilities = Classes.Dictionary();
         IncidenceMatrix;
         InferenceEngine;
     end
@@ -20,5 +21,7 @@ classdef BayesianNetwork < handle
         String = Evidences2String(obj);
         Loss = GetLoss(obj);
         ChildSet = GetChildSet(obj, Node);
+        SetSecurityStrategies(obj, varargin);
+        BayesianNetwork = Clone(obj);
     end
 end
