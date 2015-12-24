@@ -10,27 +10,25 @@ function Risk = GetRisk(obj, StrategyProfile)
         Risk = AttackRisk + DegradationRisk;
         disp(['Attack Risk = ' num2str(AttackRisk) ', Degradation Risk = ' num2str(DegradationRisk)]);
     elseif (nargin == 2)
-        RecoverStrategies = cell(size(StrategyProfile));
-        SecurityStrategies = cell(size(StrategyProfile));
-        AttackStrategies = cell(size(StrategyProfile));
-        MaxFunctionNumber = 0;
+        RecoverStrategies = {};
+        SecurityStrategies = {};
+        AttackStrategies = {};
         
         for i = 1:numel(StrategyProfile)
             if (isa(StrategyProfile{i}, Enumerations.ClassType.Node))
                 if (StrategyProfile{i}.Type == Enumerations.NodeType.Attack)
-                    AttackStrategies{1, numel(AttackStrategies) + 1} = StrategyProfile{i};
+                    AttackStrategies = Functions.GetUnion(AttackStrategies, StrategyProfile(i));
                     continue;
                 end
             end
             
             if (isa(StrategyProfile{i}, Enumerations.ClassType.RecoverStrategy))
-                RecoverStrategies{1, numel(RecoverStrategies) + 1} = StrategyProfile{i};
+                RecoverStrategies = Functions.GetUnion(RecoverStrategies, StrategyProfile(i));
                 continue;
             end
             
             if (isa(StrategyProfile{i}, Enumerations.ClassType.SecurityStrategy))
-                MaxFunctionNumber = MaxFunctionNumber + numel(StrategyProfile{i}.Functions);
-                SecurityStrategies{1, numel(SecurityStrategies) + 1} = StrategyProfile{i};
+                SecurityStrategies = Functions.GetUnion(SecurityStrategies, StrategyProfile(i));
                 continue;
             end
             
@@ -49,15 +47,15 @@ function Risk = GetRisk(obj, StrategyProfile)
         for i = 1:numel(RecoverStrategies)
         end
         
-        
-        
-        % Handle the security strategies.
-        ShutDownFunctions = cell(1, MaxFunctionNumber);
+        % Handle the security strategies, get the set of functions which should be shut down by security strategies.
+        ShutDownFunctions = {};
         SecurityStrategies = Functions.UniqueCell(SecurityStrategies);
         for i = 1:numel(SecurityStrategies)
-            ShutDownFunctions{1, end + 1:end + 1 + numel(SecurityStrategies{i}.Functions)} = SecurityStrategies{i}.Functions;
+            ShutDownFunctions = Functions.GetUnion(ShutDownFunctions, SecurityStrategies{i}.Functions);
         end            
         ShutDownFunctions = Functions.UniqueCell(ShutDownFunctions);
+        
+        
     end
 end
 
