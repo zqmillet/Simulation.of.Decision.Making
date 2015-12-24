@@ -10,15 +10,20 @@ classdef Security < handle
     
     methods
         function obj = Security(Name)
-            if (nargin ~= 1)
-                error(Enumerations.ErrorType.InputParameterNumberError);
+            switch (nargin)
+                case 0
+                    obj = Classes.Strategies.Security('');
+                case 1
+                    if (~isa(Name, Enumerations.ClassType.Char))
+                        error(Enumerations.ErrorType.InputParameterTypeError);
+                    end
+                    obj.Name = Name;
+                    obj.AttackStrategies = Classes.Dictionary();
+                otherwise
+                    error(Enumerations.ErrorType.InputParameterNumberError); 
             end
+                        
             
-            if (~isa(Name, Enumerations.ClassType.Char))
-                error(Enumerations.ErrorType.InputParameterTypeError);
-            end
-            obj.Name = Name;
-            obj.AttackStrategies = Classes.Dictionary();
         end
         
         AddFunctions(obj, varargin);

@@ -34,12 +34,18 @@ function Risk = GetRisk(obj, StrategyProfile)
             error(Enumerations.ErrorType.InputParameterTypeError);
         end
         
+        % Handle the attack strategies.
+        AttackStrategies = Functions.UniqueCell(AttackStrategies);
         for i = 1:numel(AttackStrategies)
         end
         
+        % Handle the recover strategies.
+        RecoverStrategies = Functions.UniqueCell(RecoverStrategies);
         for i = 1:numel(RecoverStrategies)
         end
         
+        % Handle the security strategies.
+        SecurityStrategies = Functions.UniqueCell(SecurityStrategies);
         for i = 1:numel(SecurityStrategies)
         end
     end

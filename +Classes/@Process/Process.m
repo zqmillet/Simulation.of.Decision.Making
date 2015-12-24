@@ -24,15 +24,18 @@ classdef Process < handle
     
     methods
         function obj = Process(Name)
-            if (nargin ~= 1)
-                error(Enumerations.ErrorType.InputParameterNumberError);
+            switch (nargin)
+                case 0
+                    % Do nothing
+                case 1
+                    if (~isa(Name, Enumerations.ClassType.Char))
+                        error(Enumerations.ErrorType.InputParameterTypeError);
+                    end
+
+                    obj.Name = Name;
+                otherwise
+                    error(Enumerations.ErrorType.InputParameterNumberError);
             end
-            
-            if (~isa(Name, Enumerations.ClassType.Char))
-                error(Enumerations.ErrorType.InputParameterTypeError);
-            end
-            
-            obj.Name = Name;
         end        
         AddParents(obj, varargin);
         AddAllParents(obj, varargin);

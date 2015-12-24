@@ -10,6 +10,8 @@ classdef Recover < handle
     methods
         function obj = Recover(Name, Cost)
             switch (nargin)
+                case 0
+                    % Do nothing.
                 case 1
                     if (~isa(Name, Enumerations.ClassType.Char))
                         error(Enumerations.ErrorType.InputParameterTypeError);
