@@ -47,13 +47,7 @@ function Risk = GetRisk(obj, StrategyProfile)
 
         % Handle the security strategies, change the conditional probabilities of the corresponding attack node.
         SecurityStrategies = Functions.UniqueCell(SecurityStrategies);
-        for i = 1:numel(SecurityStrategies)
-            for j = 1:numel(SecurityStrategies{i}.AttackStrategies.Keys)
-                ChildSet = BayesianNetwork.GetChildSet(SecurityStrategies{i}.AttackStrategies.Keys{j});
-                for k = 1:numel(ChildSet)
-                end
-            end
-        end
+        BayesianNetwork.SetSecurityStrategies(SecurityStrategies{:});
         
         % Handle the recover strategies, get the set of function which should be recovered by recover strategies.
         RecoverFunctions = {};
@@ -67,10 +61,7 @@ function Risk = GetRisk(obj, StrategyProfile)
         
         for i = 1:numel(SecurityStrategies)
             ShutDownFunctions = Functions.GetUnion(ShutDownFunctions, SecurityStrategies{i}.Functions);
-        end
-        
-        
-        
+        end        
     end
 end
 

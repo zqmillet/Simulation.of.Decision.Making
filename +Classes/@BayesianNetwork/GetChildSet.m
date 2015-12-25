@@ -13,7 +13,7 @@ function ChildSet = GetChildSet(obj, Node)
     for i = 1:numel(obj.Nodes)
         for j = 1:numel(obj.Nodes{i}.Parents)
             if (isequal(obj.Nodes{i}.Parents{j}, Node))
-                ChildSet = Functions.GetUnion(ChildSet, obj.Nodes{i}.Parents(j));
+                ChildSet = Functions.GetUnion(ChildSet, obj.Nodes(i));
             end
         end
     end

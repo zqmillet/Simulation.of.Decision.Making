@@ -29,12 +29,13 @@ function SetSecurityStrategies(obj, varargin)
                 
                 % Calculate the coefficient vector.
                 for l = 0:2^(numel(ChildSet{k}.Parents)) - 1
-                    if (bitand(bitshift(l, numel(ChildSet{k}.Parents) - Index), 1) == 1)
+                    if (bitand(bitshift(l, Index - numel(ChildSet{k}.Parents)), 1) == 1)
                         CoefficientVector(l + 1) = varargin{i}.AttackStrategies.Values{j};
                     end
                 end
-                
-                
+
+                % Update the conditional probability table of this child node.
+                ChildSet{k}.ConditionalProbabilities = ChildSet{k}.ConditionalProbabilities .* CoefficientVector;
                 
                
                 

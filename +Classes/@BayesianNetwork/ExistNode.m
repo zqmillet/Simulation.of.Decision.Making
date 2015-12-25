@@ -8,7 +8,7 @@ function Exist = ExistNode(obj, Node)
     end
     
     for i = 1:numel(obj.Nodes)
-        if (obj.Nodes{i} == Node)
+        if (isequal(obj.Nodes{i}, Node))
             Exist = true;
             return;
         end

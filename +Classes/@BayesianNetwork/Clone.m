@@ -1,8 +1,9 @@
 function BayesianNetwork = Clone(obj)
     BayesianNetwork = Classes.BayesianNetwork();
     
+    BayesianNetwork.Nodes = cell(size(obj.Nodes));
     for i = 1:numel(obj.Nodes)
-        BayesianNetwork.AddNodes(Functions.Clone(obj.Nodes{i}));
+        BayesianNetwork.Nodes{1, i} = Functions.Clone(obj.Nodes{i});
     end
     BayesianNetwork.Evidences = obj.Evidences;
     BayesianNetwork.Graph = obj.Graph;
