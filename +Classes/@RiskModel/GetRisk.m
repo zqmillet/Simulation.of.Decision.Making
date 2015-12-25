@@ -14,10 +14,12 @@ function Risk = GetRisk(obj, StrategyProfile)
         % So we can modify this Bayesian network and its nodes as wish without the modification of original Bayesian network and its nodes.
         BayesianNetwork = obj.BayesianNetwork.Clone();
         
+        % Intialize the sets of revover strategies, security strategies, and attack strategies.
         RecoverStrategies = {};
         SecurityStrategies = {};
         AttackStrategies = {};
         
+        % Read the input parameters, and assign these three sets.
         for i = 1:numel(StrategyProfile)
             if (isa(StrategyProfile{i}, Enumerations.ClassType.Node))
                 if (StrategyProfile{i}.Type == Enumerations.NodeType.Attack)
