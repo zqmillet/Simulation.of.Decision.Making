@@ -49,7 +49,7 @@ function Risk = GetRisk(obj, StrategyProfile)
         SecurityStrategies = Functions.UniqueCell(SecurityStrategies);
         for i = 1:numel(SecurityStrategies)
             for j = 1:numel(SecurityStrategies{i}.AttackStrategies.Keys)
-                 ChildSet = BayesianNetwork.GetChildSet(SecurityStrategies{i}.AttackStrategies.Keys{j});
+                ChildSet = BayesianNetwork.GetChildSet(SecurityStrategies{i}.AttackStrategies.Keys{j});
                 for k = 1:numel(ChildSet)
                 end
             end
