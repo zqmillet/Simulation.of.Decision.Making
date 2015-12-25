@@ -7,7 +7,7 @@ function RemoveEvidences(obj, varargin)
         RemoveList = obj.Nodes;
     else
         for i = 1:numel(varargin)
-            if (~isa(varargin, Enumerations.ClassType.Node))
+            if (~isa(varargin{i}, Enumerations.ClassType.Node))
                 error(Enumerations.ErrorType.InputParameterTypeError);
             end
         end
@@ -16,6 +16,7 @@ function RemoveEvidences(obj, varargin)
 
     for i = 1:numel(RemoveList)
         obj.Evidences{RemoveList{i}.Index} = Enumerations.EvidenceState.Unknown;
+        RemoveList{i}.Probability = 0;
     end
 end
 
