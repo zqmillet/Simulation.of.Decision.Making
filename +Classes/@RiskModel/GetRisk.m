@@ -60,7 +60,7 @@ function Risk = GetRisk(obj, StrategyProfile)
         for i = 1:numel(RecoverStrategies)
             RecoverFunctions = Functions.GetUnion(RecoverFunctions, RecoverStrategies{i}.Functions);
         end        
-        % For each function which will be recovered by recover strategies, ...
+        % For each function which will be recovered by recover strategies, remove it from the evidence list.
         BayesianNetwork.RemoveEvidences(RecoverFunctions{:});
         
         
