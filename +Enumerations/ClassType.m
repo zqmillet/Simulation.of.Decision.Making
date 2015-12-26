@@ -9,6 +9,7 @@ classdef (Sealed) ClassType
         SystemState      = 'Classes.SystemState';
         SecurityStrategy = 'Classes.Strategies.Security';
         RecoverStrategy  = 'Classes.Strategies.Recover';
+        RiskModel        = 'Classes.RiskModel';
     end
 
     methods (Access = private)
