@@ -9,8 +9,9 @@ function OptimalSystemState = GetOptimalSystemState(obj, AttackStrategies)
     OptimalSystemState = obj.RiskModel.GetNearStates(0);
     OptimalSystemState = OptimalSystemState{1};
     MinimumRisk = obj.RiskModel.GetRisk();
-    disp(['System state = ', num2str(OptimalSystemState.IsRunning), ...
-                ', Risk = ', num2str(MinimumRisk)]);
+    
+    % The following codes are used for debug.
+    % disp(['System state = ', num2str(OptimalSystemState.IsRunning), ', Risk = ', num2str(MinimumRisk)]);
     
     % Search the system state space, from inside to outside.
     for i = 1:MaxDistance
@@ -23,8 +24,8 @@ function OptimalSystemState = GetOptimalSystemState(obj, AttackStrategies)
             obj.RiskModel.SetSystemState(SystemStates{j});
             SystemRisk = obj.RiskModel.GetRisk();
 
-            disp(['System state = ', num2str(SystemStates{j}.IsRunning), ...
-                ', Risk = ', num2str(SystemRisk)]);
+            % The following codes are used for debug.
+            % disp(['System state = ', num2str(SystemStates{j}.IsRunning), ', Risk = ', num2str(SystemRisk)]);
             
             % If the risk in the jth system state is lower, ...
             if (SystemRisk < MinimumRisk)
