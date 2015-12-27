@@ -2,11 +2,15 @@ function OptimalSystemState = GetOptimalSystemState(obj, AttackStrategies)
     % Get maximum distance.
     MaxDistance = numel(obj.RiskModel.SystemState.Bases) - 1;
     
-    % Initialize the optimal system state and minimum system risk.
-    OptimalSystemState = obj.RiskModel.GetNearStates(0);
-    MinimumRisk = obj.RiskModel.GetRisk();
     % Set the evidence list according to the attack strategies.
     obj.RiskModel.BayesianNetwork.AddEvidences(AttackStrategies{:});
+    
+    % Initialize the optimal system state and minimum system risk.
+    OptimalSystemState = obj.RiskModel.GetNearStates(0);
+    OptimalSystemState = OptimalSystemState{1};
+    MinimumRisk = obj.RiskModel.GetRisk();
+    disp(['System state = ', num2str(OptimalSystemState.IsRunning), ...
+                ', Risk = ', num2str(MinimumRisk)]);
     
     % Search the system state space, from inside to outside.
     for i = 1:MaxDistance
@@ -18,6 +22,10 @@ function OptimalSystemState = GetOptimalSystemState(obj, AttackStrategies)
             % Calculate the system risk that system in the jth state.
             obj.RiskModel.SetSystemState(SystemStates{j});
             SystemRisk = obj.RiskModel.GetRisk();
+
+            disp(['System state = ', num2str(SystemStates{j}.IsRunning), ...
+                ', Risk = ', num2str(SystemRisk)]);
+            
             % If the risk in the jth system state is lower, ...
             if (SystemRisk < MinimumRisk)
                 % Let the jth system state be the optimal system state, ...
@@ -28,7 +36,7 @@ function OptimalSystemState = GetOptimalSystemState(obj, AttackStrategies)
         end
         
         % If the lowest system risk is under the acceptable risk, ...
-        if (MinimumRisk < obj.RiskModel.AcceptableRisk)
+        if (MinimumRisk < obj.AcceptableRisk)
             % end the searching process, and return the optimal system state.
             return;
         end

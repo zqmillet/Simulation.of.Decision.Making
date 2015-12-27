@@ -1,4 +1,4 @@
-classdef Decision    
+classdef DecisionMaker < handle
     properties
         RiskModel;
         SecurityStrategies;
@@ -9,7 +9,7 @@ classdef Decision
     end
     
     methods
-        function obj = Decision(AcceptableRiskRatio)
+        function obj = DecisionMaker(AcceptableRiskRatio)
             if (nargin ~= 1)
                 error(Enumerations.ErrorType.InputParameterNumberError);
             end

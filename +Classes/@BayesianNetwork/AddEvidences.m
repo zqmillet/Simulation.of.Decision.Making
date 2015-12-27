@@ -14,7 +14,7 @@ function AddEvidences(obj, varargin)
 %                     a3, Enumerations.EvidenceState.Unhappened);
 
     % If the number of input parameters is less than 2, throw an error.
-    if (nargin < 2)
+    if (nargin < 1)
         error(Enumerations.ErrorType.InputParameterNumberError)
     end
     

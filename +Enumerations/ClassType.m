@@ -1,7 +1,9 @@
 classdef (Sealed) ClassType 
     properties (Constant)
+        % System Type
         Double           = 'double';
         Char             = 'char';
+        % Custom Type
         Node             = 'Classes.Node';
         BayesianNetwork  = 'Classes.BayesianNetwork';
         Process          = 'Classes.Process';

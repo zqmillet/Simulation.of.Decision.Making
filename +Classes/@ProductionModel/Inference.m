@@ -14,7 +14,7 @@ function Inference(obj)
         if (ProcessVectorPrime == ProcessVector)            
             break;
         end
-        ProcessVector = ProcessVectorPrime;        
+        ProcessVector = ProcessVectorPrime;         
     end
     
     IncidenceMatrixPrime = obj.IncidenceMatrix;

@@ -6,7 +6,7 @@ function Initialize(obj)
     obj.RiskModel.Initialize();
     MaxSystemLoss = 0;
     for i = 1:numel(obj.RiskModel.BayesianNetwork.Nodes)
-        if (~isa(obj.RiskModel.BayesianNetwork.Nodes, Enumerations.ClassType.Node))
+        if (~isa(obj.RiskModel.BayesianNetwork.Nodes{i}, Enumerations.ClassType.Node))
             error(Enumerations.ErrorType.InputParameterTypeError);
         end
         

@@ -575,13 +575,13 @@ p07.AddAllParents(f07, ...
     1);           % T
 
 %% Create product.
-s01 = Classes.Product('s01', 100);
-s02 = Classes.Product('s02', 200);
-s03 = Classes.Product('s03', 250);
-s04 = Classes.Product('s04',  10);
-s05 = Classes.Product('s05',   0);
-s06 = Classes.Product('s06', 300);
-s07 = Classes.Product('s07', 400);
+s01 = Classes.Product('s01', 10000);
+s02 = Classes.Product('s02', 20000);
+s03 = Classes.Product('s03', 2500);
+s04 = Classes.Product('s04', 1000);
+s05 = Classes.Product('s05',    0);
+s06 = Classes.Product('s06', 3000);
+s07 = Classes.Product('s07', 4000);
 
 p01.AddOutputs(s01);
 p02.AddOutputs(s02);
@@ -656,8 +656,8 @@ RiskModel.AddAllBases(f01, f02, f03, f04, f05, ...
 RiskModel.Initialize();
 
 %% Risk model test
-RiskModel.AddEvidences(a01);
-RiskModel.GetRisk();
+% RiskModel.AddEvidences(a01);
+% RiskModel.GetRisk();
 
 % NextSystemStates = RiskModel.GetNearStates(3);
 % 
@@ -668,42 +668,9 @@ RiskModel.GetRisk();
 % end
 
 %% Strategies test
-ds01 = Classes.Strategies.Security('ds01');
-ds02 = Classes.Strategies.Security('ds02');
-ds03 = Classes.Strategies.Security('ds03');
-ds04 = Classes.Strategies.Security('ds04');
-
-ds01.AddAttackStrategies(a01, 0.1, ...
-                         a02, 0.3, ...
-                         a03, 0.5);
-                     
-ds02.AddAttackStrategies(a01, 0.6, ...
-                         a02, 0.3, ...
-                         a04, 0.5);
-                     
-ds03.AddAttackStrategies(a01, 0.2, ...
-                         a02, 0.4, ...
-                         a05, 0.5);
-                     
-ds04.AddAttackStrategies(a01, 0.1, ...
-                         a02, 0.3, ...
-                         a03, 0.5, ...
-                         a04, 0.8);
-
-
-ds01.AddFunctions(f01, f02);
-ds02.AddFunctions(f02, f03);
-ds03.AddFunctions(f04);
-ds04.AddFunctions(f01, f05);
-
-dr01 = Classes.Strategies.Recover('dr01', 1000);
-dr02 = Classes.Strategies.Recover('dr02', 2000);
-dr03 = Classes.Strategies.Recover('dr03', 3000);
-dr04 = Classes.Strategies.Recover('dr04', 4000);
-
-dr01.AddFunctions(f01, f03);
-dr02.AddFunctions(f02);
-dr03.AddFunctions(f04, f05);
-
-RiskModel.GetRisk({a01,a02,a03,ds01,ds03,dr03,dr04});
-disp('123');
+DecisionMaker = Classes.DecisionMaker(0.8);
+DecisionMaker.RiskModel = RiskModel; 
+DecisionMaker.Initialize();
+tic
+DecisionMaker.GetOptimalSystemState({a01})
+toc
