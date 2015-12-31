@@ -1,4 +1,11 @@
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+  src="https://d3eoax9i5htok0.cloudfront.net/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 # Simulation
 This document is used to introduce the detail of the simulation.
@@ -117,7 +124,4 @@ The functions of this chemical reactor control system are shown as follows.
 <h2 id="Risk Modelling">Risk Modelling of the Chemical Reactor Control System</h2>
 <h3 id="Risk Modelling.Attack Analysis">Analysis of Potential Malicious Attacks</h3>
 
-表头1  | 表头2
-------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
+$$a+b+c$$
