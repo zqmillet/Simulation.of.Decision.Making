@@ -1,3 +1,5 @@
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
 # Simulation
 This document is used to introduce the detail of the simulation.
 
@@ -114,3 +116,5 @@ The functions of this chemical reactor control system are shown as follows.
 
 <h2 id="Risk Modelling">Risk Modelling of the Chemical Reactor Control System</h2>
 <h3 id="Risk Modelling.Attack Analysis">Analysis of Potential Malicious Attacks</h3>
+$$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
+\\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\\)
