@@ -115,5 +115,7 @@ The functions of this chemical reactor control system are shown as follows.
 <h2 id="Risk Modelling">Risk Modelling of the Chemical Reactor Control System</h2>
 <h3 id="Risk Modelling.Attack Analysis">Analysis of Potential Malicious Attacks</h3>
 
-|`1`|23|
-|`123`|fwefwe|
+First Header  | Second Header
+------------- | -------------
+`1`|23
+`123`|fwefwe
