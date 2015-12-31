@@ -1,0 +1,51 @@
+\documentclass[10pt,openany,landscape]{ctexbook}
+\usepackage{xeCJK}
+\usepackage[hmargin={0cm},vmargin={0cm}]{geometry}%
+\usepackage{tikz}
+\usetikzlibrary{calc,fit}
+\usetikzlibrary{shadows}
+\usepackage{tabu}
+\usepackage[active,tightpage]{preview}
+\usepackage{keycommand}
+\usepackage{ifthen}
+
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{0pt}
+\setmonofont{Courier New}
+\setmainfont{Times New Roman}
+
+\definecolor{textcolor}{rgb}{0, 0, 0}
+
+\newcommand{\grid}[4]
+{
+\foreach \x in {#1,...,#2}
+    \draw[dashed, lightgray] (\x, #3) node[anchor = north]{\x} -- (\x, #4);
+\foreach \y in {#3,...,#4}
+	\draw[dashed, lightgray] (#1, \y) node[anchor = east] {\y} -- (#2, \y);
+}
+
+\linespread{0.9}
+
+\begin{document}
+
+\begin{tikzpicture}[line width = 1pt,
+                    process/.style = {rectangle, draw, minimum size = 1cm, inner sep = 0pt}]
+%\grid{0}{10}{0}{10}
+
+\node[process] (P1) at (2,3) {$p_1$};
+\node[process] (P2) at (4,4) {$p_2$};
+\node[process] (P3) at (4,2) {$p_3$};
+
+\draw [<-] (P1) -- ++(180:1.5cm);
+\draw [<-] ($(P2.west)+(0,0.2)$) -- ++(180:3cm);
+\draw [<-] ($(P2.west)-(0,0.2)$) -- ++(180:0.5cm) |- ($(P1.east)+(0,0.2)$);
+\draw [->] ($(P1.east)-(0,0.2)$) -- ++(0:0.5) |- (P3);
+\draw [->] (P2) -- ++(0:1.5cm);
+\draw [->] (P3) -- ++(0:1.5cm);
+
+\node at (2.75, 3.4) {$s_1$};
+\node at (2.75, 2.6) {$s_2$};
+\node at (5, 4.2) {$s_3$};
+\node at (5, 2.2) {$s_4$};
+\end{tikzpicture}
+\end{document}  
