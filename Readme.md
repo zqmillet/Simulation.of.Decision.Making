@@ -85,6 +85,7 @@ Symbol | Description
 The functions of this chemical reactor control system are shown as follows.
 
 * The functions of distillation column:
+
 Symbol | Description
 :---   | :---
 `f1`   |is the temperature control function of distillation column.
@@ -97,6 +98,7 @@ Symbol | Description
 `f8`   |is the pressure sensation function of distillation column. 
 
 * The functions of reactor 1:
+
 Symbol | Description
 :---   | :---
 `f9`   |is the temperature control function of reactor 1.
@@ -112,6 +114,7 @@ Symbol | Description
 `f19`  |is the level sensation function of reactor 1.
 
 * The functions of reactor 2:
+
 Symbol | Description
 :---   | :---
 `f20`  |is the temperature control function of reactor 2.
@@ -128,6 +131,3 @@ Symbol | Description
 
 <h2 id="Risk Modelling">Risk Modelling of the Chemical Reactor Control System</h2>
 <h3 id="Risk Modelling.Attack Analysis">Analysis of Potential Malicious Attacks</h3>
-
-`1`|23
-`123`|fwefwe
