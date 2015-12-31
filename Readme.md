@@ -88,46 +88,47 @@ The functions of this chemical reactor control system are shown as follows.
 
 Symbol | Description
 :---   | :---
-`f1`   |is the temperature control function of distillation column.
-`f2`   |is the pressure control function of distillation column.
-`f3`   |is the traffic control function of `V1`.
-`f4`   |is the traffic control function of `V2`.
-`f5`   |is the traffic control function of `V3`.
-`f6`   |is the switch control function of `S1`.
-`f7`   |is the temperature sensation function of distillation column.
-`f8`   |is the pressure sensation function of distillation column. 
+`f1`   | is the temperature control function of distillation column.
+`f2`   | is the pressure control function of distillation column.
+`f3`   | is the traffic control function of `V1`.
+`f4`   | is the traffic control function of `V2`.
+`f5`   | is the traffic control function of `V3`.
+`f6`   | is the switch control function of `S1`.
+`f7`   | is the temperature sensation function of distillation column.
+`f8`   | is the pressure sensation function of distillation column.
 
 * The functions of reactor 1:
 
 Symbol | Description
 :---   | :---
-`f9`   |is the temperature control function of reactor 1.
-`f10`  |is the pressure control function of reactor 1.
-`f11`  |is the level control function of reactor 1.
-`f12`  |is the traffic control function of `V4`.
-`f13`  |is the traffic control function of `V5`.
-`f14`  |is the traffic control function of `V7`.
-`f15`  |is the pressure reducing function of reactor 1.
-`f16`  |is the switch control function of `S2`.
-`f17`  |is the temperature sensation function of reactor 1.
-`f18`  |is the pressure sensation function of reactor 1.
-`f19`  |is the level sensation function of reactor 1.
+`f9`   | is the temperature control function of reactor 1.
+`f10`  | is the pressure control function of reactor 1.
+`f11`  | is the level control function of reactor 1.
+`f12`  | is the traffic control function of `V4`.
+`f13`  | is the traffic control function of `V5`.
+`f14`  | is the traffic control function of `V7`.
+`f15`  | is the pressure reducing function of reactor 1.
+`f16`  | is the switch control function of `S2`.
+`f17`  | is the temperature sensation function of reactor 1.
+`f18`  | is the pressure sensation function of reactor 1.
+`f19`  | is the level sensation function of reactor 1.
 
 * The functions of reactor 2:
 
 Symbol | Description
 :---   | :---
-`f20`  |is the temperature control function of reactor 2.
-`f21`  |is the pressure control function of reactor 2.
-`f22`  |is the level control function of reactor 2.
-`f23`  |is the traffic control function of `V6`.
-`f24`  |is the traffic control function of `V10`.
-`f25`  |is the pressure reducing function of reactor 2.
-`f26`  |is the switch control function of `S3`.
-`f27`  |is the temperature sensation function of reactor 2.
-`f28`  |is the pressure sensation function of reactor 2.
-`f29`  |is the level sensation function of reactor 2.
-`f30`  |is the mixing function of reactor 2.
+`f20`  | is the temperature control function of reactor 2.
+`f21`  | is the pressure control function of reactor 2.
+`f22`  | is the level control function of reactor 2.
+`f23`  | is the traffic control function of `V6`.
+`f24`  | is the traffic control function of `V10`.
+`f25`  | is the pressure reducing function of reactor 2.
+`f26`  | is the switch control function of `S3`.
+`f27`  | is the temperature sensation function of reactor 2.
+`f28`  | is the pressure sensation function of reactor 2.
+`f29`  | is the level sensation function of reactor 2.
+`f30`  | is the mixing function of reactor 2. 
 
 <h2 id="Risk Modelling">Risk Modelling of the Chemical Reactor Control System</h2>
 <h3 id="Risk Modelling.Attack Analysis">Analysis of Potential Malicious Attacks</h3>
+
