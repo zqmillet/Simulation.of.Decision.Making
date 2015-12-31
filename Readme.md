@@ -43,9 +43,11 @@ Symbol | Description
 <h3 id="Introduction.Processes">The Processes of the Chemical Reactor Control System</h3>
 The processes of this chemical reactor control system are shown as follows.
 
-* `p1` is the distillation, which can seperate the material into two semi-product `s1` and `s2`.
-* `p2` is the mixed heating, which can generate the product by heating semi-product `s1` and the other material.
-* `p3` is the heating, which can produce the other product by heating the semi-product `s2`.
+Symbol | Description
+-| -
+`p1`| is the distillation, which can seperate the material into two semi-product `s1` and `s2`.
+`p2`| is the mixed heating, which can generate the product by heating semi-product `s1` and the other material.
+`p3`| is the heating, which can produce the other product by heating the semi-product `s2`.
 
 So, the process model of this chemical reactor control system is shown as following figure.
 
