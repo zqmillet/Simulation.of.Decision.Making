@@ -59,6 +59,19 @@ The symbols in the physical layer are shown as follows.
 * **V8** is the pressure reducing valve of reactor 1.
 * **V9** is the pressure reducing valve of reactor 2.
 * **V10** is the valve of output **s4** of reactor 2.
+* **S1** is the switch of the heater of the distillation column.
+* **S2** is the switch of the heater of the reactor 1.
+* **S3** is the switch of the heater of the reactor 2.
+* **PS1** is the pressure sensor of the distillation column.
+* **PS2** is the pressure sensor of the reactor 1.
+* **PS3** is the pressure sensor of the reactor 2. 
+* **TS1** is the temperature sensor of the distillation column.
+* **TS2** is the temperature sensor of the reactor 1. 
+* **TS3** is the temperature sensor of the reactor 2. 
+* **LS1** is the level sensor of the reactor 1.
+* **LS2** is the level sensor of the reactor 2.
+* **B** is the blender of reactor 2.
+* **M** is the motor which drives the blender **B**.
 
 The functions of this chemical reactor control system are shown as follows.
 
