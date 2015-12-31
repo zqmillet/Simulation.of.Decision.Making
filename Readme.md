@@ -34,20 +34,20 @@ In the physical layer, there are a distillation column and two reactor. In the d
 The semi-product and product of this chemical reactor control system is shown as follows.
 
 Symbol | Description
----| ---
-`s1`| is the semi-product which is the output from the top of the distillation column.
-`s2`| is the semi-product which is the other outputs from the bottom of the distillation column.
-`s3`| is the product which is the output from the reactor 1.
-`s4`| is the product which is the output from the reactor 2.
+:---   | :---
+`s1`   | is the semi-product which is the output from the top of the distillation column.
+`s2`   | is the semi-product which is the other outputs from the bottom of the distillation column.
+`s3`   | is the product which is the output from the reactor 1.
+`s4`   | is the product which is the output from the reactor 2.
 
 <h3 id="Introduction.Processes">The Processes of the Chemical Reactor Control System</h3>
 The processes of this chemical reactor control system are shown as follows.
 
 Symbol | Description
----| ---
-`p1`| is the distillation, which can seperate the material into two semi-product `s1` and `s2`.
-`p2`| is the mixed heating, which can generate the product by heating semi-product `s1` and the other material.
-`p3`| is the heating, which can produce the other product by heating the semi-product `s2`.
+---    | ---
+`p1`   | is the distillation, which can seperate the material into two semi-product `s1` and `s2`.
+`p2`   | is the mixed heating, which can generate the product by heating semi-product `s1` and the other material.
+`p3`   | is the heating, which can produce the other product by heating the semi-product `s2`.
 
 So, the process model of this chemical reactor control system is shown as following figure.
 
@@ -57,10 +57,10 @@ So, the process model of this chemical reactor control system is shown as follow
 The symbols in the physical layer are shown as follows.
 
 Symbol | Description
----| ---
-`V1`| is the valve of input of distillation column.
-`V2`| is the valve of output `s1` of distillation column.
-`V3`| is the valve of output `s2` of distillation column.
+---    | ---
+`V1`   | is the valve of input of distillation column.
+`V2`   | is the valve of output `s1` of distillation column.
+`V3`   | is the valve of output `s2` of distillation column.
 `V4`| is the valve of input material of reactor 1.
 `V5`| is the valve of input `s1` of reactor 1.
 `V6`| is the valve of input `s2` of reactor 2.
