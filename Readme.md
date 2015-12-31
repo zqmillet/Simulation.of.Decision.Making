@@ -38,6 +38,6 @@ The processes of this chemical reactor control system are shown as follows.
 
 So, the process model of this chemical reactor control system is shown as following figure.
 
-&#8194;&#8194;<img src="/Figures/Process.Model.of.Reactor.Control.System.png" width = "200" alt="Process Model of Reactor Control System" />
+&#8194;&#8194;<img src="/Figures/Process.Model.of.Reactor.Control.System.png" width = "250" alt="Process Model of Reactor Control System" />
 
 
