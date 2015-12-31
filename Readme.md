@@ -34,7 +34,7 @@ In the physical layer, there are a distillation column and two reactor. In the d
 The semi-product and product of this chemical reactor control system is shown as follows.
 
 Symbol | Description
--------| -----------
+-| -
 `s1`| is the semi-product which is the output from the top of the distillation column.
 `s2`| is the semi-product which is the other outputs from the bottom of the distillation column.
 `s3`| is the product which is the output from the reactor 1.
