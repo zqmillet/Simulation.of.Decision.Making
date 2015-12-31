@@ -28,6 +28,7 @@ classdef DecisionMaker < handle
         Initialize(obj);
         OptimalStrategy = GetOptimalStrategy(obj, AttackStrategies, CurrentSystemState);
         OptimalSystemState = GetOptimalSystemState(obj, AttackStrategies, CurrentSystemState);
+        PotentialAttackStrategies = GetPotentialAttackStrategies(obj, AttackStrategies);
     end
 end
 

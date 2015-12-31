@@ -1,0 +1,397 @@
+\documentclass[10pt,openany,landscape]{ctexbook}
+\usepackage{xeCJK}
+\usepackage[hmargin={0cm},vmargin={0cm}]{geometry}%
+\usepackage{tikz}
+\usetikzlibrary{shadows}
+\usetikzlibrary{positioning}
+\usetikzlibrary{circuits.ee.IEC}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{shapes.symbols}
+\usepackage{tabu}
+\usepackage[active,tightpage]{preview}
+\usepackage{keycommand}
+\usepackage{ifthen}
+
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{0pt}
+\setmonofont{Courier New}
+\setmainfont{Times New Roman}
+
+\definecolor{textcolor}{rgb}{0, 0, 0}
+
+\newcommand{\grid}[4]
+{
+\foreach \x in {#1,...,#2}
+    \draw[dashed, lightgray] (\x, #3) node[anchor = north]{\x} -- (\x, #4);
+\foreach \y in {#3,...,#4}
+	\draw[dashed, lightgray] (#1, \y) node[anchor = east] {\y} -- (#2, \y);
+}
+
+\tikzset{circuit declare symbol = ac source}
+\tikzset{set ac source graphic = ac source IEC graphic}
+\tikzset
+{
+    ac source IEC graphic/.style=
+    {
+        transform shape,
+        circuit symbol lines,
+        circuit symbol size = width 3 height 3,
+        shape=generic circle IEC,
+        /pgf/generic circle IEC/before background=
+        {
+            \pgfpathmoveto{\pgfpoint{-0.8pt}{0pt}}
+            \pgfpathsine{\pgfpoint{0.4pt}{0.4pt}}
+            \pgfpathcosine{\pgfpoint{0.4pt}{-0.4pt}}
+            \pgfpathsine{\pgfpoint{0.4pt}{-0.4pt}}
+            \pgfpathcosine{\pgfpoint{0.4pt}{0.4pt}}
+            \pgfusepathqstroke
+        }
+    }
+}
+
+\tikzset{
+	text shadow/.code args={[#1]#2at#3(#4)#5}{
+		\pgfkeysalso{/tikz/.cd,#1}%
+		\foreach \angle in {0,5,...,359}{
+			\node[#1,text=white] at ([shift={(\angle:.8pt)}] #4){#5};
+		}
+	}
+}
+\newkeycommand{\tag}[align = center, background = white, x = 0, y = 0, color = black][1]{%
+	\node at (\commandkey{x}, \commandkey{y}) [text shadow={[align=\commandkey{align}] at (\commandkey{x}, \commandkey{y}) {#1}}, align = \commandkey{align}] {\textcolor{\commandkey{color}}{#1}};
+}
+
+\newkeycommand{\reactor}[x = 0, y = 0, width = 2cm, height = 3cm, archeight = 1cm, name = reactor, level = -1cm, textpos = 0cm][1]{
+    \draw
+    (\commandkey{x} - 0.5*\commandkey{width}, \commandkey{y} - 0.5*\commandkey{height} + \commandkey{archeight}) to[out = -90, in = 180]
+    (\commandkey{x}, \commandkey{y} - 0.5*\commandkey{height}) to[out = 0, in = -90]
+    (\commandkey{x} + 0.5*\commandkey{width}, \commandkey{y} - 0.5*\commandkey{height} + \commandkey{archeight}) --
+    (\commandkey{x} + 0.5*\commandkey{width}, \commandkey{y} + 0.5*\commandkey{height} - \commandkey{archeight}) to[out = 90, in = 0]
+    (\commandkey{x}, \commandkey{y} + 0.5*\commandkey{height}) to[out = 180, in = 90]
+    (\commandkey{x} - 0.5*\commandkey{width}, \commandkey{y} + 0.5*\commandkey{height} - \commandkey{archeight}) --
+    cycle;
+    \node[rectangle, minimum width = \commandkey{width}, minimum height = \commandkey{height}] (\commandkey{name}) at (\commandkey{x}, \commandkey{y}){};
+
+    \node[align = center] at (\commandkey{x}, \commandkey{y} - 0.5*\commandkey{height} + 0.5*\commandkey{archeight} + \commandkey{textpos}) {#1};
+
+    \begin{scope}
+      \clip (\commandkey{x} - 0.5*\commandkey{width}, \commandkey{y} - 0.5*\commandkey{height} + \commandkey{archeight}) to[out = -90, in = 180]
+        (\commandkey{x}, \commandkey{y} - 0.5*\commandkey{height}) to[out = 0, in = -90]
+        (\commandkey{x} + 0.5*\commandkey{width}, \commandkey{y} - 0.5*\commandkey{height} + \commandkey{archeight}) --
+        (\commandkey{x} + 0.5*\commandkey{width}, \commandkey{y} + 0.5*\commandkey{height} - \commandkey{archeight}) to[out = 90, in = 0]
+        (\commandkey{x}, \commandkey{y} + 0.5*\commandkey{height}) to[out = 180, in = 90]
+        (\commandkey{x} - 0.5*\commandkey{width}, \commandkey{y} + 0.5*\commandkey{height} - \commandkey{archeight}) --
+        cycle;
+      \draw[blue, decorate, decoration={snake}]
+      (\commandkey{x} - \commandkey{width}, \commandkey{y} - 0.5*\commandkey{height} + \commandkey{level}) --
+      (\commandkey{x} + \commandkey{width}, \commandkey{y} - 0.5*\commandkey{height} + \commandkey{level});
+    \end{scope}
+}
+
+\newkeycommand{\bus}[x = 0, y = 0, width = 0.5cm, length = 5cm, inner sep = 2pt, name = bus][1]{
+    \draw
+    (\commandkey{x} - 0.5*\commandkey{length}, \commandkey{y} + 0.5*\commandkey{width}) --
+    (\commandkey{x} + 0.5*\commandkey{length}, \commandkey{y} + 0.5*\commandkey{width})
+    to [out = 0, in = 0]
+    (\commandkey{x} + 0.5*\commandkey{length}, \commandkey{y} - 0.5*\commandkey{width}) --
+    (\commandkey{x} - 0.5*\commandkey{length}, \commandkey{y} - 0.5*\commandkey{width})
+    to [out = 180, in = 180] cycle;
+
+    \draw
+    (\commandkey{x} + 0.5*\commandkey{length}, \commandkey{y} + 0.5*\commandkey{width} - \commandkey{inner sep}) to [out = 0, in = 0]
+    (\commandkey{x} + 0.5*\commandkey{length}, \commandkey{y} - 0.5*\commandkey{width} + \commandkey{inner sep}) to [out = 180, in = 180] cycle;
+
+    \node[rectangle, minimum width = \commandkey{length}, minimum height = \commandkey{width}] (\commandkey{name}) at (\commandkey{x}, \commandkey{y}) {#1};
+}
+
+\newkeycommand{\computer}[x = 0cm, y = 0cm, width = 2cm, height = 2cm, name = computer][1]{
+    \node at (\commandkey{x}, \commandkey{y}) {\includegraphics[width=\commandkey{width}]{Material/Computer.pdf}};
+    \node[rectangle, minimum width = 0.82*\commandkey{width}, minimum height = 0.82*\commandkey{height}] (\commandkey{name}) at (\commandkey{x}, \commandkey{y}){};
+    \node at (\commandkey{x} - 0.5*\commandkey{width}, \commandkey{y} + 0.5*\commandkey{height}) [text shadow={[align=left, anchor = north west, inner sep = 0pt] at (\commandkey{x} - 0.5*\commandkey{width}, \commandkey{y} + 0.5*\commandkey{height}) {\parbox{\commandkey{width}}{\raggedright #1}}}, align = left, anchor = north west, inner sep = 0pt] {\textcolor{black}{\parbox{\commandkey{width}}{\raggedright \textcolor{textcolor}{#1}}}};
+}
+
+\newkeycommand{\server}[x = 0cm, y = 0cm, width = 1.35cm, height = 2cm, name = server][1]{
+    \node at (\commandkey{x}, \commandkey{y}) {\includegraphics[width=\commandkey{width}]{Material/Server.pdf}};
+    \node[rectangle, minimum width = 1.16*\commandkey{width}, minimum height = 0.76*\commandkey{height}] (\commandkey{name}) at (\commandkey{x}, \commandkey{y}){};
+    \node at (\commandkey{x} - 0.5*\commandkey{width}, \commandkey{y} + 0.5*\commandkey{height}) [text shadow={[align=left, anchor = north west, inner sep = 0pt] at (\commandkey{x} - 0.5*\commandkey{width}, \commandkey{y} + 0.5*\commandkey{height}) {\parbox{\commandkey{width}}{\raggedright #1}}}, align = left, anchor = north west, inner sep = 0pt] {\textcolor{black}{\parbox{\commandkey{width}}{\raggedright \textcolor{textcolor}{#1}}}};
+}
+
+\newkeycommand{\plc}[x = 0cm, y = 0cm, width = 1.8cm, height = 2cm, name = plc][1]{
+    \node at (\commandkey{x}, \commandkey{y}) {\includegraphics[width=\commandkey{width}]{Material/PLC.pdf}};
+    \node[rectangle, minimum width = 0.76*\commandkey{width}, minimum height = 0.76*\commandkey{height}] (\commandkey{name}) at (\commandkey{x}, \commandkey{y}){};
+    \node at (\commandkey{x}, \commandkey{y}) [text shadow={[align=center, inner sep = 0pt] at (\commandkey{x}, \commandkey{y}) {\parbox{\commandkey{width}}{\centering #1}}}, align = center, inner sep = 0pt] {\textcolor{black}{\parbox{\commandkey{width}}{\centering \textcolor{textcolor}{#1}}}};
+}
+
+\newkeycommand{\gateway}[x = 0cm, y = 0cm, width = 1.8cm, height = 1.5cm, name = gateway][1]{
+    \node at (\commandkey{x}, \commandkey{y}) {\includegraphics[width=\commandkey{width}]{Material/Gateway.pdf}};
+    \node[rectangle, minimum width = \commandkey{width}, minimum height = 0.74*\commandkey{height}] (\commandkey{name}) at (\commandkey{x}, \commandkey{y} - 0.08cm){};
+    \node at (\commandkey{x}, \commandkey{y}) [text shadow={[align=center, inner sep = 0pt] at (\commandkey{x}, \commandkey{y}) {\parbox{\commandkey{width}}{\centering #1}}}, align = center, inner sep = 0pt] {\textcolor{black}{\parbox{\commandkey{width}}{\centering \textcolor{textcolor}{#1}}}};
+}
+
+\newkeycommand{\valve}[x = 0cm, y = 0cm, width = 0.6cm, height = 0.4cm, name = valve][1]{
+    \node[rectangle, minimum width = \commandkey{width}, minimum height = 2.3*\commandkey{height}, inner sep = 0pt] (\commandkey{name}) at (\commandkey{x}, \commandkey{y}){};
+    \draw (\commandkey{x} + 0.5*\commandkey{width}, \commandkey{y} + 0.5*\commandkey{height}) --
+          (\commandkey{x} + 0.5*\commandkey{width}, \commandkey{y} - 0.5*\commandkey{height}) --
+          (\commandkey{x} - 0.5*\commandkey{width}, \commandkey{y} + 0.5*\commandkey{height}) --
+          (\commandkey{x} - 0.5*\commandkey{width}, \commandkey{y} - 0.5*\commandkey{height}) -- cycle;
+    \draw (\commandkey{x}, \commandkey{y}) --
+          (\commandkey{x}, \commandkey{y} + 0.85*\commandkey{height}) --
+          (\commandkey{x} - 0.5*\commandkey{width}, \commandkey{y} + 0.85*\commandkey{height})
+          to [out = 45, in = 135]
+          (\commandkey{x} + 0.5*\commandkey{width}, \commandkey{y} + 0.85*\commandkey{height}) --
+          (\commandkey{x}, \commandkey{y} + 0.85*\commandkey{height});
+    \node[below = 5pt] at (\commandkey{x}, \commandkey{y}) {#1};
+}
+
+\newkeycommand{\switch}[x = 0cm, y = 0cm, width = 0.5cm, name = switch][1]{
+    \node[rectangle, minimum width = \commandkey{width}, minimum height = 0.5774*\commandkey{width}, inner sep = 0pt] (\commandkey{name}) at (\commandkey{x}, \commandkey{y}) {};
+    \draw (\commandkey{x} - 0.5*\commandkey{width}, \commandkey{y}) -- ++(30:\commandkey{width});
+    \node[draw, circle, minimum size = 1pt, fill = white, inner sep = 0pt] at (\commandkey{x} - 0.5*\commandkey{width}, \commandkey{y}) {};
+    \node[below = 0pt] at (\commandkey{x}, \commandkey{y}) {#1};
+}
+
+\newkeycommand{\motor}[x = 0cm, y = 0cm, width = 0.7cm, name = motor][1]{
+    \node[draw, circle, minimum size = \commandkey{width}, inner sep = 0pt] (\commandkey{name}) at (\commandkey{x}, \commandkey{y}) {#1};
+}
+
+\newkeycommand{\sensor}[x = 0cm, y = 0cm, width = 0.18cm, height = 0.5cm, name = sensor][1]{
+    \node[rectangle, inner sep = 0pt, minimum width = \commandkey{width}, minimum height = \commandkey{height}, fill = black] (\commandkey{name}) at (\commandkey{x}, \commandkey{y}) {};
+    \node[below = 0.5*\commandkey{height}] at (\commandkey{x}, \commandkey{y}) {#1};
+}
+
+\newkeycommand{\omission}[x = 0cm, y = 0cm, angle = 0, length = 0.4cm, name = omission]{
+    \begin{scope}
+    \clip[rotate around={\commandkey{angle}:(\commandkey{x}, \commandkey{y})}] (\commandkey{x} - 0.45*\commandkey{length} , \commandkey{y} - 0.45*\commandkey{length} ) rectangle (\commandkey{x} + 0.45*\commandkey{length}  , \commandkey{y} + 0.45*\commandkey{length} );
+    \foreach \x/\c in {1pt/white,
+                       2pt/black,
+                       3pt/white,
+                       4pt/black,
+                       5pt/white}{
+    \draw[line width = 1pt, draw = \c] (\commandkey{x}, \commandkey{y} - 3pt + \x) to[out = 120 + \commandkey{angle}, in = 60 + \commandkey{angle}] ++(180 + \commandkey{angle}:0.5*\commandkey{length})
+        (\commandkey{x}, \commandkey{y} - 3pt + \x) to[out = -60 + \commandkey{angle}, in = -120 + \commandkey{angle}] ++(\commandkey{angle}:0.5*\commandkey{length});
+
+    }
+    \end{scope}
+}
+
+\newkeycommand{\coverpipe}[x = 0cm, y = 0cm, length = 1cm, name = coverpipe]{
+    \draw[dashed, line width = 4pt, draw = white, dash pattern = on 2pt off 3pt] (\commandkey{x} - 0.5*\commandkey{length}, \commandkey{y}) -- ++ (0:\commandkey{length});
+    \draw (\commandkey{x} - 0.5*\commandkey{length}, \commandkey{y} + 3pt) -- (\commandkey{x} - 0.5*\commandkey{length}, \commandkey{y} - 3pt);
+    \draw (\commandkey{x} + 0.5*\commandkey{length}, \commandkey{y} + 3pt) -- (\commandkey{x} + 0.5*\commandkey{length}, \commandkey{y} - 3pt);
+
+    \draw[white] (\commandkey{x} - 0.5*\commandkey{length} - 1pt, \commandkey{y} + 3pt) -- (\commandkey{x} - 0.5*\commandkey{length} - 1pt, \commandkey{y} - 3pt);
+    \draw[white] (\commandkey{x} + 0.5*\commandkey{length} + 1pt, \commandkey{y} + 3pt) -- (\commandkey{x} + 0.5*\commandkey{length} + 1pt, \commandkey{y} - 3pt);
+}
+
+\newkeycommand{\blender}[x = 0cm, y = 0cm, length = 2cm, name = blender][1]{
+    \coordinate (\commandkey{name}) at (\commandkey{x}, \commandkey{y});
+    \fill (\commandkey{x}, \commandkey{y})
+    to [out = 30, in = 150] ++ (0:0.5*\commandkey{length})
+    to [out = -150, in = -30] (\commandkey{x}, \commandkey{y})
+    to [out = 150, in = 30] ++ (180:0.5*\commandkey{length})
+    to [out = -30, in = -150] (\commandkey{x}, \commandkey{y});
+    \node[anchor = north] at (\commandkey{name}) {#1};
+}
+
+\newkeycommand{\internet}[x = 0cm, y = 0cm, width = 2cm, name = internet][1]{
+    \node[draw, cloud, minimum width = \commandkey{width}, minimum height = 1.5cm, inner sep = 0pt] (\commandkey{name}) at (\commandkey{x}, \commandkey{y}) {#1};
+}
+
+\newkeycommand{\heater}[x = 0cm, y = 0cm, width = 0.5cm, coverpos = 0.5cm, length = 2cm, name = heater][1]{
+    \node[rectangle, minimum width = \commandkey{width}, minimum height = 0.5774*\commandkey{width}, inner sep = 0pt] (\commandkey{name}S) at (\commandkey{x}, \commandkey{y}) {};
+    \draw (\commandkey{x} - 0.5*\commandkey{width}, \commandkey{y}) -- ++(30:\commandkey{width});
+    \node[draw, circle, minimum size = 1pt, fill = white, inner sep = 0pt] at (\commandkey{x} - 0.5*\commandkey{width}, \commandkey{y}) {};
+    \node[below = 0pt] at (\commandkey{x}, \commandkey{y}) {#1};
+
+    \draw[line width = 1pt, draw = white, double=black, double distance = 1pt]
+    (\commandkey{name}S) --
+    ++(0:\commandkey{length}) to[resistor ={minimum width = 0.8cm, minimum height = 0.1cm}]
+    ++(-90:1cm) --
+    ++(180:1cm + \commandkey{length}) to[ac source = {rotate = 90, minimum size = 0.7cm}]
+    ++(90:1cm) -- (\commandkey{name}S);
+}
+
+\linespread{0.9}
+
+\begin{document}
+
+\begin{tikzpicture}[circuit ee IEC,
+                    set resistor graphic=var resistor IEC graphic,
+                    line width = 1pt,
+                    x = 1cm,
+                    y = 1cm,
+                    pipe/.style = {line width = 1pt, draw = white, double=black, double distance = 3pt},
+                    wire/.style = {line width = 1pt, draw = blue}]
+%\grid{0}{25}{5}{25}
+
+% Draw Ethernet EN and Industrial Ethernet IE1, IE2, and IE3.
+\bus     [x = 12.0cm, y = 22.0cm, name = EN , length = 23.5cm]{Ethernet};
+\bus     [x =  4.0cm, y = 19.0cm, name = IE1, length =  7.5cm]{Industrial Ethernet 1};
+\bus     [x = 12.0cm, y = 19.0cm, name = IE2, length =  7.5cm]{Industrial Ethernet 2};
+\bus     [x = 20.0cm, y = 19.0cm, name = IE3, length =  7.5cm]{Industrial Ethernet 3};
+
+% Draw computers.
+\server  [x =  1.0cm, y = 23.5cm, name = SV1]{Web Server};
+\computer[x =  5.4cm, y = 23.5cm, name = PC1]{Personal Computer 1};
+\computer[x =  9.8cm, y = 23.5cm, name = PC2]{Personal Computer 2};
+\computer[x = 14.2cm, y = 23.5cm, name = PC3]{Personal Computer 3};
+\gateway [x = 18.6cm, y = 23.5cm, name = GW0]{Security Gateway};
+\internet[x = 23.0cm, y = 23.5cm, name = INT]{Internet};
+
+\foreach \i in {1, 2, 3}{
+    \computer[x = 8*\i cm - 6.67cm, y = 20.5cm, name = ES\i]{Engineer Station \i};
+    \server  [x = 8*\i cm - 4.00cm, y = 20.5cm, name = DS\i]{Data Server \i};
+    \gateway [x = 8*\i cm - 1.33cm, y = 20.5cm, name = GW\i]{Security Gateway \i};
+}
+
+% Draw PLCs.
+\foreach \i in {1,2,...,12}{
+    \plc [x = 2*\i cm - 1cm, y = 17cm, name = PLC\i]{PLC\i};
+}
+
+% Draw reactors.
+\reactor [x =  4.0cm, y = 10.0cm, height = 10.0cm, width =  3.0cm, level =  6.0cm, name = DisTow, textpos = 3cm]{Distillation\\Column};
+\reactor [x = 12.0cm, y = 10.5cm, height =  9.0cm, width =  4.0cm, level =  3.0cm, name = Reactor1]{Reactor 1};
+\reactor [x = 20.0cm, y =  9.0cm, height =  8.0cm, width =  4.0cm, level =  5.0cm, name = Reactor2]{Reactor 2};
+
+% Draw valves.
+\valve   [x =  1.0cm, y =  9.0cm, name = V1 ]{V1};
+\valve   [x =  6.5cm, y = 13.5cm, name = V2 ]{V2};
+\valve   [x =  6.5cm, y =  8.0cm, name = V3 ]{V3};
+\valve   [x =  9.0cm, y = 10.0cm, name = V4 ]{V4};
+\valve   [x =  8.5cm, y = 12.0cm, name = V5 ]{V5};
+\valve   [x = 17.0cm, y = 11.0cm, name = V6 ]{V6};
+\valve   [x = 14.5cm, y =  8.0cm, name = V7 ]{V7};
+\valve   [x = 15.0cm, y = 12.0cm, name = V8 ]{V8};
+\valve   [x = 23.0cm, y = 11.0cm, name = V9 ]{V9};
+\valve   [x = 23.0cm, y =  9.0cm, name = V10]{V10};
+
+% Draw sensors.
+\sensor  [x =  3.5cm, y = 12.0cm, name = PS1]{PS1};
+\sensor  [x =  4.5cm, y = 11.0cm, name = TS1]{TS1};
+\sensor  [x = 11.2cm, y = 10.0cm, name = PS2]{PS2};
+\sensor  [x = 12.0cm, y =  9.0cm, name = TS2]{TS2};
+\sensor  [x = 12.8cm, y =  8.0cm, name = LS1]{LS1};
+\sensor  [x = 20.5cm, y = 11.0cm, name = PS3]{PS3};
+\sensor  [x = 21.0cm, y = 10.0cm, name = TS3]{TS3};
+\sensor  [x = 21.5cm, y =  9.0cm, name = LS2]{LS2};
+
+% Draw heaters.
+\heater  [x =  2.0cm, y =  7.0cm, name = H1]{S1};
+\heater  [x =  9.5cm, y =  8.0cm, name = H2, length = 2.5cm]{S2};
+\heater  [x = 17.5cm, y =  7.0cm, name = H3, length = 2.5cm]{S3};
+
+% Draw motor and blender.
+\motor   [x = 20.0cm, y = 14.0cm, name = M]{M};
+\blender [x = 20.0cm, y =  9.0cm, name = B]{B};
+
+% Set the wires.
+\foreach \i in {1, 2, 3}{
+    \draw (EN.south -| GW\i) -- (GW\i)
+          (IE\i.north -| GW\i) -- (GW\i);
+    \draw (IE\i.north -| DS\i) -- (DS\i);
+    \draw (IE\i.north -| ES\i) -- (ES\i);
+}
+
+\foreach \obj in {PC1, PC2, PC3, SV1, GW0}{
+    \draw (EN.north -| \obj) -- (\obj);
+}
+
+\draw (INT) -- (GW0);
+
+\foreach \i in {1, 2, ..., 12}{
+    \ifthenelse{\i < 5}
+    {
+        \draw (IE1.south -| PLC\i) -- (PLC\i);
+    }
+    % else
+    {
+        \ifthenelse{\i < 9}
+        {
+            \draw (IE2.south -| PLC\i) -- (PLC\i);
+        }
+        % else
+        {
+            \draw (IE3.south -| PLC\i) -- (PLC\i);
+        }
+    }
+}
+
+% Draw signal line.
+\draw[wire] (PLC1)  -- (V1);
+\draw[wire] (PLC2)  -- ++(-90:1.5cm) -|   (H1S);
+\draw[wire] (PLC3)  -- ++(-90:1.5cm) -|   (PS1)
+            (PLC3)  -- ++(-90:1.5cm) -|   (TS1);
+\draw[wire] (PLC4)  -- ++(-90:1.5cm) -|   (V2)
+            (PLC4)  -- ++(-90:8.0cm) -|   (V3);
+\draw[wire] (PLC5)  --   (V4);
+\draw[wire] (PLC5)  -- ++(-90:1.5cm) -|   (V5);
+\draw[wire] (PLC6)  -- ++(-90:1.5cm) -|   (H2S);
+\draw[wire] (PLC7)  -- ++(-90:1.5cm) -|   (LS1)
+            (PLC7)  -- ++(-90:1.5cm) -|   (TS2)
+            (PLC7)  -- ++(-90:1.5cm) -|   (PS2);
+\draw[wire] (PLC8)  -- ++(-90:1.5cm) -- ++(180:0.5cm) -- ++(-90:6.5cm) -| (V7);
+\draw[wire] (PLC8)  --   (V8);
+\draw[wire] (PLC9)  --   (V6);
+\draw[wire] (PLC10) -- ++(-90:1.5cm) -|   (H3S)
+            (PLC10) -- ++(-90:1.5cm) -|   (M);
+\draw       (M)     --   (B);
+\draw[wire] (PLC11) -- ++(-90:1.5cm) -|   (PS3)
+            (PLC11) -- ++(-90:1.5cm) -|   (TS3)
+            (PLC11) -- ++(-90:1.5cm) -|   (LS2);
+\draw[wire] (PLC12) -- ++(-90:1.5cm) -- ++(0:0.5cm) -- ++(-90:5.5cm) -| (V10);
+\draw[wire] (PLC12) --   (V9);
+
+% Draw pipes.
+\draw[pipe]  (V1) -- ++(180:0.9cm)
+             (DisTow.west |- V1) -- (V1);
+\draw[white] (V1) -- ++(180:0.9cm)
+             (V1) -- ++(0:1.7cm);
+
+\draw[pipe]  (DisTow.east |- V2) -- (V2);
+\draw[pipe]  (DisTow.east |- V3) -- (V3);
+\draw[white] (V2) -- ++(180:1.6cm)
+             (V3) -- ++(180:1.6cm);
+
+\draw[pipe]  (V2) -- ++(0:1cm) |- (V5);
+\draw[white] (V2) -- ++(0:1cm) |- (V5);
+
+\draw[pipe]  (Reactor1.west |- V5) -- (V5) |- (V5);
+\draw[white] (V5) -- ++ (0:1.6cm);
+
+\draw[pipe]  (V3) -- ++(0:1cm) -- ++(-90:2.5cm) -- ++(0:8cm) |- (V6);
+\draw[white] (V3) -- ++(0:1cm) -- ++(-90:2.5cm) -- ++(0:8cm) |- (V6);
+
+\draw[pipe]  (Reactor2.west |- V6) -- (V6);
+\draw[white] (V6) -- ++(0:1.1cm);
+
+\draw[pipe]  (Reactor1.east |- V7) -- (V7);
+\draw[white] (V7) -- ++(180:1.1cm);
+
+\draw[pipe]  (V7) -- ++(0:9.2cm);
+\draw[white] (V7) -- ++(0:9.3cm);
+
+\draw[pipe]  (V4) -- ++(180:8.9cm)
+             (Reactor1.west |- V4) -- (V4);
+\draw[white] (V4) -- ++(180:9.0cm)
+             (V4) -- ++(0:1.6cm);
+
+\draw[pipe]  (Reactor1.east |- V8) -- (V8) -- ++(0:1cm) -- ++(90:0.5cm);
+\draw[white] (V8) -- ++ (180:1.1cm) (V8) -- ++(0:1cm) -- ++(90:0.6cm);
+
+\draw[pipe]  (Reactor2.east |- V9) -- (V9) -- ++(0:0.7cm) -- ++(90:0.5cm);
+\draw[white] (V9) -- ++ (180:1.1cm) (V9) -- ++(0:0.7cm) -- ++(90:0.6cm);
+
+\draw[pipe]  (Reactor2.east |- V10) -- (V10) -- ++(0:0.7cm);
+\draw[white] (V10) -- ++ (180:1.1cm) (V10) -- ++(0:0.8cm);
+
+% Draw omission symbols.
+\omission [x =  7.5cm, y = 12.75cm];
+\omission [x =  7.5cm, y =  6.75cm];
+
+% Draw covered pipes.
+\coverpipe[x =  4.0cm, y = 10.00cm, length = 3cm];
+\coverpipe[x = 20.0cm, y =  8.00cm, length = 4cm];
+
+\end{tikzpicture}
+\end{document}  
