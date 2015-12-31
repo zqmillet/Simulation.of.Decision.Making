@@ -34,7 +34,7 @@ In the physical layer, there are a distillation column and two reactor. In the d
 The semi-product and product of this chemical reactor control system is shown as follows.
 
 Symbol | Description
--| -
+---| ---
 `s1`| is the semi-product which is the output from the top of the distillation column.
 `s2`| is the semi-product which is the other outputs from the bottom of the distillation column.
 `s3`| is the product which is the output from the reactor 1.
@@ -44,7 +44,7 @@ Symbol | Description
 The processes of this chemical reactor control system are shown as follows.
 
 Symbol | Description
--| -
+---| ---
 `p1`| is the distillation, which can seperate the material into two semi-product `s1` and `s2`.
 `p2`| is the mixed heating, which can generate the product by heating semi-product `s1` and the other material.
 `p3`| is the heating, which can produce the other product by heating the semi-product `s2`.
