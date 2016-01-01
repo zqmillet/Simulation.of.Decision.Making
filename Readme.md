@@ -61,15 +61,15 @@ The symbols in the physical layer are shown as follows.
 Symbol | Description
 :---   | :---
 `V1`   | the valve of input of distillation column
-`V2`   | the valve of output `s1` of distillation column
-`V3`   | the valve of output `s2` of distillation column
+`V2`   | the valve of output `s01` of distillation column
+`V3`   | the valve of output `s02` of distillation column
 `V4`   | the valve of input material of reactor 1
-`V5`   | the valve of input `s1` of reactor 1
-`V6`   | the valve of input `s2` of reactor 2
-`V7`   | the valve of output `s3` of reactor 1
+`V5`   | the valve of input `s01` of reactor 1
+`V6`   | the valve of input `s02` of reactor 2
+`V7`   | the valve of output `s03` of reactor 1
 `V8`   | the pressure reducing valve of reactor 1
 `V9`   | the pressure reducing valve of reactor 2
-`V10`  | the valve of output `s4` of reactor 2
+`V10`  | the valve of output `s04` of reactor 2
 `S1`   | the switch of the heater of the distillation column
 `S2`   | the switch of the heater of the reactor 1
 `S3`   | the switch of the heater of the reactor 2
@@ -88,127 +88,127 @@ The functions of this chemical reactor control system are shown as follows.
 
 * The functions of distillation column:
 
-Symbol | Description
-:---   | :---
-`f01`  | the temperature control function of distillation column
-`f02`  | the pressure control function of distillation column
-`f03`  | the traffic control function of `V1`
-`f04`  | the traffic control function of `V2`
-`f05`  | the traffic control function of `V3`
-`f06`  | the switch control function of `S1`
-`f07`  | the temperature sensation function of distillation column
-`f08`  | the pressure sensation function of distillation column
+Symbol | Description                                                | Failure Inducement
+:---   | :---                                                       | :---
+`f01`  | the temperature control function of distillation column    | failure of `f03`, `f05`, `f06`, `f07`
+`f02`  | the pressure control function of distillation column       | failure of `f04`, `f06`, `f08`
+`f03`  | the traffic control function of `V1`                       | launch of `a23`, `a35`
+`f04`  | the traffic control function of `V2`                       | launch of `a26`, `a38`
+`f05`  | the traffic control function of `V3`                       | launch of `a26`, `a38`
+`f06`  | the switch control function of `S1`                        | launch of `a24`, `a36`
+`f07`  | the temperature sensation function of distillation column  | launch of `a25`, `a37`
+`f08`  | the pressure sensation function of distillation column     | launch of `a25`, `a37`
 
 * The functions of reactor 1:
 
-Symbol | Description
-:---   | :---
-`f09`   | the temperature control function of reactor 1
-`f10`  | the pressure control function of reactor 1
-`f11`  | the level control function of reactor 1
-`f12`  | the traffic control function of `V4`
-`f13`  | the traffic control function of `V5`
-`f14`  | the traffic control function of `V7`
-`f15`  | the pressure reducing function of reactor 1
-`f16`  | the switch control function of `S2`
-`f17`  | the temperature sensation function of reactor 1
-`f18`  | the pressure sensation function of reactor 1
-`f19`  | the level sensation function of reactor 1
+Symbol | Description                                                | Failure Inducement
+:---   | :---                                                       | :---
+`f09`  | the temperature control function of reactor 1              | failure of `f12`, `f13`, `f14`, `f16`, `f17`
+`f10`  | the pressure control function of reactor 1                 | failure of `f15`, `f16`, `f18`
+`f11`  | the level control function of reactor 1                    | failure of `f12`, `f13`, `f14`, `f19`
+`f12`  | the traffic control function of `V4`                       | launch of `a27`, `a39`
+`f13`  | the traffic control function of `V5`                       | launch of `a27`, `a39`
+`f14`  | the traffic control function of `V7`                       | launch of `a30`, `a42`
+`f15`  | the pressure reducing function of reactor 1                | launch of `a30`, `a42`
+`f16`  | the switch control function of `S2`                        | launch of `a28`, `a40`
+`f17`  | the temperature sensation function of reactor 1            | launch of `a29`, `a41`
+`f18`  | the pressure sensation function of reactor 1               | launch of `a29`, `a41`
+`f19`  | the level sensation function of reactor 1                  | launch of `a29`, `a41`
 
 * The functions of reactor 2:
 
-Symbol | Description
-:---   | :---
-`f20`  | the temperature control function of reactor 2
-`f21`  | the pressure control function of reactor 2
-`f22`  | the level control function of reactor 2
-`f23`  | the traffic control function of `V6`
-`f24`  | the traffic control function of `V10`
-`f25`  | the pressure reducing function of reactor 2
-`f26`  | the switch control function of `S3`
-`f27`  | the temperature sensation function of reactor 2
-`f28`  | the pressure sensation function of reactor 2
-`f29`  | the level sensation function of reactor 2
-`f30`  | the mixing function of reactor 2
+Symbol | Description                                                | Failure Inducement
+:---   | :---                                                       | :---
+`f20`  | the temperature control function of reactor 2              | failure of `f23`, `f24`, `f26`, `f27`
+`f21`  | the pressure control function of reactor 2                 | failure of `f25`, `f26`, `f28`
+`f22`  | the level control function of reactor 2                    | failure of `f23`, `f24`, `f29`
+`f23`  | the traffic control function of `V6`                       | launch of `a31`, `a43`
+`f24`  | the traffic control function of `V10`                      | launch of `a34`, `a46`
+`f25`  | the pressure reducing function of reactor 2                | launch of `a34`, `a46`
+`f26`  | the switch control function of `S3`                        | launch of `a32`, `a44`
+`f27`  | the temperature sensation function of reactor 2            | launch of `a33`, `a45`
+`f28`  | the pressure sensation function of reactor 2               | launch of `a33`, `a45`
+`f29`  | the level sensation function of reactor 2                  | launch of `a33`, `a45`
+`f30`  | the mixing function of reactor 2                           | launch of `a32`, `a44`
 
 <h2 id="Risk Modelling">Risk Modelling of the Chemical Reactor Control System</h2>
 <h3 id="Risk Modelling.Attack Analysis">Analysis of Potential Malicious Attacks</h3>
 The potential attacks are shown as follows.
 
-Symbol | Description
-:---   | :---
-`a01`  | network scanning of the Ethernet in the management layer
-`a02`  | vulnerability scanning of the devices in the management layer
-`a03`  | buffer overflow attack on the web server
-`a04`  | brute force attack on the web server
-`a05`  | brute force attack on the personal computer 1
-`a06`  | brute force attack on the personal computer 2
-`a07`  | brute force attack on the personal computer 3
-`a08`  | network scanning of the industrial Ethernet 1 in the control layer
-`a09`  | vulnerability scanning of the devices in the industrial Ethernet 1
-`a10`  | buffer overflow attack on the data server 1
-`a11`  | brute force attack on the data server 1
-`a12`  | brute force attack on the engineer station 1
-`a13`  | network scanning of the industrial Ethernet 2 in the control layer
-`a14`  | vulnerability scanning of the devices in the industrial Ethernet 2
-`a15`  | buffer overflow attack on the data server 2
-`a16`  | brute force attack on the data server 2
-`a17`  | brute force attack on the engineer station 2
-`a18`  | network scanning of the industrial Ethernet 3 in the control layer
-`a19`  | vulnerability scanning of the devices in the industrial Ethernet 3
-`a20`  | buffer overflow attack on the data server 3
-`a21`  | brute force attack on the data server 3
-`a22`  | brute force attack on the engineer station 3
-`a23`  | DoS attack on PLC1
-`a24`  | DoS attack on PLC2
-`a25`  | DoS attack on PLC3
-`a26`  | DoS attack on PLC4
-`a27`  | DoS attack on PLC5
-`a28`  | DoS attack on PLC6
-`a29`  | DoS attack on PLC7
-`a30`  | DoS attack on PLC8
-`a31`  | DoS attack on PLC9
-`a32`  | DoS attack on PLC10
-`a33`  | DoS attack on PLC11
-`a34`  | DoS attack on PLC12
-`a35`  | man-in-the-middle attack on PLC1
-`a36`  | man-in-the-middle attack on PLC2
-`a37`  | man-in-the-middle attack on PLC3
-`a38`  | man-in-the-middle attack on PLC4
-`a39`  | man-in-the-middle attack on PLC5
-`a40`  | man-in-the-middle attack on PLC6
-`a41`  | man-in-the-middle attack on PLC7
-`a42`  | man-in-the-middle attack on PLC8
-`a43`  | man-in-the-middle attack on PLC9
-`a44`  | man-in-the-middle attack on PLC10
-`a45`  | man-in-the-middle attack on PLC11
-`a46`  | man-in-the-middle attack on PLC12
+Symbol | Description                                                        | Condition
+:---   | :---                                                               | :---
+`a01`  | network scanning of the Ethernet in the management layer           | --
+`a02`  | vulnerability scanning of the devices in the management layer      | 
+`a03`  | buffer overflow attack on the web server                           |
+`a04`  | brute force attack on the web server                               |
+`a05`  | brute force attack on the personal computer 1                      |
+`a06`  | brute force attack on the personal computer 2                      |
+`a07`  | brute force attack on the personal computer 3                      |
+`a08`  | network scanning of the industrial Ethernet 1 in the control layer |
+`a09`  | vulnerability scanning of the devices in the industrial Ethernet 1 |
+`a10`  | buffer overflow attack on the data server 1                        |
+`a11`  | brute force attack on the data server 1                            |
+`a12`  | brute force attack on the engineer station 1                       |
+`a13`  | network scanning of the industrial Ethernet 2 in the control layer |
+`a14`  | vulnerability scanning of the devices in the industrial Ethernet 2 |
+`a15`  | buffer overflow attack on the data server 2                        |
+`a16`  | brute force attack on the data server 2                            |
+`a17`  | brute force attack on the engineer station 2                       |
+`a18`  | network scanning of the industrial Ethernet 3 in the control layer |
+`a19`  | vulnerability scanning of the devices in the industrial Ethernet 3 |
+`a20`  | buffer overflow attack on the data server 3                        |
+`a21`  | brute force attack on the data server 3                            |
+`a22`  | brute force attack on the engineer station 3                       |
+`a23`  | DoS attack on PLC1                                                 |
+`a24`  | DoS attack on PLC2                                                 |
+`a25`  | DoS attack on PLC3                                                 |
+`a26`  | DoS attack on PLC4                                                 |
+`a27`  | DoS attack on PLC5                                                 |
+`a28`  | DoS attack on PLC6                                                 |
+`a29`  | DoS attack on PLC7                                                 |
+`a30`  | DoS attack on PLC8                                                 |
+`a31`  | DoS attack on PLC9                                                 |
+`a32`  | DoS attack on PLC10                                                |
+`a33`  | DoS attack on PLC11                                                |
+`a34`  | DoS attack on PLC12                                                |
+`a35`  | man-in-the-middle attack on PLC1                                   |
+`a36`  | man-in-the-middle attack on PLC2                                   |
+`a37`  | man-in-the-middle attack on PLC3                                   |
+`a38`  | man-in-the-middle attack on PLC4                                   |
+`a39`  | man-in-the-middle attack on PLC5                                   |
+`a40`  | man-in-the-middle attack on PLC6                                   |
+`a41`  | man-in-the-middle attack on PLC7                                   |
+`a42`  | man-in-the-middle attack on PLC8                                   |
+`a43`  | man-in-the-middle attack on PLC9                                   |
+`a44`  | man-in-the-middle attack on PLC10                                  |
+`a45`  | man-in-the-middle attack on PLC11                                  |
+`a46`  | man-in-the-middle attack on PLC12                                  | 
 
 <h3 id="Risk Modelling.Incident Analysis">Analysis of Potential Hazardous Incident</h3>
 The potential hazardous incident are shown as follows.
 
-Symbol | Description                                | Location
-:---   | :---                                       | :---
-`e01`  | pressure anomaly                           | distillation column
-`e02`  | temperature anomaly                        | distillation column
-`e03`  | traffic of anomaly                         | distillation column
-`e04`  | excessive pressure                         | reactor 1
-`e05`  | low pressure                               | reactor 1
-`e06`  | temperature anomaly                        | reactor 1
-`e07`  | excessive liquid level                     | reactor 1
-`e08`  | low liquid level                           | reactor 1
-`e09`  | explosion                                  | reactor 1
-`e10`  | heater dry fired                           | reactor 1
-`e11`  | liquid overflow                            | reactor 1
-`e12`  | excessive pressure                         | reactor 2
-`e13`  | low pressure                               | reactor 2
-`e14`  | temperature anomaly                        | reactor 2
-`e15`  | excessive liquid level                     | reactor 2
-`e16`  | low liquid level                           | reactor 2
-`e17`  | explosion                                  | reactor 2
-`e18`  | heater dry fired                           | reactor 2
-`e19`  | liquid overflow                            | reactor 2
-`e20`  | blender stop                               | reactor 2
+Symbol | Description            | Location              | Inducement
+:---   | :---                   | :---                  | :---
+`e01`  | pressure anomaly       | distillation column   | failure of `f02`
+`e02`  | temperature anomaly    | distillation column   | failure of `f01`
+`e03`  | traffic of anomaly     | distillation column   | failure of `f03`, `f04`, `f05`
+`e04`  | excessive pressure     | reactor 1             | 
+`e05`  | low pressure           | reactor 1             |
+`e06`  | temperature anomaly    | reactor 1             |
+`e07`  | excessive liquid level | reactor 1             |
+`e08`  | low liquid level       | reactor 1             |
+`e09`  | explosion              | reactor 1             |
+`e10`  | heater dry fired       | reactor 1             |
+`e11`  | liquid overflow        | reactor 1             |
+`e12`  | excessive pressure     | reactor 2             |
+`e13`  | low pressure           | reactor 2             |
+`e14`  | temperature anomaly    | reactor 2             |
+`e15`  | excessive liquid level | reactor 2             |
+`e16`  | low liquid level       | reactor 2             |
+`e17`  | explosion              | reactor 2             |
+`e18`  | heater dry fired       | reactor 2             |
+`e19`  | liquid overflow        | reactor 2             |
+`e20`  | blender stop           | reactor 2             |
 
 <h3 id="Risk Modelling.Asset Analysis">Analysis of Asset</h3>
 The asset of the chemical reactor control system and the relationship between asset and potential hazardous incident are shown as follows.
