@@ -222,7 +222,7 @@ Symbol | Description                            | Value($)  | Hazardous Incident
 `x05`  | heater of reactor 1                    |  40000    | `e09`,`e10`
 `x06`  | tank, sensors and blender of reactor 2 | 300000    | `e17`
 `x07`  | heater of reactor 2                    |  50000    | `e17`,`e18`
-`x08`  | staff1-4                               | 800000    | `e09`,`e11`
-`x09`  | staff5-9                               | 100000    | `e17`,`e19`
+`x08`  | staff 1-4                              | 800000    | `e09`,`e11`
+`x09`  | staff 5-9                              | 100000    | `e17`,`e19`
 `x10`  | river and solid                        | 900000    | `e09`,`e11`,`e17`,`e19`
 `x11`  | air                                    | 400000    | `e09`,`e17`
