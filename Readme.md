@@ -214,16 +214,16 @@ Symbol | Description                                | Location
 The asset of the chemical reactor control system and the relationship between asset and potential hazardous incident are shown as follows.
 
 Symbol | Description                | Value($)      | Hazardous Incident
-:---   | :---                       | :---          | :---
-`x1`   | semi-product `s1` and `s2` |  30000        | 
-`x2`   | product `s3` and `s4`      |  60000        |
+:---   | :---                       | ---:          | :---
+`x1`   | semi-product `s1` and `s2` | 30000         | 
+`x2`   | product `s3` and `s4`      | 60000         |
 `x3`   | tank of reactor 1          | 200000        |
-`x4`   | heater of reactor 1        |  40000        |
-`x5`   | sensors of reactor 1       |  40000        |
+`x4`   | heater of reactor 1        | 40000         |
+`x5`   | sensors of reactor 1       | 40000         |
 `x6`   | tank of reactor 2          | 300000        |
-`x7`   | heater of reactor 2        |  50000        |
-`x8`   | sensors of reactor 2       |  40000        |
-`x9`   | blender of reactor 2       |  10000        |
+`x7`   | heater of reactor 2        | 50000         |
+`x8`   | sensors of reactor 2       | 40000         |
+`x9`   | blender of reactor 2       | 10000         |
 `x10`  | staff1-4                   | 800000        |
 `x11`  | staff5-9                   | 100000        |
 `x12`  | river                      | 500000        |
