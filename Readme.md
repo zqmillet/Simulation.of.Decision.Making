@@ -192,23 +192,23 @@ Symbol | Description            | Location              | Inducement
 `e01`  | pressure anomaly       | distillation column   | failure of `f02`
 `e02`  | temperature anomaly    | distillation column   | failure of `f01`
 `e03`  | traffic of anomaly     | distillation column   | failure of `f03`, `f04`, `f05`
-`e04`  | excessive pressure     | reactor 1             | 
-`e05`  | low pressure           | reactor 1             |
-`e06`  | temperature anomaly    | reactor 1             |
-`e07`  | excessive liquid level | reactor 1             |
-`e08`  | low liquid level       | reactor 1             |
-`e09`  | explosion              | reactor 1             |
-`e10`  | heater dry fired       | reactor 1             |
-`e11`  | liquid overflow        | reactor 1             |
-`e12`  | excessive pressure     | reactor 2             |
-`e13`  | low pressure           | reactor 2             |
-`e14`  | temperature anomaly    | reactor 2             |
-`e15`  | excessive liquid level | reactor 2             |
-`e16`  | low liquid level       | reactor 2             |
-`e17`  | explosion              | reactor 2             |
-`e18`  | heater dry fired       | reactor 2             |
-`e19`  | liquid overflow        | reactor 2             |
-`e20`  | blender stop           | reactor 2             |
+`e04`  | excessive pressure     | reactor 1             | failure of `f10`
+`e05`  | low pressure           | reactor 1             | failure of `f10`
+`e06`  | temperature anomaly    | reactor 1             | failure of `f09`
+`e07`  | excessive liquid level | reactor 1             | failure of `f11`
+`e08`  | low liquid level       | reactor 1             | failure of `f11`
+`e09`  | explosion              | reactor 1             | occurrence of `e04`
+`e10`  | heater dry fired       | reactor 1             | occurrence of `e08`
+`e11`  | liquid overflow        | reactor 1             | occurrence of `e07`
+`e12`  | excessive pressure     | reactor 2             | failure of `f21`
+`e13`  | low pressure           | reactor 2             | failure of `f21`
+`e14`  | temperature anomaly    | reactor 2             | failure of `f20`
+`e15`  | excessive liquid level | reactor 2             | failure of `f22`
+`e16`  | low liquid level       | reactor 2             | failure of `f22`
+`e17`  | explosion              | reactor 2             | occurrence of `e12`
+`e18`  | heater dry fired       | reactor 2             | occurrence of `e16`
+`e19`  | liquid overflow        | reactor 2             | occurrence of `e15`
+`e20`  | blender stop           | reactor 2             | failure of `f30`
 
 <h3 id="Risk Modelling.Asset Analysis">Analysis of Asset</h3>
 The asset of the chemical reactor control system and the relationship between asset and potential hazardous incident are shown as follows.
