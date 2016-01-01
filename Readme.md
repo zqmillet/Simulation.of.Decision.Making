@@ -142,21 +142,42 @@ Symbol | Description
 `a5`   | brute force attack on the personal computer 1.
 `a6`   | brute force attack on the personal computer 2.
 `a7`   | brute force attack on the personal computer 3.
-<!-- 注释 -->
 `a8`   | network scanning of the industrial Ethernet 1 in the control layer.
 `a9`   | vulnerability scanning of the devices in the industrial Ethernet 1.
 `a10`  | buffer overflow attack on the data server 1.
 `a11`  | brute force attack on the data server 1.
 `a12`  | brute force attack on the engineer station 1.
-<!-- 注释 -->
 `a13`  | network scanning of the industrial Ethernet 2 in the control layer.
 `a14`  | vulnerability scanning of the devices in the industrial Ethernet 2.
 `a15`  | buffer overflow attack on the data server 2.
 `a16`  | brute force attack on the data server 2.
 `a17`  | brute force attack on the engineer station 2.
-<!-- 注释 -->
 `a18`  | network scanning of the industrial Ethernet 3 in the control layer.
 `a19`  | vulnerability scanning of the devices in the industrial Ethernet 3.
 `a20`  | buffer overflow attack on the data server 3.
 `a21`  | brute force attack on the data server 3.
 `a22`  | brute force attack on the engineer station 3.
+`a23`  | DoS attack on PLC1.
+`a24`  | DoS attack on PLC2.
+`a25`  | DoS attack on PLC3.
+`a26`  | DoS attack on PLC4.
+`a27`  | DoS attack on PLC5.
+`a28`  | DoS attack on PLC6.
+`a29`  | DoS attack on PLC7.
+`a30`  | DoS attack on PLC8.
+`a31`  | DoS attack on PLC9.
+`a32`  | DoS attack on PLC10.
+`a33`  | DoS attack on PLC11.
+`a34`  | DoS attack on PLC12.
+`a35`  | man-in-the-middle attack on PLC1.
+`a36`  | man-in-the-middle attack on PLC2.
+`a37`  | man-in-the-middle attack on PLC3.
+`a38`  | man-in-the-middle attack on PLC4.
+`a39`  | man-in-the-middle attack on PLC5.
+`a40`  | man-in-the-middle attack on PLC6.
+`a41`  | man-in-the-middle attack on PLC7.
+`a42`  | man-in-the-middle attack on PLC8.
+`a43`  | man-in-the-middle attack on PLC9.
+`a44`  | man-in-the-middle attack on PLC10.
+`a45`  | man-in-the-middle attack on PLC11.
+`a46`  | man-in-the-middle attack on PLC12.
