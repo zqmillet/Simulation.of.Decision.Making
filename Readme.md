@@ -213,19 +213,16 @@ Symbol | Description                                | Location
 <h3 id="Risk Modelling.Asset Analysis">Analysis of Asset</h3>
 The asset of the chemical reactor control system and the relationship between asset and potential hazardous incident are shown as follows.
 
-Symbol | Description                | Value($)      | Hazardous Incident
-:---   | :---                       | ---:          | :---
-`x1`   | semi-product `s1` and `s2` | 30000         | 
-`x2`   | product `s3` and `s4`      | 60000         |
-`x3`   | tank of reactor 1          | 200000        |
-`x4`   | heater of reactor 1        | 40000         |
-`x5`   | sensors of reactor 1       | 40000         |
-`x6`   | tank of reactor 2          | 300000        |
-`x7`   | heater of reactor 2        | 50000         |
-`x8`   | sensors of reactor 2       | 40000         |
-`x9`   | blender of reactor 2       | 10000         |
-`x10`  | staff1-4                   | 800000        |
-`x11`  | staff5-9                   | 100000        |
-`x12`  | river                      | 500000        |
-`x13`  | solid                      | 400000        |
-`x14`  | air                        | 400000        |
+Symbol | Description                                | Value($)      | Hazardous Incident
+:---   | :---                                       | ---:          | :---
+`x1`   | semi-product `s1` and `s2`                 | 30000         | `e1`,`e2`,`e3`
+`x2`   | product `s3`                               | 60000         | `e6`,`e9`,`e11`
+`x3`   | product `s4`                               | 70000         | `e14`,`e17`,`e20`
+`x4`   | tank and sensors of reactor 1              | 200000        | `e9`
+`x5`   | heater of reactor 1                        | 40000         | `e9`,`e10`
+`x6`   | tank, sensors and blender of reactor 2     | 300000        | `e17`
+`x7`   | heater of reactor 2                        | 50000         | `e17`,`e18`
+`x8`   | staff1-4                                   | 800000        | `e9`,`e11`
+`x9`   | staff5-9                                   | 100000        | `e17`,`e19`
+`x10`  | river and solid                            | 900000        | `e9`,`e11`,`e17`,`e19`
+`x11`  | air                                        | 400000        | `e9`,`e17`
