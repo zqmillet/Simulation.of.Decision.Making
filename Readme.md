@@ -138,51 +138,51 @@ The potential attacks are shown as follows.
 Symbol | Description                                                        | Condition
 :---   | :---                                                               | :---
 `a01`  | network scanning of the Ethernet in the management layer           | --
-`a02`  | vulnerability scanning of the devices in the management layer      | 
-`a03`  | buffer overflow attack on the web server                           |
-`a04`  | brute force attack on the web server                               |
-`a05`  | brute force attack on the personal computer 1                      |
-`a06`  | brute force attack on the personal computer 2                      |
-`a07`  | brute force attack on the personal computer 3                      |
-`a08`  | network scanning of the industrial Ethernet 1 in the control layer |
-`a09`  | vulnerability scanning of the devices in the industrial Ethernet 1 |
-`a10`  | buffer overflow attack on the data server 1                        |
-`a11`  | brute force attack on the data server 1                            |
-`a12`  | brute force attack on the engineer station 1                       |
-`a13`  | network scanning of the industrial Ethernet 2 in the control layer |
-`a14`  | vulnerability scanning of the devices in the industrial Ethernet 2 |
-`a15`  | buffer overflow attack on the data server 2                        |
-`a16`  | brute force attack on the data server 2                            |
-`a17`  | brute force attack on the engineer station 2                       |
-`a18`  | network scanning of the industrial Ethernet 3 in the control layer |
-`a19`  | vulnerability scanning of the devices in the industrial Ethernet 3 |
-`a20`  | buffer overflow attack on the data server 3                        |
-`a21`  | brute force attack on the data server 3                            |
-`a22`  | brute force attack on the engineer station 3                       |
-`a23`  | DoS attack on PLC1                                                 |
-`a24`  | DoS attack on PLC2                                                 |
-`a25`  | DoS attack on PLC3                                                 |
-`a26`  | DoS attack on PLC4                                                 |
-`a27`  | DoS attack on PLC5                                                 |
-`a28`  | DoS attack on PLC6                                                 |
-`a29`  | DoS attack on PLC7                                                 |
-`a30`  | DoS attack on PLC8                                                 |
-`a31`  | DoS attack on PLC9                                                 |
-`a32`  | DoS attack on PLC10                                                |
-`a33`  | DoS attack on PLC11                                                |
-`a34`  | DoS attack on PLC12                                                |
-`a35`  | man-in-the-middle attack on PLC1                                   |
-`a36`  | man-in-the-middle attack on PLC2                                   |
-`a37`  | man-in-the-middle attack on PLC3                                   |
-`a38`  | man-in-the-middle attack on PLC4                                   |
-`a39`  | man-in-the-middle attack on PLC5                                   |
-`a40`  | man-in-the-middle attack on PLC6                                   |
-`a41`  | man-in-the-middle attack on PLC7                                   |
-`a42`  | man-in-the-middle attack on PLC8                                   |
-`a43`  | man-in-the-middle attack on PLC9                                   |
-`a44`  | man-in-the-middle attack on PLC10                                  |
-`a45`  | man-in-the-middle attack on PLC11                                  |
-`a46`  | man-in-the-middle attack on PLC12                                  | 
+`a02`  | vulnerability scanning of the devices in the management layer      | launch of `a01`
+`a03`  | buffer overflow attack on the web server                           | launch of `a02`
+`a04`  | brute force attack on the web server                               | launch of `a02`
+`a05`  | brute force attack on the personal computer 1                      | launch of `a02`
+`a06`  | brute force attack on the personal computer 2                      | launch of `a02`
+`a07`  | brute force attack on the personal computer 3                      | launch of `a02`
+`a08`  | network scanning of the industrial Ethernet 1 in the control layer | launch of `a03`, `a04`, `a05`, `a06`, `a07`
+`a09`  | vulnerability scanning of the devices in the industrial Ethernet 1 | launch of `a08`
+`a10`  | buffer overflow attack on the data server 1                        | launch of `a09`
+`a11`  | brute force attack on the data server 1                            | launch of `a09`
+`a12`  | brute force attack on the engineer station 1                       | launch of `a09`
+`a13`  | network scanning of the industrial Ethernet 2 in the control layer | launch of `a03`, `a04`, `a05`, `a06`, `a07`
+`a14`  | vulnerability scanning of the devices in the industrial Ethernet 2 | launch of `a13`
+`a15`  | buffer overflow attack on the data server 2                        | launch of `a14`
+`a16`  | brute force attack on the data server 2                            | launch of `a14`
+`a17`  | brute force attack on the engineer station 2                       | launch of `a14`
+`a18`  | network scanning of the industrial Ethernet 3 in the control layer | launch of `a03`, `a04`, `a05`, `a06`, `a07`
+`a19`  | vulnerability scanning of the devices in the industrial Ethernet 3 | launch of `a18`
+`a20`  | buffer overflow attack on the data server 3                        | launch of `a19`
+`a21`  | brute force attack on the data server 3                            | launch of `a19`
+`a22`  | brute force attack on the engineer station 3                       | launch of `a19`
+`a23`  | DoS attack on PLC1                                                 | launch of `a10`, `a11`, `a12`
+`a24`  | DoS attack on PLC2                                                 | launch of `a10`, `a11`, `a12`
+`a25`  | DoS attack on PLC3                                                 | launch of `a10`, `a11`, `a12`
+`a26`  | DoS attack on PLC4                                                 | launch of `a10`, `a11`, `a12`
+`a27`  | DoS attack on PLC5                                                 | launch of `a15`, `a16`, `a17`
+`a28`  | DoS attack on PLC6                                                 | launch of `a15`, `a16`, `a17`
+`a29`  | DoS attack on PLC7                                                 | launch of `a15`, `a16`, `a17`
+`a30`  | DoS attack on PLC8                                                 | launch of `a15`, `a16`, `a17`
+`a31`  | DoS attack on PLC9                                                 | launch of `a20`, `a21`, `a22`
+`a32`  | DoS attack on PLC10                                                | launch of `a20`, `a21`, `a22`
+`a33`  | DoS attack on PLC11                                                | launch of `a20`, `a21`, `a22`
+`a34`  | DoS attack on PLC12                                                | launch of `a20`, `a21`, `a22`
+`a35`  | man-in-the-middle attack on PLC1                                   | launch of `a12`
+`a36`  | man-in-the-middle attack on PLC2                                   | launch of `a12`
+`a37`  | man-in-the-middle attack on PLC3                                   | launch of `a12`
+`a38`  | man-in-the-middle attack on PLC4                                   | launch of `a12`
+`a39`  | man-in-the-middle attack on PLC5                                   | launch of `a17`
+`a40`  | man-in-the-middle attack on PLC6                                   | launch of `a17`
+`a41`  | man-in-the-middle attack on PLC7                                   | launch of `a17`
+`a42`  | man-in-the-middle attack on PLC8                                   | launch of `a17`
+`a43`  | man-in-the-middle attack on PLC9                                   | launch of `a22`
+`a44`  | man-in-the-middle attack on PLC10                                  | launch of `a22`
+`a45`  | man-in-the-middle attack on PLC11                                  | launch of `a22`
+`a46`  | man-in-the-middle attack on PLC12                                  | launch of `a22`
 
 <h3 id="Risk Modelling.Incident Analysis">Analysis of Potential Hazardous Incident</h3>
 The potential hazardous incident are shown as follows.
