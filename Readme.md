@@ -35,19 +35,19 @@ The semi-product and product of this chemical reactor control system is shown as
 
 Symbol | Description
 :---   | :---
-`s1`   | is the semi-product which is the output from the top of the distillation column.
-`s2`   | is the semi-product which is the other outputs from the bottom of the distillation column.
-`s3`   | is the product which is the output from the reactor 1.
-`s4`   | is the product which is the output from the reactor 2.
+`s1`   | the semi-product which is the output from the top of the distillation column.
+`s2`   | the semi-product which is the other outputs from the bottom of the distillation column.
+`s3`   | the product which is the output from the reactor 1.
+`s4`   | the product which is the output from the reactor 2.
 
 <h3 id="Introduction.Processes">The Processes of the Chemical Reactor Control System</h3>
 The processes of this chemical reactor control system are shown as follows.
 
 Symbol | Description
 :---   | :---
-`p1`   | is the distillation, which can seperate the material into two semi-product `s1` and `s2`.
-`p2`   | is the mixed heating, which can generate the product by heating semi-product `s1` and the other material.
-`p3`   | is the heating, which can produce the other product by heating the semi-product `s2`.
+`p1`   | the distillation, which can seperate the material into two semi-product `s1` and `s2`.
+`p2`   | the mixed heating, which can generate the product by heating semi-product `s1` and the other material.
+`p3`   | the heating, which can produce the other product by heating the semi-product `s2`.
 
 So, the process model of this chemical reactor control system is shown as following figure.
 
@@ -58,29 +58,29 @@ The symbols in the physical layer are shown as follows.
 
 Symbol | Description
 :---   | :---
-`V1`   | is the valve of input of distillation column.
-`V2`   | is the valve of output `s1` of distillation column.
-`V3`   | is the valve of output `s2` of distillation column.
-`V4`   | is the valve of input material of reactor 1.
-`V5`   | is the valve of input `s1` of reactor 1.
-`V6`   | is the valve of input `s2` of reactor 2.
-`V7`   | is the valve of output `s3` of reactor 1.
-`V8`   | is the pressure reducing valve of reactor 1.
-`V9`   | is the pressure reducing valve of reactor 2.
-`V10`  | is the valve of output `s4` of reactor 2.
-`S1`   | is the switch of the heater of the distillation column.
-`S2`   | is the switch of the heater of the reactor 1.
-`S3`   | is the switch of the heater of the reactor 2.
-`PS1`  | is the pressure sensor of the distillation column.
-`PS2`  | is the pressure sensor of the reactor 1.
-`PS3`  | is the pressure sensor of the reactor 2.
-`TS1`  | is the temperature sensor of the distillation column.
-`TS2`  | is the temperature sensor of the reactor 1.
-`TS3`  | is the temperature sensor of the reactor 2.
-`LS1`  | is the level sensor of the reactor 1.
-`LS2`  | is the level sensor of the reactor 2.
-`B`    | is the blender of reactor 2.
-`M`    | is the motor which drives the blender `B`.
+`V1`   | the valve of input of distillation column.
+`V2`   | the valve of output `s1` of distillation column.
+`V3`   | the valve of output `s2` of distillation column.
+`V4`   | the valve of input material of reactor 1.
+`V5`   | the valve of input `s1` of reactor 1.
+`V6`   | the valve of input `s2` of reactor 2.
+`V7`   | the valve of output `s3` of reactor 1.
+`V8`   | the pressure reducing valve of reactor 1.
+`V9`   | the pressure reducing valve of reactor 2.
+`V10`  | the valve of output `s4` of reactor 2.
+`S1`   | the switch of the heater of the distillation column.
+`S2`   | the switch of the heater of the reactor 1.
+`S3`   | the switch of the heater of the reactor 2.
+`PS1`  | the pressure sensor of the distillation column.
+`PS2`  | the pressure sensor of the reactor 1.
+`PS3`  | the pressure sensor of the reactor 2.
+`TS1`  | the temperature sensor of the distillation column.
+`TS2`  | the temperature sensor of the reactor 1.
+`TS3`  | the temperature sensor of the reactor 2.
+`LS1`  | the level sensor of the reactor 1.
+`LS2`  | the level sensor of the reactor 2.
+`B`    | the blender of reactor 2.
+`M`    | the motor which drives the blender `B`.
 
 The functions of this chemical reactor control system are shown as follows.
 
@@ -88,46 +88,46 @@ The functions of this chemical reactor control system are shown as follows.
 
 Symbol | Description
 :---   | :---
-`f1`   | is the temperature control function of distillation column.
-`f2`   | is the pressure control function of distillation column.
-`f3`   | is the traffic control function of `V1`.
-`f4`   | is the traffic control function of `V2`.
-`f5`   | is the traffic control function of `V3`.
-`f6`   | is the switch control function of `S1`.
-`f7`   | is the temperature sensation function of distillation column.
-`f8`   | is the pressure sensation function of distillation column.
+`f1`   | the temperature control function of distillation column.
+`f2`   | the pressure control function of distillation column.
+`f3`   | the traffic control function of `V1`.
+`f4`   | the traffic control function of `V2`.
+`f5`   | the traffic control function of `V3`.
+`f6`   | the switch control function of `S1`.
+`f7`   | the temperature sensation function of distillation column.
+`f8`   | the pressure sensation function of distillation column.
 
 * The functions of reactor 1:
 
 Symbol | Description
 :---   | :---
-`f9`   | is the temperature control function of reactor 1.
-`f10`  | is the pressure control function of reactor 1.
-`f11`  | is the level control function of reactor 1.
-`f12`  | is the traffic control function of `V4`.
-`f13`  | is the traffic control function of `V5`.
-`f14`  | is the traffic control function of `V7`.
-`f15`  | is the pressure reducing function of reactor 1.
-`f16`  | is the switch control function of `S2`.
-`f17`  | is the temperature sensation function of reactor 1.
-`f18`  | is the pressure sensation function of reactor 1.
-`f19`  | is the level sensation function of reactor 1.
+`f9`   | the temperature control function of reactor 1.
+`f10`  | the pressure control function of reactor 1.
+`f11`  | the level control function of reactor 1.
+`f12`  | the traffic control function of `V4`.
+`f13`  | the traffic control function of `V5`.
+`f14`  | the traffic control function of `V7`.
+`f15`  | the pressure reducing function of reactor 1.
+`f16`  | the switch control function of `S2`.
+`f17`  | the temperature sensation function of reactor 1.
+`f18`  | the pressure sensation function of reactor 1.
+`f19`  | the level sensation function of reactor 1.
 
 * The functions of reactor 2:
 
 Symbol | Description
 :---   | :---
-`f20`  | is the temperature control function of reactor 2.
-`f21`  | is the pressure control function of reactor 2.
-`f22`  | is the level control function of reactor 2.
-`f23`  | is the traffic control function of `V6`.
-`f24`  | is the traffic control function of `V10`.
-`f25`  | is the pressure reducing function of reactor 2.
-`f26`  | is the switch control function of `S3`.
-`f27`  | is the temperature sensation function of reactor 2.
-`f28`  | is the pressure sensation function of reactor 2.
-`f29`  | is the level sensation function of reactor 2.
-`f30`  | is the mixing function of reactor 2.
+`f20`  | the temperature control function of reactor 2.
+`f21`  | the pressure control function of reactor 2.
+`f22`  | the level control function of reactor 2.
+`f23`  | the traffic control function of `V6`.
+`f24`  | the traffic control function of `V10`.
+`f25`  | the pressure reducing function of reactor 2.
+`f26`  | the switch control function of `S3`.
+`f27`  | the temperature sensation function of reactor 2.
+`f28`  | the pressure sensation function of reactor 2.
+`f29`  | the level sensation function of reactor 2.
+`f30`  | the mixing function of reactor 2.
 
 <h2 id="Risk Modelling">Risk Modelling of the Chemical Reactor Control System</h2>
 <h3 id="Risk Modelling.Attack Analysis">Analysis of Potential Malicious Attacks</h3>
@@ -135,14 +135,29 @@ The potential attacks are shown as follows.
 
 Symbol | Description
 :---   | :---
-`a1`   | Network scanning of Ethernet in the management layer.
-`a2`   | Vulnerability scanning of devices in the management layer.
-`a3`   | Buffer overflow attack on web server.
-`a4`   | Buffer overflow attack on personal computer 1.
-`a5`   | Buffer overflow attack on personal computer 2.
-`a6`   | Buffer overflow attack on personal computer 3.
-`a7`   | Brute force attack on web server.
-`a8`   | Brute force attack on personal computer 1.
-`a9`   | Brute force attack on personal computer 2.
-`a10`  | Brute force attack on personal computer 3.
-`a11`  | DoS attack on web server.
+`a1`   | network scanning of the Ethernet in the management layer.
+`a2`   | vulnerability scanning of the devices in the management layer.
+`a3`   | buffer overflow attack on the web server.
+`a4`   | brute force attack on the web server.
+`a5`   | brute force attack on the personal computer 1.
+`a6`   | brute force attack on the personal computer 2.
+`a7`   | brute force attack on the personal computer 3.
+
+`a8`   | network scanning of the industrial Ethernet 1 in the control layer.
+`a9`   | vulnerability scanning of the devices in the industrial Ethernet 1.
+`a10`  | buffer overflow attack on the data server 1.
+`a11`  | brute force attack on the data server 1.
+`a12`  | brute force attack on the engineer station 1.
+
+
+`a13`  | network scanning of the industrial Ethernet 2 in the control layer.
+`a14`  | vulnerability scanning of the devices in the industrial Ethernet 2.
+`a15`  | buffer overflow attack on the data server 2.
+`a16`  | brute force attack on the data server 2.
+`a17`  | brute force attack on the engineer station 2.
+
+`a18`  | network scanning of the industrial Ethernet 3 in the control layer.
+`a19`  | vulnerability scanning of the devices in the industrial Ethernet 3.
+`a20`  | buffer overflow attack on the data server 3.
+`a21`  | brute force attack on the data server 3.
+`a22`  | brute force attack on the engineer station 3.
