@@ -3,12 +3,12 @@ This document is used to introduce the detail of the simulation.
 
 ## Contents
 * [The Introduction of the Simulation Object](#Introduction)
-	- [The Structure of the Chemical Reactor Control System](#Introduction.Structure)
-	- [The Product of the Chemical Reactor Control System](#Introduction.Product)
-	- [The Processes of the Chemical Reactor Control System](#Introduction.Processes)
-	- [The Functions of the Chemical Reactor Control System](#Introduction.Functions)
+    - [The Structure of the Chemical Reactor Control System](#Introduction.Structure)
+    - [The Product of the Chemical Reactor Control System](#Introduction.Product)
+    - [The Processes of the Chemical Reactor Control System](#Introduction.Processes)
+    - [The Functions of the Chemical Reactor Control System](#Introduction.Functions)
 * [Risk Modelling of the Chemical Reactor Control System](#Risk Modelling)
-	- [Analysis of Potential Malicious Attacks](#Risk Modelling.Attack Analysis)
+    - [Analysis of Potential Malicious Attacks](#Risk Modelling.Attack Analysis)
 
 
 <h2 id="Introduction">The Introduction of the Simulation Object</h2>
@@ -127,8 +127,22 @@ Symbol | Description
 `f27`  | is the temperature sensation function of reactor 2.
 `f28`  | is the pressure sensation function of reactor 2.
 `f29`  | is the level sensation function of reactor 2.
-`f30`  | is the mixing function of reactor 2. 
+`f30`  | is the mixing function of reactor 2.
 
 <h2 id="Risk Modelling">Risk Modelling of the Chemical Reactor Control System</h2>
 <h3 id="Risk Modelling.Attack Analysis">Analysis of Potential Malicious Attacks</h3>
+The potential attacks are shown as follows.
 
+Symbol | Description
+:---   | :---
+`a1`   | Network scanning of Ethernet in the management layer.
+`a2`   | Vulnerability scanning of devices in the management layer.
+`a3`   | Buffer overflow attack on web server.
+`a4`   | Buffer overflow attack on personal computer 1.
+`a5`   | Buffer overflow attack on personal computer 2.
+`a6`   | Buffer overflow attack on personal computer 3.
+`a7`   | Brute force attack on web server.
+`a8`   | Brute force attack on personal computer 1.
+`a9`   | Brute force attack on personal computer 2.
+`a10`  | Brute force attack on personal computer 3.
+`a11`  | DoS attack on web server.
