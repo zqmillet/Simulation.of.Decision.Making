@@ -142,19 +142,19 @@ Symbol | Description
 `a5`   | brute force attack on the personal computer 1.
 `a6`   | brute force attack on the personal computer 2.
 `a7`   | brute force attack on the personal computer 3.
-:---   | :---
+<!-- 注释 -->
 `a8`   | network scanning of the industrial Ethernet 1 in the control layer.
 `a9`   | vulnerability scanning of the devices in the industrial Ethernet 1.
 `a10`  | buffer overflow attack on the data server 1.
 `a11`  | brute force attack on the data server 1.
 `a12`  | brute force attack on the engineer station 1.
-:---   | :---
+<!-- 注释 -->
 `a13`  | network scanning of the industrial Ethernet 2 in the control layer.
 `a14`  | vulnerability scanning of the devices in the industrial Ethernet 2.
 `a15`  | buffer overflow attack on the data server 2.
 `a16`  | brute force attack on the data server 2.
 `a17`  | brute force attack on the engineer station 2.
-:---   | :---
+<!-- 注释 -->
 `a18`  | network scanning of the industrial Ethernet 3 in the control layer.
 `a19`  | vulnerability scanning of the devices in the industrial Ethernet 3.
 `a20`  | buffer overflow attack on the data server 3.
