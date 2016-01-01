@@ -213,16 +213,16 @@ Symbol | Description            | Location              | Inducement
 <h3 id="Risk Modelling.Asset Analysis">Analysis of Asset</h3>
 The asset of the chemical reactor control system and the relationship between asset and potential hazardous incident are shown as follows.
 
-Symbol | Description                                | Value($)      | Hazardous Incident
-:---   | :---                                       | ---:          | :---
-`x01`  | semi-product `s01` and `s02`               | 30000         | `e01`,`e02`,`e03`
-`x02`  | product `s03`                              | 60000         | `e06`,`e09`,`e11`
-`x03`  | product `s04`                              | 70000         | `e14`,`e17`,`e20`
-`x04`  | tank and sensors of reactor 1              | 200000        | `e09`
-`x05`  | heater of reactor 1                        | 40000         | `e09`,`e10`
-`x06`  | tank, sensors and blender of reactor 2     | 300000        | `e17`
-`x07`  | heater of reactor 2                        | 50000         | `e17`,`e18`
-`x08`  | staff1-4                                   | 800000        | `e09`,`e11`
-`x09`  | staff5-9                                   | 100000        | `e17`,`e19`
-`x10`  | river and solid                            | 900000        | `e09`,`e11`,`e17`,`e19`
-`x11`  | air                                        | 400000        | `e09`,`e17`
+Symbol | Description                            | Value($)  | Hazardous Incident
+:---   | :---                                   |      ---: | :---
+`x01`  | semi-product `s01` and `s02`           |  30000    | `e01`,`e02`,`e03`
+`x02`  | product `s03`                          |  60000    | `e06`,`e09`,`e11`
+`x03`  | product `s04`                          |  70000    | `e14`,`e17`,`e20`
+`x04`  | tank and sensors of reactor 1          | 200000    | `e09`
+`x05`  | heater of reactor 1                    |  40000    | `e09`,`e10`
+`x06`  | tank, sensors and blender of reactor 2 | 300000    | `e17`
+`x07`  | heater of reactor 2                    |  50000    | `e17`,`e18`
+`x08`  | staff1-4                               | 800000    | `e09`,`e11`
+`x09`  | staff5-9                               | 100000    | `e17`,`e19`
+`x10`  | river and solid                        | 900000    | `e09`,`e11`,`e17`,`e19`
+`x11`  | air                                    | 400000    | `e09`,`e17`
