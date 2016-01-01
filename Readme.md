@@ -37,19 +37,19 @@ The semi-product and product of this chemical reactor control system is shown as
 
 Symbol | Description
 :---   | :---
-`s1`   | the semi-product which is the output from the top of the distillation column
-`s2`   | the semi-product which is the other outputs from the bottom of the distillation column
-`s3`   | the product which is the output from the reactor 1
-`s4`   | the product which is the output from the reactor 2
+`s01`  | the semi-product which is the output from the top of the distillation column
+`s02`  | the semi-product which is the other outputs from the bottom of the distillation column
+`s03`  | the product which is the output from the reactor 1
+`s04`  | the product which is the output from the reactor 2
 
 <h3 id="Introduction.Processes">The Processes of the Chemical Reactor Control System</h3>
 The processes of this chemical reactor control system are shown as follows.
 
 Symbol | Description
 :---   | :---
-`p1`   | the distillation, which can seperate the material into two semi-product `s1` and `s2`
-`p2`   | the mixed heating, which can generate the product by heating semi-product `s1` and the other material
-`p3`   | the heating, which can produce the other product by heating the semi-product `s2`
+`p01`  | the distillation, which can seperate the material into two semi-product `s01` and `s02`
+`p02`  | the mixed heating, which can generate the product by heating semi-product `s01` and the other material
+`p03`  | the heating, which can produce the other product by heating the semi-product `s02`
 
 So, the process model of this chemical reactor control system is shown as following figure.
 
@@ -90,20 +90,20 @@ The functions of this chemical reactor control system are shown as follows.
 
 Symbol | Description
 :---   | :---
-`f1`   | the temperature control function of distillation column
-`f2`   | the pressure control function of distillation column
-`f3`   | the traffic control function of `V1`
-`f4`   | the traffic control function of `V2`
-`f5`   | the traffic control function of `V3`
-`f6`   | the switch control function of `S1`
-`f7`   | the temperature sensation function of distillation column
-`f8`   | the pressure sensation function of distillation column
+`f01`  | the temperature control function of distillation column
+`f02`  | the pressure control function of distillation column
+`f03`  | the traffic control function of `V1`
+`f04`  | the traffic control function of `V2`
+`f05`  | the traffic control function of `V3`
+`f06`  | the switch control function of `S1`
+`f07`  | the temperature sensation function of distillation column
+`f08`  | the pressure sensation function of distillation column
 
 * The functions of reactor 1:
 
 Symbol | Description
 :---   | :---
-`f9`   | the temperature control function of reactor 1
+`f09`   | the temperature control function of reactor 1
 `f10`  | the pressure control function of reactor 1
 `f11`  | the level control function of reactor 1
 `f12`  | the traffic control function of `V4`
@@ -137,15 +137,15 @@ The potential attacks are shown as follows.
 
 Symbol | Description
 :---   | :---
-`a1`   | network scanning of the Ethernet in the management layer
-`a2`   | vulnerability scanning of the devices in the management layer
-`a3`   | buffer overflow attack on the web server
-`a4`   | brute force attack on the web server
-`a5`   | brute force attack on the personal computer 1
-`a6`   | brute force attack on the personal computer 2
-`a7`   | brute force attack on the personal computer 3
-`a8`   | network scanning of the industrial Ethernet 1 in the control layer
-`a9`   | vulnerability scanning of the devices in the industrial Ethernet 1
+`a01`  | network scanning of the Ethernet in the management layer
+`a02`  | vulnerability scanning of the devices in the management layer
+`a03`  | buffer overflow attack on the web server
+`a04`  | brute force attack on the web server
+`a05`  | brute force attack on the personal computer 1
+`a06`  | brute force attack on the personal computer 2
+`a07`  | brute force attack on the personal computer 3
+`a08`  | network scanning of the industrial Ethernet 1 in the control layer
+`a09`  | vulnerability scanning of the devices in the industrial Ethernet 1
 `a10`  | buffer overflow attack on the data server 1
 `a11`  | brute force attack on the data server 1
 `a12`  | brute force attack on the engineer station 1
@@ -189,15 +189,15 @@ The potential hazardous incident are shown as follows.
 
 Symbol | Description                                | Location
 :---   | :---                                       | :---
-`e1`   | pressure anomaly                           | distillation column
-`e2`   | temperature anomaly                        | distillation column
-`e3`   | traffic of anomaly                         | distillation column
-`e4`   | excessive pressure                         | reactor 1
-`e5`   | low pressure                               | reactor 1
-`e6`   | temperature anomaly                        | reactor 1
-`e7`   | excessive liquid level                     | reactor 1
-`e8`   | low liquid level                           | reactor 1
-`e9`   | explosion                                  | reactor 1
+`e01`  | pressure anomaly                           | distillation column
+`e02`  | temperature anomaly                        | distillation column
+`e03`  | traffic of anomaly                         | distillation column
+`e04`  | excessive pressure                         | reactor 1
+`e05`  | low pressure                               | reactor 1
+`e06`  | temperature anomaly                        | reactor 1
+`e07`  | excessive liquid level                     | reactor 1
+`e08`  | low liquid level                           | reactor 1
+`e09`  | explosion                                  | reactor 1
 `e10`  | heater dry fired                           | reactor 1
 `e11`  | liquid overflow                            | reactor 1
 `e12`  | excessive pressure                         | reactor 2
@@ -215,14 +215,14 @@ The asset of the chemical reactor control system and the relationship between as
 
 Symbol | Description                                | Value($)      | Hazardous Incident
 :---   | :---                                       | ---:          | :---
-`x1`   | semi-product `s1` and `s2`                 | 30000         | `e1`,`e2`,`e3`
-`x2`   | product `s3`                               | 60000         | `e6`,`e9`,`e11`
-`x3`   | product `s4`                               | 70000         | `e14`,`e17`,`e20`
-`x4`   | tank and sensors of reactor 1              | 200000        | `e9`
-`x5`   | heater of reactor 1                        | 40000         | `e9`,`e10`
-`x6`   | tank, sensors and blender of reactor 2     | 300000        | `e17`
-`x7`   | heater of reactor 2                        | 50000         | `e17`,`e18`
-`x8`   | staff1-4                                   | 800000        | `e9`,`e11`
-`x9`   | staff5-9                                   | 100000        | `e17`,`e19`
-`x10`  | river and solid                            | 900000        | `e9`,`e11`,`e17`,`e19`
-`x11`  | air                                        | 400000        | `e9`,`e17`
+`x01`  | semi-product `s01` and `s02`               | 30000         | `e01`,`e02`,`e03`
+`x02`  | product `s03`                              | 60000         | `e06`,`e09`,`e11`
+`x03`  | product `s04`                              | 70000         | `e14`,`e17`,`e20`
+`x04`  | tank and sensors of reactor 1              | 200000        | `e09`
+`x05`  | heater of reactor 1                        | 40000         | `e09`,`e10`
+`x06`  | tank, sensors and blender of reactor 2     | 300000        | `e17`
+`x07`  | heater of reactor 2                        | 50000         | `e17`,`e18`
+`x08`  | staff1-4                                   | 800000        | `e09`,`e11`
+`x09`  | staff5-9                                   | 100000        | `e17`,`e19`
+`x10`  | river and solid                            | 900000        | `e09`,`e11`,`e17`,`e19`
+`x11`  | air                                        | 400000        | `e09`,`e17`
