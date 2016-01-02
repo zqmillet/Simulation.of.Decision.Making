@@ -13,8 +13,8 @@ This document is used to introduce the detail of the simulation.
     - [Analysis of Asset](#Risk Modelling.Asset Analysis)
 
 
-##<head id="Introduction" />The Introduction of the Simulation Object
-###<head id="Introduction.Structure" />The Structure of the Chemical Reactor Control System
+##<h2 id="Introduction" />The Introduction of the Simulation Object
+###<h3 id="Introduction.Structure" />The Structure of the Chemical Reactor Control System
 
 The simulation object is a chemical reactor control system which is shown as following figure.
 
@@ -32,7 +32,7 @@ In the control layer, there are three sub networks: Industrial Ethernet 1, 2, 3.
 
 In the physical layer, there are a distillation column and two reactor. In the distillation column, the material is separated into two semi-product. One semi-product is the input of reactor 1, and is fixed in the product with another material. The other semi-product is transported into the reactor 2, and is fixed in the other product.
 
-###<head id="Introduction.Product" />The Product of the Chemical Reactor Control System</h3>
+###<h3 id="Introduction.Product" />The Product of the Chemical Reactor Control System</h3>
 The semi-product and product of this chemical reactor control system is shown as follows.
 
 Symbol | Description
