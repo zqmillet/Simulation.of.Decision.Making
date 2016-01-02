@@ -37,7 +37,7 @@ In the control layer, there are three sub networks: Industrial Ethernet 1, 2, 3.
 In the physical layer, there are a distillation column and two reactor. In the distillation column, the material is separated into two semi-product `s01` and `s02`. The semi-product `s01` is the input of reactor 1, and is fixed in the product `s03` with another material. The other semi-product `s02` is transported into the reactor 2, and is fixed in the product `s04`. The symbols in the physical layer are shown as follows.
 
 Symbol | Description
-:---   | :---
+:---:  | :---
 `V1`   | the valve of input of distillation column
 `V2`   | the valve of output `s01` of distillation column
 `V3`   | the valve of output `s02` of distillation column
@@ -67,7 +67,7 @@ Symbol | Description
 The potential attacks are shown as follows.
 
 Symbol | Description                                                        | Condition
-:---   | :---                                                               | :---
+:---:  | :---                                                               | :---
 `a01`  | network scanning of the Ethernet in the management layer           | --
 `a02`  | vulnerability scanning of the devices in the management layer      | launch of `a01`
 `a03`  | buffer overflow attack on the web server                           | launch of `a02`
@@ -120,7 +120,7 @@ Symbol | Description                                                        | Co
 The functions of the distillation column are shown as follows.
 
 Symbol | Description                                                | Failure Inducement
-:---   | :---                                                       | :---
+:---:  | :---                                                       | :---
 `f01`  | the temperature control function of distillation column    | failure of `f03`, `f05`, `f06`, `f07`
 `f02`  | the pressure control function of distillation column       | failure of `f04`, `f06`, `f08`
 `f03`  | the traffic control function of `V1`                       | launch of `a23`, `a35`
@@ -134,7 +134,7 @@ Symbol | Description                                                | Failure In
 The functions of the reactor 1 are shown as follows.
 
 Symbol | Description                                                | Failure Inducement
-:---   | :---                                                       | :---
+:---:  | :---                                                       | :---
 `f09`  | the temperature control function of reactor 1              | failure of `f12`, `f13`, `f14`, `f16`, `f17`
 `f10`  | the pressure control function of reactor 1                 | failure of `f15`, `f16`, `f18`
 `f11`  | the level control function of reactor 1                    | failure of `f12`, `f13`, `f14`, `f19`
@@ -151,7 +151,7 @@ Symbol | Description                                                | Failure In
 The functions of the reactor 2 are shown as follows.
 
 Symbol | Description                                                | Failure Inducement
-:---   | :---                                                       | :---
+:---:  | :---                                                       | :---
 `f20`  | the temperature control function of reactor 2              | failure of `f23`, `f24`, `f26`, `f27`
 `f21`  | the pressure control function of reactor 2                 | failure of `f25`, `f26`, `f28`
 `f22`  | the level control function of reactor 2                    | failure of `f23`, `f24`, `f29`
@@ -168,7 +168,7 @@ Symbol | Description                                                | Failure In
 The potential hazardous incident are shown as follows.
 
 Symbol | Description            | Location              | Inducement
-:---   | :---                   | :---                  | :---
+:---:  | :---                   | :---                  | :---
 `e01`  | pressure anomaly       | distillation column   | failure of `f02`
 `e02`  | temperature anomaly    | distillation column   | failure of `f01`
 `e03`  | traffic of anomaly     | distillation column   | failure of `f03`, `f04`, `f05`
@@ -194,7 +194,7 @@ Symbol | Description            | Location              | Inducement
 The asset of the chemical reactor control system and the relationship between asset and potential hazardous incident are shown as follows.
 
 Symbol | Description                            | Value($)  | Hazardous Incident
-:---   | :---                                   |      ---: | :---
+:---:  | :---                                   |      ---: | :---
 `x01`  | semi-product `s01` and `s02`           |  30000    | `e01`,`e02`,`e03`
 `x02`  | product `s03`                          |  60000    | `e06`,`e09`,`e11`
 `x03`  | product `s04`                          |  70000    | `e14`,`e17`,`e20`
@@ -211,7 +211,7 @@ Symbol | Description                            | Value($)  | Hazardous Incident
 The processes of this chemical reactor control system are shown as follows.
 
 Symbol | Input  | Output        | Description
-:---   | :---:  | :---:         | :---
+:---:  | :---:  | :---:         | :---
 `p01`  | --     | `s01`, `s02`  | the distillation, which can seperate the material into two semi-product `s01` and `s02`
 `p02`  | `s01`  | `s03`         | the mixed heating, which can generate the product `s03` by heating semi-product `s01` and the other material
 `p03`  | `s02`  | `s04`         | the heating, which can produce the other product `s04` by heating the semi-product `s02`
