@@ -177,9 +177,13 @@ Symbol | Description                                                | Failure In
 
 The functions of management layers are shown as follows.
 
-Symbol | Description                                                | Failure Inducement
-:---:  | :---                                                       | :---
-`f37`  | the data service of industrial Ethernet                    | some security strategies
+Symbol | Description                                                        | Failure Inducement
+:---:  | :---                                                               | :---
+`f37`  | the data service of the Ethernet                                   | some security strategies
+`f38`  | the production scheduling function provided by personal computer 1 | some security strategies
+`f39`  | the production scheduling function provided by personal computer 2 | some security strategies
+`f40`  | the production scheduling function provided by personal computer 3 | some security strategies
+`f41`  | the production scheduling function                                 | failure of `f31`, `f32`, `f33`, `f38`, `f39`, `f40`
 
 ###<h3 id='Analysis.Incident' />Potential Hazardous Incidents
 The potential hazardous incident are shown as follows.
@@ -250,14 +254,24 @@ There are two kinds of defense strategies: security strategies and recover strat
 ###<h3 id="Analysis.Strategy.Security">Security Strategies
 The security strategies of the chemical reactor control system is shown as follows.
 
-Symbol | Description                        | Prevented Attacks                 | Invalidated Functions
-:---:  | :---                               | :---                              | :---
-`m01`  | disconnect the security gateway    | `a01`, `a02`                      | `f`
-`m02`  | disconnect the security gateway 1  | `a08`, `a09`                      | ``
-`m03`  | disconnect the security gateway 2  | `a13`, `a14`                      | ``
-`m04`  | disconnect the security gateway 3  | `a18`, `a15`                      | ``
-`m05`  | shut down data server              | 
-``     | encrypt the data
-``     | 
+Symbol | Description                            | Prevented Attacks                 | Invalidated Functions
+:---:  | :---                                   | :---                              | :---
+`m01`  | disconnect the security gateway        | `a01`                             | `f37`
+`m05`  | shut down the web server               | `a03`, `a04`                      | `f37`
+``     | shut down the personal computer 1      | `a05`                             | `f38`
+``     | shut down the personal computer 2      | `a06`                             | `f39`
+``     | shut down the personal computer 3      | `a07`                             | `f40`
+`m02`  | disconnect the security gateway 1      | `a08`                             | ``
+``     | shut down the data server 1            | `a10`, `a11`                      |
+``     | shut down the engineer station 1       | `a12`                             |
+``     | encrypt the data amongst the PLC 1-4   | `a35`, `a36`, `a37`, `a38`        |
+``     | disconnect the security gateway 2      | `a13`                             |
+``     | shut down the data server 2            | `a15`, `a16`                      |
+``     | shut down the engineer station 2       | `a17`                             |
+``     | encrypt the data amongst the PLC 5-8   | `a39`, `a40`, `a41`, `a42`        |
+``     | disconnect the security gateway 3      | `a18`                             |
+``     | shut down the data server 3            | `a20`, `a21`                      |
+``     | shut down the engineer station 3       | `a22`                             |
+``     | encrypt the data amongst the PLC 9-12  | `a43`, `a44`, `a45`, `a46`        |
 
 ###<h3 id="Analysis.Strategy.Recover">Recover Strategies
