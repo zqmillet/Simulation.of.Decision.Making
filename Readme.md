@@ -3,12 +3,15 @@ This document is used to introduce the detail of the simulation.
 
 ## Contents
 * [The Introduction of the Simulation Object            ](#Introduction)
-* [The Analysis of the Chemical Reactor Control System  ](#Analysis)
+* [The Analysis of the Chemical Reactor Control System  ](#Analysis.System)
     - [Potential Malicious Attacks                      ](#Analysis.Attack)
     - [System Functions                                 ](#Analysis.Function)
     - [Potential Hazardous Incidents                    ](#Analysis.Incident)
     - [System Assets                                    ](#Analysis.Asset)
     - [Production Processes                             ](#Analysis.Process)
+* [The Analysis of Defense Strategies                   ](#Analysis.Strategy)
+    - [Security Strategies                              ](#Analysis.Strategy.Security)        
+    - [Recover Strategies                               ](#Analysis.Strategy.Recover)   
 
 ##<h2 id="Introduction" />The Introduction of the Simulation Object
 The simulation object is a chemical reactor control system which is shown as following figure.
@@ -62,7 +65,7 @@ Symbol | Description
 `B`    | the blender of reactor 2
 `M`    | the motor which drives the blender `B`
 
-##<h2 id="Analysis" />The Analysis of the Chemical Reactor Control System
+##<h2 id="Analysis.System" />The Analysis of the Chemical Reactor Control System
 ###<h3 id='Analysis.Attack' />Potential Malicious Attacks
 The potential attacks are shown as follows.
 
@@ -216,3 +219,13 @@ Symbol | Input  | Output        | Description
 So, the process model of this chemical reactor control system is shown as following figure.
 
 <img src="/Figures/Process.Model.of.Reactor.Control.System.png" width = "250" alt="Process Model of Reactor Control System" />
+
+##<h2 id="Analysis.Strategy">The Analysis of Defense Strategies
+There are two kinds of defense strategies: security strategies and recover strategies.
+* Security strategy is a kind of defense strategy which can prevent attack strategy.
+* Recover strategy is a kind of defense strategy which can recover the failed system function.
+
+###<h3 id="Analysis.Strategy.Security">Security Strategies
+
+
+###<h3 id="Analysis.Strategy.Recover">Recover Strategies
