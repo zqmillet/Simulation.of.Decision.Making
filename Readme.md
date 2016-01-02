@@ -1,263 +1,263 @@
-Welcome to StackEdit!
-===================
-
-
-Hey! I'm your first Markdown document in **StackEdit**[^stackedit]. Don't delete me, I'm very helpful! I can be recovered anyway in the **Utils** tab of the <i class="icon-cog"></i> **Settings** dialog.
-
-----------
-
-
-Documents
--------------
-
-StackEdit stores your documents in your browser, which means all your documents are automatically saved locally and are accessible **offline!**
-
-> **Note:**
-
-> - StackEdit is accessible offline after the application has been loaded for the first time.
-> - Your local documents are not shared between different browsers or computers.
-> - Clearing your browser's data may **delete all your local documents!** Make sure your documents are synchronized with **Google Drive** or **Dropbox** (check out the [<i class="icon-refresh"></i> Synchronization](#synchronization) section).
-
-#### <i class="icon-file"></i> Create a document
-
-The document panel is accessible using the <i class="icon-folder-open"></i> button in the navigation bar. You can create a new document by clicking <i class="icon-file"></i> **New document** in the document panel.
-
-#### <i class="icon-folder-open"></i> Switch to another document
-
-All your local documents are listed in the document panel. You can switch from one to another by clicking a document in the list or you can toggle documents using <kbd>Ctrl+[</kbd> and <kbd>Ctrl+]</kbd>.
-
-#### <i class="icon-pencil"></i> Rename a document
-
-You can rename the current document by clicking the document title in the navigation bar.
-
-#### <i class="icon-trash"></i> Delete a document
-
-You can delete the current document by clicking <i class="icon-trash"></i> **Delete document** in the document panel.
-
-#### <i class="icon-hdd"></i> Export a document
-
-You can save the current document to a file by clicking <i class="icon-hdd"></i> **Export to disk** from the <i class="icon-provider-stackedit"></i> menu panel.
-
-> **Tip:** Check out the [<i class="icon-upload"></i> Publish a document](#publish-a-document) section for a description of the different output formats.
-
-
-----------
-
-
-Synchronization
--------------------
-
-StackEdit can be combined with <i class="icon-provider-gdrive"></i> **Google Drive** and <i class="icon-provider-dropbox"></i> **Dropbox** to have your documents saved in the *Cloud*. The synchronization mechanism takes care of uploading your modifications or downloading the latest version of your documents.
-
-> **Note:**
-
-> - Full access to **Google Drive** or **Dropbox** is required to be able to import any document in StackEdit. Permission restrictions can be configured in the settings.
-> - Imported documents are downloaded in your browser and are not transmitted to a server.
-> - If you experience problems saving your documents on Google Drive, check and optionally disable browser extensions, such as Disconnect.
-
-#### <i class="icon-refresh"></i> Open a document
-
-You can open a document from <i class="icon-provider-gdrive"></i> **Google Drive** or the <i class="icon-provider-dropbox"></i> **Dropbox** by opening the <i class="icon-refresh"></i> **Synchronize** sub-menu and by clicking **Open from...**. Once opened, any modification in your document will be automatically synchronized with the file in your **Google Drive** / **Dropbox** account.
-
-#### <i class="icon-refresh"></i> Save a document
-
-You can save any document by opening the <i class="icon-refresh"></i> **Synchronize** sub-menu and by clicking **Save on...**. Even if your document is already synchronized with **Google Drive** or **Dropbox**, you can export it to a another location. StackEdit can synchronize one document with multiple locations and accounts.
-
-#### <i class="icon-refresh"></i> Synchronize a document
-
-Once your document is linked to a <i class="icon-provider-gdrive"></i> **Google Drive** or a <i class="icon-provider-dropbox"></i> **Dropbox** file, StackEdit will periodically (every 3 minutes) synchronize it by downloading/uploading any modification. A merge will be performed if necessary and conflicts will be detected.
-
-If you just have modified your document and you want to force the synchronization, click the <i class="icon-refresh"></i> button in the navigation bar.
-
-> **Note:** The <i class="icon-refresh"></i> button is disabled when you have no document to synchronize.
-
-#### <i class="icon-refresh"></i> Manage document synchronization
-
-Since one document can be synchronized with multiple locations, you can list and manage synchronized locations by clicking <i class="icon-refresh"></i> **Manage synchronization** in the <i class="icon-refresh"></i> **Synchronize** sub-menu. This will let you remove synchronization locations that are associated to your document.
-
-> **Note:** If you delete the file from **Google Drive** or from **Dropbox**, the document will no longer be synchronized with that location.
-
-----------
-
-
-Publication
--------------
-
-Once you are happy with your document, you can publish it on different websites directly from StackEdit. As for now, StackEdit can publish on **Blogger**, **Dropbox**, **Gist**, **GitHub**, **Google Drive**, **Tumblr**, **WordPress** and on any SSH server.
-
-#### <i class="icon-upload"></i> Publish a document
-
-You can publish your document by opening the <i class="icon-upload"></i> **Publish** sub-menu and by choosing a website. In the dialog box, you can choose the publication format:
-
-- Markdown, to publish the Markdown text on a website that can interpret it (**GitHub** for instance),
-- HTML, to publish the document converted into HTML (on a blog for example),
-- Template, to have a full control of the output.
-
-> **Note:** The default template is a simple webpage wrapping your document in HTML format. You can customize it in the **Advanced** tab of the <i class="icon-cog"></i> **Settings** dialog.
-
-#### <i class="icon-upload"></i> Update a publication
-
-After publishing, StackEdit will keep your document linked to that publication which makes it easy for you to update it. Once you have modified your document and you want to update your publication, click on the <i class="icon-upload"></i> button in the navigation bar.
-
-> **Note:** The <i class="icon-upload"></i> button is disabled when your document has not been published yet.
-
-#### <i class="icon-upload"></i> Manage document publication
-
-Since one document can be published on multiple locations, you can list and manage publish locations by clicking <i class="icon-upload"></i> **Manage publication** in the <i class="icon-provider-stackedit"></i> menu panel. This will let you remove publication locations that are associated to your document.
-
-> **Note:** If the file has been removed from the website or the blog, the document will no longer be published on that location.
-
-----------
-
-
-Markdown Extra
---------------------
-
-StackEdit supports **Markdown Extra**, which extends **Markdown** syntax with some nice features.
-
-> **Tip:** You can disable any **Markdown Extra** feature in the **Extensions** tab of the <i class="icon-cog"></i> **Settings** dialog.
-
-> **Note:** You can find more information about **Markdown** syntax [here][2] and **Markdown Extra** extension [here][3].
-
-
-### Tables
-
-**Markdown Extra** has a special syntax for tables:
-
-Item     | Value
--------- | ---
-Computer | $1600
-Phone    | $12
-Pipe     | $1
-
-You can specify column alignment with one or two colons:
-
-| Item     | Value | Qty   |
-| :------- | ----: | :---: |
-| Computer | $1600 |  5    |
-| Phone    | $12   |  12   |
-| Pipe     | $1    |  234  |
-
-
-### Definition Lists
-
-**Markdown Extra** has a special syntax for definition lists too:
-
-Term 1
-Term 2
-:   Definition A
-:   Definition B
-
-Term 3
-
-:   Definition C
-
-:   Definition D
-
-	> part of definition D
-
-
-### Fenced code blocks
-
-GitHub's fenced code blocks are also supported with **Highlight.js** syntax highlighting:
-
-```
-// Foo
-var bar = 0;
-```
-
-> **Tip:** To use **Prettify** instead of **Highlight.js**, just configure the **Markdown Extra** extension in the <i class="icon-cog"></i> **Settings** dialog.
-
-> **Note:** You can find more information:
-
-> - about **Prettify** syntax highlighting [here][5],
-> - about **Highlight.js** syntax highlighting [here][6].
-
-
-### Footnotes
-
-You can create footnotes like this[^footnote].
-
-  [^footnote]: Here is the *text* of the **footnote**.
-
-
-### SmartyPants
-
-SmartyPants converts ASCII punctuation characters into "smart" typographic punctuation HTML entities. For example:
-
-|                  | ASCII                        | HTML              |
- ----------------- | ---------------------------- | ------------------
-| Single backticks | `'Isn't this fun?'`            | 'Isn't this fun?' |
-| Quotes           | `"Isn't this fun?"`            | "Isn't this fun?" |
-| Dashes           | `-- is en-dash, --- is em-dash` | -- is en-dash, --- is em-dash |
-
-
-### Table of contents
-
-You can insert a table of contents using the marker `[TOC]`:
-
-[TOC]
-
-
-### MathJax
-
-You can render *LaTeX* mathematical expressions using **MathJax**, as on [math.stackexchange.com][1]:
-
-The *Gamma function* satisfying $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$ is via the Euler integral
-
-$$
-\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
-$$
-
-> **Tip:** To make sure mathematical expressions are rendered properly on your website, include **MathJax** into your template:
-
-```
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-```
-
-> **Note:** You can find more information about **LaTeX** mathematical expressions [here][4].
-
-
-### UML diagrams
-
-You can also render sequence diagrams like this:
-
-```sequence
-Alice->Bob: Hello Bob, how are you?
-Note right of Bob: Bob thinks
-Bob-->Alice: I am good thanks!
-```
-
-And flow charts like this:
-
-```flow
-st=>start: Start
-e=>end
-op=>operation: My Operation
-cond=>condition: Yes or No?
-
-st->op->cond
-cond(yes)->e
-cond(no)->op
-```
-
-> **Note:** You can find more information:
-
-> - about **Sequence diagrams** syntax [here][7],
-> - about **Flow charts** syntax [here][8].
-
-### Support StackEdit
-
-[![](https://cdn.monetizejs.com/resources/button-32.png)](https://monetizejs.com/authorize?client_id=ESTHdCYOi18iLhhO&summary=true)
-
-  [^stackedit]: [StackEdit](https://stackedit.io/) is a full-featured, open-source Markdown editor based on PageDown, the Markdown library used by Stack Overflow and the other Stack Exchange sites.
-
-
-  [1]: http://math.stackexchange.com/
-  [2]: http://daringfireball.net/projects/markdown/syntax "Markdown"
-  [3]: https://github.com/jmcmanus/pagedown-extra "Pagedown Extra"
-  [4]: http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference
-  [5]: https://code.google.com/p/google-code-prettify/
-  [6]: http://highlightjs.org/
-  [7]: http://bramp.github.io/js-sequence-diagrams/
-  [8]: http://adrai.github.io/flowchart.js/
+# Simulation
+This document is used to introduce the detail of the simulation.
+
+## Contents
+* [The Introduction of the Simulation Object            ](#Introduction)
+* [The Analysis of the Chemical Reactor Control System  ](#Analysis.System)
+    - [Potential Malicious Attacks                      ](#Analysis.Attack)
+    - [System Functions                                 ](#Analysis.Function)
+    - [Potential Hazardous Incidents                    ](#Analysis.Incident)
+    - [System Assets                                    ](#Analysis.Asset)
+    - [Production Processes                             ](#Analysis.Process)
+* [The Analysis of Defense Strategies                   ](#Analysis.Strategy)
+    - [Security Strategies                              ](#Analysis.Strategy.Security)        
+    - [Recover Strategies                               ](#Analysis.Strategy.Recover)   
+
+##<h2 id="Introduction" />The Introduction of the Simulation Object
+The simulation object is a chemical reactor control system which is shown as following figure.
+
+<img src="/Figures/Structure.of.Reactor.Control.System.png" alt="Structure of Reactor Control System" />
+
+In this chemical reactor control system, there are 2 semi-product and 2 product which is shown as follows.
+
+Symbol | Type           | Description
+:---:  | :---           | :---
+`s01`  | semi-product   | the semi-product which is the output from the top of the distillation column
+`s02`  | semi-product   | the semi-product which is the other outputs from the bottom of the distillation column
+`s03`  | product        | the product which is the output from the reactor 1
+`s04`  | product        | the product which is the output from the reactor 2
+
+This control network contains three layers:
+
+* Management Layer,
+* Control Layer,
+* Physical Layer.
+
+In the management layer, there are three personal computers and a web server. All the network devices connect to the Ethernet, which connects the internet via a security gateway.
+
+In the control layer, there are three sub networks: Industrial Ethernet 1, 2, 3. In the sub network "Industrial Ethernet 1", three are a engineer state, a data server, and four PLCs. The sub network "Industrial Ethernet 1" connects the management layer via a security gateway. The remaining two sub networks are same as the sub network "Industrial Ethernet 1", so in this section, their details will not be introduced.
+
+In the physical layer, there are a distillation column and two reactor. In the distillation column, the material is separated into two semi-product `s01` and `s02`. The semi-product `s01` is the input of reactor 1, and is fixed in the product `s03` with another material. The other semi-product `s02` is transported into the reactor 2, and is fixed in the product `s04`. The symbols in the physical layer are shown as follows.
+
+Symbol | Description
+:---:  | :---
+`V1`   | the valve of input of distillation column
+`V2`   | the valve of output `s01` of distillation column
+`V3`   | the valve of output `s02` of distillation column
+`V4`   | the valve of input material of reactor 1
+`V5`   | the valve of input `s01` of reactor 1
+`V6`   | the valve of input `s02` of reactor 2
+`V7`   | the valve of output `s03` of reactor 1
+`V8`   | the pressure reducing valve of reactor 1
+`V9`   | the pressure reducing valve of reactor 2
+`V10`  | the valve of output `s04` of reactor 2
+`S1`   | the switch of the heater of the distillation column
+`S2`   | the switch of the heater of the reactor 1
+`S3`   | the switch of the heater of the reactor 2
+`PS1`  | the pressure sensor of the distillation column
+`PS2`  | the pressure sensor of the reactor 1
+`PS3`  | the pressure sensor of the reactor 2
+`TS1`  | the temperature sensor of the distillation column
+`TS2`  | the temperature sensor of the reactor 1
+`TS3`  | the temperature sensor of the reactor 2
+`LS1`  | the level sensor of the reactor 1
+`LS2`  | the level sensor of the reactor 2
+`B`    | the blender of reactor 2
+`M`    | the motor which drives the blender `B`
+
+##<h2 id="Analysis.System" />The Analysis of the Chemical Reactor Control System
+###<h3 id='Analysis.Attack' />Potential Malicious Attacks
+The potential attacks are shown as follows.
+
+Symbol | Description                                                        | Condition
+:---:  | :---                                                               | :---
+`a01`  | network scanning of the Ethernet in the management layer           | --
+`a02`  | vulnerability scanning of the devices in the management layer      | launch of `a01`
+`a03`  | buffer overflow attack on the web server                           | launch of `a02`
+`a04`  | brute force attack on the web server                               | launch of `a02`
+`a05`  | brute force attack on the personal computer 1                      | launch of `a02`
+`a06`  | brute force attack on the personal computer 2                      | launch of `a02`
+`a07`  | brute force attack on the personal computer 3                      | launch of `a02`
+`a08`  | network scanning of the industrial Ethernet 1 in the control layer | launch of `a03`, `a04`, `a05`, `a06`, `a07`
+`a09`  | vulnerability scanning of the devices in the industrial Ethernet 1 | launch of `a08`
+`a10`  | buffer overflow attack on the data server 1                        | launch of `a09`
+`a11`  | brute force attack on the data server 1                            | launch of `a09`
+`a12`  | brute force attack on the engineer station 1                       | launch of `a09`
+`a13`  | network scanning of the industrial Ethernet 2 in the control layer | launch of `a03`, `a04`, `a05`, `a06`, `a07`
+`a14`  | vulnerability scanning of the devices in the industrial Ethernet 2 | launch of `a13`
+`a15`  | buffer overflow attack on the data server 2                        | launch of `a14`
+`a16`  | brute force attack on the data server 2                            | launch of `a14`
+`a17`  | brute force attack on the engineer station 2                       | launch of `a14`
+`a18`  | network scanning of the industrial Ethernet 3 in the control layer | launch of `a03`, `a04`, `a05`, `a06`, `a07`
+`a19`  | vulnerability scanning of the devices in the industrial Ethernet 3 | launch of `a18`
+`a20`  | buffer overflow attack on the data server 3                        | launch of `a19`
+`a21`  | brute force attack on the data server 3                            | launch of `a19`
+`a22`  | brute force attack on the engineer station 3                       | launch of `a19`
+`a23`  | DoS attack on PLC1                                                 | launch of `a10`, `a11`, `a12`
+`a24`  | DoS attack on PLC2                                                 | launch of `a10`, `a11`, `a12`
+`a25`  | DoS attack on PLC3                                                 | launch of `a10`, `a11`, `a12`
+`a26`  | DoS attack on PLC4                                                 | launch of `a10`, `a11`, `a12`
+`a27`  | DoS attack on PLC5                                                 | launch of `a15`, `a16`, `a17`
+`a28`  | DoS attack on PLC6                                                 | launch of `a15`, `a16`, `a17`
+`a29`  | DoS attack on PLC7                                                 | launch of `a15`, `a16`, `a17`
+`a30`  | DoS attack on PLC8                                                 | launch of `a15`, `a16`, `a17`
+`a31`  | DoS attack on PLC9                                                 | launch of `a20`, `a21`, `a22`
+`a32`  | DoS attack on PLC10                                                | launch of `a20`, `a21`, `a22`
+`a33`  | DoS attack on PLC11                                                | launch of `a20`, `a21`, `a22`
+`a34`  | DoS attack on PLC12                                                | launch of `a20`, `a21`, `a22`
+`a35`  | man-in-the-middle attack on PLC1                                   | launch of `a12`
+`a36`  | man-in-the-middle attack on PLC2                                   | launch of `a12`
+`a37`  | man-in-the-middle attack on PLC3                                   | launch of `a12`
+`a38`  | man-in-the-middle attack on PLC4                                   | launch of `a12`
+`a39`  | man-in-the-middle attack on PLC5                                   | launch of `a17`
+`a40`  | man-in-the-middle attack on PLC6                                   | launch of `a17`
+`a41`  | man-in-the-middle attack on PLC7                                   | launch of `a17`
+`a42`  | man-in-the-middle attack on PLC8                                   | launch of `a17`
+`a43`  | man-in-the-middle attack on PLC9                                   | launch of `a22`
+`a44`  | man-in-the-middle attack on PLC10                                  | launch of `a22`
+`a45`  | man-in-the-middle attack on PLC11                                  | launch of `a22`
+`a46`  | man-in-the-middle attack on PLC12                                  | launch of `a22`
+
+###<h3 id='Analysis.Function' />System Functions
+The functions of the distillation column are shown as follows.
+
+Symbol | Description                                                | Failure Inducement
+:---:  | :---                                                       | :---
+`f01`  | the temperature control function of distillation column    | failure of `f03`, `f05`, `f06`, `f07`
+`f02`  | the pressure control function of distillation column       | failure of `f04`, `f06`, `f08`
+`f03`  | the traffic control function of `V1`                       | launch of `a23`, `a35`
+`f04`  | the traffic control function of `V2`                       | launch of `a26`, `a38`
+`f05`  | the traffic control function of `V3`                       | launch of `a26`, `a38`
+`f06`  | the switch control function of `S1`                        | launch of `a24`, `a36`
+`f07`  | the temperature sensation function of distillation column  | launch of `a25`, `a37`
+`f08`  | the pressure sensation function of distillation column     | launch of `a25`, `a37`
+
+The functions of the reactor 1 are shown as follows.
+
+Symbol | Description                                                | Failure Inducement
+:---:  | :---                                                       | :---
+`f09`  | the temperature control function of reactor 1              | failure of `f12`, `f13`, `f14`, `f16`, `f17`
+`f10`  | the pressure control function of reactor 1                 | failure of `f15`, `f16`, `f18`
+`f11`  | the level control function of reactor 1                    | failure of `f12`, `f13`, `f14`, `f19`
+`f12`  | the traffic control function of `V4`                       | launch of `a27`, `a39`
+`f13`  | the traffic control function of `V5`                       | launch of `a27`, `a39`
+`f14`  | the traffic control function of `V7`                       | launch of `a30`, `a42`
+`f15`  | the pressure reducing function of reactor 1                | launch of `a30`, `a42`
+`f16`  | the switch control function of `S2`                        | launch of `a28`, `a40`
+`f17`  | the temperature sensation function of reactor 1            | launch of `a29`, `a41`
+`f18`  | the pressure sensation function of reactor 1               | launch of `a29`, `a41`
+`f19`  | the level sensation function of reactor 1                  | launch of `a29`, `a41`
+
+The functions of the reactor 2 are shown as follows.
+
+Symbol | Description                                                | Failure Inducement
+:---:  | :---                                                       | :---
+`f20`  | the temperature control function of reactor 2              | failure of `f23`, `f24`, `f26`, `f27`
+`f21`  | the pressure control function of reactor 2                 | failure of `f25`, `f26`, `f28`
+`f22`  | the level control function of reactor 2                    | failure of `f23`, `f24`, `f29`
+`f23`  | the traffic control function of `V6`                       | launch of `a31`, `a43`
+`f24`  | the traffic control function of `V10`                      | launch of `a34`, `a46`
+`f25`  | the pressure reducing function of reactor 2                | launch of `a34`, `a46`
+`f26`  | the switch control function of `S3`                        | launch of `a32`, `a44`
+`f27`  | the temperature sensation function of reactor 2            | launch of `a33`, `a45`
+`f28`  | the pressure sensation function of reactor 2               | launch of `a33`, `a45`
+`f29`  | the level sensation function of reactor 2                  | launch of `a33`, `a45`
+`f30`  | the mixing function of reactor 2                           | launch of `a32`, `a44`
+
+The functions of control layers are shown as follows.
+
+Symbol | Description                                                | Failure Inducement
+:---:  | :---                                                       | :---
+`f31`  | the data service of industrial Ethernet 1                  | some security strategies
+`f32`  | the data service of industrial Ethernet 2                  | some security strategies
+`f33`  | the data service of industrial Ethernet 3                  | some security strategies
+`f34`  | the configuration of PLCs of distillation column           | some security strategies
+`f35`  | the configuration of PLCs of reactor 1                     | some security strategies
+`f36`  | the configuration of PLCs of reactor 2                     | some security strategies
+
+The functions of management layers are shown as follows.
+
+Symbol | Description                                                | Failure Inducement
+:---:  | :---                                                       | :---
+`f37`  | the data service of industrial Ethernet                    | some security strategies
+
+###<h3 id='Analysis.Incident' />Potential Hazardous Incidents
+The potential hazardous incident are shown as follows.
+
+Symbol | Description                    | Location              | Inducement
+:---:  | :---                           | :---                  | :---
+`e01`  | pressure anomaly               | distillation column   | failure of `f02`
+`e02`  | temperature anomaly            | distillation column   | failure of `f01`
+`e03`  | traffic of anomaly             | distillation column   | failure of `f03`, `f04`, `f05`
+`e04`  | excessive pressure             | reactor 1             | failure of `f10`
+`e05`  | low pressure                   | reactor 1             | failure of `f10`
+`e06`  | temperature anomaly            | reactor 1             | failure of `f09`
+`e07`  | excessive liquid level         | reactor 1             | failure of `f11`
+`e08`  | low liquid level               | reactor 1             | failure of `f11`
+`e09`  | explosion                      | reactor 1             | occurrence of `e04`
+`e10`  | heater dry fired               | reactor 1             | occurrence of `e08`
+`e11`  | liquid overflow                | reactor 1             | occurrence of `e07`
+`e12`  | excessive pressure             | reactor 2             | failure of `f21`
+`e13`  | low pressure                   | reactor 2             | failure of `f21`
+`e14`  | temperature anomaly            | reactor 2             | failure of `f20`
+`e15`  | excessive liquid level         | reactor 2             | failure of `f22`
+`e16`  | low liquid level               | reactor 2             | failure of `f22`
+`e17`  | explosion                      | reactor 2             | occurrence of `e12`
+`e18`  | heater dry fired               | reactor 2             | occurrence of `e16`
+`e19`  | liquid overflow                | reactor 2             | occurrence of `e15`
+`e20`  | blender stop                   | reactor 2             | failure of `f30`
+`e21`  | out of control                 | distillation column   | failure of `f34`
+`e22`  | out of control                 | reactor 1             | failure of `f35`
+`e23`  | out of control                 | reactor 2             | failure of `f36`
+`e24`  | production scheduling error    | control layer         | failure of `f31`, `f32`, `f33`
+`e25`  | production scheduling error    | plant                 | failure of `f37                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            `
+
+###<h3 id='Analysis.Asset' />System Assets
+The asset of the chemical reactor control system and the relationship between asset and potential hazardous incident are shown as follows.
+
+Symbol | Description                            | Value($)  | Hazardous Incident
+:---:  | :---                                   |      ---: | :---
+`x01`  | semi-product `s01` and `s02`           |  30000    | `e01`,`e02`,`e03`
+`x02`  | product `s03`                          |  60000    | `e06`,`e09`,`e11`
+`x03`  | product `s04`                          |  70000    | `e14`,`e17`,`e20`
+`x04`  | tank and sensors of reactor 1          | 200000    | `e09`
+`x05`  | heater of reactor 1                    |  40000    | `e09`,`e10`
+`x06`  | tank, sensors and blender of reactor 2 | 300000    | `e17`
+`x07`  | heater of reactor 2                    |  50000    | `e17`,`e18`
+`x08`  | staff 1-4                              | 800000    | `e09`,`e11`
+`x09`  | staff 5-9                              | 100000    | `e17`,`e19`
+`x10`  | river and solid                        | 900000    | `e09`,`e11`,`e17`,`e19`
+`x11`  | air                                    | 400000    | `e09`,`e17`
+
+###<h3 id='Analysis.Process' />Production Processes
+The processes of this chemical reactor control system are shown as follows.
+
+Symbol | Input  | Output        | Description
+:---:  | :---:  | :---:         | :---
+`p01`  | --     | `s01`, `s02`  | the distillation, which can seperate the material into two semi-product `s01` and `s02`
+`p02`  | `s01`  | `s03`         | the mixed heating, which can generate the product `s03` by heating semi-product `s01` and the other material
+`p03`  | `s02`  | `s04`         | the heating, which can produce the other product `s04` by heating the semi-product `s02`
+
+So, the process model of this chemical reactor control system is shown as following figure.
+
+<img src="/Figures/Process.Model.of.Reactor.Control.System.png" width = "250" alt="Process Model of Reactor Control System" />
+
+##<h2 id="Analysis.Strategy">The Analysis of Defense Strategies
+There are two kinds of defense strategies: security strategies and recover strategies.
+* Security strategy is a kind of defense strategy which can prevent attack strategy.
+* Recover strategy is a kind of defense strategy which can recover the failed system function.
+
+###<h3 id="Analysis.Strategy.Security">Security Strategies
+The security strategies of the chemical reactor control system is shown as follows.
+
+Symbol | Description                        | Prevented Attacks                 | Invalidated Functions
+:---:  | :---                               | :---                              | :---
+`m01`  | disconnect the security gateway    | `a01`, `a02`                      | `f`
+`m02`  | disconnect the security gateway 1  | `a08`, `a09`                      | ``
+`m03`  | disconnect the security gateway 2  | `a13`, `a14`                      | ``
+`m04`  | disconnect the security gateway 3  | `a18`, `a15`                      | ``
+`m05`  | shut down data server              | 
+``     | encrypt the data
+``     | 
+
+###<h3 id="Analysis.Strategy.Recover">Recover Strategies
