@@ -2,23 +2,27 @@
 This document is used to introduce the detail of the simulation.
 
 ## Contents
-* [The Introduction of the Simulation Object](#Introduction)
-    - [The Structure of the Chemical Reactor Control System](#Introduction.Structure)
-    - [The Product of the Chemical Reactor Control System](#Introduction.Product)
-    - [The Processes of the Chemical Reactor Control System](#Introduction.Processes)
-    - [The Functions of the Chemical Reactor Control System](#Introduction.Functions)
-* [Risk Modelling of the Chemical Reactor Control System](#Risk Modelling)
-    - [Analysis of Potential Malicious Attacks](#Risk Modelling.Attack Analysis)
-    - [Analysis of Potential Hazardous Incident](#Risk Modelling.Incident Analysis)
-    - [Analysis of Asset](#Risk Modelling.Asset Analysis)
-
+* [The Introduction of the Simulation Object            ](#Introduction)
+* [The Analysis of the Chemical Reactor Control System  ](#Analysis)
+    - [Potential Malicious Attacks                      ](#Analysis.Attack)
+    - [System Functions                                 ](#Analysis.Function)
+    - [Potential Hazardous Incidents                    ](#Analysis.Incident)
+    - [System Assets                                    ](#Analysis.Asset)
+    - [Production Processes                             ](#Analysis.Process)
 
 ##<h2 id="Introduction" />The Introduction of the Simulation Object
-###<h3 id="Introduction.Structure" />The Structure of the Chemical Reactor Control System
-
 The simulation object is a chemical reactor control system which is shown as following figure.
 
 &#8194;&#8194;<img src="/Figures/Structure.of.Reactor.Control.System.png" alt="Structure of Reactor Control System" />
+
+In this chemical reactor control system, there are 2 semi-product and 2 product which is shown as follows.
+
+Symbol | Type           | Description
+:---:  | :---           | :---
+`s01`  | semi-product   | the semi-product which is the output from the top of the distillation column
+`s02`  | semi-product   | the semi-product which is the other outputs from the bottom of the distillation column
+`s03`  | product        | the product which is the output from the reactor 1
+`s04`  | product        | the product which is the output from the reactor 2
 
 This control network contains three layers:
 
@@ -30,33 +34,7 @@ In the management layer, there are three personal computers and a web server. Al
 
 In the control layer, there are three sub networks: Industrial Ethernet 1, 2, 3. In the sub network "Industrial Ethernet 1", three are a engineer state, a data server, and four PLCs. The sub network "Industrial Ethernet 1" connects the management layer via a security gateway. The remaining two sub networks are same as the sub network "Industrial Ethernet 1", so in this section, their details will not be introduced.
 
-In the physical layer, there are a distillation column and two reactor. In the distillation column, the material is separated into two semi-product. One semi-product is the input of reactor 1, and is fixed in the product with another material. The other semi-product is transported into the reactor 2, and is fixed in the other product.
-
-###<h3 id="Introduction.Product" />The Product of the Chemical Reactor Control System</h3>
-The semi-product and product of this chemical reactor control system is shown as follows.
-
-Symbol | Description
-:---   | :---
-`s01`  | the semi-product which is the output from the top of the distillation column
-`s02`  | the semi-product which is the other outputs from the bottom of the distillation column
-`s03`  | the product which is the output from the reactor 1
-`s04`  | the product which is the output from the reactor 2
-
-<h3 id="Introduction.Processes">The Processes of the Chemical Reactor Control System</h3>
-The processes of this chemical reactor control system are shown as follows.
-
-Symbol | Description
-:---   | :---
-`p01`  | the distillation, which can seperate the material into two semi-product `s01` and `s02`
-`p02`  | the mixed heating, which can generate the product by heating semi-product `s01` and the other material
-`p03`  | the heating, which can produce the other product by heating the semi-product `s02`
-
-So, the process model of this chemical reactor control system is shown as following figure.
-
-&#8194;&#8194;<img src="/Figures/Process.Model.of.Reactor.Control.System.png" width = "250" alt="Process Model of Reactor Control System" />
-
-<h3 id="Introduction.Functions">The Functions of the Chemical Reactor Control System</h3>
-The symbols in the physical layer are shown as follows.
+In the physical layer, there are a distillation column and two reactor. In the distillation column, the material is separated into two semi-product `s01` and `s02`. The semi-product `s01` is the input of reactor 1, and is fixed in the product `s03` with another material. The other semi-product `s02` is transported into the reactor 2, and is fixed in the product `s04`. The symbols in the physical layer are shown as follows.
 
 Symbol | Description
 :---   | :---
@@ -84,55 +62,8 @@ Symbol | Description
 `B`    | the blender of reactor 2
 `M`    | the motor which drives the blender `B`
 
-The functions of this chemical reactor control system are shown as follows.
-
-* The functions of distillation column:
-
-Symbol | Description                                                | Failure Inducement
-:---   | :---                                                       | :---
-`f01`  | the temperature control function of distillation column    | failure of `f03`, `f05`, `f06`, `f07`
-`f02`  | the pressure control function of distillation column       | failure of `f04`, `f06`, `f08`
-`f03`  | the traffic control function of `V1`                       | launch of `a23`, `a35`
-`f04`  | the traffic control function of `V2`                       | launch of `a26`, `a38`
-`f05`  | the traffic control function of `V3`                       | launch of `a26`, `a38`
-`f06`  | the switch control function of `S1`                        | launch of `a24`, `a36`
-`f07`  | the temperature sensation function of distillation column  | launch of `a25`, `a37`
-`f08`  | the pressure sensation function of distillation column     | launch of `a25`, `a37`
-
-* The functions of reactor 1:
-
-Symbol | Description                                                | Failure Inducement
-:---   | :---                                                       | :---
-`f09`  | the temperature control function of reactor 1              | failure of `f12`, `f13`, `f14`, `f16`, `f17`
-`f10`  | the pressure control function of reactor 1                 | failure of `f15`, `f16`, `f18`
-`f11`  | the level control function of reactor 1                    | failure of `f12`, `f13`, `f14`, `f19`
-`f12`  | the traffic control function of `V4`                       | launch of `a27`, `a39`
-`f13`  | the traffic control function of `V5`                       | launch of `a27`, `a39`
-`f14`  | the traffic control function of `V7`                       | launch of `a30`, `a42`
-`f15`  | the pressure reducing function of reactor 1                | launch of `a30`, `a42`
-`f16`  | the switch control function of `S2`                        | launch of `a28`, `a40`
-`f17`  | the temperature sensation function of reactor 1            | launch of `a29`, `a41`
-`f18`  | the pressure sensation function of reactor 1               | launch of `a29`, `a41`
-`f19`  | the level sensation function of reactor 1                  | launch of `a29`, `a41`
-
-* The functions of reactor 2:
-
-Symbol | Description                                                | Failure Inducement
-:---   | :---                                                       | :---
-`f20`  | the temperature control function of reactor 2              | failure of `f23`, `f24`, `f26`, `f27`
-`f21`  | the pressure control function of reactor 2                 | failure of `f25`, `f26`, `f28`
-`f22`  | the level control function of reactor 2                    | failure of `f23`, `f24`, `f29`
-`f23`  | the traffic control function of `V6`                       | launch of `a31`, `a43`
-`f24`  | the traffic control function of `V10`                      | launch of `a34`, `a46`
-`f25`  | the pressure reducing function of reactor 2                | launch of `a34`, `a46`
-`f26`  | the switch control function of `S3`                        | launch of `a32`, `a44`
-`f27`  | the temperature sensation function of reactor 2            | launch of `a33`, `a45`
-`f28`  | the pressure sensation function of reactor 2               | launch of `a33`, `a45`
-`f29`  | the level sensation function of reactor 2                  | launch of `a33`, `a45`
-`f30`  | the mixing function of reactor 2                           | launch of `a32`, `a44`
-
-<h2 id="Risk Modelling">Risk Modelling of the Chemical Reactor Control System</h2>
-<h3 id="Risk Modelling.Attack Analysis">Analysis of Potential Malicious Attacks</h3>
+##<h2 id="Analysis" />The Analysis of the Chemical Reactor Control System
+###<h3 id='Analysis.Attack' />Potential Malicious Attacks
 The potential attacks are shown as follows.
 
 Symbol | Description                                                        | Condition
@@ -184,7 +115,56 @@ Symbol | Description                                                        | Co
 `a45`  | man-in-the-middle attack on PLC11                                  | launch of `a22`
 `a46`  | man-in-the-middle attack on PLC12                                  | launch of `a22`
 
-<h3 id="Risk Modelling.Incident Analysis">Analysis of Potential Hazardous Incident</h3>
+###<h3 id='Analysis.Function' />System Functions
+####The functions of distillation column
+The functions of the distillation column are shown as follows.
+
+Symbol | Description                                                | Failure Inducement
+:---   | :---                                                       | :---
+`f01`  | the temperature control function of distillation column    | failure of `f03`, `f05`, `f06`, `f07`
+`f02`  | the pressure control function of distillation column       | failure of `f04`, `f06`, `f08`
+`f03`  | the traffic control function of `V1`                       | launch of `a23`, `a35`
+`f04`  | the traffic control function of `V2`                       | launch of `a26`, `a38`
+`f05`  | the traffic control function of `V3`                       | launch of `a26`, `a38`
+`f06`  | the switch control function of `S1`                        | launch of `a24`, `a36`
+`f07`  | the temperature sensation function of distillation column  | launch of `a25`, `a37`
+`f08`  | the pressure sensation function of distillation column     | launch of `a25`, `a37`
+
+####The functions of reactor 1
+The functions of the reactor 1 are shown as follows.
+
+Symbol | Description                                                | Failure Inducement
+:---   | :---                                                       | :---
+`f09`  | the temperature control function of reactor 1              | failure of `f12`, `f13`, `f14`, `f16`, `f17`
+`f10`  | the pressure control function of reactor 1                 | failure of `f15`, `f16`, `f18`
+`f11`  | the level control function of reactor 1                    | failure of `f12`, `f13`, `f14`, `f19`
+`f12`  | the traffic control function of `V4`                       | launch of `a27`, `a39`
+`f13`  | the traffic control function of `V5`                       | launch of `a27`, `a39`
+`f14`  | the traffic control function of `V7`                       | launch of `a30`, `a42`
+`f15`  | the pressure reducing function of reactor 1                | launch of `a30`, `a42`
+`f16`  | the switch control function of `S2`                        | launch of `a28`, `a40`
+`f17`  | the temperature sensation function of reactor 1            | launch of `a29`, `a41`
+`f18`  | the pressure sensation function of reactor 1               | launch of `a29`, `a41`
+`f19`  | the level sensation function of reactor 1                  | launch of `a29`, `a41`
+
+####The functions of reactor 2
+The functions of the reactor 2 are shown as follows.
+
+Symbol | Description                                                | Failure Inducement
+:---   | :---                                                       | :---
+`f20`  | the temperature control function of reactor 2              | failure of `f23`, `f24`, `f26`, `f27`
+`f21`  | the pressure control function of reactor 2                 | failure of `f25`, `f26`, `f28`
+`f22`  | the level control function of reactor 2                    | failure of `f23`, `f24`, `f29`
+`f23`  | the traffic control function of `V6`                       | launch of `a31`, `a43`
+`f24`  | the traffic control function of `V10`                      | launch of `a34`, `a46`
+`f25`  | the pressure reducing function of reactor 2                | launch of `a34`, `a46`
+`f26`  | the switch control function of `S3`                        | launch of `a32`, `a44`
+`f27`  | the temperature sensation function of reactor 2            | launch of `a33`, `a45`
+`f28`  | the pressure sensation function of reactor 2               | launch of `a33`, `a45`
+`f29`  | the level sensation function of reactor 2                  | launch of `a33`, `a45`
+`f30`  | the mixing function of reactor 2                           | launch of `a32`, `a44`
+
+###<h3 id='Analysis.Incident' />Potential Hazardous Incidents
 The potential hazardous incident are shown as follows.
 
 Symbol | Description            | Location              | Inducement
@@ -210,7 +190,7 @@ Symbol | Description            | Location              | Inducement
 `e19`  | liquid overflow        | reactor 2             | occurrence of `e15`
 `e20`  | blender stop           | reactor 2             | failure of `f30`
 
-<h3 id="Risk Modelling.Asset Analysis">Analysis of Asset</h3>
+###<h3 id='Analysis.Asset' />System Assets
 The asset of the chemical reactor control system and the relationship between asset and potential hazardous incident are shown as follows.
 
 Symbol | Description                            | Value($)  | Hazardous Incident
@@ -226,3 +206,16 @@ Symbol | Description                            | Value($)  | Hazardous Incident
 `x09`  | staff 5-9                              | 100000    | `e17`,`e19`
 `x10`  | river and solid                        | 900000    | `e09`,`e11`,`e17`,`e19`
 `x11`  | air                                    | 400000    | `e09`,`e17`
+
+###<h3 id='Analysis.Process' />Production Processes
+The processes of this chemical reactor control system are shown as follows.
+
+Symbol | Input  | Output    | Description
+:---   | :---   | :---      | :---
+`p01`  |        |           | the distillation, which can seperate the material into two semi-product `s01` and `s02`
+`p02`  |        |           | the mixed heating, which can generate the product by heating semi-product `s01` and the other material
+`p03`  |        |           | the heating, which can produce the other product by heating the semi-product `s02`
+
+So, the process model of this chemical reactor control system is shown as following figure.
+
+<img src="/Figures/Process.Model.of.Reactor.Control.System.png" width = "250" alt="Process Model of Reactor Control System" />
