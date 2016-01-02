@@ -210,11 +210,11 @@ Symbol | Description                            | Value($)  | Hazardous Incident
 ###<h3 id='Analysis.Process' />Production Processes
 The processes of this chemical reactor control system are shown as follows.
 
-Symbol | Input  | Output    | Description
-:---   | :---   | :---      | :---
-`p01`  |        |           | the distillation, which can seperate the material into two semi-product `s01` and `s02`
-`p02`  |        |           | the mixed heating, which can generate the product by heating semi-product `s01` and the other material
-`p03`  |        |           | the heating, which can produce the other product by heating the semi-product `s02`
+Symbol | Input  | Output        | Description
+:---   | :---:  | :---:         | :---
+`p01`  | --     | `s01`, `s02`  | the distillation, which can seperate the material into two semi-product `s01` and `s02`
+`p02`  | `s01`  | `s03`         | the mixed heating, which can generate the product `s03` by heating semi-product `s01` and the other material
+`p03`  | `s02`  | `s04`         | the heating, which can produce the other product `s04` by heating the semi-product `s02`
 
 So, the process model of this chemical reactor control system is shown as following figure.
 
