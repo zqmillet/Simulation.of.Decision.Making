@@ -164,31 +164,53 @@ Symbol | Description                                                | Failure In
 `f29`  | the level sensation function of reactor 2                  | launch of `a33`, `a45`
 `f30`  | the mixing function of reactor 2                           | launch of `a32`, `a44`
 
+The functions of control layers are shown as follows.
+
+Symbol | Description                                                | Failure Inducement
+:---:  | :---                                                       | :---
+`f31`  | the data service of industrial Ethernet 1                  | some security strategies
+`f32`  | the data service of industrial Ethernet 2                  | some security strategies
+`f33`  | the data service of industrial Ethernet 3                  | some security strategies
+`f34`  | the configuration of PLCs of distillation column           | some security strategies
+`f35`  | the configuration of PLCs of reactor 1                     | some security strategies
+`f36`  | the configuration of PLCs of reactor 2                     | some security strategies
+
+The functions of management layers are shown as follows.
+
+Symbol | Description                                                | Failure Inducement
+:---:  | :---                                                       | :---
+`f37`  | the data service of industrial Ethernet                    | some security strategies
+
 ###<h3 id='Analysis.Incident' />Potential Hazardous Incidents
 The potential hazardous incident are shown as follows.
 
-Symbol | Description            | Location              | Inducement
-:---:  | :---                   | :---                  | :---
-`e01`  | pressure anomaly       | distillation column   | failure of `f02`
-`e02`  | temperature anomaly    | distillation column   | failure of `f01`
-`e03`  | traffic of anomaly     | distillation column   | failure of `f03`, `f04`, `f05`
-`e04`  | excessive pressure     | reactor 1             | failure of `f10`
-`e05`  | low pressure           | reactor 1             | failure of `f10`
-`e06`  | temperature anomaly    | reactor 1             | failure of `f09`
-`e07`  | excessive liquid level | reactor 1             | failure of `f11`
-`e08`  | low liquid level       | reactor 1             | failure of `f11`
-`e09`  | explosion              | reactor 1             | occurrence of `e04`
-`e10`  | heater dry fired       | reactor 1             | occurrence of `e08`
-`e11`  | liquid overflow        | reactor 1             | occurrence of `e07`
-`e12`  | excessive pressure     | reactor 2             | failure of `f21`
-`e13`  | low pressure           | reactor 2             | failure of `f21`
-`e14`  | temperature anomaly    | reactor 2             | failure of `f20`
-`e15`  | excessive liquid level | reactor 2             | failure of `f22`
-`e16`  | low liquid level       | reactor 2             | failure of `f22`
-`e17`  | explosion              | reactor 2             | occurrence of `e12`
-`e18`  | heater dry fired       | reactor 2             | occurrence of `e16`
-`e19`  | liquid overflow        | reactor 2             | occurrence of `e15`
-`e20`  | blender stop           | reactor 2             | failure of `f30`
+Symbol | Description                    | Location              | Inducement
+:---:  | :---                           | :---                  | :---
+`e01`  | pressure anomaly               | distillation column   | failure of `f02`
+`e02`  | temperature anomaly            | distillation column   | failure of `f01`
+`e03`  | traffic of anomaly             | distillation column   | failure of `f03`, `f04`, `f05`
+`e04`  | excessive pressure             | reactor 1             | failure of `f10`
+`e05`  | low pressure                   | reactor 1             | failure of `f10`
+`e06`  | temperature anomaly            | reactor 1             | failure of `f09`
+`e07`  | excessive liquid level         | reactor 1             | failure of `f11`
+`e08`  | low liquid level               | reactor 1             | failure of `f11`
+`e09`  | explosion                      | reactor 1             | occurrence of `e04`
+`e10`  | heater dry fired               | reactor 1             | occurrence of `e08`
+`e11`  | liquid overflow                | reactor 1             | occurrence of `e07`
+`e12`  | excessive pressure             | reactor 2             | failure of `f21`
+`e13`  | low pressure                   | reactor 2             | failure of `f21`
+`e14`  | temperature anomaly            | reactor 2             | failure of `f20`
+`e15`  | excessive liquid level         | reactor 2             | failure of `f22`
+`e16`  | low liquid level               | reactor 2             | failure of `f22`
+`e17`  | explosion                      | reactor 2             | occurrence of `e12`
+`e18`  | heater dry fired               | reactor 2             | occurrence of `e16`
+`e19`  | liquid overflow                | reactor 2             | occurrence of `e15`
+`e20`  | blender stop                   | reactor 2             | failure of `f30`
+`e21`  | out of control                 | distillation column   | failure of `f34`
+`e22`  | out of control                 | reactor 1             | failure of `f35`
+`e23`  | out of control                 | reactor 2             | failure of `f36`
+`e24`  | production scheduling error    | control layer         | failure of `f31`, `f32`, `f33`
+`e25`  | production scheduling error    | plant                 | failure of `f37                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            `
 
 ###<h3 id='Analysis.Asset' />System Assets
 The asset of the chemical reactor control system and the relationship between asset and potential hazardous incident are shown as follows.
@@ -226,6 +248,10 @@ There are two kinds of defense strategies: security strategies and recover strat
 * Recover strategy is a kind of defense strategy which can recover the failed system function.
 
 ###<h3 id="Analysis.Strategy.Security">Security Strategies
+The security strategies of the chemical reactor control system is shown as follows.
 
+Symbol | Description                        | Prevented Attacks                 | Invalidated Functions
+:---:  | :---                               | :---                              | :---
+`m01`  | disconnect the security gateway    | `a01`                             | 
 
 ###<h3 id="Analysis.Strategy.Recover">Recover Strategies
