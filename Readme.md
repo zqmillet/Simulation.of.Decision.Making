@@ -116,7 +116,6 @@ Symbol | Description                                                        | Co
 `a46`  | man-in-the-middle attack on PLC12                                  | launch of `a22`
 
 ###<h3 id='Analysis.Function' />System Functions
-####The functions of distillation column
 The functions of the distillation column are shown as follows.
 
 Symbol | Description                                                | Failure Inducement
@@ -130,7 +129,6 @@ Symbol | Description                                                | Failure In
 `f07`  | the temperature sensation function of distillation column  | launch of `a25`, `a37`
 `f08`  | the pressure sensation function of distillation column     | launch of `a25`, `a37`
 
-####The functions of reactor 1
 The functions of the reactor 1 are shown as follows.
 
 Symbol | Description                                                | Failure Inducement
@@ -147,7 +145,6 @@ Symbol | Description                                                | Failure In
 `f18`  | the pressure sensation function of reactor 1               | launch of `a29`, `a41`
 `f19`  | the level sensation function of reactor 1                  | launch of `a29`, `a41`
 
-####The functions of reactor 2
 The functions of the reactor 2 are shown as follows.
 
 Symbol | Description                                                | Failure Inducement
