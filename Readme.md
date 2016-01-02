@@ -2,21 +2,21 @@
 This document is used to introduce the detail of the simulation.
 
 ## Contents
-* [The Introduction of the Simulation Object            ](#Introduction)
-* [The Analysis of the Chemical Reactor Control System  ](#Analysis.System)
-    - [Potential Malicious Attacks                      ](#Analysis.Attack)
-    - [System Functions                                 ](#Analysis.Function)
-    - [Potential Hazardous Incidents                    ](#Analysis.Incident)
-    - [System Assets                                    ](#Analysis.Asset)
-    - [Production Processes                             ](#Analysis.Process)
-* [The Analysis of Defense Strategies                   ](#Analysis.Strategy)
-    - [Security Strategies                              ](#Analysis.Strategy.Security)        
-    - [Recover Strategies                               ](#Analysis.Strategy.Recover)   
+* [The Introduction of the Simulation Object](#Introduction)
+* [The Analysis of the Chemical Reactor Control System](#Analysis.System)
+    - [Potential Malicious Attacks](#Analysis.Attack)
+    - [System Functions ](#Analysis.Function)
+    - [Potential Hazardous Incidents](#Analysis.Incident)
+    - [System Assets](#Analysis.Asset)
+    - [Production Processes](#Analysis.Process)
+* [The Analysis of Defense Strategies](#Analysis.Strategy)
+    - [Security Strategies](#Analysis.Strategy.Security)        
+    - [Recover Strategies](#Analysis.Strategy.Recover)   
 
 ##<h2 id="Introduction" />The Introduction of the Simulation Object
 The simulation object is a chemical reactor control system which is shown as following figure.
 
-<img src="/Figures/Structure.of.Reactor.Control.System.png" alt="Structure of Reactor Control System" />
+<img src="https://github.com/zqmillet/Simulation.of.Decision.Making/raw/Develop/Figures/Structure.of.Reactor.Control.System.png" alt="Structure of Reactor Control System" />
 
 In this chemical reactor control system, there are 2 semi-product and 2 product which is shown as follows.
 
@@ -240,7 +240,7 @@ Symbol | Input  | Output        | Description
 
 So, the process model of this chemical reactor control system is shown as following figure.
 
-<img src="/Figures/Process.Model.of.Reactor.Control.System.png" width = "250" alt="Process Model of Reactor Control System" />
+<img src="https://github.com/zqmillet/Simulation.of.Decision.Making/raw/Develop/Figures/Process.Model.of.Reactor.Control.System.png" width = "250" alt="Process Model of Reactor Control System" />
 
 ##<h2 id="Analysis.Strategy">The Analysis of Defense Strategies
 There are two kinds of defense strategies: security strategies and recover strategies.
