@@ -275,3 +275,19 @@ Symbol | Description                            | Prevented Attacks             
 `m17`  | encrypt the data amongst the PLC 9-12  | `a43`, `a44`, `a45`, `a46`        | --
 
 ###<h3 id="Analysis.Strategy.Recover">Recover Strategies
+The recover strategies of the chemical reactor control system is shown as follows.
+
+Symbol | Description                            | Rocovered Functions               | Cost($)
+:---:  | :---                                   | :---                              |  ---:
+`n01`  | reboot PLC1                            | `f03`                             |  9000
+`n02`  | reboot PLC2                            | `f06`                             |  9000
+`n03`  | reboot PLC3                            | `f07`, `f08`                      | 10000
+`n04`  | reboot PLC4                            | `f04`, `f05`                      | 15000
+`n05`  | reboot PLC5                            | `f12`, `f13`                      |  8000
+`n06`  | reboot PLC6                            | `f16`                             | 10000
+`n07`  | reboot PLC7                            | `f17`, `f18`, `f19`               |  2000
+`n08`  | reboot PLC8                            | `f14`, `f15`                      | 13000
+`n09`  | reboot PLC9                            | `f23`                             | 14000
+`n10`  | reboot PLC10                           | `f26`, `f30`                      |  7500
+`n11`  | reboot PLC11                           | `f27`, `f28`, `f29`               | 14000
+`n12`  | reboot PLC12                           | `f24`, `f25`                      | 11000
