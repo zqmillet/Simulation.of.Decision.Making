@@ -221,9 +221,9 @@ The asset of the chemical reactor control system and the relationship between as
 
 Symbol | Description                            | Value($)  | Hazardous Incident
 :---:  | :---                                   |      ---: | :---
-`x01`  | semi-product `s01` and `s02`           |  30000    | `e01`,`e02`,`e03`
-`x02`  | product `s03`                          |  60000    | `e06`,`e09`,`e11`
-`x03`  | product `s04`                          |  70000    | `e14`,`e17`,`e20`
+`x01`  | semi-product `s01` and `s02`           |  30000    | `e01`,`e02`,`e03`, `e21`
+`x02`  | product `s03`                          |  60000    | `e06`,`e09`,`e11`, `e22`
+`x03`  | product `s04`                          |  70000    | `e14`,`e17`,`e20`, `e23`
 `x04`  | tank and sensors of reactor 1          | 200000    | `e09`
 `x05`  | heater of reactor 1                    |  40000    | `e09`,`e10`
 `x06`  | tank, sensors and blender of reactor 2 | 300000    | `e17`
@@ -257,21 +257,21 @@ The security strategies of the chemical reactor control system is shown as follo
 Symbol | Description                            | Prevented Attacks                 | Invalidated Functions
 :---:  | :---                                   | :---                              | :---
 `m01`  | disconnect the security gateway        | `a01`                             | `f37`
-`m05`  | shut down the web server               | `a03`, `a04`                      | `f37`
-``     | shut down the personal computer 1      | `a05`                             | `f38`
-``     | shut down the personal computer 2      | `a06`                             | `f39`
-``     | shut down the personal computer 3      | `a07`                             | `f40`
-`m02`  | disconnect the security gateway 1      | `a08`                             | ``
-``     | shut down the data server 1            | `a10`, `a11`                      |
-``     | shut down the engineer station 1       | `a12`                             |
-``     | encrypt the data amongst the PLC 1-4   | `a35`, `a36`, `a37`, `a38`        |
-``     | disconnect the security gateway 2      | `a13`                             |
-``     | shut down the data server 2            | `a15`, `a16`                      |
-``     | shut down the engineer station 2       | `a17`                             |
-``     | encrypt the data amongst the PLC 5-8   | `a39`, `a40`, `a41`, `a42`        |
-``     | disconnect the security gateway 3      | `a18`                             |
-``     | shut down the data server 3            | `a20`, `a21`                      |
-``     | shut down the engineer station 3       | `a22`                             |
-``     | encrypt the data amongst the PLC 9-12  | `a43`, `a44`, `a45`, `a46`        |
+`m02`  | shut down the web server               | `a03`, `a04`                      | `f37`
+`m03`  | shut down the personal computer 1      | `a05`                             | `f38`
+`m04`  | shut down the personal computer 2      | `a06`                             | `f39`
+`m05`  | shut down the personal computer 3      | `a07`                             | `f40`
+`m06`  | disconnect the security gateway 1      | `a08`                             | `f31`
+`m07`  | shut down the data server 1            | `a10`, `a11`                      | `f31`
+`m08`  | shut down the engineer station 1       | `a12`                             | `f34`
+`m09`  | encrypt the data amongst the PLC 1-4   | `a35`, `a36`, `a37`, `a38`        | --
+`m10`  | disconnect the security gateway 2      | `a13`                             | `f32`
+`m11`  | shut down the data server 2            | `a15`, `a16`                      | `f32`
+`m12`  | shut down the engineer station 2       | `a17`                             | `f35`
+`m13`  | encrypt the data amongst the PLC 5-8   | `a39`, `a40`, `a41`, `a42`        | --
+`m14`  | disconnect the security gateway 3      | `a18`                             | `f33`
+`m15`  | shut down the data server 3            | `a20`, `a21`                      | `f33`
+`m16`  | shut down the engineer station 3       | `a22`                             | `f36`
+`m17`  | encrypt the data amongst the PLC 9-12  | `a43`, `a44`, `a45`, `a46`        | --
 
 ###<h3 id="Analysis.Strategy.Recover">Recover Strategies
